@@ -4,6 +4,8 @@ import {
   Schema,
   type HydratedDocument,
   type Model,
+  type Query,
+  type Types,
 } from "mongoose"
 
 interface IEvent {
@@ -23,6 +25,10 @@ interface IEvent {
   tags: string[]
   createdAt: Date
   updatedAt: Date
+}
+
+interface IBookingReference {
+  eventId: Types.ObjectId
 }
 
 type RequiredStringField =
@@ -181,6 +187,38 @@ eventSchema.pre("save", function preSave(this: HydratedDocument<IEvent>) {
     this.slug = createSlug(this.title)
   }
 })
+
+eventSchema.pre(
+  "deleteOne",
+  { document: true, query: false },
+  async function preDeleteOne(this: HydratedDocument<IEvent>) {
+    // Deny deleting an event while bookings still reference it.
+    const BookingModel = this.model<IBookingReference>("Booking")
+    const relatedBookingExists = await BookingModel.exists({ eventId: this._id })
+    if (relatedBookingExists) {
+      throw new Error("Cannot delete event with existing bookings.")
+    }
+  }
+)
+
+eventSchema.pre(
+  "findOneAndDelete",
+  async function preFindOneAndDelete(
+    this: Query<HydratedDocument<IEvent> | null, IEvent>
+  ) {
+    const eventToDelete = await this.model.findOne(this.getFilter()).select("_id").lean()
+    if (!eventToDelete) {
+      return
+    }
+
+    // Apply the same guard for query-based deletes.
+    const BookingModel = this.model.db.model<IBookingReference>("Booking")
+    const relatedBookingExists = await BookingModel.exists({ eventId: eventToDelete._id })
+    if (relatedBookingExists) {
+      throw new Error("Cannot delete event with existing bookings.")
+    }
+  }
+)
 
 const Event: Model<IEvent> =
   (models.Event as Model<IEvent> | undefined) ?? model<IEvent>("Event", eventSchema)
