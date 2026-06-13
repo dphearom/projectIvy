@@ -51,6 +51,7 @@ const Hero = () => {
             </div>
           </div>
 
+          {/* Floating widgets — hidden for now, re-enable by removing the comment wrapper
           <div className="floating-card card-1">
             <div className="icon" style={{ background: "#EEF0FF" }}>🎓</div>
             <div>
@@ -72,6 +73,7 @@ const Hero = () => {
               <div>95% Placement</div>
             </div>
           </div>
+          */}
         </div>
       </div>
     </section>

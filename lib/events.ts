@@ -9,8 +9,10 @@ export interface EventDTO {
   slug: string
   image: string
   location: string
-  date: string
-  time: string
+  date: string     // formatted for display: "Jul 15, 2026"
+  time: string     // formatted for display: "9:00 AM"
+  rawDate: string  // ISO string for calendar generation
+  rawTime: string  // 24h "HH:mm" for calendar generation
   venue: string
   mode: string
   audience: string
@@ -68,6 +70,8 @@ function toDTO(d: LeanEvent): EventDTO {
     location: d.location,
     date: formatDate(d.date),
     time: formatTime(d.time),
+    rawDate: d.date,
+    rawTime: d.time,
     venue: d.venue,
     mode: d.mode,
     audience: d.audience,
@@ -82,7 +86,7 @@ function toDTO(d: LeanEvent): EventDTO {
 export async function getAllEvents(): Promise<EventDTO[]> {
   await connectToDatabase()
   const docs = await Event.find({}).sort({ date: 1 }).lean<LeanEvent[]>()
-  return docs.map(toDTO)
+return docs.map(toDTO)
 }
 
 export async function getEventBySlug(slug: string): Promise<EventDTO | null> {

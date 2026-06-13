@@ -8,9 +8,55 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 interface Props {
   eventTitle: string;
   eventId: string;
+  rawDate: string;
+  rawTime: string;
+  venue: string;
+  location: string;
+  description: string;
 }
 
-const BookingForm = ({ eventTitle, eventId }: Props) => {
+function buildICS(title: string, rawDate: string, rawTime: string, venue: string, location: string, description: string): string {
+  const d = new Date(rawDate);
+  const year = d.getUTCFullYear();
+  const month = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(d.getUTCDate()).padStart(2, "0");
+
+  const [h, m] = rawTime.split(":");
+  const startHour = String(Number(h)).padStart(2, "0");
+  const endHour = String(Number(h) + 2).padStart(2, "0");
+  const dateStr = `${year}${month}${day}`;
+
+  const escape = (s: string) => s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+
+  return [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Breksa AdvisED Global//Events//EN",
+    "BEGIN:VEVENT",
+    `UID:${dateStr}-${title.toLowerCase().replace(/\s+/g, "-")}@breksa.com`,
+    `DTSTART:${dateStr}T${startHour}${m}00`,
+    `DTEND:${dateStr}T${endHour}${m}00`,
+    `SUMMARY:${escape(title)}`,
+    `DESCRIPTION:${escape(description)}`,
+    `LOCATION:${escape(`${venue}, ${location}`)}`,
+    "STATUS:CONFIRMED",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].join("\r\n");
+}
+
+function downloadICS(title: string, rawDate: string, rawTime: string, venue: string, location: string, description: string) {
+  const content = buildICS(title, rawDate, rawTime, venue, location, description);
+  const blob = new Blob([content], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${title.toLowerCase().replace(/\s+/g, "-")}.ics`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+const BookingForm = ({ eventTitle, eventId, rawDate, rawTime, venue, location, description }: Props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -50,10 +96,14 @@ const BookingForm = ({ eventTitle, eventId }: Props) => {
       <div className="booking-success">
         <div className="check-circle">✓</div>
         <h4>You&apos;re registered!</h4>
-        <p>
-          We&apos;ve saved your spot for <strong>{eventTitle}</strong>. A
-          confirmation will be sent to {email}.
-        </p>
+        <p>Your spot for <strong>{eventTitle}</strong> is confirmed.</p>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => downloadICS(eventTitle, rawDate, rawTime, venue, location, description)}
+        >
+          Add to Calendar
+        </button>
       </div>
     );
   }

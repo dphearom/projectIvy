@@ -7,7 +7,7 @@ import Image from "next/image";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/#features", label: "What We Do" },
-  { href: "/app", label: "Our App" },
+  // { href: "/app", label: "Our App" }, // hidden — page not ready
   { href: "/events", label: "Events" },
   { href: "/about", label: "About" },
 ];
@@ -42,20 +42,22 @@ const Navbar = () => {
               priority
             />
           </Link>
-          <ul className="nav-links">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
-          <div className="nav-actions">
-            <Link href="/about" className="btn btn-outline">
-              Learn More
-            </Link>
-            <Link href="/events" className="btn btn-primary">
-              Get Started
-            </Link>
+          <div className="nav-right">
+            <ul className="nav-links">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+            <div className="nav-actions">
+              <Link href="/about" className="btn btn-outline">
+                Learn More
+              </Link>
+              <Link href="/events" className="btn btn-primary">
+                Get Started
+              </Link>
+            </div>
           </div>
           <button
             type="button"

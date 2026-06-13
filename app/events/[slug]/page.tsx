@@ -138,7 +138,15 @@ const EventDetailPage = async ({ params }: PageProps) => {
                   </div>
                 </div>
               </div>
-              <BookingForm eventTitle={event.title} eventId={event.id} />
+              <BookingForm
+                eventTitle={event.title}
+                eventId={event.id}
+                rawDate={event.rawDate}
+                rawTime={event.rawTime}
+                venue={event.venue}
+                location={event.location}
+                description={event.description}
+              />
             </div>
           </aside>
         </div>

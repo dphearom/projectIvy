@@ -162,7 +162,6 @@ const eventSchema = new Schema<IEvent>(
   }
 )
 
-eventSchema.index({ slug: 1 }, { unique: true })
 
 eventSchema.pre("save", function preSave(this: HydratedDocument<IEvent>) {
   // Ensure required text fields are present and not just whitespace.
