@@ -3,14 +3,26 @@ import Hero from "@/components/sections/Hero";
 import Features from "@/components/sections/Features";
 import UpcomingEvents from "@/components/sections/UpcomingEvents";
 import FinalCTA from "@/components/sections/FinalCTA";
+import { getAllEvents, type EventDTO } from "@/lib/events";
 
-const Page = () => {
+// Re-fetch events from the DB at most once a minute (ISR), so newly added
+// events appear without a redeploy.
+export const revalidate = 60;
+
+const Page = async () => {
+  let events: EventDTO[] = [];
+  try {
+    events = await getAllEvents();
+  } catch (err) {
+    console.error("Failed to load events:", err);
+  }
+
   return (
     <>
       <RevealObserver />
       <Hero />
       <Features />
-      <UpcomingEvents preview limit={3} />
+      <UpcomingEvents events={events} preview limit={3} />
       <FinalCTA />
     </>
   );

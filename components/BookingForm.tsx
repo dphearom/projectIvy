@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { createBooking } from "@/app/actions/bookings";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 interface Props {
   eventTitle: string;
-  eventSlug: string;
+  eventId: string;
 }
 
-const BookingForm = ({ eventTitle, eventSlug }: Props) => {
+const BookingForm = ({ eventTitle, eventId }: Props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -31,11 +32,12 @@ const BookingForm = ({ eventTitle, eventSlug }: Props) => {
 
     setSubmitting(true);
     try {
-      // TODO: wire to a server action / API route that creates a Booking
-      // (database/booking.model.ts) for eventSlug. For now we confirm locally.
-      await new Promise((resolve) => setTimeout(resolve, 600));
-      void eventSlug;
-      setDone(true);
+      const result = await createBooking({ eventId, name, email });
+      if (result.ok) {
+        setDone(true);
+      } else {
+        setError(result.error ?? "Something went wrong. Please try again.");
+      }
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {

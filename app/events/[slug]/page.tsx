@@ -2,20 +2,29 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import events, { getEventBySlug } from "@/lib/constants";
+import { getAllEvents, getEventBySlug, type EventDTO } from "@/lib/events";
 import BookingForm from "@/components/BookingForm";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export function generateStaticParams() {
-  return events.map((event) => ({ slug: event.slug }));
+// ISR: prebuild known events, revalidate every minute, and render any newly
+// added event on demand.
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  try {
+    const events = await getAllEvents();
+    return events.map((e) => ({ slug: e.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const event = getEventBySlug(slug);
+  const event = await getEventBySlug(slug);
   if (!event) return { title: "Event Not Found | Breksa – AdvisED Global" };
   return {
     title: `${event.title} | Breksa Events`,
@@ -23,17 +32,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-const META_ICONS = [
-  { icon: "/icons/pin.svg", render: (e: NonNullable<ReturnType<typeof getEventBySlug>>) => e.venue },
-  { icon: "/icons/calendar.svg", render: (e: NonNullable<ReturnType<typeof getEventBySlug>>) => e.date },
-  { icon: "/icons/clock.svg", render: (e: NonNullable<ReturnType<typeof getEventBySlug>>) => e.time },
-  { icon: "/icons/mode.svg", render: (e: NonNullable<ReturnType<typeof getEventBySlug>>) => e.mode },
-  { icon: "/icons/audience.svg", render: (e: NonNullable<ReturnType<typeof getEventBySlug>>) => e.audience },
+const META_ICONS: { icon: string; value: (e: EventDTO) => string }[] = [
+  { icon: "/icons/pin.svg", value: (e) => e.venue },
+  { icon: "/icons/calendar.svg", value: (e) => e.date },
+  { icon: "/icons/clock.svg", value: (e) => e.time },
+  { icon: "/icons/mode.svg", value: (e) => e.mode },
+  { icon: "/icons/audience.svg", value: (e) => e.audience },
 ];
 
 const EventDetailPage = async ({ params }: PageProps) => {
   const { slug } = await params;
-  const event = getEventBySlug(slug);
+  const event = await getEventBySlug(slug);
 
   if (!event) {
     notFound();
@@ -53,7 +62,7 @@ const EventDetailPage = async ({ params }: PageProps) => {
             {META_ICONS.map((m) => (
               <span className="event-meta-item" key={m.icon}>
                 <Image src={m.icon} alt="" width={16} height={16} style={{ width: "auto", height: "auto" }} />
-                {m.render(event)}
+                {m.value(event)}
               </span>
             ))}
           </div>
@@ -81,17 +90,19 @@ const EventDetailPage = async ({ params }: PageProps) => {
               <p>{event.description}</p>
             </div>
 
-            <div className="event-block">
-              <h2>What we&apos;ll cover</h2>
-              <ul className="event-agenda">
-                {event.agenda.map((item, i) => (
-                  <li key={item}>
-                    <span className="marker">{i + 1}</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {event.agenda.length > 0 && (
+              <div className="event-block">
+                <h2>What we&apos;ll cover</h2>
+                <ul className="event-agenda">
+                  {event.agenda.map((item, i) => (
+                    <li key={item}>
+                      <span className="marker">{i + 1}</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           <aside>
@@ -127,7 +138,7 @@ const EventDetailPage = async ({ params }: PageProps) => {
                   </div>
                 </div>
               </div>
-              <BookingForm eventTitle={event.title} eventSlug={event.slug} />
+              <BookingForm eventTitle={event.title} eventId={event.id} />
             </div>
           </aside>
         </div>

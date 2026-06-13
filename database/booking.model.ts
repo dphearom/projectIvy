@@ -10,6 +10,7 @@ import Event from "./event.model"
 
 interface IBooking {
   eventId: Types.ObjectId
+  name: string
   email: string
   createdAt: Date
   updatedAt: Date
@@ -24,6 +25,11 @@ const bookingSchema = new Schema<IBooking>(
       ref: "Event",
       required: true,
       index: true,
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
     },
     email: {
       type: String,
@@ -44,7 +50,8 @@ const bookingSchema = new Schema<IBooking>(
 bookingSchema.index({ eventId: 1 })
 
 bookingSchema.pre("save", async function preSave(this: HydratedDocument<IBooking>) {
-  // Normalize and validate email before persistence.
+  // Normalize fields before persistence.
+  this.name = this.name.trim()
   const normalizedEmail = this.email.trim().toLowerCase()
   if (!emailRegex.test(normalizedEmail)) {
     throw new Error("Invalid email format.")

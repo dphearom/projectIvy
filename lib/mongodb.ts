@@ -1,16 +1,6 @@
 import "server-only"
 import mongoose, { type ConnectOptions } from "mongoose"
 
-function getMongoUri(): string {
-  const uri = process.env.MONGODB_URI
-  if (!uri) {
-    throw new Error("Missing MONGODB_URI environment variable.")
-  }
-  return uri
-}
-
-const MONGODB_URI: string = getMongoUri()
-
 type MongooseConnection = typeof mongoose
 
 interface MongooseCache {
@@ -36,9 +26,13 @@ export async function connectToDatabase(): Promise<MongooseConnection> {
   }
 
   if (!cached.promise) {
+    const uri = process.env.MONGODB_URI
+    if (!uri) {
+      throw new Error("Missing MONGODB_URI environment variable.")
+    }
     // Cache the in-flight promise to prevent parallel connection attempts.
     cached.promise = mongoose
-      .connect(MONGODB_URI, connectionOptions)
+      .connect(uri, connectionOptions)
       .then((mongooseInstance) => mongooseInstance)
   }
 

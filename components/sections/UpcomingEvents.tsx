@@ -1,9 +1,10 @@
 import Link from "next/link";
 import EventCard from "@/components/EventCard";
 import ArrowRight from "@/components/ArrowRight";
-import events from "@/lib/constants";
+import type { EventDTO } from "@/lib/events";
 
 interface Props {
+  events: EventDTO[];
   /** When true, only show the first few events plus a "View All Events" link. */
   preview?: boolean;
   /** How many events to show in preview mode. */
@@ -12,7 +13,7 @@ interface Props {
   hideHeader?: boolean;
 }
 
-const UpcomingEvents = ({ preview = false, limit = 3, hideHeader = false }: Props) => {
+const UpcomingEvents = ({ events, preview = false, limit = 3, hideHeader = false }: Props) => {
   const shown = preview ? events.slice(0, limit) : events;
 
   return (
@@ -28,17 +29,30 @@ const UpcomingEvents = ({ preview = false, limit = 3, hideHeader = false }: Prop
             </p>
           </div>
         )}
-        <div className="events-grid">
-          {shown.map((event, i) => (
-            <div
-              key={event.slug}
-              className={`reveal${i % 3 ? ` reveal-delay-${i % 3}` : ""}`}
-            >
-              <EventCard {...event} />
-            </div>
-          ))}
-        </div>
-        {preview && (
+
+        {shown.length === 0 ? (
+          <p className="text-center">No upcoming events right now — check back soon!</p>
+        ) : (
+          <div className="events-grid">
+            {shown.map((event, i) => (
+              <div
+                key={event.slug}
+                className={`reveal${i % 3 ? ` reveal-delay-${i % 3}` : ""}`}
+              >
+                <EventCard
+                  title={event.title}
+                  image={event.image}
+                  slug={event.slug}
+                  location={event.location}
+                  date={event.date}
+                  time={event.time}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {preview && shown.length > 0 && (
           <div className="events-cta">
             <Link href="/events" className="btn btn-primary">
               View All Events
