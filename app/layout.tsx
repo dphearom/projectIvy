@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
-import { Schibsted_Grotesk, Martian_Mono, Geist } from "next/font/google";
+import { Inter, Noto_Sans_Khmer } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import LightRays from "@/components/LightRay";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
-const schibstedGrotesk = Schibsted_Grotesk({
-  variable: "--font-schibsted-grotesk",
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
 });
 
-const martianMono = Martian_Mono({
-  variable: "--font-martian-mono",
-  subsets: ["latin"],
+const notoKhmer = Noto_Sans_Khmer({
+  subsets: ["khmer"],
+  weight: ["400", "600", "700"],
+  variable: "--font-khmer",
 });
 
 export const metadata: Metadata = {
-  title: "Breksa Event App",
-  description: "Guiding your educational journey",
+  title: "Breksa – AdvisED Global | Bridging Potential and Opportunities",
+  description:
+    "Cambodia's academic advising service built for every student. Combining AI-powered tools with human mentorship to unlock global opportunities.",
 };
 
 export default function RootLayout({
@@ -28,28 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en">
-      <body
-          className={cn("min-h-screen", "h-full", "antialiased", schibstedGrotesk.variable, martianMono.variable, "font-sans", geist.variable)}>
-      <Navbar/>
-        <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
-          <LightRays
-              raysOrigin="top-center-offset"
-              raysColor="#1700A8"
-              raysSpeed={0.5}
-              lightSpread={0.9}
-              rayLength={1.4}
-              followMouse={true}
-              mouseInfluence={0.02}
-              noiseAmount={0.0}
-              distortion={0.01}
-          />
-
-        </div>
-        <main>
-          {children}
-        </main>
+    <html lang="en">
+      <body className={cn(inter.variable, notoKhmer.variable, "antialiased")}>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,11 +1,15 @@
 import "server-only"
 import mongoose, { type ConnectOptions } from "mongoose"
 
-const MONGODB_URI = process.env.MONGODB_URI
-
-if (!MONGODB_URI) {
-  throw new Error("Missing MONGODB_URI environment variable.")
+function getMongoUri(): string {
+  const uri = process.env.MONGODB_URI
+  if (!uri) {
+    throw new Error("Missing MONGODB_URI environment variable.")
+  }
+  return uri
 }
+
+const MONGODB_URI: string = getMongoUri()
 
 type MongooseConnection = typeof mongoose
 

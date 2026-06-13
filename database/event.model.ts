@@ -193,7 +193,7 @@ eventSchema.pre(
   { document: true, query: false },
   async function preDeleteOne(this: HydratedDocument<IEvent>) {
     // Deny deleting an event while bookings still reference it.
-    const BookingModel = this.model<IBookingReference>("Booking")
+    const BookingModel = this.model("Booking") as unknown as Model<IBookingReference>
     const relatedBookingExists = await BookingModel.exists({ eventId: this._id })
     if (relatedBookingExists) {
       throw new Error("Cannot delete event with existing bookings.")
@@ -212,7 +212,7 @@ eventSchema.pre(
     }
 
     // Apply the same guard for query-based deletes.
-    const BookingModel = this.model.db.model<IBookingReference>("Booking")
+    const BookingModel = this.model.db.model("Booking") as unknown as Model<IBookingReference>
     const relatedBookingExists = await BookingModel.exists({ eventId: eventToDelete._id })
     if (relatedBookingExists) {
       throw new Error("Cannot delete event with existing bookings.")
