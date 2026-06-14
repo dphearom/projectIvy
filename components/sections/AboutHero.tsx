@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const AboutHero = () => (
   // id="top" is required: AboutNav's heroObs watches this element to show/hide the subnav bar.
-  // `.subhero` reduces the section height compared to the landing-page `.hero-stage`.
+  // Blobs are static (no drift) on this sub-hero — controlled in globals.css.
   <section className="hero subhero" id="top">
     <div className="hero-bg">
       <span className="blob b1" /><span className="blob b2" />
