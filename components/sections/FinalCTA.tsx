@@ -1,28 +1,28 @@
-import Link from "next/link";
-import ArrowRight from "@/components/ArrowRight";
-
 const FinalCTA = () => {
   return (
-    <section className="section final-cta" id="cta">
-      <div className="container">
-        <span className="accent-label">Join the Movement</span>
-        <h2 className="reveal">
-          We Are Not Just Guiding Students — We Are Building the Future Human Capital
-          of Cambodia.
-        </h2>
-        <p className="reveal reveal-delay-1">
-          The journey to global opportunity starts with a single step. Whether
-          you&apos;re a student with big dreams or a parent seeking the best path for
-          your child — we&apos;re here to guide you every step of the way.
-        </p>
-        <div className="cta-buttons reveal reveal-delay-2">
-          <Link href="/events" className="btn btn-accent" style={{ fontSize: "16px", padding: "17px 36px" }}>
-            <ArrowRight size={20} />
-            Start Your Journey Today
-          </Link>
-          <Link href="/#features" className="btn btn-white" style={{ fontSize: "16px", padding: "17px 36px" }}>
-            Explore Our Services
-          </Link>
+    <section className="cta" id="cta">
+      <img className="cta-watermark" src="/logo-light.png" alt="" aria-hidden="true" />
+      <div className="wrap">
+        <div className="cta-inner">
+          <span className="eyebrow center on-navy" data-reveal>
+            Join the Movement
+          </span>
+          <h2 data-reveal data-reveal-d="1">
+            We Are Not Just Guiding Students — We Are Building the <span className="accent">Future of Cambodia</span>.
+          </h2>
+          <p data-reveal data-reveal-d="2">
+            The journey to global opportunity starts with a single step. Whether you&apos;re a student with
+            big dreams or a parent seeking the best path for your child — we&apos;re here to guide you every
+            step of the way.
+          </p>
+          <div className="cta-actions" data-reveal data-reveal-d="3">
+            <a className="btn btn-gold" href="/events">
+              Start Your Journey Today <span className="arrow">→</span>
+            </a>
+            <a className="btn btn-ghost-light" href="/#features">
+              Explore Our Services
+            </a>
+          </div>
         </div>
       </div>
     </section>

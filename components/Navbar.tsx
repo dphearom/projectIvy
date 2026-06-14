@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/#features", label: "What We Do" },
-  // { href: "/app", label: "Our App" }, // hidden — page not ready
-  { href: "/events", label: "Events" },
-  { href: "/about", label: "About" },
+  { href: "/#top",       label: "Home" },
+  { href: "/#features",  label: "What We Do" },
+  { href: "/events",     label: "Events" },
+  { href: "/about",      label: "About" },
 ];
 
 const Navbar = () => {
@@ -17,7 +15,8 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -31,40 +30,38 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
-        <div className="container">
-          <Link href="/" className="nav-logo">
-            <Image
-              src="/brand_assets/logo.png"
-              alt="Breksa AdvisED Global"
-              width={45}
-              height={44}
-              priority
-            />
+      <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
+        <div className="wrap nav-inner">
+          <Link href="/#top" className="brand" aria-label="Project IVY home">
+            {/* cream wordmark — visible over dark hero */}
+            <img className="logo-light" src="/logo-nav-light.png" alt="Project IVY" />
+            {/* navy wordmark — visible when nav scrolled */}
+            <img className="logo-dark" src="/logo-nav-dark.png" alt="Project IVY" />
           </Link>
-          <div className="nav-right">
-            <ul className="nav-links">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
-                </li>
-              ))}
-            </ul>
-            <div className="nav-actions">
-              <Link href="/about" className="btn btn-outline">
-                Learn More
+
+          <div className="nav-links">
+            {NAV_LINKS.map((link) => (
+              <Link key={link.href} href={link.href}>
+                {link.label}
               </Link>
-              <Link href="/events" className="btn btn-primary">
-                Get Started
-              </Link>
-            </div>
+            ))}
           </div>
+
+          <div className="nav-cta">
+            <Link className="link-ghost" href="/#cta">
+              Learn More
+            </Link>
+            <Link href="/events" className="btn btn-gold">
+              Get Started <span className="arrow">→</span>
+            </Link>
+          </div>
+
           <button
             type="button"
-            className={`hamburger${menuOpen ? " is-open" : ""}`}
+            className={`nav-toggle${menuOpen ? " open" : ""}`}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
+            onClick={() => setMenuOpen((o) => !o)}
           >
             <span />
             <span />

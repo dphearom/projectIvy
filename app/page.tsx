@@ -5,8 +5,6 @@ import UpcomingEvents from "@/components/sections/UpcomingEvents";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { getAllEvents, type EventDTO } from "@/lib/events";
 
-// Re-fetch events from the DB at most once a minute (ISR), so newly added
-// events appear without a redeploy.
 export const revalidate = 60;
 
 const Page = async () => {

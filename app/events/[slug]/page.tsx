@@ -56,7 +56,7 @@ const EventDetailPage = async ({ params }: PageProps) => {
         </Link>
 
         <div className="event-detail-head">
-          <span className="section-label">{event.organizer}</span>
+          <span className="eyebrow gold">{event.organizer}</span>
           <h1>{event.title}</h1>
           <div className="event-meta-row">
             {META_ICONS.map((m) => (

@@ -1,24 +1,31 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_Khmer } from "next/font/google";
+import { Cormorant_Garamond, Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
 });
 
-const notoKhmer = Noto_Sans_Khmer({
-  subsets: ["khmer"],
-  weight: ["400", "600", "700"],
-  variable: "--font-khmer",
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
-  title: "Breksa – AdvisED Global | Bridging Potential and Opportunities",
+  title: "Project IVY – AdvisED Global | Turn Your Ambition Into Admission",
   description:
     "Cambodia's academic advising service built for every student. Combining AI-powered tools with human mentorship to unlock global opportunities.",
 };
@@ -29,8 +36,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(inter.variable, notoKhmer.variable, "antialiased")}>
+    <html lang="en" className={`${cormorant.variable} ${playfair.variable} ${manrope.variable}`}>
+      <body>
         <Navbar />
         <main>{children}</main>
         <Footer />

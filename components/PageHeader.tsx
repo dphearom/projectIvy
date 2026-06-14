@@ -6,13 +6,19 @@ interface Props {
 
 const PageHeader = ({ label, title, subtitle }: Props) => {
   return (
-    <header className="page-header">
-      <div className="container">
-        {label && <span className="accent-label">{label}</span>}
-        <h1>{title}</h1>
-        {subtitle && <p>{subtitle}</p>}
+    <div className="page-header">
+      <div className="hero-bg">
+        <span className="blob b1" />
+        <span className="blob b2" />
+        <span className="blob b3" />
       </div>
-    </header>
+      <div className="grain" />
+      <div className="page-header-inner">
+        {label && <span className="eyebrow gold center">{label}</span>}
+        <h1 data-reveal>{title}</h1>
+        {subtitle && <p data-reveal data-reveal-d="1">{subtitle}</p>}
+      </div>
+    </div>
   );
 };
 

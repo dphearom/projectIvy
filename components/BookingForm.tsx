@@ -99,7 +99,7 @@ const BookingForm = ({ eventTitle, eventId, rawDate, rawTime, venue, location, d
         <p>Your spot for <strong>{eventTitle}</strong> is confirmed.</p>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-gold"
           onClick={() => downloadICS(eventTitle, rawDate, rawTime, venue, location, description)}
         >
           Add to Calendar
@@ -133,7 +133,7 @@ const BookingForm = ({ eventTitle, eventId, rawDate, rawTime, venue, location, d
         />
       </div>
       {error && <p className="booking-error">{error}</p>}
-      <button type="submit" className="btn btn-primary" disabled={submitting}>
+      <button type="submit" className="btn btn-gold" disabled={submitting}>
         {submitting ? "Reserving…" : "Reserve My Spot"}
       </button>
       <p className="form-note">Free to register · Limited seats available</p>

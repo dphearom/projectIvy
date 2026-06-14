@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 interface Props {
@@ -8,32 +7,60 @@ interface Props {
   location: string;
   date: string;
   time: string;
+  tags: string[];
+  rawDate: string;
+  onClick?: () => void;
 }
 
-const EventCard = ({ title, image, slug, location, date, time }: Props) => {
+const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Props) => {
+  let day = "";
+  let month = "";
+  try {
+    const d = new Date(rawDate);
+    if (!Number.isNaN(d.getTime())) {
+      day = String(d.getDate());
+      month = d.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
+    } else {
+      const parts = date.split(/[ ,]+/);
+      if (parts.length >= 2) {
+        month = parts[0].toUpperCase();
+        day = parts[1];
+      }
+    }
+  } catch (e) {
+    // fallback values
+  }
+
   return (
-    <Link href={`/events/${slug}`} className="event-card">
-      <div className="poster-wrap">
-        <Image src={image} alt={title} fill sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 380px" />
+    <button type="button" className="ev" onClick={onClick}>
+      <div className="ev-img">
+        <div className="ph" aria-label={title}>
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 380px"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        {day && month && (
+          <div className="ev-date">
+            <b>{day}</b>
+            <span>{month}</span>
+          </div>
+        )}
       </div>
-      <div className="event-body">
-        <span className="event-location">
-          <Image src="/icons/pin.svg" alt="" width={13} height={13} style={{ width: "auto", height: "auto" }} />
-          {location}
-        </span>
-        <h3 className="event-title">{title}</h3>
-        <div className="event-meta">
+      <div className="ev-body">
+        <div className="ev-loc">{location}</div>
+        <h3>{title}</h3>
+        <div className="ev-meta">
           <span>
-            <Image src="/icons/calendar.svg" alt="" width={14} height={14} style={{ width: "auto", height: "auto" }} />
-            {date}
+            {month} {day}, 2026 · {time}
           </span>
-          <span>
-            <Image src="/icons/clock.svg" alt="" width={14} height={14} style={{ width: "auto", height: "auto" }} />
-            {time}
-          </span>
+          <span className="go">Reserve →</span>
         </div>
       </div>
-    </Link>
+    </button>
   );
 };
 
