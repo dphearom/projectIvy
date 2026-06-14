@@ -1,12 +1,12 @@
 import Link from "next/link";
-import EventsGrid from "@/components/EventsGrid";
-import type { EventDTO } from "@/lib/events";
+import EventsGrid from "@/components/EventsGrid"; // client wrapper — keeps this component server-side
+import type { EventDTO } from "@/lib/events";     // type-only import — lib/events is server-only
 
 interface Props {
   events: EventDTO[];
-  preview?: boolean;
-  limit?: number;
-  hideHeader?: boolean;
+  preview?: boolean; // true on the landing page: shows `limit` cards + "View All" link
+  limit?: number;    // how many cards to show in preview mode (default 3)
+  hideHeader?: boolean; // true on /events page where a separate page header already exists
 }
 
 const UpcomingEvents = ({ events, preview = false, limit = 3, hideHeader = false }: Props) => {

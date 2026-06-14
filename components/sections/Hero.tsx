@@ -59,7 +59,10 @@ const HeroIllo = () => (
 
 const Hero = () => {
   return (
+    // `.hero-stage` is the landing-page hero (taller than `.subhero` used in AboutHero).
+    // `.on-navy` sets text color to cream for readability over the dark background.
     <section className="hero-stage on-navy" id="top">
+      {/* Blobs are GPU-composited in CSS (will-change: transform + translate3d) to prevent repaint stuttering. */}
       <div className="hero-bg" aria-hidden="true">
         <span className="blob b1" />
         <span className="blob b2" />
@@ -78,9 +81,9 @@ const Hero = () => {
               Turn Your <span className="accent">Ambition</span><br />Into Admission
             </h1>
             <p className="hero-sub" data-reveal data-reveal-d="2">
-              Project IVY pairs world-class mentorship with AI-guided roadmaps to help
-              ambitious students win scholarships, master applications, and earn a place
-              at the world&rsquo;s best universities.
+              Project Ivy is Cambodia&rsquo;s academic advising service built for every student.
+              We combine AI-powered tools with human mentorship to help you access scholarships,
+              navigate applications, and turn ambition into admission.
             </p>
             <div className="hero-actions" data-reveal data-reveal-d="3">
               <a className="btn btn-gold" href="#events">

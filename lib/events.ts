@@ -1,8 +1,10 @@
+// `server-only` throws a build error if this module is accidentally imported in a client component.
+// Client components should use `import type { EventDTO }` — type imports are erased at compile time.
 import "server-only"
 import connectToDatabase from "./mongodb"
 import Event from "@/database/event.model"
 
-/** Plain, serializable shape passed to components. */
+/** Plain, serializable shape passed to client components via props. No MongoDB types leak out. */
 export interface EventDTO {
   id: string
   title: string
@@ -11,8 +13,8 @@ export interface EventDTO {
   location: string
   date: string     // formatted for display: "Jul 15, 2026"
   time: string     // formatted for display: "9:00 AM"
-  rawDate: string  // ISO string for calendar generation
-  rawTime: string  // 24h "HH:mm" for calendar generation
+  rawDate: string  // ISO date string — used to generate .ics calendar files in BookingForm
+  rawTime: string  // 24h "HH:mm" — used to generate .ics calendar files in BookingForm
   venue: string
   mode: string
   audience: string

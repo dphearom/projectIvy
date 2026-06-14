@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import BookingForm from "@/components/BookingForm";
-import type { EventDTO } from "@/lib/events";
+import type { EventDTO } from "@/lib/events"; // `import type` keeps lib/events off the client bundle
 
 interface Props {
   event: EventDTO;
@@ -12,6 +12,8 @@ interface Props {
 
 export default function EventModal({ event, onClose }: Props) {
   useEffect(() => {
+    // Escape key dismisses the modal; body overflow:hidden prevents background scroll.
+    // Cleanup restores scroll when the modal unmounts.
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -22,6 +24,8 @@ export default function EventModal({ event, onClose }: Props) {
   }, [onClose]);
 
   return (
+    // Clicking the backdrop closes the modal; stopPropagation on the inner panel
+    // prevents clicks inside the modal from bubbling up and triggering onClose.
     <div className="ev-modal-backdrop" onClick={onClose}>
       <div className="ev-modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={event.title}>
         <button className="ev-modal-close" onClick={onClose} aria-label="Close">✕</button>

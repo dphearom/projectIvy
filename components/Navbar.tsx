@@ -15,12 +15,16 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    // Threshold of 24px prevents the navbar from flickering when the page loads at the very top.
+    // { passive: true } tells the browser this listener won't call preventDefault — improves scroll perf.
+    // CSS class `.nav.scrolled` handles the visual shrink + frosted-glass effect.
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll when the mobile menu is open so the background doesn't scroll behind it.
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -35,7 +39,7 @@ const Navbar = () => {
           <Link href="/#top" className="brand" aria-label="Project IVY home">
             {/* cream wordmark — visible over dark hero */}
             <img className="logo-light" src="/logo-nav-light.png" alt="Project IVY" />
-            {/* navy wordmark — visible when nav scrolled */}
+            {/* navy wordmark — visible when nav scrolled to frosted-glass state */}
             <img className="logo-dark" src="/logo-nav-dark.png" alt="Project IVY" />
           </Link>
 

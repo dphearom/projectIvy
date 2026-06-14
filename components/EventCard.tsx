@@ -16,6 +16,8 @@ const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Pro
   let day = "";
   let month = "";
   try {
+    // Primary: parse the ISO rawDate from MongoDB (e.g. "2026-07-15").
+    // Fallback: split the human-readable `date` string (e.g. "Jul 15, 2026") in case rawDate is missing.
     const d = new Date(rawDate);
     if (!Number.isNaN(d.getTime())) {
       day = String(d.getDate());
@@ -31,6 +33,8 @@ const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Pro
     // fallback values
   }
 
+  // <button> instead of <Link> because clicking opens the EventModal, not a new page.
+  // CSS resets button appearance (border, background, font, padding) in globals.css .ev rule.
   return (
     <button type="button" className="ev" onClick={onClick}>
       <div className="ev-img">
