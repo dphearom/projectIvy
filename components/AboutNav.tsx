@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 
 // Section IDs must match `id` attributes on the actual section elements in about/page.tsx.
 const LINKS = [
-  { label: "The Problem",  id: "problem" },
-  { label: "Our Vision",   id: "vision"  },
-  { label: "Values",       id: "mission" },
-  { label: "Who We Serve", id: "serve"   },
-  { label: "Our Story",    id: "story"   },
+  { label: "Mission", id: "mission" },
+  { label: "Vision", id: "vision" },
+  { label: "Who We Are", id: "who-we-are" },
+  { label: "Our Team", id: "team" },
+  { label: "Success Stories", id: "stories" },
 ];
 
 export default function AboutNav() {

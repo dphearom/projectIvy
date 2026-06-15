@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import RevealObserver from "@/components/RevealObserver";
 import AboutNav from "@/components/AboutNav";
 import AboutHero from "@/components/sections/AboutHero";
-import Problem from "@/components/sections/Problem";
+import Mission from "@/components/sections/Mission";
 import VisionQuote from "@/components/sections/VisionQuote";
-import VisionMission from "@/components/sections/VisionMission";
-import WhoWeServe from "@/components/sections/WhoWeServe";
-import Founder from "@/components/sections/Founder";
+import WhoWeAre from "@/components/sections/WhoWeAre";
+import OurTeam from "@/components/sections/OurTeam";
+import SuccessStories from "@/components/sections/SuccessStories";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
   title: "About | Project IVY – AdvisED Global",
   description:
-    "Why Project IVY exists, who we serve, and the story behind Cambodia's academic advising platform — built by students who lived the journey.",
+    "Project Ivy mission, vision, team, and student success stories — Cambodia's academic advising platform built by students who lived the journey.",
 };
 
 const AboutPage = () => (
@@ -20,11 +20,16 @@ const AboutPage = () => (
     <RevealObserver />
     <AboutHero />
     <AboutNav />
-    <Problem />
+    <Mission />
     <VisionQuote />
-    <VisionMission />
-    <WhoWeServe />
-    <Founder />
+    <WhoWeAre />
+    <OurTeam />
+    <SuccessStories
+      id="stories"
+      eyebrow="Student outcomes"
+      title="Success stories"
+      altBackground
+    />
     <FinalCTA />
   </>
 );
