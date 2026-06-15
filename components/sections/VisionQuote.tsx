@@ -11,7 +11,7 @@ const VisionQuote = () => (
         guidance, opportunity, and <em>a path forward</em>.
       </h2>
       <span className="eyebrow gold center" data-reveal data-reveal-d="2">
-        Our Vision for Cambodia &amp; Southeast Asia
+        Our Vision
       </span>
     </div>
   </section>

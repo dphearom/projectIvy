@@ -7,19 +7,17 @@ const FinalCTA = () => (
     </div>
     <div className="grain" />
     <div className="mission-inner">
-      <span className="eyebrow gold center" data-reveal>Join the Movement</span>
+      <span className="eyebrow gold center" data-reveal>Start your journey</span>
       <h2 data-reveal data-reveal-d="1">
-        We&rsquo;re not just guiding students — we&rsquo;re building the future{" "}
-        <em>human capital of Cambodia</em>.
+        University Application
       </h2>
       <p data-reveal data-reveal-d="2">
-        The journey to global opportunity starts with a single step. Whether you&rsquo;re
-        a student with big dreams or a parent seeking the best path for your child —
-        we&rsquo;re here to guide you, every step of the way.
+        Please contact us now to register for a Free 1-1 consultation with a Project Ivy advisor!
       </p>
       <div className="mission-cta" data-reveal data-reveal-d="3">
-        <a className="btn btn-gold" href="/events">Start Your Journey →</a>
-        <a className="btn btn-ghost-light" href="/#features">Explore Our Services</a>
+        <a className="btn btn-gold" href="/contact">
+          Sign up for consultation <span className="arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
