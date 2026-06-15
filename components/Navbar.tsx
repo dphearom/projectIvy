@@ -32,9 +32,31 @@ const Navbar = () => {
     };
   }, [menuOpen]);
 
+  // Close mobile menu on ESC key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Close mobile menu on resize to desktop width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
-      <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
+      <nav className={`nav${scrolled ? " scrolled" : ""}${menuOpen ? " menu-open" : ""}`} id="nav">
         <div className="wrap nav-inner">
           <Link href="/#top" className="brand" aria-label="Project IVY home">
             {/* cream wordmark — visible over dark hero */}
