@@ -3,9 +3,6 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer>
-      <div className="footer-bg" aria-hidden="true" />
-      <div className="grain" aria-hidden="true" />
-      
       <div className="wrap">
         <div className="foot-top">
           <div className="foot-brand">

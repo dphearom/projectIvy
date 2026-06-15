@@ -94,7 +94,7 @@
    1. RESET & BASE
    ═══════════════════════════════════════════════════════════════════ */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--g1); }
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -282,6 +282,10 @@ img { display: block; max-width: 100%; }
 .hero-stage .blob      { animation: none; }
 .hero-stage .illo-dash { animation: none; }
 .hero-stage .hero-illo { animation: none; }
+
+/* Sub-hero (about page interior) gets a direct background so the section is dark
+   even before .hero-bg paints, preventing any body/html background bleed. */
+.hero.subhero { background: var(--g1); }
 
 /* `contain: layout style` isolates blob repaints from the rest of the page */
 .hero-bg { position: absolute; inset: 0; z-index: 0; contain: layout style; }
@@ -596,21 +600,8 @@ body[data-ivy="off"] .cta-watermark { opacity: 0; }
 .mission-cta         { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
 /* ── Footer ── */
-footer { position: relative; overflow: hidden; background: var(--navy-3); color: var(--cream-soft); padding: 60px 0 40px; }
-
-/* Multi-stop radial gradient reuses the same --g* blob colours as the hero,
-   creating visual continuity between hero and footer */
-.footer-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background:
-    radial-gradient(ellipse 55vw 55vw at -8% 105%, var(--g3), transparent 68%),
-    radial-gradient(ellipse 48vw 48vw at 108% 0%,  var(--g4), transparent 68%),
-    radial-gradient(ellipse 50vw 42vw at 50% 120%, var(--g5), transparent 60%),
-    radial-gradient(130% 130% at 50% 110%, var(--g2), var(--g1) 68%);
-  opacity: 0.9;
-}
-footer .grain   { z-index: 1; }
-footer > .wrap  { position: relative; z-index: 3; }
+footer { position: relative; z-index: 1; background: #091226; color: rgba(247,241,230,0.72); padding: 80px 0 36px; }
+footer > .wrap  { position: relative; }
 
 /* .footer-illo kept for potential re-use; currently not rendered */
 .footer-illo { position: relative; z-index: 2; width: 100%; color: var(--gold-soft); opacity: 0.5; pointer-events: none; padding-top: 56px; margin-bottom: 20px; }
@@ -840,12 +831,14 @@ footer > .wrap  { position: relative; z-index: 3; }
   background: rgba(251,249,244,0.88); backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4);
   border-bottom: 1px solid var(--line);
   box-shadow: 0 4px 24px -12px rgba(14,23,41,0.1);
-  /* Hidden by default: slide above viewport */
+  /* Hidden by default: slide above viewport, opacity:0 prevents shadow/border bleed */
   transform: translateY(-100%);
-  transition: transform .35s cubic-bezier(.2,.7,.2,1);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), opacity .2s ease;
 }
 /* Slide into position below main navbar (60px = scrolled nav height) */
-.about-subnav--visible { transform: translateY(60px); }
+.about-subnav--visible { transform: translateY(60px); opacity: 1; pointer-events: auto; }
 
 .about-subnav-inner {
   display: flex; align-items: center;
