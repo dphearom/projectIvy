@@ -26,8 +26,7 @@ const FeaturedNews = () => (
   <section className="featured-news" id="news">
     <div className="wrap">
       <div className="section-head" data-reveal>
-        <span className="eyebrow center">Latest updates</span>
-        <h2>Featured news about Project Ivy</h2>
+        <h2>Latest from Project Ivy</h2>
       </div>
       <div className="ev-grid">
         {ARTICLES.map((article, i) => (

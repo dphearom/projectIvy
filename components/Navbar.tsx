@@ -52,26 +52,9 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-const LANGUAGES = [
-  { code: "km", label: "ខ្មែរ", href: "#" },
-  { code: "en", label: "English", href: "/" },
-];
-
 const ChevronDown = () => (
   <svg className="nav-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
     <path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
-
-const GlobeIcon = () => (
-  <svg className="nav-globe" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.5" />
-    <path
-      d="M3 12h18M12 3c2.5 2.8 4 6 4 9s-1.5 6.2-4 9M12 3c-2.5 2.8-4 6-4 9s1.5 6.2 4 9"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
   </svg>
 );
 
@@ -87,7 +70,6 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [langOpen, setLangOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -107,14 +89,12 @@ const Navbar = () => {
   useEffect(() => {
     setMenuOpen(false);
     setOpenDropdown(null);
-    setLangOpen(false);
   }, [pathname]);
 
   useEffect(() => {
     const onPointerDown = (e: MouseEvent) => {
       if (!navRef.current?.contains(e.target as Node)) {
         setOpenDropdown(null);
-        setLangOpen(false);
       }
     };
     document.addEventListener("mousedown", onPointerDown);
@@ -123,7 +103,6 @@ const Navbar = () => {
 
   const toggleDropdown = (key: string) => {
     setOpenDropdown((current) => (current === key ? null : key));
-    setLangOpen(false);
   };
 
   return (
@@ -185,34 +164,13 @@ const Navbar = () => {
           </div>
 
           <div className="nav-right">
-            <div className={`nav-lang${langOpen ? " open" : ""}`}>
-              <button
-                type="button"
-                className="nav-lang-trigger"
-                aria-expanded={langOpen}
-                aria-haspopup="menu"
-                onClick={() => {
-                  setLangOpen((o) => !o);
-                  setOpenDropdown(null);
-                }}
-              >
-                <GlobeIcon />
-                <span>en</span>
-                <ChevronDown />
+            <div className="nav-auth">
+              <button type="button" className="nav-auth-btn nav-auth-btn--login">
+                Log in
               </button>
-              <ul className="nav-dropdown nav-lang-menu" role="menu">
-                {LANGUAGES.map((lang) => (
-                  <li
-                    key={lang.code}
-                    role="none"
-                    className={lang.code === "en" ? "active" : undefined}
-                  >
-                    <Link href={lang.href} className="nav-dropdown-link" role="menuitem">
-                      {lang.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <button type="button" className="nav-auth-btn nav-auth-btn--signup">
+                Sign up
+              </button>
             </div>
 
             <button
@@ -293,20 +251,13 @@ const Navbar = () => {
           })}
         </ul>
 
-        <div className="mobile-lang">
-          <span>Language</span>
-          <div className="mobile-lang-links">
-            {LANGUAGES.map((lang) => (
-              <Link
-                key={lang.code}
-                href={lang.href}
-                className={lang.code === "en" ? "active" : undefined}
-                onClick={() => setMenuOpen(false)}
-              >
-                {lang.label}
-              </Link>
-            ))}
-          </div>
+        <div className="mobile-auth">
+          <button type="button" className="nav-auth-btn nav-auth-btn--login">
+            Log in
+          </button>
+          <button type="button" className="nav-auth-btn nav-auth-btn--signup">
+            Sign up
+          </button>
         </div>
       </div>
 
