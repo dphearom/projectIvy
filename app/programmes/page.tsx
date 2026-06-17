@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import RevealObserver from "@/components/RevealObserver";
-import PageHeader from "@/components/PageHeader";
+import ProgrammeProducts from "@/components/ProgrammeProducts";
+import ProgrammesHero from "@/components/sections/ProgrammesHero";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
@@ -11,11 +12,8 @@ export const metadata: Metadata = {
 const ProgrammesPage = () => (
   <>
     <RevealObserver />
-    <PageHeader
-      label="Consulting programs"
-      title="Programs at Project IVY"
-      subtitle="Discover your goals, explore academic fields, identify target schools, and develop an outstanding personal profile."
-    />
+    <ProgrammesHero />
+    <ProgrammeProducts />
     <FinalCTA />
   </>
 );

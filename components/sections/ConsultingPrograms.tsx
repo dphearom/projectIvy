@@ -32,8 +32,11 @@ const ConsultingPrograms = () => (
   <section className="consulting-programs" id="programmes">
     <div className="wrap">
       <div className="section-head" data-reveal>
-        <span className="eyebrow center">Route</span>
         <h2>Consulting programs at Project Ivy</h2>
+        <p>
+          Grade-by-grade guidance from early discovery through application — tailored
+          roadmaps for every step of your academic journey.
+        </p>
       </div>
       <div className="program-grid">
         {PROGRAMS.map((program, i) => (
@@ -48,6 +51,11 @@ const ConsultingPrograms = () => (
             </div>
           </article>
         ))}
+      </div>
+      <div className="events-foot" data-reveal>
+        <Link className="btn btn-ghost-dark" href="/programmes">
+          Explore all programs <span className="arrow">→</span>
+        </Link>
       </div>
     </div>
   </section>
