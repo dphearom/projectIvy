@@ -1,34 +1,52 @@
-import PlaceholderImage from "@/components/PlaceholderImage";
+import Image from "next/image";
+import FounderMessage from "@/components/sections/FounderMessage";
 
 const OurStory = () => (
   <section className="founder our-story" id="story">
     <div className="wrap">
-      <div className="founder-grid">
+      <div className="founder-grid our-story__intro">
         <div className="founder-photo" data-reveal>
-          <PlaceholderImage label="Founder portrait" aspect="4 / 5" />
+          <Image
+            src="/brand_assets/founder.jpg"
+            alt="Somphors Tann, Founder & Programme Director of Project IVY"
+            width={540}
+            height={680}
+            style={{ width: "100%", height: "auto" }}
+          />
+          <div className="namecard">
+            <b>Somphors Tann</b>
+            <span>Founder &amp; Programme Director · Project IVY</span>
+          </div>
         </div>
 
-        <div className="founder-text" data-reveal data-reveal-d="2">
-          <h2>Built by students who lived the journey</h2>
+        <div className="founder-bio" data-reveal data-reveal-d="2">
+          <span className="eyebrow gold">Founder&apos;s Story</span>
+          <h2>Meet the Founder</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. From a small
-            community to the halls of the world&rsquo;s leading universities, our founder
-            navigated the path to global education largely on their own — discovering
-            firsthand how the right guidance at the right moment can change everything.
+            Ms. Somphors Tann is a Cambodian education professional and first-generation
+            university graduate from a rural community in Siem Reap. She received a full
+            scholarship to attend Aiglon College in Switzerland for high school (Grades
+            9&ndash;12), followed by a full scholarship to pursue her bachelor&apos;s degree at
+            Kenyon College in the United States, where she double majored in Economics and
+            International Studies. She later earned a Master&apos;s degree in Human Development
+            and Education from the Harvard Graduate School of Education.
           </p>
           <p>
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Project Ivy
-            was born from that experience: a commitment to ensuring the next generation of
-            ambitious students never has to figure out admissions, scholarships, and study
-            abroad alone.
+            Her work focuses on expanding access to quality education, student advising, and
+            human capital development in Cambodia. Somphors has experience working across
+            both international and local education initiatives and is currently involved in
+            building educational opportunities for students from underserved communities.
           </p>
           <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Today, a
-            community of mentors and advisors who&rsquo;ve walked the same path stands ready
-            to guide students from discovery to acceptance — turning ambition into admission,
-            one story at a time.
+            Drawing from her personal journey, from studying by candlelight in rural Cambodia
+            to graduating from Harvard, she is passionate about empowering young people to
+            navigate education pathways, take risks, and unlock their full potential.
           </p>
         </div>
+      </div>
+
+      <div data-reveal data-reveal-d="3">
+        <FounderMessage />
       </div>
     </div>
   </section>

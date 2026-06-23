@@ -17,8 +17,8 @@ const ProgrammesHero = () => (
             Programs at Project IVY
           </h1>
           <p className="hero-sub" data-reveal data-reveal-d="2">
-            Discover your goals, explore academic fields, identify target schools, and develop
-            an outstanding personal profile.
+            Personalized advising roadmap from Grade 9 to university application — readiness,
+            applications, and service programs built for every stage of the journey.
           </p>
         </div>
       </div>

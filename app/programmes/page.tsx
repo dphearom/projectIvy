@@ -6,7 +6,8 @@ import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
   title: "Consulting Program | Project IVY – AdvisED Global",
-  description: "Grade 9–12 consulting programs to guide students on their study abroad journey.",
+  description:
+    "University Readiness, Application, and Service & Camps programs — personalized advising from Grade 9 to admission.",
 };
 
 const ProgrammesPage = () => (
