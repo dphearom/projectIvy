@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { PROGRAM_SUMMARIES } from "@/lib/programs";
 
 type NavChild = { href: string; label: string };
 
@@ -29,11 +30,11 @@ const NAV_ITEMS: NavItem[] = [
     label: "Consulting program",
     href: "/programmes",
     children: [
-      { label: "Overview of consulting roadmap", href: "/programmes" },
-      { label: "Grade 9 Counseling Program", href: "/programmes#grade-9" },
-      { label: "Grade 10 Counseling Program", href: "/programmes#grade-10" },
-      { label: "Grade 11 Counseling Program", href: "/programmes#grade-11" },
-      { label: "Grade 12 Counseling Program", href: "/programmes#grade-12" },
+      { label: "Programs overview", href: "/programmes" },
+      ...PROGRAM_SUMMARIES.map((program) => ({
+        label: program.title,
+        href: program.href,
+      })),
     ],
   },
   {
