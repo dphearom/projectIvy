@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { FacebookIcon } from "@/components/icons";
 
 const Footer = () => {
   return (
@@ -6,7 +8,7 @@ const Footer = () => {
       <div className="wrap">
         <div className="foot-top">
           <div className="foot-brand">
-            <img src="/logo-light.png" alt="Project IVY — Breksa AdvisED Global" />
+            <Image src="/logo-light.png" alt="Project IVY — Breksa AdvisED Global" width={160} height={125} />
             <p>
               Cambodia&apos;s academic advising service built for every student. Combining AI-powered tools
               with human mentorship to unlock global opportunities.
@@ -19,9 +21,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.5-1.5h1.6V3.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.5H8v3.1h2.2V21h3.3z" />
-                </svg>
+                <FacebookIcon />
               </a>
             </div>
           </div>

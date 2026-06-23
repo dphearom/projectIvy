@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { createBooking } from "@/app/actions/bookings";
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { EMAIL_RE } from "@/lib/utils";
 
 interface Props {
   eventTitle: string;

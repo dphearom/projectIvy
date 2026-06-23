@@ -3,8 +3,7 @@
 import { Types } from "mongoose"
 import connectToDatabase from "@/lib/mongodb"
 import Booking from "@/database/booking.model"
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+import { EMAIL_RE } from "@/lib/utils"
 
 export interface BookingInput {
   eventId: string

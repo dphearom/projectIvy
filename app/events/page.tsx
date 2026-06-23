@@ -3,7 +3,7 @@ import RevealObserver from "@/components/RevealObserver";
 import PageHeader from "@/components/PageHeader";
 import UpcomingEvents from "@/components/sections/UpcomingEvents";
 import FinalCTA from "@/components/sections/FinalCTA";
-import { getAllEvents, type EventDTO } from "@/lib/events";
+import { getAllEvents } from "@/lib/events";
 
 export const metadata: Metadata = {
   title: "Events | Breksa – AdvisED Global",
@@ -14,12 +14,7 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 const EventsPage = async () => {
-  let events: EventDTO[] = [];
-  try {
-    events = await getAllEvents();
-  } catch (err) {
-    console.error("Failed to load events:", err);
-  }
+  const events = await getAllEvents();
 
   return (
     <>
