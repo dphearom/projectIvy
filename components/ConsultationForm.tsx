@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { EMAIL_RE } from "@/lib/utils";
 
 const ConsultationForm = () => {
   const [role, setRole] = useState<"parent" | "student">("student");

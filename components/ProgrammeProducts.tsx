@@ -2,33 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import PlaceholderImage from "@/components/PlaceholderImage";
+import { CartIcon, ChevronDown } from "@/components/icons";
 import { PROGRAM_DETAILS } from "@/lib/programs";
-
-const CartIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M6 6h15l-1.5 9H7.5L6 6Z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinejoin="round"
-    />
-    <path d="M6 6 5 3H2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <circle cx="9" cy="20" r="1.5" fill="currentColor" />
-    <circle cx="18" cy="20" r="1.5" fill="currentColor" />
-  </svg>
-);
-
-const ChevronIcon = ({ open }: { open: boolean }) => (
-  <svg
-    className={`programme-product__chevron${open ? " open" : ""}`}
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    aria-hidden="true"
-  >
-    <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
 
 const ProgrammeProducts = () => {
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -114,7 +89,7 @@ const ProgrammeProducts = () => {
                         onClick={() => toggleExpand(program.id)}
                       >
                         {isOpen ? "Hide details" : "View details"}
-                        <ChevronIcon open={isOpen} />
+                        <ChevronDown className={`programme-product__chevron${isOpen ? " open" : ""}`} />
                       </button>
                       <button
                         type="button"

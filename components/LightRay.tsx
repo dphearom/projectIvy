@@ -374,21 +374,10 @@ void main() {
                 cleanupFunctionRef.current = null;
             }
         };
-    }, [
-        isVisible,
-        raysOrigin,
-        raysColor,
-        raysSpeed,
-        lightSpread,
-        rayLength,
-        pulsating,
-        fadeDistance,
-        saturation,
-        followMouse,
-        mouseInfluence,
-        noiseAmount,
-        distortion,
-    ]);
+    // Only reinitialize WebGL on visibility or origin change.
+    // Visual prop updates are handled by the uniform-update effect below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isVisible, raysOrigin]);
 
     useEffect(() => {
         if (!uniformsRef.current || !containerRef.current || !rendererRef.current)

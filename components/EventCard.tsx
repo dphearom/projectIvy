@@ -12,26 +12,28 @@ interface Props {
   onClick?: () => void;
 }
 
-const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Props) => {
-  let day = "";
-  let month = "";
-  try {
-    // Primary: parse the ISO rawDate from MongoDB (e.g. "2026-07-15").
-    // Fallback: split the human-readable `date` string (e.g. "Jul 15, 2026") in case rawDate is missing.
-    const d = new Date(rawDate);
-    if (!Number.isNaN(d.getTime())) {
-      day = String(d.getDate());
-      month = d.toLocaleDateString("en-US", { month: "short" }).toUpperCase();
-    } else {
-      const parts = date.split(/[ ,]+/);
-      if (parts.length >= 2) {
-        month = parts[0].toUpperCase();
-        day = parts[1];
-      }
-    }
-  } catch (e) {
-    // fallback values
+function parseEventDate(rawDate: string, date: string) {
+  const d = new Date(rawDate);
+  if (!Number.isNaN(d.getTime())) {
+    return {
+      day: String(d.getDate()),
+      month: d.toLocaleDateString("en-US", { month: "short" }).toUpperCase(),
+      year: String(d.getFullYear()),
+    };
   }
+  const parts = date.split(/[ ,]+/);
+  if (parts.length >= 2) {
+    return {
+      month: parts[0].toUpperCase(),
+      day: parts[1],
+      year: parts[2] ?? "",
+    };
+  }
+  return { day: "", month: "", year: "" };
+}
+
+const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Props) => {
+  const { day, month, year } = parseEventDate(rawDate, date);
 
   // <button> instead of <Link> because clicking opens the EventModal, not a new page.
   // CSS resets button appearance (border, background, font, padding) in globals.css .ev rule.
@@ -59,7 +61,7 @@ const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Pro
         <h3>{title}</h3>
         <div className="ev-meta">
           <span>
-            {month} {day}, 2026 · {time}
+            {month} {day}{year ? `, ${year}` : ""} · {time}
           </span>
           <span className="go">Reserve →</span>
         </div>

@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ChevronDown } from "@/components/icons";
 import { PROGRAM_SUMMARIES } from "@/lib/programs";
 
 type NavChild = { href: string; label: string };
@@ -52,12 +54,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: "News", href: "/news" },
   { label: "Contact", href: "/contact" },
 ];
-
-const ChevronDown = () => (
-  <svg className="nav-chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
-    <path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
 
 const isActive = (pathname: string, href?: string) => {
   if (!href || href === "#") return false;
@@ -111,8 +107,8 @@ const Navbar = () => {
       <nav ref={navRef} className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
         <div className="nav-inner">
           <Link href="/#top" className="brand" aria-label="Project IVY home">
-            <img className="logo-light" src="/logo-nav-light.png" alt="Project IVY" />
-            <img className="logo-dark" src="/logo-nav-dark.png" alt="Project IVY" />
+            <Image className="logo-light" src="/logo-nav-light.png" alt="Project IVY" width={120} height={82} priority />
+            <Image className="logo-dark" src="/logo-nav-dark.png" alt="Project IVY" width={120} height={82} priority />
           </Link>
 
           <div className="nav-menu">
@@ -141,12 +137,12 @@ const Navbar = () => {
                     {item.href ? (
                       <Link href={item.href} className="nav-link">
                         {item.label}
-                        <ChevronDown />
+                        <ChevronDown className="nav-chevron" />
                       </Link>
                     ) : (
                       <a href="#" className="nav-link" onClick={(e) => e.preventDefault()}>
                         {item.label}
-                        <ChevronDown />
+                        <ChevronDown className="nav-chevron" />
                       </a>
                     )}
                     <ul className="nav-dropdown" role="menu">
@@ -192,7 +188,7 @@ const Navbar = () => {
       <div className={`mobile-menu${menuOpen ? " open" : ""}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu-head">
           <Link href="/" className="brand" onClick={() => setMenuOpen(false)}>
-            <img className="logo-light" src="/logo-nav-light.png" alt="Project IVY" />
+            <Image className="logo-light" src="/logo-nav-light.png" alt="Project IVY" width={120} height={82} />
           </Link>
           <button
             type="button"
@@ -229,7 +225,7 @@ const Navbar = () => {
                   onClick={() => toggleDropdown(mobileKey)}
                 >
                   {item.label}
-                  <ChevronDown />
+                  <ChevronDown className="nav-chevron" />
                 </button>
                 <ul className="mobile-sub">
                   {item.href && (
