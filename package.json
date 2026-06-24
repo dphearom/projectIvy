@@ -9,11 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "drizzle-orm": "^0.45.2",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.16.0",
-    "mongoose": "^9.6.2",
     "next": "16.2.6",
     "ogl": "^1.0.11",
     "radix-ui": "^1.4.3",
@@ -29,6 +30,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
