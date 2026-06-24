@@ -1,5 +1,5 @@
 import "server-only"
-import { eq, asc } from "drizzle-orm"
+import { eq, asc, and } from "drizzle-orm"
 import { db } from "./db"
 import { events } from "@/database/schema"
 
@@ -68,11 +68,15 @@ function toDTO(row: typeof events.$inferSelect): EventDTO {
 }
 
 export async function getAllEvents(): Promise<EventDTO[]> {
-  const rows = await db.select().from(events).orderBy(asc(events.date))
+  const rows = await db.select().from(events)
+    .where(eq(events.published, true))
+    .orderBy(asc(events.date))
   return rows.map(toDTO)
 }
 
 export async function getEventBySlug(slug: string): Promise<EventDTO | null> {
-  const rows = await db.select().from(events).where(eq(events.slug, slug)).limit(1)
+  const rows = await db.select().from(events)
+    .where(and(eq(events.slug, slug), eq(events.published, true)))
+    .limit(1)
   return rows.length > 0 ? toDTO(rows[0]) : null
 }

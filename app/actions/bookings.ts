@@ -2,7 +2,7 @@
 
 import { eq, and } from "drizzle-orm"
 import { db } from "@/lib/db"
-import { bookings, events } from "@/database/schema"
+import { eventBookings, events } from "@/database/schema"
 import { EMAIL_RE } from "@/lib/utils"
 
 export interface BookingInput {
@@ -45,16 +45,16 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
     }
 
     const [existing] = await db
-      .select({ id: bookings.id })
-      .from(bookings)
-      .where(and(eq(bookings.eventId, eventId), eq(bookings.email, email)))
+      .select({ id: eventBookings.id })
+      .from(eventBookings)
+      .where(and(eq(eventBookings.eventId, eventId), eq(eventBookings.email, email)))
       .limit(1)
 
     if (existing) {
       return { ok: false, error: "You're already registered for this event." }
     }
 
-    await db.insert(bookings).values({ eventId, name, email })
+    await db.insert(eventBookings).values({ eventId, name, email })
     return { ok: true }
   } catch (err: unknown) {
     console.error("createBooking failed:", err)
