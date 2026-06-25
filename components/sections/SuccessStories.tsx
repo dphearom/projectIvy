@@ -1,4 +1,5 @@
 import PlaceholderImage from "@/components/PlaceholderImage";
+import { PLACEHOLDERS } from "@/lib/placeholders";
 
 const STORIES = [
   { name: "Nguyen Le Phuong Thuy", award: "Full Scholarship", school: "University of California San Diego" },
@@ -40,7 +41,7 @@ const SuccessStories = ({
             data-reveal-d={String((i % 3) + 1)}
           >
             <div className="success-photo">
-              <PlaceholderImage label="Student photo" aspect="3 / 4" />
+              <PlaceholderImage name={PLACEHOLDERS.SUCCESS_STORY_PORTRAIT} aspect="3 / 4" />
             </div>
             <div className="success-body">
               <h3>{story.name}</h3>

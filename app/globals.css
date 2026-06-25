@@ -1321,6 +1321,107 @@ section {
   margin-top: 56px;
 }
 
+.team-card-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.team-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 50px -28px rgba(14, 23, 41, 0.28);
+  border-color: rgba(184, 150, 90, 0.4);
+}
+
+.team-card-photo .ph-block {
+  border-radius: 0;
+}
+
+.team-card-body {
+  padding: 22px 24px 26px;
+}
+
+.team-card-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--navy);
+  line-height: 1.15;
+}
+
+.team-school {
+  margin: 8px 0 12px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.team-bio {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.58;
+}
+
+.why-choose-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.why-choose-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.why-choose-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 44px -24px rgba(14, 23, 41, 0.28);
+  border-color: rgba(184, 150, 90, 0.4);
+}
+
+.why-choose-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.why-choose-card p {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.events-calendar {
+  padding: 110px 0;
+}
+
+.events-calendar-placeholder {
+  margin-top: 48px;
+}
+
+.programme-catalog--events {
+  padding: 110px 0;
+  background: var(--ivory);
+}
+
+.programme-catalog--events .programme-product {
+  margin-top: 56px;
+}
+
 .team-role {
   margin: 8px 0 12px;
   font-size: 0.82rem;
@@ -3285,6 +3386,14 @@ footer>.wrap {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .team-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-choose-grid {
+    grid-template-columns: 1fr;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -3439,6 +3548,10 @@ footer>.wrap {
   }
 
   .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card-grid {
     grid-template-columns: 1fr;
   }
 

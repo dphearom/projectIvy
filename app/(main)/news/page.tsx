@@ -1,19 +1,5 @@
-import type { Metadata } from "next";
-import RevealObserver from "@/components/RevealObserver";
-import PageHeader from "@/components/PageHeader";
-import NewsTrends from "@/components/NewsTrends";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Study Abroad Trends | Project IVY – AdvisED Global",
-  description: "Study abroad trends, education news, and knowledge guides from Project Ivy.",
-};
-
-const NewsPage = () => (
-  <>
-    <RevealObserver />
-    <PageHeader title="Study abroad trends" />
-    <NewsTrends />
-  </>
-);
-
-export default NewsPage;
+export default function NewsPage() {
+  redirect("/events");
+}

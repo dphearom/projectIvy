@@ -1,11 +1,12 @@
 interface Props {
-  label?: string;
+  /** Filename slug — save the real asset as `public/images/{name}.jpg` */
+  name: string;
   aspect?: string;
   className?: string;
 }
 
 const PlaceholderImage = ({
-  label = "Image placeholder",
+  name,
   aspect = "16 / 10",
   className = "",
 }: Props) => (
@@ -13,8 +14,9 @@ const PlaceholderImage = ({
     className={`ph-block${className ? ` ${className}` : ""}`}
     style={{ aspectRatio: aspect }}
     aria-hidden="true"
+    data-placeholder={name}
   >
-    <span>{label}</span>
+    <span>{name}</span>
   </div>
 );
 

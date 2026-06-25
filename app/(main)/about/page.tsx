@@ -5,14 +5,14 @@ import AboutHero from "@/components/sections/AboutHero";
 import Mission from "@/components/sections/Mission";
 import VisionQuote from "@/components/sections/VisionQuote";
 import WhoWeAre from "@/components/sections/WhoWeAre";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import OurTeam from "@/components/sections/OurTeam";
-import SuccessStories from "@/components/sections/SuccessStories";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
   title: "About | Project IVY – AdvisED Global",
   description:
-    "Project Ivy mission, vision, team, and student success stories — Cambodia's academic advising platform built by students who lived the journey.",
+    "Project IVY mission, vision, team, and why Cambodian students choose us — an educational advisory organization built by Khmer scholars.",
 };
 
 const AboutPage = () => (
@@ -23,13 +23,8 @@ const AboutPage = () => (
     <Mission />
     <VisionQuote />
     <WhoWeAre />
+    <WhyChooseUs />
     <OurTeam />
-    <SuccessStories
-      id="stories"
-      eyebrow="Student outcomes"
-      title="Success stories"
-      altBackground
-    />
     <FinalCTA />
   </>
 );

@@ -1,12 +1,13 @@
 import PlaceholderImage from "@/components/PlaceholderImage";
+import { PLACEHOLDERS } from "@/lib/placeholders";
 
 const GALLERY = [
-  { label: "Project IVY 2026 bootcamp", layout: "a" },
-  { label: "Boarding school workshop", layout: "b" },
-  { label: "Common App guide session", layout: "c" },
-  { label: "Meet the mentors", layout: "d" },
-  { label: "Financial aid guidance", layout: "e" },
-  { label: "Profile building workshop", layout: "f" },
+  { photo: PLACEHOLDERS.EVENT_GALLERY_BOOTCAMP, caption: "Project IVY 2026 bootcamp", layout: "a" },
+  { photo: PLACEHOLDERS.EVENT_GALLERY_BOARDING, caption: "Boarding school workshop", layout: "b" },
+  { photo: PLACEHOLDERS.EVENT_GALLERY_COMMON_APP, caption: "Common App guide session", layout: "c" },
+  { photo: PLACEHOLDERS.EVENT_GALLERY_MENTORS, caption: "Meet the mentors", layout: "d" },
+  { photo: PLACEHOLDERS.EVENT_GALLERY_FIN_AID, caption: "Financial aid guidance", layout: "e" },
+  { photo: PLACEHOLDERS.EVENT_GALLERY_PROFILE, caption: "Profile building workshop", layout: "f" },
 ] as const;
 
 const EventsGallery = () => (
@@ -24,12 +25,12 @@ const EventsGallery = () => (
         {GALLERY.map((item, i) => (
           <figure
             className={`events-gallery-item events-gallery-item--${item.layout}`}
-            key={item.label}
+            key={item.photo}
             data-reveal
             data-reveal-d={String((i % 4) + 1)}
           >
-            <PlaceholderImage label={item.label} className="ph-block--cover" />
-            <figcaption>{item.label}</figcaption>
+            <PlaceholderImage name={item.photo} className="ph-block--cover" />
+            <figcaption>{item.caption}</figcaption>
           </figure>
         ))}
       </div>
