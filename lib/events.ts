@@ -68,15 +68,29 @@ function toDTO(row: typeof events.$inferSelect): EventDTO {
 }
 
 export async function getAllEvents(): Promise<EventDTO[]> {
-  const rows = await db.select().from(events)
-    .where(eq(events.published, true))
-    .orderBy(asc(events.date))
-  return rows.map(toDTO)
+  if (!process.env.DATABASE_URL) return []
+
+  try {
+    const rows = await db.select().from(events)
+      .where(eq(events.published, true))
+      .orderBy(asc(events.date))
+    return rows.map(toDTO)
+  } catch (error) {
+    console.error("Failed to load events from database:", error)
+    return []
+  }
 }
 
 export async function getEventBySlug(slug: string): Promise<EventDTO | null> {
-  const rows = await db.select().from(events)
-    .where(and(eq(events.slug, slug), eq(events.published, true)))
-    .limit(1)
-  return rows.length > 0 ? toDTO(rows[0]) : null
+  if (!process.env.DATABASE_URL) return null
+
+  try {
+    const rows = await db.select().from(events)
+      .where(and(eq(events.slug, slug), eq(events.published, true)))
+      .limit(1)
+    return rows.length > 0 ? toDTO(rows[0]) : null
+  } catch (error) {
+    console.error("Failed to load event from database:", error)
+    return null
+  }
 }

@@ -1,4 +1,5 @@
 import PlaceholderImage from "@/components/PlaceholderImage";
+import { PLACEHOLDERS } from "@/lib/placeholders";
 
 const DevelopmentJourney = () => (
   <section className="home-journey" id="journey">
@@ -17,7 +18,7 @@ const DevelopmentJourney = () => (
           </a>
         </div>
         <div className="fart" data-reveal data-reveal-d="2">
-          <PlaceholderImage label="Map · partner universities worldwide" aspect="4 / 3.2" />
+          <PlaceholderImage name={PLACEHOLDERS.HOME_PARTNER_MAP} aspect="4 / 3.2" />
         </div>
       </div>
     </div>

@@ -1,102 +1,114 @@
-import Image from "next/image";
+import PlaceholderImage from "@/components/PlaceholderImage";
+import { TEAM_PHOTOS } from "@/lib/placeholders";
 
 const TEAM = [
   {
     name: "Somphors Tann",
-    role: "Founder & CEO",
-    bio: "From Siem Reap to Harvard — Somphors founded Project Ivy to ensure Cambodian students never have to navigate global education alone.",
-    featured: true,
+    school: "Harvard Graduate School of Education, Kenyon College, Aiglon College",
+    role: "Founder & Programme Director",
+    bio: "Somphors is a Cambodian education professional and first-generation university graduate from Siem Reap, who earned scholarships to Aiglon College in Switzerland, Kenyon College in the US, and Harvard's Graduate School of Education. Drawing on her own journey, she founded Higher Education Dreamers, Kone Khmer Project, and Project IVY to mentor high-achieving Cambodian students through college admissions, scholarships, and financial aid. She built this programme to be the guidance she never had.",
   },
   {
-    name: "Advisor Name",
-    role: "Head of Consulting",
-    bio: "Placeholder bio for a senior advisor guiding students through scholarship and university applications.",
-    featured: false,
+    name: "Ayden Hayes",
+    school: "Dartmouth College: Computer Science & Earth Science",
+    role: "University Admissions Mentor",
+    bio: "Ayden bridges technology and real-world impact through machine learning and environmental data science at Dartmouth College. A Teaching Assistant across five CS courses and SAT tutor to 25+ students, he has a gift for making complex ideas accessible and for helping students see the intellectual depth already present in their own curiosity.",
   },
   {
-    name: "Advisor Name",
-    role: "Lead Mentor",
-    bio: "Placeholder bio for a mentor supporting students through essays, profiles, and admissions strategy.",
-    featured: false,
+    name: "Virithkarvan (Vaughn) Van Chum",
+    school: "Harvard University: Biomedical Engineering (Secondary: Economics)",
+    role: "University Admissions Mentor",
+    bio: "Vaughn's experience at Harvard spans water quality research, housing advocacy for homeless families, entrepreneurship, and market research consulting for the Boston Symphony Orchestra. He brings a rare ability to connect across fields and at Project IVY, he helps students discover that their most valuable asset is often the exact intersection of interests they've been told doesn't make sense.",
   },
-];
-
-const JOURNEY: [string, string, boolean][] = [
-  ["Siem Reap, Cambodia", "Where the journey began", false],
-  ["Jay Pritzker Academy", "Arts & academic excellence", false],
-  ["Aiglon College, Switzerland", "International boarding school", false],
-  ["Kenyon College", "Liberal arts degree", false],
-  ["Harvard University", "Graduate education", true],
-];
+  {
+    name: "Peipei Soeung",
+    school: "Dartmouth College: Computer Science with Digital Arts (SHE-CAN Scholar)",
+    role: "University Admissions Mentor",
+    bio: "Peipei works across software engineering, AI, and interactive media, including Python animation pipelines, Unity UI systems, and Khmer natural language processing research. At Project IVY, she helps students craft clear, compelling narratives from their academic and extracurricular experiences, especially for students applying to STEM and interdisciplinary programmes.",
+  },
+  {
+    name: "Kaitlyn Mady",
+    school: "Harvard University: Government & Educational Studies",
+    role: "University Admissions Mentor (joining remotely)",
+    bio: "Kaitlyn studies at Harvard while working as a Recruitment Ambassador at Harvard's own Admissions and Financial Aid office, making her one of the most uniquely positioned mentors in the programme. As founder of Harvard's Khmer Students' Association and a volunteer in legal aid and youth music programmes, she is an ideal guide for first-generation students navigating this process for the first time.",
+  },
+  {
+    name: "Sonisa Leng",
+    school: "Dartmouth College (incoming): previously Aiglon College (full IB scholarship)",
+    role: "University Admissions Mentor",
+    bio: "Sonisa earned a full scholarship to the IB programme at Aiglon College in Switzerland, where she founded the school's first K-pop dance club, served as MUN Secretary-General, and mentored peers across multiple subjects. A self-directed learner and natural teacher who also completed a teaching internship in Cambodia, she now heads to Dartmouth College and brings both her boarding school and university application journeys to Project IVY.",
+  },
+  {
+    name: "Sophuth Phon",
+    school: "Georgia State University: MSc Geosciences (NSF-funded)",
+    role: "University Admissions Mentor",
+    bio: "Sophuth's NSF-funded research spans urban tree removal, flood risk modelling in Cambodia, and environmental policy advocacy. At Project IVY, he brings years of teaching experience and a grounded, research-backed approach to helping students understand their own academic profile and how to articulate it to the world's best universities.",
+  },
+  {
+    name: "Rathanakmealea (Mealea) Mang",
+    school: "Northwestern University: Data Science & Economics",
+    role: "University Admissions Mentor",
+    bio: "From managing a $50,000 graduation exhibition at Liger Leadership Academy to conducting cross-university research at Northwestern, Mealea brings analytical depth and real leadership experience to her work with students. She helps Project IVY scholars build compelling, competitive profiles by understanding exactly how admissions readers weigh data, story, and initiative together.",
+  },
+  {
+    name: "Vanndet Va",
+    school: "Lafayette College: Civil Engineering",
+    role: "University & Boarding School Admissions Mentor",
+    bio: "Vanndet is a Civil Engineering graduate from Lafayette College who has redesigned fish ladders in Wyoming, built homes with Habitat for Humanity in Cambodia, and now serves as Assistant Project Manager on the Chea Chanto College project. At Project IVY, he brings the same hands-on, community-first mindset to helping students build their academic future — and is one of our mentors with direct boarding school experience through the ASSIST program.",
+  },
+  {
+    name: "Rasy Hai",
+    school: "Asian University for Women: BSc Public Health & Environmental Sciences",
+    role: "University Admissions Mentor",
+    bio: "Rasy holds a degree from the Asian University for Women and currently works as an Education Programme Coordinator at Chea Chanto College. With national-level experience in policy research, curriculum development, and teacher training, she has mentored hundreds of students across Cambodia. At Project IVY, she helps students craft authentic, compelling narratives for university applications.",
+  },
+  {
+    name: "Sokniza Noeun",
+    school: "Babson College (incoming, SHE-CAN Scholar): Business Administration",
+    role: "University Admissions Mentor",
+    bio: "Niza will attend Babson College this fall with a focus on Business Analytics and Entrepreneurship. She brings experience in admissions advising, educational coordination, and outreach. At Project IVY, she offers both professional expertise and personal insight into what it takes to build a strong, honest application.",
+  },
+  {
+    name: "Pichanbormey (Violette) Pisith",
+    school: "Denison University (incoming, SHE-CAN Scholar): Politics & Public Affairs / PPE",
+    role: "University Admissions Mentor",
+    bio: "Violette graduated as Valedictorian, became a SHE-CAN scholar, and was elected cohort leader before organising InterLawked, a youth initiative promoting legal literacy and human rights through Khmer folktales. At Project IVY, she mentors students through authentic storytelling, leadership, and writing, with a particular focus on helping young people find confidence in their own voice.",
+  },
+  {
+    name: "Sreynich Vann",
+    school: "Bucknell University (incoming, SHE-CAN Scholar): Environmental Studies",
+    role: "University Admissions Mentor",
+    bio: "Sreynich is a SHE-CAN Scholar and Stanford Climate Leaders Fellow whose high school career included an internship at APSARA, contributing to the excavation of historical artefacts and exploring the intersection of history and geology. At Project IVY, she helps students connect their interests, experiences, and values into a cohesive, compelling application narrative.",
+  },
+] as const;
 
 const OurTeam = () => (
-  <section className="founder about-sec alt" id="team">
+  <section className="about-sec alt" id="team">
     <div className="wrap">
       <div className="section-head" data-reveal>
         <span className="eyebrow center">Our Team</span>
-        <h2>Built by students who lived the journey</h2>
+        <h2>Built by Khmer scholars who lived the journey</h2>
         <p>
-          Project Ivy is led by Cambodian scholars and advisors who have walked the path
-          from local classrooms to global universities — and are dedicated to helping the
-          next generation do the same.
+          Project IVY is led by Cambodian scholars and mentors who have walked the path from
+          local classrooms to global universities — and are dedicated to helping the next
+          generation do the same.
         </p>
       </div>
 
-      <div className="founder-grid">
-        <div className="founder-photo" data-reveal>
-          <Image
-            src="/brand_assets/founder.jpg"
-            alt="Somphors Tann, Founder & CEO of Project Ivy, at her Harvard graduation"
-            width={540}
-            height={680}
-            style={{ width: "100%", height: "auto" }}
-          />
-          <div className="namecard">
-            <b>{TEAM[0].name}</b>
-            <span>{TEAM[0].role} · Project Ivy</span>
-          </div>
-        </div>
-
-        <div className="founder-text" data-reveal data-reveal-d="2">
-          <blockquote>
-            Built by Cambodian students who went from rural communities to global
-            education — now helping others do the same.
-          </blockquote>
-          <p>{TEAM[0].bio}</p>
-          <p>
-            She founded Project Ivy alongside a community of Khmer scholars who&rsquo;ve
-            experienced firsthand how the right guidance at the right moment can change
-            the entire trajectory of a life.
-          </p>
-        </div>
-      </div>
-
-      <div className="serve-grid team-grid">
-        {TEAM.slice(1).map((member, i) => (
-          <article className="serve" key={member.role} data-reveal data-reveal-d={String((i % 2) + 1)}>
-            <h3>{member.name}</h3>
-            <p className="team-role">{member.role}</p>
-            <p>{member.bio}</p>
+      <div className="team-card-grid">
+        {TEAM.map((member, i) => (
+          <article className="team-card" key={member.name} data-reveal data-reveal-d={String((i % 3) + 1)}>
+            <div className="team-card-photo">
+              <PlaceholderImage name={TEAM_PHOTOS[member.name]} aspect="4 / 5" />
+            </div>
+            <div className="team-card-body">
+              <h3>{member.name}</h3>
+              <p className="team-role">{member.role}</p>
+              <p className="team-school">{member.school}</p>
+              <p className="team-bio">{member.bio}</p>
+            </div>
           </article>
         ))}
-      </div>
-
-      <div className="timeline" data-reveal>
-        <div className="tl-head">
-          <h3>The path that started it all</h3>
-          <span>From a rural community to Harvard Yard</span>
-        </div>
-        <div className="tl-track">
-          {JOURNEY.map(([place, detail, grad]) => (
-            <div className={`tl-node${grad ? " grad" : ""}`} key={place}>
-              <span className="tl-dot" />
-              <div className="tl-info">
-                <h4>{place}</h4>
-                <span>{detail}</span>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   </section>

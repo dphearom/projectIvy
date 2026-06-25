@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PlaceholderImage from "@/components/PlaceholderImage";
+import { PLACEHOLDERS } from "@/lib/placeholders";
 
 const FEATURED_ARTICLE = {
   title:
@@ -8,7 +9,7 @@ const FEATURED_ARTICLE = {
     "Project IVY introduces immersive week-long programs — from Impact Week to Urban Discovery — designed to build leadership, empathy, and evidence of meaningful community engagement.",
   day: "23",
   month: "Jun",
-  href: "/programmes#service-camps",
+  href: "/events#service-camps",
 };
 
 const FeaturedNews = () => (
@@ -25,7 +26,7 @@ const FeaturedNews = () => (
         data-reveal-d="1"
       >
         <div className="featured-news-spotlight__media">
-          <PlaceholderImage label="Service & Camps Programs" aspect="16 / 9" className="ph-block--flat" />
+          <PlaceholderImage name={PLACEHOLDERS.HOME_NEWS_FEATURED} aspect="16 / 9" className="ph-block--flat" />
         </div>
         <div className="featured-news-spotlight__body">
           <div className="featured-news-spotlight__head">
@@ -43,7 +44,7 @@ const FeaturedNews = () => (
       </Link>
 
       <div className="events-foot" data-reveal>
-        <Link className="btn btn-ghost-dark" href="/news">
+        <Link className="btn btn-ghost-dark" href="/events">
           View All News <span className="arrow">→</span>
         </Link>
       </div>

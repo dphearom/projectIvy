@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "@/components/icons";
-import { PROGRAM_SUMMARIES } from "@/lib/programs";
+import { ADVISING_PROGRAM_SUMMARIES } from "@/lib/programs";
 
 type NavChild = { href: string; label: string };
 
@@ -24,34 +24,29 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Mission", href: "/about#mission" },
       { label: "Vision", href: "/about#vision" },
       { label: "Who We Are", href: "/about#who-we-are" },
+      { label: "Why Choose Us", href: "/about#why-choose-us" },
       { label: "Our Team", href: "/about#team" },
-      { label: "Success Stories", href: "/about#stories" },
     ],
   },
   {
-    label: "Consulting program",
+    label: "Advising Program",
     href: "/programmes",
     children: [
       { label: "Programs overview", href: "/programmes" },
-      ...PROGRAM_SUMMARIES.map((program) => ({
+      ...ADVISING_PROGRAM_SUMMARIES.map((program) => ({
         label: program.title,
         href: program.href,
       })),
     ],
   },
   {
-    label: "Events & Information",
+    label: "Events",
     href: "/events",
     children: [
       { label: "Upcoming Project Ivy Events", href: "/events" },
-      {
-        label: "Project Ivy's consulting and event calendar",
-        href: "/events#calendar",
-      },
-      { label: "Update study abroad trends", href: "/news" },
+      { label: "Service & Camps Programs", href: "/events#service-camps" },
     ],
   },
-  { label: "News", href: "/news" },
   { label: "Contact", href: "/contact" },
 ];
 

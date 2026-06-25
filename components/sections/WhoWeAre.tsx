@@ -1,21 +1,21 @@
-const CARDS = [
+const BLOCKS = [
   {
     num: "01",
-    title: "Who we are",
+    title: "Who We Are",
     desc:
-      "Project Ivy is Cambodia\u2019s academic advising platform \u2014 built by Khmer scholars and mentors who have navigated the path from local classrooms to global universities.",
+      "Project IVY is an educational advisory and mentorship organization founded in Cambodia. We support high-potential students in navigating international education pathways with confidence and purpose.",
   },
   {
     num: "02",
-    title: "What we do",
+    title: "What We Do",
     desc:
-      "We guide students through study abroad consulting, scholarship discovery, application support, and 1-on-1 mentorship \u2014 from grade 9 through university admission.",
+      "We provide expert guidance on academic planning, application strategy, scholarships, and personal branding. Through our programs, mentorship, and resources, we help students turn their potential into opportunity.",
   },
   {
     num: "03",
-    title: "Why we exist",
+    title: "Why We Exist",
     desc:
-      "Too many talented students miss out on global opportunities for lack of guidance. We exist to make world-class advising accessible to every student, regardless of background.",
+      "We exist to level the playing field. Every Cambodian student deserves access to the right information, the right mentors, and the right opportunities to build a global future, regardless of their background.",
   },
 ] as const;
 
@@ -24,10 +24,10 @@ const WhoWeAre = () => (
     <div className="wrap">
       <div className="section-head" data-reveal>
         <span className="eyebrow center">Who We Are</span>
-        <h2>The foundation behind Project Ivy</h2>
+        <h2>The foundation behind Project IVY</h2>
       </div>
       <div className="feature-grid about-essentials-grid">
-        {CARDS.map(({ num, title, desc }, i) => (
+        {BLOCKS.map(({ num, title, desc }, i) => (
           <article className="f-card" key={title} data-reveal data-reveal-d={String(i + 1)}>
             <div className="f-num">{num}</div>
             <h3>{title}</h3>

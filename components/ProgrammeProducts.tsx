@@ -3,7 +3,13 @@
 import { useCallback, useEffect, useState } from "react";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import { CartIcon, ChevronDown } from "@/components/icons";
-import { PROGRAM_DETAILS } from "@/lib/programs";
+import { PLACEHOLDERS } from "@/lib/placeholders";
+import { ADVISING_PROGRAM_DETAILS } from "@/lib/programs";
+
+const PROGRAM_PHOTOS: Record<string, string> = {
+  "university-readiness": PLACEHOLDERS.PROGRAM_READINESS,
+  "university-application": PLACEHOLDERS.PROGRAM_APPLICATION,
+};
 
 const ProgrammeProducts = () => {
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -11,7 +17,7 @@ const ProgrammeProducts = () => {
 
   const expandFromHash = useCallback(() => {
     const hash = window.location.hash.replace("#", "");
-    if (PROGRAM_DETAILS.some((p) => p.id === hash)) {
+    if (ADVISING_PROGRAM_DETAILS.some((p) => p.id === hash)) {
       setExpanded(hash);
     }
   }, []);
@@ -33,14 +39,14 @@ const ProgrammeProducts = () => {
   const inCart = (id: string) => cart.includes(id);
 
   return (
-    <section className="programme-catalog" id="programs" aria-label="Consulting programs">
+    <section className="programme-catalog" id="programs" aria-label="Advising programs">
       <div className="wrap">
         <div className="section-head" data-reveal>
           <span className="eyebrow gold center">Your roadmap</span>
           <h2>Choose your program</h2>
           <p>
-            Three pathways from readiness through application and service — select a program to
-            view full details and add it to your inquiry list.
+            Two pathways from readiness through application — select a program to view full
+            details and add it to your inquiry list.
           </p>
         </div>
 
@@ -56,7 +62,7 @@ const ProgrammeProducts = () => {
         )}
 
         <div className="programme-product-list">
-          {PROGRAM_DETAILS.map((program) => {
+          {ADVISING_PROGRAM_DETAILS.map((program) => {
             const isOpen = expanded === program.id;
             const added = inCart(program.id);
 
@@ -68,7 +74,7 @@ const ProgrammeProducts = () => {
               >
                 <div className="programme-product__shell">
                   <div className="programme-product__media">
-                    <PlaceholderImage label={program.title} aspect="4 / 3" />
+                    <PlaceholderImage name={PROGRAM_PHOTOS[program.id]} aspect="4 / 3" />
                   </div>
 
                   <div className="programme-product__summary">

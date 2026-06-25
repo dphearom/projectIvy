@@ -5,9 +5,9 @@ import ProgrammesHero from "@/components/sections/ProgrammesHero";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Consulting Program | Project IVY – AdvisED Global",
+  title: "Advising Program | Project IVY – AdvisED Global",
   description:
-    "University Readiness, Application, and Service & Camps programs — personalized advising from Grade 9 to admission.",
+    "University Readiness and Application programs — personalized advising from Grade 9 to admission.",
 };
 
 const ProgrammesPage = () => (

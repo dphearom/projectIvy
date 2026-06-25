@@ -1,10 +1,11 @@
 import PlaceholderImage from "@/components/PlaceholderImage";
+import { PLACEHOLDERS } from "@/lib/placeholders";
 
 const Hero = () => {
   return (
     <section className="hero-stage hero-stage--image on-navy" id="top">
       <div className="hero-bg hero-bg--image" aria-hidden="true">
-        <PlaceholderImage label="Hero background image" className="ph-block--cover" />
+        <PlaceholderImage name={PLACEHOLDERS.HOME_HERO_BG} className="ph-block--cover" />
       </div>
       <div className="grain" aria-hidden="true" />
 

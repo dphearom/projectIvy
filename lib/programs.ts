@@ -5,7 +5,7 @@ export type ProgramSummary = {
   href: string;
 };
 
-export const PROGRAM_SUMMARIES: ProgramSummary[] = [
+export const ADVISING_PROGRAM_SUMMARIES: ProgramSummary[] = [
   {
     id: "university-readiness",
     title: "University Readiness Program",
@@ -18,13 +18,17 @@ export const PROGRAM_SUMMARIES: ProgramSummary[] = [
     desc: "Craft compelling applications that open doors to top universities.",
     href: "/programmes#university-application",
   },
-  {
-    id: "service-camps",
-    title: "Service & Camps Programs",
-    desc: "Develop leadership through meaningful service and real-world impact.",
-    href: "/programmes#service-camps",
-  },
 ];
+
+/** @deprecated Use ADVISING_PROGRAM_SUMMARIES */
+export const PROGRAM_SUMMARIES = ADVISING_PROGRAM_SUMMARIES;
+
+export const SERVICE_CAMPS_SUMMARY: ProgramSummary = {
+  id: "service-camps",
+  title: "Service & Camps Programs",
+  desc: "Develop leadership through meaningful service and real-world impact.",
+  href: "/events#service-camps",
+};
 
 export type ProgramTier = {
   name: string;
@@ -237,3 +241,11 @@ export const PROGRAM_DETAILS: ProgramDetail[] = [
     ],
   },
 ];
+
+export const ADVISING_PROGRAM_DETAILS = PROGRAM_DETAILS.filter(
+  (p) => p.id !== "service-camps"
+);
+
+export const SERVICE_CAMPS_DETAIL = PROGRAM_DETAILS.find(
+  (p) => p.id === "service-camps"
+)!;

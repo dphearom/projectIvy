@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import PlaceholderImage from "@/components/PlaceholderImage";
+import { newsArticlePhoto } from "@/lib/placeholders";
 import {
   ARTICLES_PER_PAGE,
   NEWS_ARTICLES,
@@ -32,7 +33,14 @@ const NewsTrends = () => {
   };
 
   return (
-    <section className="news-trends">
+    <section className="news-trends about-sec" id="news">
+      <div className="wrap">
+        <div className="section-head" data-reveal>
+          <span className="eyebrow center">News &amp; Trends</span>
+          <h2>Study abroad trends</h2>
+          <p>Education news, study abroad insights, and knowledge guides from Project IVY.</p>
+        </div>
+      </div>
       <div className="wrap news-trends-layout">
         <aside className="news-categories" aria-label="Categories">
           <h2>Categories</h2>
@@ -68,9 +76,9 @@ const NewsTrends = () => {
                   data-reveal
                   data-reveal-d={String((i % 2) + 1)}
                 >
-                  <Link href={`/news#${article.slug}`} className="news-article-link">
+                  <Link href={`/events#${article.slug}`} className="news-article-link">
                     <div className="news-article-img">
-                      <PlaceholderImage label="Article image" aspect="16 / 10" />
+                      <PlaceholderImage name={newsArticlePhoto(article.slug)} aspect="16 / 10" />
                     </div>
                     <div className="news-article-body">
                       <h3>{article.title}</h3>

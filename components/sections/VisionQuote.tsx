@@ -7,8 +7,8 @@ const VisionQuote = () => (
     <div className="quoteband-inner">
       <span className="qmark" data-reveal>&ldquo;</span>
       <h2 data-reveal data-reveal-d="1">
-        A future where every student, regardless of background, has access to
-        guidance, opportunity, and <em>a path forward</em>.
+        A world where Cambodian students are recognized, represented, and respected in
+        global spaces&mdash;creating impact at home and around the world.
       </h2>
       <span className="eyebrow gold center" data-reveal data-reveal-d="2">
         Our Vision
