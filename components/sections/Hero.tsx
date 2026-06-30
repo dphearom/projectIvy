@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="hero-inner centered">
           <div className="hero-copy">
             <h1 className="hero-title" data-reveal>
-              Project Ivy
+              Project <span className="ivy-brand">IVY</span>
             </h1>
             <p className="hero-sub" data-reveal data-reveal-d="1">
               Turn Your Ambition into Admission

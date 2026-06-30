@@ -8,12 +8,15 @@ const ConsultationForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [childName, setChildName] = useState("");
   const [grade, setGrade] = useState("");
   const [school, setSchool] = useState("");
   const [terms, setTerms] = useState(false);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+
+  const isParent = role === "parent";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,8 +25,9 @@ const ConsultationForm = () => {
     if (!name.trim()) return setError("Please enter your full name.");
     if (!EMAIL_RE.test(email)) return setError("Please enter a valid email address.");
     if (!phone.trim()) return setError("Please enter your phone number.");
-    if (!grade) return setError("Please select your grade.");
-    if (!school.trim()) return setError("Please enter your current school.");
+    if (isParent && !childName.trim()) return setError("Please enter your child's name.");
+    if (!grade) return setError(`Please select ${isParent ? "your child's" : "your"} grade.`);
+    if (!school.trim()) return setError("Please enter the current school.");
     if (!terms) return setError("Please agree to the Terms & Conditions.");
 
     setSubmitting(true);
@@ -63,7 +67,7 @@ const ConsultationForm = () => {
       </fieldset>
 
       <div>
-        <label htmlFor="consult-name">Full name (*)</label>
+        <label htmlFor="consult-name">{isParent ? "Parent's full name" : "Full name"} (*)</label>
         <input
           id="consult-name"
           type="text"
@@ -95,10 +99,25 @@ const ConsultationForm = () => {
         />
       </div>
 
+      {isParent && (
+        <div>
+          <label htmlFor="consult-child-name">Child&apos;s name (*)</label>
+          <input
+            id="consult-child-name"
+            type="text"
+            value={childName}
+            onChange={(e) => setChildName(e.target.value)}
+          />
+        </div>
+      )}
+
       <div>
-        <label htmlFor="consult-grade">Grade (*)</label>
+        <label htmlFor="consult-grade">
+          {isParent ? "Child's grade level" : "Grade"} (*)
+        </label>
         <select id="consult-grade" value={grade} onChange={(e) => setGrade(e.target.value)}>
           <option value="">Select...</option>
+          <option value="9">Grade 9</option>
           <option value="10">Grade 10</option>
           <option value="11">Grade 11</option>
           <option value="12">Grade 12</option>

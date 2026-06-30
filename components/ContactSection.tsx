@@ -4,7 +4,7 @@ const ContactSection = () => (
   <section className="contact-section">
     <div className="wrap contact-layout">
       <div className="contact-info" data-reveal>
-        <h2>Project Ivy</h2>
+        <h2>Project <span className="ivy-brand">IVY</span></h2>
         <p className="contact-address">
           Office: International Business School (IBS), Phnom Penh, Cambodia
         </p>
