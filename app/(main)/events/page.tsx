@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import RevealObserver from "@/components/RevealObserver";
 import PageHeader from "@/components/PageHeader";
-import ServiceCampsProgram from "@/components/sections/ServiceCampsProgram";
 import UpcomingEvents from "@/components/sections/UpcomingEvents";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { getAllEvents } from "@/lib/events";
@@ -9,7 +8,7 @@ import { getAllEvents } from "@/lib/events";
 export const metadata: Metadata = {
   title: "Events | Project IVY – AdvisED Global",
   description:
-    "Workshops, bootcamps, and Service & Camps programs — all in one place at Project IVY.",
+    "Workshops, bootcamps, and upcoming events — all in one place at Project IVY.",
 };
 
 export const revalidate = 60;
@@ -22,10 +21,9 @@ const EventsPage = async () => {
       <RevealObserver />
       <PageHeader
         label="Events"
-        title="Workshops & Programs"
-        subtitle="Immersive service programs and upcoming workshops — everything happening at Project IVY."
+        title="Upcoming Events"
+        subtitle="Workshops, bootcamps, and sessions happening at Project IVY — all in one place."
       />
-      <ServiceCampsProgram />
       <UpcomingEvents events={events} hideHeader />
       <FinalCTA />
     </>

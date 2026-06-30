@@ -40,12 +40,12 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
+    label: "Camps",
+    href: "/camps",
+  },
+  {
     label: "Events",
     href: "/events",
-    children: [
-      { label: "Upcoming Project Ivy Events", href: "/events" },
-      { label: "Service & Camps Programs", href: "/events#service-camps" },
-    ],
   },
   { label: "Contact", href: "/contact" },
 ];

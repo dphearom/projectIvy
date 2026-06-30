@@ -1,19 +1,91 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import { CartIcon, ChevronDown } from "@/components/icons";
 import { PLACEHOLDERS } from "@/lib/placeholders";
-import { ADVISING_PROGRAM_DETAILS } from "@/lib/programs";
+import { ADVISING_PROGRAM_DETAILS, type ProgramDetail, type ProgramTier } from "@/lib/programs";
 
 const PROGRAM_PHOTOS: Record<string, string> = {
   "university-readiness": PLACEHOLDERS.PROGRAM_READINESS,
   "university-application": PLACEHOLDERS.PROGRAM_APPLICATION,
 };
 
+type ModalData = { program: ProgramDetail; tier: ProgramTier };
+
+const TierModal = ({ data, onClose }: { data: ModalData; onClose: () => void }) => {
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  const tierIndex = data.program.tiers.indexOf(data.tier) + 1;
+
+  return (
+    <div
+      className="tier-modal-overlay"
+      ref={overlayRef}
+      onClick={(e) => e.target === overlayRef.current && onClose()}
+    >
+      <div className="tier-modal" role="dialog" aria-modal="true" aria-label={data.tier.name}>
+        <button type="button" className="tier-modal__close" onClick={onClose} aria-label="Close">
+          ×
+        </button>
+        <div className="tier-modal__scroll">
+          <div className="tier-modal__img">
+            <PlaceholderImage
+              name={`${data.program.id}-pkg-${tierIndex}`}
+              aspect="16 / 7"
+            />
+          </div>
+          <div className="tier-modal__body">
+            <h3 className="tier-modal__name">{data.tier.name}</h3>
+            <span className="tier-modal__price">{data.tier.price}</span>
+            <p className="tier-modal__tagline">{data.tier.tagline}</p>
+            <div className="tier-modal__features">
+              <h5>What&apos;s included</h5>
+              <ul>
+                {data.tier.features.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+            </div>
+            {data.tier.deliverables && data.tier.deliverables.length > 0 && (
+              <div className="tier-modal__features tier-modal__deliverables">
+                <h5>Deliverables</h5>
+                <ul>
+                  {data.tier.deliverables.map((d) => (
+                    <li key={d}>{d}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div className="tier-modal__footer">
+              <a className="btn btn-gold" href="/contact">
+                Enquire now <span className="arrow">→</span>
+              </a>
+              <button type="button" className="btn btn-ghost-dark" onClick={onClose}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ProgrammeProducts = () => {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [cart, setCart] = useState<string[]>([]);
+  const [modalData, setModalData] = useState<ModalData | null>(null);
 
   const expandFromHash = useCallback(() => {
     const hash = window.location.hash.replace("#", "");
@@ -45,8 +117,8 @@ const ProgrammeProducts = () => {
           <span className="eyebrow gold center">Your roadmap</span>
           <h2>Choose your program</h2>
           <p>
-            Two pathways from readiness through application — select a program to view full
-            details and add it to your inquiry list.
+            Two pathways from readiness through application — select a program to explore packages
+            and add it to your inquiry list.
           </p>
         </div>
 
@@ -91,11 +163,12 @@ const ProgrammeProducts = () => {
                         type="button"
                         className="programme-product__toggle"
                         aria-expanded={isOpen}
-                        aria-controls={`${program.id}-details`}
                         onClick={() => toggleExpand(program.id)}
                       >
-                        {isOpen ? "Hide details" : "View details"}
-                        <ChevronDown className={`programme-product__chevron${isOpen ? " open" : ""}`} />
+                        {isOpen ? "Hide packages" : "View details"}
+                        <ChevronDown
+                          className={`programme-product__chevron${isOpen ? " open" : ""}`}
+                        />
                       </button>
                       <button
                         type="button"
@@ -110,63 +183,46 @@ const ProgrammeProducts = () => {
                   </div>
                 </div>
 
-                <div
-                  id={`${program.id}-details`}
-                  className="programme-product__details"
-                  hidden={!isOpen}
-                >
-                  <div className="programme-product__details-inner">
-                    {program.tiers.map((tier) => (
-                      <div className="programme-tier" key={tier.name}>
-                        <div className="programme-tier__head">
-                          <div>
-                            <h4>{tier.name}</h4>
-                            <p className="programme-tier__tagline">{tier.tagline}</p>
-                          </div>
-                          <span className="price-tag">{tier.price}</span>
-                        </div>
-
-                        <div className="programme-product__features">
-                          <h5>What&apos;s included</h5>
-                          <ul>
-                            {tier.features.map((feature) => (
-                              <li key={feature}>{feature}</li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {tier.deliverables && tier.deliverables.length > 0 && (
-                          <div className="programme-product__features programme-product__features--deliverables">
-                            <h5>Deliverables</h5>
-                            <ul>
-                              {tier.deliverables.map((item) => (
-                                <li key={item}>{item}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-
-                    <div className="programme-product__footer">
-                      <span className="programme-product__price">Enquire for pricing</span>
-                      <button
-                        type="button"
-                        className={`btn btn-gold programme-product__enroll${added ? " added" : ""}`}
-                        onClick={() => addToCart(program.id)}
-                        disabled={added}
+                {isOpen && (
+                  <div className="pkg-stack">
+                    {program.tiers.map((tier, ti) => (
+                      <article
+                        key={tier.name}
+                        className="pkg-card"
+                        onClick={() => setModalData({ program, tier })}
                       >
-                        <CartIcon />
-                        {added ? "Added to inquiry" : "Add to inquiry"}
-                      </button>
-                    </div>
+                        <PlaceholderImage
+                          name={`${program.id}-pkg-${ti + 1}`}
+                          aspect="4 / 3"
+                        />
+                        <div className="pkg-card__body">
+                          <h4 className="pkg-card__name">{tier.name}</h4>
+                          <p className="pkg-card__tagline">{tier.tagline}</p>
+                          <span className="pkg-card__price">{tier.price}</span>
+                          <div className="pkg-card__actions">
+                            <button
+                              type="button"
+                              className="pkg-card__details-btn"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setModalData({ program, tier });
+                              }}
+                            >
+                              See full details
+                            </button>
+                          </div>
+                        </div>
+                      </article>
+                    ))}
                   </div>
-                </div>
+                )}
               </article>
             );
           })}
         </div>
       </div>
+
+      {modalData && <TierModal data={modalData} onClose={() => setModalData(null)} />}
     </section>
   );
 };
