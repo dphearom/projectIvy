@@ -1,8 +1,26 @@
 "use client";
 
-import { CircleMarker, MapContainer, Popup, TileLayer } from "react-leaflet";
+import L from "leaflet";
+import { CircleMarker, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { MAP_LEGEND, MAP_LOCATIONS } from "@/lib/map-locations";
 import "leaflet/dist/leaflet.css";
+
+const CONTINENT_LABELS = [
+  { name: "North America", lat: 48, lng: -105 },
+  { name: "South America", lat: -12, lng: -58 },
+  { name: "Europe", lat: 54, lng: 18 },
+  { name: "Africa", lat: 2, lng: 22 },
+  { name: "Asia", lat: 38, lng: 92 },
+  { name: "Australia", lat: -24, lng: 134 },
+] as const;
+
+const continentLabelIcon = (name: string) =>
+  L.divIcon({
+    className: "continent-label-marker",
+    html: `<span class="continent-label">${name}</span>`,
+    iconSize: [0, 0],
+    iconAnchor: [0, 0],
+  });
 
 const WorldMapInner = () => (
   <div className="world-map-leaflet">
@@ -20,8 +38,17 @@ const WorldMapInner = () => (
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
-        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        url="https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png"
       />
+
+      {CONTINENT_LABELS.map(({ name, lat, lng }) => (
+        <Marker
+          key={name}
+          position={[lat, lng]}
+          icon={continentLabelIcon(name)}
+          interactive={false}
+        />
+      ))}
 
       {MAP_LOCATIONS.map((loc) => {
         const legend = MAP_LEGEND.find((item) => item.category === loc.category);

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import RevealObserver from "@/components/RevealObserver";
 import PageHeader from "@/components/PageHeader";
+import ServiceCampsLaunch from "@/components/sections/ServiceCampsLaunch";
 import UpcomingEvents from "@/components/sections/UpcomingEvents";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { getAllEvents } from "@/lib/events";
@@ -24,6 +25,7 @@ const EventsPage = async () => {
         title="Upcoming Events"
         subtitle="Workshops, bootcamps, and sessions happening at Project IVY — all in one place."
       />
+      <ServiceCampsLaunch />
       <UpcomingEvents events={events} hideHeader />
       <FinalCTA />
     </>

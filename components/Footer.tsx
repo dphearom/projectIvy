@@ -8,7 +8,13 @@ const Footer = () => {
       <div className="wrap">
         <div className="foot-top">
           <div className="foot-brand">
-            <Image src="/logo-light.png" alt="Project IVY — Breksa AdvisED Global" width={160} height={125} />
+            <Image
+              src="/logo-light.png"
+              alt="Project IVY — Breksa AdvisED Global"
+              width={1665}
+              height={1304}
+              className="foot-logo"
+            />
             <p>
               Cambodia&apos;s academic advising service built for every student. Combining AI-powered tools
               with human mentorship to unlock global opportunities.
@@ -27,13 +33,11 @@ const Footer = () => {
           </div>
 
           <div className="foot-col">
-            <h4>Services</h4>
+            <h4>Programs</h4>
             <ul>
-              <li><Link href="/#features">1-on-1 Mentorship</Link></li>
-              <li><Link href="/#features">AI Academic Roadmaps</Link></li>
-              <li><Link href="/#features">Scholarship Discovery</Link></li>
-              <li><Link href="/#features">Test Preparation</Link></li>
-              <li><Link href="/#features">Essay Support</Link></li>
+              <li><Link href="/programmes#university-readiness">University Readiness</Link></li>
+              <li><Link href="/programmes#university-application">University Application</Link></li>
+              <li><Link href="/camps">Service &amp; Camps</Link></li>
             </ul>
           </div>
 
@@ -41,20 +45,18 @@ const Footer = () => {
             <h4>Company</h4>
             <ul>
               <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/about">Our Story</Link></li>
-              <li><Link href="/#features">Our Mentors</Link></li>
-              <li><Link href="/events">Careers</Link></li>
-              <li><Link href="/events">Press</Link></li>
+              <li><Link href="/about#team">Our Team</Link></li>
+              <li><Link href="/events">Events</Link></li>
+              <li><Link href="/camps">Camps</Link></li>
             </ul>
           </div>
 
           <div className="foot-col">
             <h4>Contact</h4>
             <ul>
-              <li><Link href="/events">Book a Session</Link></li>
+              <li><Link href="/contact">Book a Consultation</Link></li>
               <li><Link href="/events">Workshops &amp; Events</Link></li>
-              <li><Link href="/#cta">Partner With Us</Link></li>
-              <li><Link href="/#cta">Support</Link></li>
+              <li><Link href="/contact">Partner With Us</Link></li>
             </ul>
           </div>
         </div>
