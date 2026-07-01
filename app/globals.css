@@ -2007,6 +2007,10 @@ section {
   padding: 110px 0;
 }
 
+.featured-news--events {
+  padding: 72px 0 0;
+}
+
 .section-head--center {
   text-align: center;
   max-width: 680px;
@@ -2519,6 +2523,25 @@ section {
 @keyframes marker-glow {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.65; }
+}
+
+.continent-label-marker {
+  background: transparent;
+  border: none;
+}
+
+.continent-label {
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 1.1vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(243, 237, 226, 0.42);
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Beneficiaries */
@@ -3280,9 +3303,11 @@ footer>.wrap {
   gap: 48px;
 }
 
-.foot-brand img {
-  width: 230px;
-  margin: 0 0 6px -4px;
+.foot-brand img,
+.foot-brand .foot-logo {
+  width: 160px;
+  height: auto;
+  margin: 0 0 6px;
 }
 
 .foot-brand p {
@@ -5306,8 +5331,7 @@ footer>.wrap {
   color: var(--gold-deep);
 }
 
-.contact-form-wrap,
-.consultation-form {
+.contact-form-wrap {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -6133,11 +6157,11 @@ footer>.wrap {
   background: var(--ivory-2);
   border: 1px solid var(--line);
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+  display: grid;
+  place-items: center;
   color: var(--ink);
   transition: background .2s ease, color .2s ease;
   z-index: 1;
