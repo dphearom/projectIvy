@@ -9,7 +9,8 @@ const PROGRAM_PHOTOS: Record<string, string> = {
   "service-camps": PLACEHOLDERS.PROGRAM_SERVICE_CAMPS,
 };
 
-const ALL_PROGRAMS = [...ADVISING_PROGRAM_SUMMARIES, SERVICE_CAMPS_SUMMARY];
+// const ALL_PROGRAMS = [...ADVISING_PROGRAM_SUMMARIES, SERVICE_CAMPS_SUMMARY];
+const ALL_PROGRAMS = [...ADVISING_PROGRAM_SUMMARIES];
 
 const AdvisingPrograms = () => (
   <section className="consulting-programs" id="programmes">
