@@ -24,7 +24,7 @@ const MeetOurTeamHome = () => (
             <div className="team-card-photo" style={{ aspectRatio: "1 / 1", overflow: "hidden" }}>
               {member.photo ? (
                 <Image
-                  src={`/images/${member.photo}.jpg`}
+                  src={`/images/${member.photo}`}
                   alt={member.name}
                   width={400}
                   height={400}

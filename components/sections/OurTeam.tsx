@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { TEAM_PHOTOS } from "@/lib/placeholders";
-import { PHOTO_POSITION, PHOTO_SCALE, TEAM } from "@/lib/team";
+import { PHOTO_POSITION, PHOTO_SCALE, TEAM, TEAM_PHOTOS } from "@/lib/team";
 
 const OurTeam = () => (
   <section className="about-sec alt" id="team">

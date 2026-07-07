@@ -10,41 +10,61 @@ export const HOME_TEAM: HomeTeamMember[] = [
     name: "Somphors Tann",
     school: "Harvard Graduate School of Education, Kenyon College, Aiglon College",
     role: "Founder & Programme Director",
-    photo: "team-somphors-tann",
+    photo: "core-team/somphors-tann.jpg",
   },
   {
     name: "Rasy Hai",
     school: "Asian University for Women: BSc Public Health & Environmental Sciences",
     role: "University Admissions Mentor",
-    photo: "team-rasy-hai",
+    photo: "core-team/rasy-hai.jpg",
   },
   {
     name: "Vanndet Va",
     school: "Lafayette College: Civil Engineering",
     role: "University & Boarding School Admissions Mentor",
-    photo: "team-vanndet-va",
+    photo: "core-team/vanndet-va.jpg",
   },
   {
     name: "Phearom Duong",
     school: "Wesleyan University",
     role: "Full Stack Developer",
+    photo: "core-team/phearom-duong.jpg",
   },
   {
-    name: "Makara Teu",
-    school: "Rhode Island College",
+    name: "Macara Teu",
+    school: "Rhodes College",
     role: "Full Stack Developer",
+    photo: "core-team/macara-teu.png",
   },
   {
     name: "Sophat Tann",
     school: "University of Puthisastra, Phnom Penh",
     role: "Full Stack Developer",
+    photo: "core-team/sophat-tann.jpg",
   },
   {
     name: "Phalla",
     school: "Tufts University",
     role: "Full Stack Developer",
+    photo: "core-team/phalla.png",
   },
 ];
+
+export const TEAM_PHOTOS: Record<string, string> = {
+  "Somphors Tann": "mentor-team/somphors-tann",
+  "Ayden Hayes": "mentor-team/ayden-hayes",
+  "Virithkarvan (Vaughn) Van Chum": "mentor-team/vaughn-van-chum",
+  "Peipei Soeung": "mentor-team/peipei-soeung",
+  "Kaitlyn Mady": "mentor-team/kaitlyn-mady",
+  "Sonisa Leng": "mentor-team/sonisa-leng",
+  "Sophuth Phon": "mentor-team/sophuth-phon",
+  "Rathanakmealea (Mealea) Mang": "mentor-team/mealea-mang",
+  "Vanndet Va": "mentor-team/vanndet-va",
+  "Rasy Hai": "mentor-team/rasy-hai",
+  "Sokniza Noeun": "mentor-team/sokniza-noeun",
+  "Pichanbormey (Violette) Pisith": "mentor-team/violette-pisith",
+  "Sreynich Vann": "mentor-team/sreynich-vann",
+};
 
 export type TeamMember = {
   name: string;

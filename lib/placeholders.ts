@@ -1,3 +1,5 @@
+import { TEAM_PHOTOS } from "@/lib/team";
+
 /** Filename slugs for site images — save assets as `public/images/{slug}.jpg` (or .webp). */
 
 export const PLACEHOLDERS = {
@@ -36,26 +38,6 @@ export const PLACEHOLDERS = {
 } as const;
 
 export type PlaceholderSlug = (typeof PLACEHOLDERS)[keyof typeof PLACEHOLDERS];
-
-export const TEAM_PHOTOS: Record<string, string> = {
-  "Somphors Tann": "team-somphors-tann",
-  "Ayden Hayes": "team-ayden-hayes",
-  "Virithkarvan (Vaughn) Van Chum": "team-vaughn-van-chum",
-  "Peipei Soeung": "team-peipei-soeung",
-  "Kaitlyn Mady": "team-kaitlyn-mady",
-  "Sonisa Leng": "team-sonisa-leng",
-  "Sophuth Phon": "team-sophuth-phon",
-  "Rathanakmealea (Mealea) Mang": "team-mealea-mang",
-  "Vanndet Va": "team-vanndet-va",
-  "Rasy Hai": "team-rasy-hai",
-  "Sokniza Noeun": "team-sokniza-noeun",
-  "Pichanbormey (Violette) Pisith": "team-violette-pisith",
-  "Sreynich Vann": "team-sreynich-vann",
-  "Phearom Duong": "team-phearom-duong",
-  "Makara Teu": "team-makara-teu",
-  "Sophat Tann": "team-sophat-tann",
-  "Phalla": "team-phalla",
-};
 
 export function newsArticlePhoto(slug: string): string {
   return `news-${slug}`;
