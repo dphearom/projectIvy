@@ -34,7 +34,7 @@ const WorldMapInner = () => (
       worldCopyJump
       maxBounds={[[-85, -220], [85, 220]]}
       maxBoundsViscosity={0.85}
-      className="w-full h-full min-h-[clamp(420px,52vw,620px)] bg-[var(--navy-3)]"
+      className="w-full h-full min-h-[clamp(420px,52vw,620px)] bg-navy-3"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
@@ -76,11 +76,11 @@ const WorldMapInner = () => (
     </MapContainer>
 
     <div
-      className="absolute z-[1000] top-[clamp(20px,4vw,36px)] right-[clamp(20px,4vw,36px)] flex flex-col gap-2.5 p-[16px_18px] rounded-[var(--radius)] bg-[rgba(14,23,41,0.88)] border border-[rgba(243,237,226,0.14)] backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)] shadow-[0_16px_40px_-20px_rgba(0,0,0,0.45)]"
+      className="absolute z-1000 top-[clamp(20px,4vw,36px)] right-[clamp(20px,4vw,36px)] flex flex-col gap-2.5 p-[16px_18px] rounded-(--radius) bg-[rgba(14,23,41,0.88)] border border-[rgba(243,237,226,0.14)] backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)] shadow-[0_16px_40px_-20px_rgba(0,0,0,0.45)]"
       aria-label="Map legend"
     >
       {MAP_LEGEND.map((item) => (
-        <div key={item.category} className="flex items-center gap-2.5 text-[0.82rem] font-medium text-[var(--cream-soft)] leading-[1.35]">
+        <div key={item.category} className="flex items-center gap-2.5 text-[0.82rem] font-medium text-cream-soft leading-[1.35]">
           <span
             className="flex-none w-3 h-3 rounded-full shadow-[0_0_0_2px_rgba(255,255,255,0.15)]"
             style={{ backgroundColor: item.color }}

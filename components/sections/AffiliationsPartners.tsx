@@ -35,7 +35,7 @@ const ROW_2: School[] = [
 ];
 
 const SchoolSlot = ({ school }: { school: School }) => (
-  <div className="flex-none w-40 aspect-[2.4/1] rounded-[10px] border border-[var(--line)] bg-[var(--ivory-2)] flex items-center justify-center px-[18px] py-3 transition-[border-color,box-shadow,transform,background] duration-[250ms] hover:border-[rgba(184,150,90,0.8)] hover:shadow-[0_0_0_3px_rgba(184,150,90,0.15)] hover:scale-[1.08] hover:-translate-y-0.5 hover:bg-white">
+  <div className="flex-none w-40 aspect-[2.4/1] rounded-[10px] border border-line bg-ivory-2 flex items-center justify-center px-4.5 py-3 transition-[border-color,box-shadow,transform,background] duration-250 hover:border-[rgba(184,150,90,0.8)] hover:shadow-[0_0_0_3px_rgba(184,150,90,0.15)] hover:scale-[1.08] hover:-translate-y-0.5 hover:bg-white">
     {school.logo ? (
       // eslint-disable-next-line @next/next/no-img-element
       <img
@@ -44,7 +44,7 @@ const SchoolSlot = ({ school }: { school: School }) => (
         style={{ maxHeight: 60, maxWidth: 160, objectFit: "contain", ...LOGO_STYLE[school.name] }}
       />
     ) : (
-      <span className="text-[0.72rem] font-semibold tracking-[0.05em] uppercase text-[var(--ink-soft)] text-center leading-[1.2]">
+      <span className="text-[0.72rem] font-semibold tracking-wider uppercase text-ink-soft text-center leading-[1.2]">
         {school.name}
       </span>
     )}
@@ -52,25 +52,25 @@ const SchoolSlot = ({ school }: { school: School }) => (
 );
 
 const AffiliationsPartners = () => (
-  <section className="bg-[var(--paper)] py-[110px] overflow-hidden">
+  <section className="bg-paper py-27.5 overflow-hidden">
     <div className="wrap">
-      <div className="text-center max-w-[680px] mx-auto mb-12" data-reveal>
+      <div className="text-center max-w-170 mx-auto mb-12" data-reveal>
         <h2 className="text-[clamp(2rem,3.6vw,3rem)] tracking-[-0.01em]">
           Experienced advisors from leading institutions
         </h2>
-        <p className="mt-[18px] text-[1.05rem] leading-[1.65] text-[var(--ink-soft)]">
+        <p className="mt-4.5 text-[1.05rem] leading-[1.65] text-ink-soft">
           Project IVY mentors bring firsthand experience from world-class universities and
           schools — guiding students with insight earned on the journey.
         </p>
       </div>
     </div>
 
-    <div className="flex flex-col gap-[18px]">
+    <div className="flex flex-col gap-4.5">
       {/* Row 1 — forward */}
       <div
-        className="overflow-hidden py-2.5 [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] group"
+        className="overflow-hidden py-2.5 mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] group"
       >
-        <div className="flex gap-[18px] w-max animate-[logo-marquee_38s_linear_infinite] group-hover:[animation-play-state:paused]">
+        <div className="flex gap-4.5 w-max animate-[logo-marquee_38s_linear_infinite] group-hover:[animation-play-state:paused]">
           {[...ROW_1, ...ROW_1].map((school, i) => (
             <SchoolSlot key={`r1-${i}`} school={school} />
           ))}
@@ -79,9 +79,9 @@ const AffiliationsPartners = () => (
 
       {/* Row 2 — reverse */}
       <div
-        className="overflow-hidden py-2.5 [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] group"
+        className="overflow-hidden py-2.5 mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] group"
       >
-        <div className="flex gap-[18px] w-max animate-[logo-marquee_44s_linear_infinite_reverse] group-hover:[animation-play-state:paused]">
+        <div className="flex gap-4.5 w-max animate-[logo-marquee_44s_linear_infinite_reverse] group-hover:[animation-play-state:paused]">
           {[...ROW_2, ...ROW_2].map((school, i) => (
             <SchoolSlot key={`r2-${i}`} school={school} />
           ))}

@@ -33,7 +33,7 @@ const NAV_COLS = [
 ];
 
 const Footer = () => (
-  <footer className="relative z-[1] bg-[#091226] text-[rgba(247,241,230,0.72)] pt-20 pb-9">
+  <footer className="relative z-1 bg-[#091226] text-[rgba(247,241,230,0.72)] pt-20 pb-9">
     <div className="wrap">
       <div className="grid grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 max-[960px]:grid-cols-2 max-[960px]:gap-8">
 
@@ -50,16 +50,16 @@ const Footer = () => (
             Cambodia&apos;s academic advising service built for every student. Combining AI-powered
             tools with human mentorship to unlock global opportunities.
           </p>
-          <p className="font-display italic text-[18px] text-gold-soft mt-[18px]">
+          <p className="font-display italic text-[18px] text-gold-soft mt-4.5">
             &ldquo;Guiding your Education Journey&rdquo;
           </p>
-          <div className="mt-[22px] flex gap-3">
+          <div className="mt-5.5 flex gap-3">
             <a
               href="https://www.facebook.com/profile.php?id=61565295581796"
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
-              className="size-10 rounded-full border border-[rgba(243,237,226,0.18)] flex items-center justify-center text-cream-soft transition-[background,color,border-color] duration-[250ms] hover:bg-gold hover:text-navy-3 hover:border-gold"
+              className="size-10 rounded-full border border-[rgba(243,237,226,0.18)] flex items-center justify-center text-cream-soft transition-[background,color,border-color] duration-250 hover:bg-gold hover:text-navy-3 hover:border-gold"
             >
               <FacebookIcon />
             </a>
@@ -69,7 +69,7 @@ const Footer = () => (
         {/* Nav columns */}
         {NAV_COLS.map((col) => (
           <div key={col.heading}>
-            <h4 className="font-bold text-[13px] tracking-[0.14em] uppercase text-cream mb-[18px]">
+            <h4 className="font-bold text-[13px] tracking-[0.14em] uppercase text-cream mb-4.5">
               {col.heading}
             </h4>
             <ul className="flex flex-col gap-3 list-none p-0 m-0">
@@ -88,7 +88,7 @@ const Footer = () => (
         ))}
       </div>
 
-      <div className="mt-14 pt-[26px] border-t border-[rgba(243,237,226,0.12)] flex justify-between items-center gap-4 text-[13px] text-[rgba(243,237,226,0.55)] max-[640px]:flex-col max-[640px]:items-start">
+      <div className="mt-14 pt-6.5 border-t border-[rgba(243,237,226,0.12)] flex justify-between items-center gap-4 text-[13px] text-[rgba(243,237,226,0.55)] max-[640px]:flex-col max-[640px]:items-start">
         <span>© 2026 Breksa — AdvisED Global. All rights reserved.</span>
         <span>Cambodia&apos;s Academic Advising Platform</span>
       </div>

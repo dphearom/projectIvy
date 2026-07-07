@@ -121,10 +121,10 @@ const Navbar = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50",
           "border-b border-transparent",
-          "transition-[background,box-shadow,border-color] duration-[350ms]",
+          "transition-[background,box-shadow,border-color] duration-350",
           scrolled && [
             "bg-[rgba(248,247,244,0.95)]",
-            "backdrop-blur-[28px] backdrop-saturate-[160%]",
+            "backdrop-blur-[28px] backdrop-saturate-160",
             "border-[rgba(255,255,255,0.45)]",
             "shadow-[0_1px_0_rgba(27,36,54,0.07),0_8px_32px_-16px_rgba(14,23,41,0.14)]",
           ],
@@ -140,9 +140,9 @@ const Navbar = () => {
 
         <div
           className={cn(
-            "relative z-[1] flex items-center gap-5 mx-auto px-8 max-w-[var(--maxw)]",
-            "transition-[height] duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)]",
-            scrolled ? "h-[var(--nav-height-scroll)]" : "h-[var(--nav-height)]",
+            "relative z-1 flex items-center gap-5 mx-auto px-8 max-w-(--maxw)",
+            "transition-[height] duration-350 ease-[cubic-bezier(.2,.7,.2,1)]",
+            scrolled ? "h-(--nav-height-scroll)" : "h-(--nav-height)",
           )}
         >
           {/* Brand */}
@@ -154,8 +154,8 @@ const Navbar = () => {
               height={82}
               priority
               className={cn(
-                "block w-auto transition-[height] duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)]",
-                scrolled ? "hidden" : "h-[50px]",
+                "block w-auto transition-[height] duration-350 ease-[cubic-bezier(.2,.7,.2,1)]",
+                scrolled ? "hidden" : "h-12.5",
               )}
             />
             <Image
@@ -165,7 +165,7 @@ const Navbar = () => {
               height={82}
               priority
               className={cn(
-                "block w-auto transition-[height] duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)]",
+                "block w-auto transition-[height] duration-350 ease-[cubic-bezier(.2,.7,.2,1)]",
                 scrolled ? "h-9" : "hidden",
               )}
             />
@@ -183,8 +183,8 @@ const Navbar = () => {
                 const linkCls = cn(
                   "inline-flex items-center gap-1.5 relative",
                   "font-body text-[14.5px] font-medium leading-none whitespace-nowrap",
-                  "py-[18px] px-3 cursor-pointer",
-                  "transition-colors duration-[250ms]",
+                  "py-4.5 px-3 cursor-pointer",
+                  "transition-colors duration-250",
                   "after:content-[''] after:absolute after:left-2.5 after:right-2.5 after:bottom-2.5",
                   "after:h-[1.5px] after:bg-gold after:origin-left after:transition-transform after:duration-300",
                   scrolled
@@ -217,19 +217,19 @@ const Navbar = () => {
                       )}
                     >
                       {item.label}
-                      <ChevronDown className="flex-none mt-[1px] opacity-75" />
+                      <ChevronDown className="flex-none mt-px opacity-75" />
                     </Link>
 
                     <ul
                       role="menu"
                       className={cn(
-                        "absolute top-[calc(100%+2px)] left-0 z-[60]",
-                        "min-w-[280px] w-max max-w-[380px]",
+                        "absolute top-[calc(100%+2px)] left-0 z-60",
+                        "min-w-70 w-max max-w-95",
                         "list-none m-0 p-3",
-                        "bg-paper border border-[var(--line)] rounded-[var(--radius)]",
+                        "bg-paper border border-line rounded-(--radius)",
                         "shadow-[0_20px_50px_-24px_rgba(14,23,41,0.28)]",
                         "opacity-0 invisible pointer-events-none",
-                        "transition-[opacity,visibility] duration-[200ms]",
+                        "transition-[opacity,visibility] duration-200",
                         "group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto",
                         isOpen && "opacity-100 visible pointer-events-auto",
                       )}
@@ -260,9 +260,9 @@ const Navbar = () => {
                 type="button"
                 className={cn(
                   "font-body text-[14px] font-semibold rounded-full cursor-pointer bg-transparent",
-                  "py-[9px] px-[18px] border transition-[color,border-color] duration-[250ms]",
+                  "py-2.25 px-4.5 border transition-[color,border-color] duration-250",
                   scrolled
-                    ? "text-ink-soft border-[var(--line)] hover:text-gold-deep hover:border-[rgba(184,150,90,0.45)]"
+                    ? "text-ink-soft border-line hover:text-gold-deep hover:border-[rgba(184,150,90,0.45)]"
                     : "text-cream-soft border-[rgba(243,237,226,0.28)] hover:text-gold-soft hover:border-[rgba(184,150,90,0.45)]",
                 )}
               >
@@ -270,7 +270,7 @@ const Navbar = () => {
               </button>
               <button
                 type="button"
-                className="font-body text-[14px] font-semibold rounded-full cursor-pointer py-[9px] px-[18px] border border-transparent bg-gold text-navy-3 shadow-[0_8px_24px_-12px_rgba(184,150,90,0.65)] transition-[background-color,transform] duration-[250ms] hover:bg-gold-soft hover:-translate-y-px"
+                className="font-body text-[14px] font-semibold rounded-full cursor-pointer py-2.25 px-4.5 border border-transparent bg-gold text-navy-3 shadow-[0_8px_24px_-12px_rgba(184,150,90,0.65)] transition-[background-color,transform] duration-250 hover:bg-gold-soft hover:-translate-y-px"
               >
                 Sign up
               </button>
@@ -278,14 +278,14 @@ const Navbar = () => {
 
             <button
               type="button"
-              className="hidden max-[1100px]:flex w-[42px] h-[42px] p-0 border-none bg-transparent cursor-pointer flex-col items-center justify-center"
+              className="hidden max-[1100px]:flex w-10.5 h-10.5 p-0 border-none bg-transparent cursor-pointer flex-col items-center justify-center"
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((o) => !o)}
             >
-              <span className={cn("block w-[22px] h-0.5 mx-auto my-[5px] rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "translate-y-[7px] rotate-45")} />
-              <span className={cn("block w-[22px] h-0.5 mx-auto my-[5px] rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "opacity-0")} />
-              <span className={cn("block w-[22px] h-0.5 mx-auto my-[5px] rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "-translate-y-[7px] -rotate-45")} />
+              <span className={cn("block w-5.5 h-0.5 mx-auto my-1.25 rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "translate-y-1.75 rotate-45")} />
+              <span className={cn("block w-5.5 h-0.5 mx-auto my-1.25 rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "opacity-0")} />
+              <span className={cn("block w-5.5 h-0.5 mx-auto my-1.25 rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "-translate-y-1.75 -rotate-45")} />
             </button>
           </div>
         </div>
@@ -295,22 +295,22 @@ const Navbar = () => {
       <div
         ref={mobileMenuRef}
         className={cn(
-          "fixed top-0 right-0 bottom-0 z-[49]",
-          "w-[min(360px,88vw)] bg-[var(--ink-2)] text-cream",
+          "fixed top-0 right-0 bottom-0 z-49",
+          "w-[min(360px,88vw)] bg-(--ink-2) text-cream",
           "overflow-y-auto py-5 pb-8",
           "shadow-[-8px_0_40px_rgba(0,0,0,0.35)]",
-          "translate-x-full transition-transform duration-[400ms] ease-[cubic-bezier(.2,.7,.2,1)]",
+          "translate-x-full transition-transform duration-400 ease-[cubic-bezier(.2,.7,.2,1)]",
           menuOpen && "translate-x-0",
         )}
         aria-hidden={!menuOpen}
       >
-        <div className="flex items-center justify-between px-6 pb-[18px] border-b border-[var(--line-light)]">
+        <div className="flex items-center justify-between px-6 pb-4.5 border-b border-line-light">
           <Link href="/" className="inline-flex items-center leading-none" onClick={() => setMenuOpen(false)}>
             <Image src="/logo-nav-light.png" alt="Project IVY" width={120} height={82} className="block h-10 w-auto" />
           </Link>
           <button
             type="button"
-            className="w-10 h-10 border border-[var(--line-light)] rounded-full bg-transparent text-cream text-[24px] leading-none cursor-pointer"
+            className="w-10 h-10 border border-line-light rounded-full bg-transparent text-cream text-[24px] leading-none cursor-pointer"
             aria-label="Close menu"
             onClick={() => setMenuOpen(false)}
           >
@@ -326,7 +326,7 @@ const Navbar = () => {
             const isMobileOpen = openDropdown === mobileKey;
 
             const mobileLinkCls =
-              "flex items-center justify-between w-full px-7 py-3.5 font-display text-[1.35rem] font-semibold text-cream bg-transparent border-none cursor-pointer text-left transition-colors duration-[250ms] hover:text-gold";
+              "flex items-center justify-between w-full px-7 py-3.5 font-display text-[1.35rem] font-semibold text-cream bg-transparent border-none cursor-pointer text-left transition-colors duration-250 hover:text-gold";
 
             if (!hasChildren) {
               return (
@@ -386,11 +386,11 @@ const Navbar = () => {
           })}
         </ul>
 
-        <div className="flex flex-col gap-[10px] mt-6 pt-5 px-7 border-t border-[var(--line-light)]">
-          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-3.5 px-[18px] border border-[var(--line-light)] text-cream-soft bg-transparent text-center">
+        <div className="flex flex-col gap-2.5 mt-6 pt-5 px-7 border-t border-line-light">
+          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-3.5 px-4.5 border border-line-light text-cream-soft bg-transparent text-center">
             Log in
           </button>
-          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-3.5 px-[18px] border border-transparent bg-gold text-navy-3 text-center">
+          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-3.5 px-4.5 border border-transparent bg-gold text-navy-3 text-center">
             Sign up
           </button>
         </div>
@@ -399,7 +399,7 @@ const Navbar = () => {
       {menuOpen && (
         <button
           type="button"
-          className="fixed inset-0 z-[48] border-none p-0 bg-[rgba(8,15,30,0.55)] cursor-pointer"
+          className="fixed inset-0 z-48 border-none p-0 bg-[rgba(8,15,30,0.55)] cursor-pointer"
           aria-label="Close menu"
           onClick={() => setMenuOpen(false)}
         />

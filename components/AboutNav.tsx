@@ -48,21 +48,21 @@ export default function AboutNav() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-40",
-        "bg-[rgba(251,249,244,0.88)] backdrop-blur-[22px] backdrop-saturate-[140%]",
-        "border-b border-[var(--line)] shadow-[0_4px_24px_-12px_rgba(14,23,41,0.1)]",
+        "bg-[rgba(251,249,244,0.88)] backdrop-blur-[22px] backdrop-saturate-140",
+        "border-b border-line shadow-[0_4px_24px_-12px_rgba(14,23,41,0.1)]",
         "-translate-y-full opacity-0 pointer-events-none",
-        "transition-[transform,opacity] duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)]",
-        visible && "translate-y-[var(--nav-height-scroll)] opacity-100 pointer-events-auto",
+        "transition-[transform,opacity] duration-350 ease-[cubic-bezier(.2,.7,.2,1)]",
+        visible && "translate-y-(--nav-height-scroll) opacity-100 pointer-events-auto",
       )}
       aria-label="Page sections"
     >
-      <div className="flex items-center max-w-[var(--maxw)] mx-auto px-8 max-[680px]:px-2 overflow-x-auto scrollbar-hide">
+      <div className="flex items-center max-w-(--maxw) mx-auto px-8 max-[680px]:px-2 overflow-x-auto scrollbar-hide">
         {LINKS.map(({ label, id }) => (
           <a
             key={id}
             href={`#${id}`}
             className={cn(
-              "inline-flex items-center px-5 py-[15px] max-[680px]:px-3.5 max-[680px]:py-3.5",
+              "inline-flex items-center px-5 py-3.75 max-[680px]:px-3.5 max-[680px]:py-3.5",
               "font-body text-[13.5px] max-[680px]:text-[12.5px] font-medium tracking-[0.01em] whitespace-nowrap",
               "border-b-2 border-transparent transition-[color,border-color] duration-200",
               active === id
