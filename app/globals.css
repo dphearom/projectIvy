@@ -2690,13 +2690,14 @@ section {
 }
 
 .logo-marquee-slot {
-  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease, background .25s ease;
 }
 
 .logo-marquee-slot:hover {
-  border-color: rgba(184, 150, 90, 0.55);
-  box-shadow: 0 10px 28px -10px rgba(14, 23, 41, 0.18);
-  transform: scale(1.06);
+  border-color: rgba(184, 150, 90, 0.8);
+  box-shadow: 0 0 0 3px rgba(184, 150, 90, 0.15);
+  transform: scale(1.08) translateY(-2px);
+  background: #fff;
 }
 
 @keyframes logo-marquee {
