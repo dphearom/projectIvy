@@ -989,10 +989,6 @@ section {
   background: var(--ivory);
 }
 
-.about-essentials-grid {
-  margin-top: 56px;
-}
-
 .team-grid {
   margin-top: 56px;
 }
@@ -1038,12 +1034,6 @@ section {
   font-size: 0.82rem;
   color: var(--ink-soft);
   line-height: 1.45;
-}
-
-.team-bio {
-  font-size: 0.92rem;
-  color: var(--ink-soft);
-  line-height: 1.58;
 }
 
 .team-card--compact {
@@ -1166,41 +1156,6 @@ section {
   margin-top: 12px;
   font-size: 0.84rem;
   font-style: italic;
-}
-
-.why-choose-grid {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.why-choose-card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 32px 28px;
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-}
-
-.why-choose-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 44px -24px rgba(14, 23, 41, 0.28);
-  border-color: rgba(184, 150, 90, 0.4);
-}
-
-.why-choose-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: var(--navy);
-  line-height: 1.2;
-}
-
-.why-choose-card p {
-  margin-top: 12px;
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-  line-height: 1.6;
 }
 
 .events-calendar {
@@ -2469,53 +2424,6 @@ body[data-ivy="off"] .cta-watermark {
   opacity: 0;
 }
 
-/* -- Mission CTA band (dark grainy, about page) ----------------------- */
-.mission {
-  position: relative;
-  overflow: hidden;
-  color: var(--cream);
-  padding: 130px 0;
-  background: var(--ink-2);
-}
-
-.mission .hero-bg {
-  background: radial-gradient(120% 130% at 50% 120%, var(--g2), var(--g1) 70%);
-}
-
-.mission-inner {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-.mission-inner h2 {
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
-  letter-spacing: -0.01em;
-  margin: 26px 0 28px;
-  text-wrap: balance;
-}
-
-.mission-inner h2 em {
-  color: var(--gold-bright);
-}
-
-.mission-inner p {
-  font-size: 1.18rem;
-  color: var(--muted-light);
-  max-width: 60ch;
-  margin: 0 auto 38px;
-}
-
-.mission-cta {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 /* ── Footer ── */
 
 
@@ -2665,10 +2573,6 @@ body[data-ivy="off"] .cta-watermark {
 
   .team-card-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .why-choose-grid {
-    grid-template-columns: 1fr;
   }
 
   .stats-grid {
@@ -3441,53 +3345,6 @@ body[data-ivy="off"] .cta-watermark {
   line-height: 1.6;
 }
 
-/* Vision pull-quote band — dark navy section with large blockquote */
-.quoteband {
-  position: relative;
-  overflow: hidden;
-  color: var(--cream);
-  padding: 112px 0;
-  background: var(--ink-2);
-}
-
-.quoteband .hero-bg {
-  background: radial-gradient(120% 130% at 50% 0%, var(--g2), var(--g1) 72%);
-}
-
-.quoteband-inner {
-  position: relative;
-  z-index: 3;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 32px;
-  text-align: center;
-}
-
-/* Decorative oversized opening quote mark */
-.quoteband .qmark {
-  font-family: var(--display);
-  font-size: 5rem;
-  line-height: 0.5;
-  color: var(--gold-bright);
-  opacity: 0.6;
-  display: block;
-  height: 42px;
-}
-
-.quoteband h2 {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: clamp(2rem, 4vw, 3.3rem);
-  line-height: 1.16;
-  letter-spacing: -0.01em;
-  margin: 0 0 26px;
-  text-wrap: balance;
-}
-
-.quoteband h2 em {
-  color: var(--gold-bright);
-}
-
 /* -- Vision & Mission: values grid ------------------------------------ */
 .values-grid {
   display: grid;
@@ -3880,9 +3737,7 @@ body[data-ivy="off"] .cta-watermark {
   .container,
   .nav-inner,
   .hero-inner,
-  .mission-inner,
-  .page-header-inner,
-  .quoteband-inner {
+  .page-header-inner {
     padding-left: 22px;
     padding-right: 22px;
   }
