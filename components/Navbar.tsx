@@ -39,11 +39,7 @@ const NAV_ITEMS: NavItem[] = [
       })),
     ],
   },
-  // { label: "Camps", href: "/camps" },
-  {
-    label: "Events",
-    href: "/events",
-  },
+  { label: "Scholarships", href: "/scholarships" },
   { label: "Contact", href: "/contact" },
 ];
 

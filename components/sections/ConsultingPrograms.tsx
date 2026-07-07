@@ -6,7 +6,7 @@ import { ADVISING_PROGRAM_SUMMARIES, SERVICE_CAMPS_SUMMARY } from "@/lib/program
 const PROGRAM_PHOTOS: Record<string, string> = {
   "university-readiness": PLACEHOLDERS.PROGRAM_READINESS,
   "university-application": PLACEHOLDERS.PROGRAM_APPLICATION,
-  "service-camps": PLACEHOLDERS.PROGRAM_SERVICE_CAMPS,
+  "graduate-school": PLACEHOLDERS.PROGRAM_GRADUATE_SCHOOL,
 };
 
 // const ALL_PROGRAMS = [...ADVISING_PROGRAM_SUMMARIES, SERVICE_CAMPS_SUMMARY];
@@ -18,7 +18,7 @@ const AdvisingPrograms = () => (
       <div className="section-head" data-reveal>
         <h2>Advising programs at Project IVY</h2>
         <p>
-          Personalized advising from Grade 9 through university application — three pathways
+          Personalized advising from Grade 9 through graduate school — programs
           designed to meet students where they are.
         </p>
       </div>

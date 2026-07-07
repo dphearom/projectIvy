@@ -18,6 +18,12 @@ export const ADVISING_PROGRAM_SUMMARIES: ProgramSummary[] = [
     desc: "Craft compelling applications that open doors to top universities.",
     href: "/programmes#university-application",
   },
+  {
+    id: "graduate-school",
+    title: "Graduate School Advising Program",
+    desc: "Turn your experience into admission to world-class graduate schools.",
+    href: "/programmes#graduate-school",
+  },
 ];
 
 /** @deprecated Use ADVISING_PROGRAM_SUMMARIES */
@@ -159,6 +165,68 @@ export const PROGRAM_DETAILS: ProgramDetail[] = [
           "Interview preparation",
           "Application narrative strategy",
           "Parent consultation",
+          "Priority support",
+        ],
+      },
+    ],
+  },
+  {
+    id: "graduate-school",
+    title: "Graduate School Advising Program",
+    tagline: "Turn your experience into admission to world-class graduate schools",
+    description:
+      "Build the profile that opens doors to top graduate schools with expert guidance across every stage of the graduate admissions process.",
+    tiers: [
+      {
+        name: "Readiness Package",
+        price: "$999",
+        tagline:
+          "Build the profile that opens doors to top graduate schools. Pricing varies based on the duration of the program and the services selected.",
+        features: [
+          "Career and graduate study advising",
+          "University and program selection",
+          "Scholarship application support",
+          "CV refinement",
+          "Statement of Purpose coaching",
+          "Research proposal guidance (if applicable)",
+          "Recommendation letter strategy",
+          "Interview preparation",
+          "Application review",
+        ],
+      },
+      {
+        name: "Standard Package",
+        price: "$399",
+        tagline: "Up to 3 universities (Acceptance rate above 20%)",
+        features: [
+          "Application guidance",
+          "University selection",
+          "Activities list review",
+          "3 SOPs reviews",
+          "Application review and submission support",
+        ],
+      },
+      {
+        name: "Premium Package",
+        price: "$699",
+        tagline: "Up to 3 universities (Top 50-100)",
+        features: [
+          "Everything in Standard",
+          "5 SOPs reviews",
+          "Scholarship guidance",
+          "Strategic positioning for competitive admissions",
+        ],
+      },
+      {
+        name: "Elite Package",
+        price: "$1,199",
+        tagline:
+          "Up to 3 universities (Ivy League, Stanford, MIT, Caltech, Duke, Cambridge, Oxford, and similar institutions)",
+        features: [
+          "Everything in Premium",
+          "10 SOPs reviews",
+          "Interview preparation",
+          "Application narrative strategy",
           "Priority support",
         ],
       },

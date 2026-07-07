@@ -9,7 +9,7 @@ const FinalCTA = () => (
     <div className="mission-inner">
       <span className="eyebrow gold center" data-reveal>Start your journey</span>
       <h2 data-reveal data-reveal-d="1">
-        University Application
+        Your Future Starts Here
       </h2>
       <p data-reveal data-reveal-d="2">
         Please contact us now to register for a Free 1-1 consultation with a Project Ivy advisor!
