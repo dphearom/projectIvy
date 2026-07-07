@@ -1,5 +1,19 @@
-import PlaceholderImage from "@/components/PlaceholderImage";
+import Image from "next/image";
 import { TEAM_PHOTOS } from "@/lib/placeholders";
+
+const PHOTO_POSITION: Record<string, string> = {
+  "Somphors Tann": "center 80%",
+  "Ayden Hayes": "center 30%",
+  "Peipei Soeung": "center 20%",
+  "Kaitlyn Mady": "center 30%",
+  "Rathanakmealea (Mealea) Mang": "center 50%",
+  "Vanndet Va": "center 55%",
+  "Rasy Hai": "center 40%",
+  "Sokniza Noeun": "center 45%",
+  "Sreynich Vann": "center 35%",
+};
+
+const PHOTO_SCALE: Record<string, number> = {};
 
 const TEAM = [
   {
@@ -98,8 +112,14 @@ const OurTeam = () => (
       <div className="team-card-grid">
         {TEAM.map((member, i) => (
           <article className="team-card" key={member.name} data-reveal data-reveal-d={String((i % 3) + 1)}>
-            <div className="team-card-photo">
-              <PlaceholderImage name={TEAM_PHOTOS[member.name]} aspect="4 / 5" />
+            <div className="team-card-photo" style={{ aspectRatio: "1 / 1", overflow: "hidden" }}>
+              <Image
+                src={`/images/${TEAM_PHOTOS[member.name]}.jpg`}
+                alt={member.name}
+                width={400}
+                height={400}
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: PHOTO_POSITION[member.name] ?? "center top", transform: PHOTO_SCALE[member.name] ? `scale(${PHOTO_SCALE[member.name]})` : undefined }}
+              />
             </div>
             <div className="team-card-body">
               <h3>{member.name}</h3>
