@@ -37,7 +37,8 @@ const Footer = () => {
             <ul>
               <li><Link href="/programmes#university-readiness">University Readiness</Link></li>
               <li><Link href="/programmes#university-application">University Application</Link></li>
-              {/* <li><Link href="/camps">Service &amp; Camps</Link></li> */}
+              <li><Link href="/programmes#graduate-school">Graduate School Advising</Link></li>
+              <li><Link href="/scholarships">Scholarships</Link></li>
             </ul>
           </div>
 
@@ -46,8 +47,6 @@ const Footer = () => {
             <ul>
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/about#team">Our Team</Link></li>
-              <li><Link href="/events">Events</Link></li>
-              {/* <li><Link href="/camps">Camps</Link></li> */}
             </ul>
           </div>
 
@@ -55,7 +54,6 @@ const Footer = () => {
             <h4>Contact</h4>
             <ul>
               <li><Link href="/contact">Book a Consultation</Link></li>
-              <li><Link href="/events">Workshops &amp; Events</Link></li>
               <li><Link href="/contact">Partner With Us</Link></li>
             </ul>
           </div>

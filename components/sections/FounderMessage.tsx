@@ -41,7 +41,7 @@ const FounderMessage = () => {
       >
         <div className="founder-message__body-inner">
         <p>
-          I am so honored to welcome you to this programme, not only as the Programme
+          I am so honored to welcome you to this program, not only as the Program
           Director, but as someone who deeply understands what it means to dream beyond
           the limits of where you begin.
         </p>
@@ -50,13 +50,13 @@ const FounderMessage = () => {
           but guidance is not. Across Cambodia, there are students with extraordinary
           potential&mdash;students with intelligence, discipline, creativity, courage, and
           ambition&mdash;who simply have not always had access to the right information,
-          mentorship, or support. Many students are expected to make life-changing decisions
+          advising, or support. Many students are expected to make life-changing decisions
           about their education without a clear roadmap, without someone to explain the
           process, and without a community that truly understands the journey.
         </p>
         <p>Project IVY was created to change that.</p>
         <p>
-          This bootcamp is built by Khmer Scholars and global mentors who have walked the
+          Project IVY is built and run by Khmer Scholars and global advisors who have walked the
           path before you. Many of us know what it feels like to come from communities where
           international education can seem distant, complicated, or even impossible. We know
           the uncertainty of applying to schools abroad, searching for scholarships, writing
@@ -65,15 +65,15 @@ const FounderMessage = () => {
           not have to navigate this journey alone.
         </p>
         <p>
-          On behalf of myself and all Project IVY mentors, I want you to know that this
-          programme was designed with great care. Every workshop, discussion, activity, and
+          On behalf of myself and all Project IVY advisors, I want you to know that this
+          program was designed with great care. Every meeting, workshop, discussion, activity, and
           one-on-one session has been shaped around one goal: to help you leave with more
           than inspiration. We want you to leave with direction. We want you to leave with
-          stronger application materials, a clearer sense of your story, a deeper
+          a well-rounded profile, stronger application materials, a clearer sense of your story, a deeper
           understanding of your options, and the confidence to take your next step.
         </p>
         <p>
-          Over these seven days, you will be challenged to think honestly about who you are,
+          You will be challenged to think honestly about who you are,
           what you value, and what kind of future you want to build. You will learn how to
           research schools strategically, strengthen your academic profile, write with
           authenticity, prepare for interviews, and turn your experiences into a compelling
@@ -90,7 +90,7 @@ const FounderMessage = () => {
         <p>
           As you begin this journey, I encourage you to be brave. Ask questions. Take notes.
           Share honestly. Revise your work. Make mistakes. Fix those gaps. Listen to your
-          mentors. Learn from your peers. Be willing to grow.
+          advisors. Learn from your peers. Be willing to grow.
         </p>
         <p>
           Take the first step in becoming the narrator of your own story. Welcome to Project
@@ -101,7 +101,7 @@ const FounderMessage = () => {
           <br />
           <strong>Somphors Tann</strong>
           <br />
-          Founder &amp; Programme Director, Project IVY
+          Founder &amp; Program Director, Project IVY
         </p>
         </div>
       </div>

@@ -15,8 +15,8 @@ const WorldMapSection = () => (
       <div className="world-map-copy" data-reveal>
         <h2>Our global reach</h2>
         <p>
-          Project IVY advisors bring experience from leading institutions worldwide — and
-          help students pursue opportunities across North America, Europe, and Australia.
+          Project IVY advisors bring experience from leading institutions worldwide &mdash; and
+          help students pursue opportunities across the United States.
         </p>
       </div>
     </div>

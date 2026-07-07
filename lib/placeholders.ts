@@ -9,6 +9,7 @@ export const PLACEHOLDERS = {
   // Advising programs
   PROGRAM_READINESS: "program-university-readiness",
   PROGRAM_APPLICATION: "program-university-application",
+  PROGRAM_GRADUATE_SCHOOL: "program-graduate-school",
   PROGRAM_SERVICE_CAMPS: "program-service-camps",
 
   // Homepage sections
@@ -50,6 +51,10 @@ export const TEAM_PHOTOS: Record<string, string> = {
   "Sokniza Noeun": "team-sokniza-noeun",
   "Pichanbormey (Violette) Pisith": "team-violette-pisith",
   "Sreynich Vann": "team-sreynich-vann",
+  "Phearom Duong": "team-phearom-duong",
+  "Makara Teu": "team-makara-teu",
+  "Sophat Tann": "team-sophat-tann",
+  "Phalla": "team-phalla",
 };
 
 export function newsArticlePhoto(slug: string): string {

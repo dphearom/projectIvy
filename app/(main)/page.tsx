@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import OurStory from "@/components/sections/OurStory";
 import WorldMap from "@/components/sections/WorldMap";
 import ConsultingPrograms from "@/components/sections/ConsultingPrograms";
+import MeetOurTeamHome from "@/components/sections/MeetOurTeamHome";
 import AffiliationsPartners from "@/components/sections/AffiliationsPartners";
 import FeaturedNews from "@/components/sections/FeaturedNews";
 
@@ -21,6 +22,7 @@ const Page = () => (
     <WorldMap />
     <ConsultingPrograms />
     <AffiliationsPartners />
+    <MeetOurTeamHome />
     <FeaturedNews />
   </>
 );

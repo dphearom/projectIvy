@@ -9,6 +9,7 @@ import { ADVISING_PROGRAM_DETAILS, type ProgramDetail, type ProgramTier } from "
 const PROGRAM_PHOTOS: Record<string, string> = {
   "university-readiness": PLACEHOLDERS.PROGRAM_READINESS,
   "university-application": PLACEHOLDERS.PROGRAM_APPLICATION,
+  "graduate-school": PLACEHOLDERS.PROGRAM_GRADUATE_SCHOOL,
 };
 
 type ModalData = { program: ProgramDetail; tier: ProgramTier };
@@ -117,7 +118,7 @@ const ProgrammeProducts = () => {
           <span className="eyebrow gold center">Your roadmap</span>
           <h2>Choose your program</h2>
           <p>
-            Two pathways from readiness through application — select a program to explore packages
+            Programs from readiness through graduate school — select a program to explore packages
             and add it to your inquiry list.
           </p>
         </div>
