@@ -23,7 +23,9 @@ export default async function EditEventPage({ params }: PageProps) {
 
   return (
     <>
-      <h1 className="admin-page-title">Edit Event</h1>
+      <h1 className="[font-family:var(--font-manrope)] text-[1.5rem] font-semibold text-ink mb-6">
+        Edit Event
+      </h1>
       <EventForm event={event} />
     </>
   );

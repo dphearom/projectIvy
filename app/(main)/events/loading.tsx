@@ -1,18 +1,9 @@
+import PageHeader from "@/components/PageHeader";
+
 export default function EventsLoading() {
   return (
     <>
-      <div className="page-header">
-        <div className="hero-bg">
-          <span className="blob b1" />
-          <span className="blob b2" />
-          <span className="blob b3" />
-        </div>
-        <div className="grain" />
-        <div className="page-header-inner">
-          <span className="eyebrow gold center">Upcoming Events</span>
-          <h1>Workshops &amp; Bootcamps to Get You There</h1>
-        </div>
-      </div>
+      <PageHeader label="Upcoming Events" title="Workshops & Bootcamps to Get You There" reveal={false} />
       <section className="bg-ivory-2 py-27.5">
         <div className="wrap">
           <div className="mt-15 grid grid-cols-3 gap-6.5 max-[980px]:grid-cols-2 max-[980px]:max-w-115 max-[980px]:mx-auto max-[680px]:grid-cols-1">

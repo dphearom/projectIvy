@@ -23,11 +23,11 @@ export default async function AdminLayout({
     : "Admin";
 
   return (
-    <div className="admin-layout">
+    <div className="flex min-h-screen bg-ivory-2 max-[768px]:flex-col">
       <AdminSidebar />
-      <div className="admin-main">
+      <div className="flex-1 flex flex-col min-w-0">
         <AdminHeader userName={userName} />
-        <div className="admin-content">{children}</div>
+        <div className="p-8 flex-1 max-[768px]:p-4">{children}</div>
       </div>
     </div>
   );

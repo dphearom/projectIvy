@@ -14,7 +14,7 @@ export default function LoginPage() {
 
   return (
     <>
-      <div className="auth-header">
+      <div className="text-center mb-8 flex flex-col items-center">
         <Link href="/">
           <Image
             src="/logo-nav-dark.png"
@@ -24,8 +24,10 @@ export default function LoginPage() {
             priority
           />
         </Link>
-        <h1>Welcome back</h1>
-        <p>Sign in to your account</p>
+        <h1 className="[font-family:var(--font-cormorant)] text-[1.75rem] text-navy mt-4">
+          Welcome back
+        </h1>
+        <p className="text-ink-soft text-[0.9rem] mt-1">Sign in to your account</p>
       </div>
 
       <form action={formAction}>
@@ -43,8 +45,8 @@ export default function LoginPage() {
           placeholder="Enter your password"
           required
         />
-        {state.error && <p className="form-error">{state.error}</p>}
-        <SubmitButton label="Sign in" pendingLabel="Signing in…" />
+        {state.error && <p className="text-[#c0392b] text-[0.8rem] mt-[0.35rem]">{state.error}</p>}
+        <SubmitButton label="Sign in" pendingLabel="Signing in…" className="btn btn-gold w-full mt-2 justify-center" />
       </form>
     </>
   );

@@ -6,14 +6,17 @@ interface Props {
 
 const AdminHeader = ({ userName }: Props) => {
   return (
-    <header className="admin-header">
-      <div className="admin-header__left">
-        <h2 className="admin-header__title">Admin Portal</h2>
+    <header className="flex items-center justify-between py-4 px-8 bg-paper border-b border-[color-mix(in_srgb,var(--ink)_8%,transparent)]">
+      <div>
+        <h2 className="text-[0.95rem] font-medium text-ink-soft">Admin Portal</h2>
       </div>
-      <div className="admin-header__right">
-        <span className="admin-header__user">{userName}</span>
+      <div className="flex items-center gap-4">
+        <span className="text-[0.85rem] text-ink-soft">{userName}</span>
         <form action={logout}>
-          <button type="submit" className="admin-header__logout">
+          <button
+            type="submit"
+            className="text-[0.8rem] text-gold-deep bg-transparent border border-gold-deep py-[0.3rem] px-3 rounded-md cursor-pointer transition-all duration-150 hover:bg-gold-deep hover:text-white"
+          >
             Log out
           </button>
         </form>

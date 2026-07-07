@@ -15,12 +15,17 @@ export default async function AdminDashboard() {
 
   return (
     <>
-      <h1 className="admin-page-title">Dashboard</h1>
-      <div className="admin-stats">
+      <h1 className="[font-family:var(--font-manrope)] text-[1.5rem] font-semibold text-ink mb-6">
+        Dashboard
+      </h1>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4">
         {stats.map((stat) => (
-          <div className="admin-stat-card" key={stat.label}>
-            <span className="admin-stat-value">{stat.value}</span>
-            <span className="admin-stat-label">{stat.label}</span>
+          <div
+            className="bg-paper rounded-xl p-6 flex flex-col gap-1 border border-[color-mix(in_srgb,var(--ink)_8%,transparent)]"
+            key={stat.label}
+          >
+            <span className="text-[2rem] font-bold text-navy">{stat.value}</span>
+            <span className="text-[0.85rem] text-ink-soft">{stat.label}</span>
           </div>
         ))}
       </div>
