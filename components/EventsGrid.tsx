@@ -12,7 +12,7 @@ export default function EventsGrid({ events }: { events: EventDTO[] }) {
 
   return (
     <>
-      <div className="ev-grid">
+      <div className="mt-15 grid grid-cols-3 gap-6.5 max-[980px]:grid-cols-2 max-[980px]:max-w-115 max-[980px]:mx-auto max-[680px]:grid-cols-1">
         {events.map((event, i) => (
           // data-reveal-d cycles 1→2→3 per card, creating a staggered entrance animation.
           // RevealObserver adds class "in" when each card scrolls into view.

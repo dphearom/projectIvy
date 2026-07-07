@@ -13,13 +13,15 @@ const UpcomingEvents = ({ events, preview = false, limit = 3, hideHeader = false
   const shown = preview ? events.slice(0, limit) : events;
 
   return (
-    <section className="events" id="events">
+    <section className="bg-ivory-2 py-27.5" id="events">
       <div className="wrap">
         {!hideHeader && (
-          <div className="section-head" data-reveal>
+          <div className="text-center max-w-180 mx-auto" data-reveal>
             <span className="eyebrow center">Upcoming Events</span>
-            <h2>Workshops &amp; Bootcamps to Get You There</h2>
-            <p>
+            <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
+              Workshops &amp; Bootcamps to Get You There
+            </h2>
+            <p className="mt-4.5 text-ink-soft text-[17px] leading-[1.65]">
               Scholarship bootcamps, application workshops, and mentor meetups — all in one place. Reserve
               your spot and turn your ambition into admission.
             </p>
@@ -27,7 +29,7 @@ const UpcomingEvents = ({ events, preview = false, limit = 3, hideHeader = false
         )}
 
         {shown.length === 0 ? (
-          <p style={{ color: "var(--ink-soft)", textAlign: "center", padding: "40px 0" }}>
+          <p className="text-ink-soft text-center py-10">
             No upcoming events right now — check back soon!
           </p>
         ) : (
@@ -35,7 +37,7 @@ const UpcomingEvents = ({ events, preview = false, limit = 3, hideHeader = false
         )}
 
         {preview && shown.length > 0 && (
-          <div className="events-foot" data-reveal>
+          <div className="text-center mt-13" data-reveal>
             <Link className="btn btn-ghost-dark" href="/events">
               View All Events <span className="arrow">→</span>
             </Link>

@@ -92,10 +92,14 @@ const BookingForm = ({ eventTitle, eventId, rawDate, rawTime, venue, location, d
 
   if (done) {
     return (
-      <div className="booking-success">
-        <div className="check-circle">✓</div>
-        <h4>You&apos;re registered!</h4>
-        <p>Your spot for <strong>{eventTitle}</strong> is confirmed.</p>
+      <div className="text-center py-5">
+        <div className="size-14 rounded-full bg-[linear-gradient(180deg,var(--gold-soft),var(--gold))] text-[#1a1505] text-[1.4rem] font-bold flex items-center justify-center mx-auto mb-4">
+          ✓
+        </div>
+        <h4 className="text-[1.3rem] text-ink mb-2">You&apos;re registered!</h4>
+        <p className="text-[0.95rem] text-ink-soft mb-5">
+          Your spot for <strong>{eventTitle}</strong> is confirmed.
+        </p>
         <button
           type="button"
           className="btn btn-gold"
@@ -108,9 +112,11 @@ const BookingForm = ({ eventTitle, eventId, rawDate, rawTime, venue, location, d
   }
 
   return (
-    <form className="booking-form" onSubmit={handleSubmit} noValidate>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
       <div>
-        <label htmlFor="booking-name">Full name</label>
+        <label htmlFor="booking-name" className="font-body text-[0.85rem] font-semibold text-ink block mb-1.5 tracking-[0.02em]">
+          Full name
+        </label>
         <input
           id="booking-name"
           type="text"
@@ -118,10 +124,13 @@ const BookingForm = ({ eventTitle, eventId, rawDate, rawTime, venue, location, d
           value={name}
           onChange={(e) => setName(e.target.value)}
           autoComplete="name"
+          className="w-full py-3 px-4 rounded-[10px] border border-line bg-cream font-body text-[0.95rem] text-ink transition-[border-color,box-shadow] duration-200 outline-none focus:border-gold focus:shadow-[0_0_0_3px_rgba(182,146,79,0.12)]"
         />
       </div>
       <div>
-        <label htmlFor="booking-email">Email</label>
+        <label htmlFor="booking-email" className="font-body text-[0.85rem] font-semibold text-ink block mb-1.5 tracking-[0.02em]">
+          Email
+        </label>
         <input
           id="booking-email"
           type="email"
@@ -129,13 +138,14 @@ const BookingForm = ({ eventTitle, eventId, rawDate, rawTime, venue, location, d
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
+          className="w-full py-3 px-4 rounded-[10px] border border-line bg-cream font-body text-[0.95rem] text-ink transition-[border-color,box-shadow] duration-200 outline-none focus:border-gold focus:shadow-[0_0_0_3px_rgba(182,146,79,0.12)]"
         />
       </div>
-      {error && <p className="booking-error">{error}</p>}
-      <button type="submit" className="btn btn-gold" disabled={submitting}>
+      {error && <p className="text-[0.88rem] text-[#c0392b]">{error}</p>}
+      <button type="submit" className="btn btn-gold w-full justify-center mt-1" disabled={submitting}>
         {submitting ? "Reserving…" : "Reserve My Spot"}
       </button>
-      <p className="form-note">Free to register · Limited seats available</p>
+      <p className="text-[0.8rem] text-ink-soft text-center">Free to register · Limited seats available</p>
     </form>
   );
 };
