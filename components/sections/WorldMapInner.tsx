@@ -6,12 +6,12 @@ import { MAP_LEGEND, MAP_LOCATIONS } from "@/lib/map-locations";
 import "leaflet/dist/leaflet.css";
 
 const CONTINENT_LABELS = [
-  { name: "North America", lat: 48, lng: -105 },
-  { name: "South America", lat: -12, lng: -58 },
-  { name: "Europe", lat: 54, lng: 18 },
-  { name: "Africa", lat: 2, lng: 22 },
-  { name: "Asia", lat: 38, lng: 92 },
-  { name: "Australia", lat: -24, lng: 134 },
+  { name: "North America", lat: 48,  lng: -105 },
+  { name: "South America", lat: -12, lng: -58  },
+  { name: "Europe",        lat: 54,  lng: 18   },
+  { name: "Africa",        lat: 2,   lng: 22   },
+  { name: "Asia",          lat: 38,  lng: 92   },
+  { name: "Australia",     lat: -24, lng: 134  },
 ] as const;
 
 const continentLabelIcon = (name: string) =>
@@ -23,7 +23,7 @@ const continentLabelIcon = (name: string) =>
   });
 
 const WorldMapInner = () => (
-  <div className="world-map-leaflet">
+  <div className="absolute inset-0 z-0">
     <MapContainer
       center={[25, -20]}
       zoom={2}
@@ -34,7 +34,7 @@ const WorldMapInner = () => (
       worldCopyJump
       maxBounds={[[-85, -220], [85, 220]]}
       maxBoundsViscosity={0.85}
-      className="world-map-container"
+      className="w-full h-full min-h-[clamp(420px,52vw,620px)] bg-[var(--navy-3)]"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
@@ -75,11 +75,14 @@ const WorldMapInner = () => (
       })}
     </MapContainer>
 
-    <div className="world-map-legend" aria-label="Map legend">
+    <div
+      className="absolute z-[1000] top-[clamp(20px,4vw,36px)] right-[clamp(20px,4vw,36px)] flex flex-col gap-2.5 p-[16px_18px] rounded-[var(--radius)] bg-[rgba(14,23,41,0.88)] border border-[rgba(243,237,226,0.14)] backdrop-blur-[10px] [-webkit-backdrop-filter:blur(10px)] shadow-[0_16px_40px_-20px_rgba(0,0,0,0.45)]"
+      aria-label="Map legend"
+    >
       {MAP_LEGEND.map((item) => (
-        <div className="world-map-legend-item" key={item.category}>
+        <div key={item.category} className="flex items-center gap-2.5 text-[0.82rem] font-medium text-[var(--cream-soft)] leading-[1.35]">
           <span
-            className="world-map-legend-dot"
+            className="flex-none w-3 h-3 rounded-full shadow-[0_0_0_2px_rgba(255,255,255,0.15)]"
             style={{ backgroundColor: item.color }}
             aria-hidden="true"
           />

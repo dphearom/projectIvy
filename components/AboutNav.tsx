@@ -62,7 +62,7 @@ export default function AboutNav() {
             key={id}
             href={`#${id}`}
             className={cn(
-              "inline-flex items-center px-5 py-[15px] max-[680px]:px-[14px] max-[680px]:py-[14px]",
+              "inline-flex items-center px-5 py-[15px] max-[680px]:px-3.5 max-[680px]:py-3.5",
               "font-body text-[13.5px] max-[680px]:text-[12.5px] font-medium tracking-[0.01em] whitespace-nowrap",
               "border-b-2 border-transparent transition-[color,border-color] duration-200",
               active === id

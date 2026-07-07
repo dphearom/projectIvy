@@ -166,14 +166,14 @@ const Navbar = () => {
               priority
               className={cn(
                 "block w-auto transition-[height] duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)]",
-                scrolled ? "h-[36px]" : "hidden",
+                scrolled ? "h-9" : "hidden",
               )}
             />
           </Link>
 
           {/* Desktop links */}
           <div className="flex-1 flex justify-center max-[1100px]:hidden">
-            <ul className="flex items-center flex-nowrap gap-[10px] list-none m-0 p-0">
+            <ul className="flex items-center flex-nowrap gap-2.5 list-none m-0 p-0">
               {NAV_ITEMS.map((item) => {
                 const key = item.label;
                 const active = isActive(pathname, item.href);
@@ -181,11 +181,11 @@ const Navbar = () => {
                 const isOpen = openDropdown === key;
 
                 const linkCls = cn(
-                  "inline-flex items-center gap-[6px] relative",
+                  "inline-flex items-center gap-1.5 relative",
                   "font-body text-[14.5px] font-medium leading-none whitespace-nowrap",
                   "py-[18px] px-3 cursor-pointer",
                   "transition-colors duration-[250ms]",
-                  "after:content-[''] after:absolute after:left-[10px] after:right-[10px] after:bottom-[10px]",
+                  "after:content-[''] after:absolute after:left-2.5 after:right-2.5 after:bottom-2.5",
                   "after:h-[1.5px] after:bg-gold after:origin-left after:transition-transform after:duration-300",
                   scrolled
                     ? ["text-ink-soft", "hover:text-gold-deep"]
@@ -239,7 +239,7 @@ const Navbar = () => {
                           <Link
                             href={child.href}
                             role="menuitem"
-                            className="block px-4 py-3 mb-[2px] rounded-[10px] font-body text-[14px] leading-[1.45] text-ink-soft transition-[background-color,color] duration-200 hover:bg-ivory hover:text-navy"
+                            className="block px-4 py-3 mb-0.5 rounded-[10px] font-body text-[14px] leading-[1.45] text-ink-soft transition-[background-color,color] duration-200 hover:bg-ivory hover:text-navy"
                             onClick={handleNavLinkClick(child.href)}
                           >
                             {child.label}
@@ -255,7 +255,7 @@ const Navbar = () => {
 
           {/* Right: auth + hamburger */}
           <div className="flex items-center gap-3 flex-1 justify-end">
-            <div className="flex items-center gap-[10px] max-[1100px]:hidden">
+            <div className="flex items-center gap-2.5 max-[1100px]:hidden">
               <button
                 type="button"
                 className={cn(
@@ -283,9 +283,9 @@ const Navbar = () => {
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((o) => !o)}
             >
-              <span className={cn("block w-[22px] h-[2px] mx-auto my-[5px] rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "translate-y-[7px] rotate-45")} />
-              <span className={cn("block w-[22px] h-[2px] mx-auto my-[5px] rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "opacity-0")} />
-              <span className={cn("block w-[22px] h-[2px] mx-auto my-[5px] rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "-translate-y-[7px] -rotate-45")} />
+              <span className={cn("block w-[22px] h-0.5 mx-auto my-[5px] rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "translate-y-[7px] rotate-45")} />
+              <span className={cn("block w-[22px] h-0.5 mx-auto my-[5px] rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "opacity-0")} />
+              <span className={cn("block w-[22px] h-0.5 mx-auto my-[5px] rounded-sm transition-[transform,opacity,background] duration-300", scrolled ? "bg-navy" : "bg-cream", menuOpen && "-translate-y-[7px] -rotate-45")} />
             </button>
           </div>
         </div>
@@ -306,11 +306,11 @@ const Navbar = () => {
       >
         <div className="flex items-center justify-between px-6 pb-[18px] border-b border-[var(--line-light)]">
           <Link href="/" className="inline-flex items-center leading-none" onClick={() => setMenuOpen(false)}>
-            <Image src="/logo-nav-light.png" alt="Project IVY" width={120} height={82} className="block h-[40px] w-auto" />
+            <Image src="/logo-nav-light.png" alt="Project IVY" width={120} height={82} className="block h-10 w-auto" />
           </Link>
           <button
             type="button"
-            className="w-[40px] h-[40px] border border-[var(--line-light)] rounded-full bg-transparent text-cream text-[24px] leading-none cursor-pointer"
+            className="w-10 h-10 border border-[var(--line-light)] rounded-full bg-transparent text-cream text-[24px] leading-none cursor-pointer"
             aria-label="Close menu"
             onClick={() => setMenuOpen(false)}
           >
@@ -326,7 +326,7 @@ const Navbar = () => {
             const isMobileOpen = openDropdown === mobileKey;
 
             const mobileLinkCls =
-              "flex items-center justify-between w-full px-7 py-[14px] font-display text-[1.35rem] font-semibold text-cream bg-transparent border-none cursor-pointer text-left transition-colors duration-[250ms] hover:text-gold";
+              "flex items-center justify-between w-full px-7 py-3.5 font-display text-[1.35rem] font-semibold text-cream bg-transparent border-none cursor-pointer text-left transition-colors duration-[250ms] hover:text-gold";
 
             if (!hasChildren) {
               return (
@@ -387,10 +387,10 @@ const Navbar = () => {
         </ul>
 
         <div className="flex flex-col gap-[10px] mt-6 pt-5 px-7 border-t border-[var(--line-light)]">
-          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-[14px] px-[18px] border border-[var(--line-light)] text-cream-soft bg-transparent text-center">
+          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-3.5 px-[18px] border border-[var(--line-light)] text-cream-soft bg-transparent text-center">
             Log in
           </button>
-          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-[14px] px-[18px] border border-transparent bg-gold text-navy-3 text-center">
+          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-3.5 px-[18px] border border-transparent bg-gold text-navy-3 text-center">
             Sign up
           </button>
         </div>

@@ -1,5 +1,5 @@
 const FeaturedNews = () => (
-  <section className="featured-news" id="news">
+  <section className="bg-[var(--ivory-2)] py-[110px]" id="news">
     <div className="wrap">
       <div className="section-head section-head--center" data-reveal>
         <h2>Latest from Project IVY</h2>
