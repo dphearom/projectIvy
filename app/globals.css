@@ -1337,7 +1337,7 @@ section {
   transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
 }
 
-.team-card:hover {
+.team-card:not(.team-card--compact):hover {
   transform: translateY(-5px);
   box-shadow: 0 28px 50px -28px rgba(14, 23, 41, 0.28);
   border-color: rgba(184, 150, 90, 0.4);
@@ -1369,6 +1369,10 @@ section {
   font-size: 0.92rem;
   color: var(--ink-soft);
   line-height: 1.58;
+}
+
+.team-card--compact {
+  transition: none;
 }
 
 .team-card--compact .team-card-body {
