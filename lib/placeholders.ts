@@ -1,3 +1,5 @@
+import { MENTOR_TEAM } from "@/lib/team";
+
 /** Filename slugs for site images — save assets as `public/images/{slug}.jpg` (or .webp). */
 
 export const PLACEHOLDERS = {
@@ -37,26 +39,6 @@ export const PLACEHOLDERS = {
 
 export type PlaceholderSlug = (typeof PLACEHOLDERS)[keyof typeof PLACEHOLDERS];
 
-export const TEAM_PHOTOS: Record<string, string> = {
-  "Somphors Tann": "team-somphors-tann",
-  "Ayden Hayes": "team-ayden-hayes",
-  "Virithkarvan (Vaughn) Van Chum": "team-vaughn-van-chum",
-  "Peipei Soeung": "team-peipei-soeung",
-  "Kaitlyn Mady": "team-kaitlyn-mady",
-  "Sonisa Leng": "team-sonisa-leng",
-  "Sophuth Phon": "team-sophuth-phon",
-  "Rathanakmealea (Mealea) Mang": "team-mealea-mang",
-  "Vanndet Va": "team-vanndet-va",
-  "Rasy Hai": "team-rasy-hai",
-  "Sokniza Noeun": "team-sokniza-noeun",
-  "Pichanbormey (Violette) Pisith": "team-violette-pisith",
-  "Sreynich Vann": "team-sreynich-vann",
-  "Phearom Duong": "team-phearom-duong",
-  "Makara Teu": "team-makara-teu",
-  "Sophat Tann": "team-sophat-tann",
-  "Phalla": "team-phalla",
-};
-
 export function newsArticlePhoto(slug: string): string {
   return `news-${slug}`;
 }
@@ -83,9 +65,9 @@ export const PLACEHOLDER_MANIFEST = [
   { slug: PLACEHOLDERS.EVENT_GALLERY_PROFILE, location: "Events gallery — profile workshop", aspect: "cover" },
   { slug: PLACEHOLDERS.EVENTS_CALENDAR, location: "Events calendar (unused section)", aspect: "21 / 9" },
   { slug: PLACEHOLDERS.SUCCESS_STORY_PORTRAIT, location: "Success stories — student portrait", aspect: "3 / 4" },
-  ...Object.entries(TEAM_PHOTOS).map(([name, slug]) => ({
-    slug,
-    location: `About — team photo (${name})`,
+  ...MENTOR_TEAM.filter((m) => m.photo).map((m) => ({
+    slug: m.photo!,
+    location: `About — mentor photo (${m.name})`,
     aspect: "4 / 5",
   })),
   { slug: "news-2025-2026-university-deadlines", location: "News — 2025–2026 University Deadlines", aspect: "16 / 10" },
