@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { PHOTO_POSITION, PHOTO_SCALE, TEAM, TEAM_PHOTOS } from "@/lib/team";
+import { MENTOR_TEAM, PHOTO_POSITION, PHOTO_SCALE } from "@/lib/team";
 
 const OurTeam = () => (
   <section className="about-sec alt" id="team">
@@ -15,11 +15,11 @@ const OurTeam = () => (
       </div>
 
       <div className="team-card-grid">
-        {TEAM.map((member, i) => (
+        {MENTOR_TEAM.map((member, i) => (
           <article className="team-card" key={member.name} data-reveal data-reveal-d={String((i % 3) + 1)}>
             <div className="team-card-photo" style={{ aspectRatio: "1 / 1", overflow: "hidden" }}>
               <Image
-                src={`/images/${TEAM_PHOTOS[member.name]}.jpg`}
+                src={`/images/${member.photo}.jpg`}
                 alt={member.name}
                 width={400}
                 height={400}

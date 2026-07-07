@@ -1,6 +1,6 @@
 import Image from "next/image";
 import PlaceholderImage from "@/components/PlaceholderImage";
-import { HOME_TEAM, PHOTO_POSITION, PHOTO_SCALE } from "@/lib/team";
+import { CORE_TEAM, PHOTO_POSITION, PHOTO_SCALE } from "@/lib/team";
 
 const placeholderSlug = (name: string) =>
   `team-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
@@ -14,7 +14,7 @@ const MeetOurTeamHome = () => (
       </div>
 
       <div className="team-card-grid">
-        {HOME_TEAM.map((member, i) => (
+        {CORE_TEAM.map((member, i) => (
           <article
             className="team-card team-card--compact"
             key={member.name}

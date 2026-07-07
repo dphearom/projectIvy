@@ -1,4 +1,4 @@
-import { TEAM_PHOTOS } from "@/lib/team";
+import { MENTOR_TEAM } from "@/lib/team";
 
 /** Filename slugs for site images — save assets as `public/images/{slug}.jpg` (or .webp). */
 
@@ -65,9 +65,9 @@ export const PLACEHOLDER_MANIFEST = [
   { slug: PLACEHOLDERS.EVENT_GALLERY_PROFILE, location: "Events gallery — profile workshop", aspect: "cover" },
   { slug: PLACEHOLDERS.EVENTS_CALENDAR, location: "Events calendar (unused section)", aspect: "21 / 9" },
   { slug: PLACEHOLDERS.SUCCESS_STORY_PORTRAIT, location: "Success stories — student portrait", aspect: "3 / 4" },
-  ...Object.entries(TEAM_PHOTOS).map(([name, slug]) => ({
-    slug,
-    location: `About — team photo (${name})`,
+  ...MENTOR_TEAM.filter((m) => m.photo).map((m) => ({
+    slug: m.photo!,
+    location: `About — mentor photo (${m.name})`,
     aspect: "4 / 5",
   })),
   { slug: "news-2025-2026-university-deadlines", location: "News — 2025–2026 University Deadlines", aspect: "16 / 10" },
