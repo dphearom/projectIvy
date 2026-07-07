@@ -1,3 +1,45 @@
+@layer theme, base, utilities;
+
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
+
+/* ─── Custom font-family utilities ─────────────────────────────────
+   @utility puts these in @layer utilities so they beat @layer base
+   resets (p { font-family: var(--font-body) } etc.)
+   ─────────────────────────────────────────────────────────────────── */
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@utility font-body {
+  font-family: var(--font-body);
+}
+
+/* ─── Project Ivy design tokens → Tailwind utilities ───────────────
+   @theme inline wires the :root CSS vars to Tailwind class names
+   without emitting duplicate custom properties (no circular refs).
+   Usage: bg-navy-3, text-gold-soft, font-display, font-body, etc.
+   ─────────────────────────────────────────────────────────────────── */
+@theme inline {
+  /* Colors */
+  --color-navy:       var(--navy);
+  --color-navy-2:     var(--navy-2);
+  --color-navy-3:     var(--navy-3);
+  --color-gold:       var(--gold);
+  --color-gold-soft:  var(--gold-soft);
+  --color-gold-deep:  var(--gold-deep);
+  --color-ivory:      var(--ivory);
+  --color-ivory-2:    var(--ivory-2);
+  --color-paper:      var(--paper);
+  --color-ink:        var(--ink);
+  --color-ink-soft:   var(--ink-soft);
+  --color-cream:      var(--cream);
+  --color-cream-soft: var(--cream-soft);
+  --color-line:       var(--line);
+  --color-line-light: var(--line-light);
+
+}
+
 /* ===================================================================
    PROJECT IVY — GLOBAL STYLESHEET
    ─────────────────────────────────────────────────────────────────
@@ -128,29 +170,31 @@ body {
   overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-.display {
-  font-family: var(--font-display);
-  font-weight: 600;
-  margin: 0;
-}
+@layer base {
+  h1,
+  h2,
+  h3,
+  .display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin: 0;
+  }
 
-p {
-  margin: 0;
-  font-family: var(--font-body);
-  font-weight: 400;
-}
+  p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-img {
-  display: block;
-  max-width: 100%;
+  img {
+    display: block;
+    max-width: 100%;
+  }
 }
 
 
@@ -3392,131 +3436,6 @@ body[data-ivy="off"] .cta-watermark {
 }
 
 /* ── Footer ── */
-footer {
-  position: relative;
-  z-index: 1;
-  background: #091226;
-  color: rgba(247, 241, 230, 0.72);
-  padding: 80px 0 36px;
-}
-
-footer>.wrap {
-  position: relative;
-}
-
-/* .footer-illo kept for potential re-use; currently not rendered */
-.footer-illo {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  color: var(--gold-soft);
-  opacity: 0.5;
-  pointer-events: none;
-  padding-top: 56px;
-  margin-bottom: 20px;
-}
-
-.footer-illo svg {
-  width: 100%;
-  height: clamp(116px, 16vw, 196px);
-  display: block;
-}
-
-.foot-top {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 48px;
-}
-
-.foot-brand img,
-.foot-brand .foot-logo {
-  width: 160px;
-  height: auto;
-  margin: 0 0 6px;
-}
-
-.foot-brand p {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 14.5px;
-  line-height: 1.65;
-  max-width: 30em;
-  margin-top: 14px;
-}
-
-.foot-quote {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-style: italic;
-  font-size: 18px;
-  color: var(--gold-soft);
-  margin-top: 18px;
-}
-
-.foot-social {
-  margin-top: 22px;
-  display: flex;
-  gap: 12px;
-}
-
-.foot-social a {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(243, 237, 226, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cream-soft);
-  transition: background .25s ease, color .25s ease, border-color .25s ease;
-}
-
-.foot-social a:hover {
-  background: var(--gold);
-  color: var(--navy-3);
-  border-color: var(--gold);
-}
-
-.foot-col h4 {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream);
-  margin: 0 0 18px;
-}
-
-.foot-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.foot-col a {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 14.5px;
-  color: var(--cream-soft);
-  transition: color .2s ease;
-}
-
-.foot-bottom {
-  font-family: var(--font-body);
-  font-weight: 400;
-  margin-top: 56px;
-  padding-top: 26px;
-  border-top: 1px solid rgba(243, 237, 226, 0.12);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  font-size: 13px;
-  color: rgba(243, 237, 226, 0.55);
-}
 
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -3732,15 +3651,7 @@ footer>.wrap {
     margin-right: auto;
   }
 
-  .foot-top {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .foot-brand {
-    grid-column: 1 / -1;
-  }
-
-  .frow,
+.frow,
   .frow.flip {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -3898,10 +3809,7 @@ footer>.wrap {
     padding: 128px 0 72px;
   }
 
-  .foot-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+
 }
 
 

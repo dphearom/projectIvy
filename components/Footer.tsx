@@ -2,70 +2,98 @@ import Image from "next/image";
 import Link from "next/link";
 import { FacebookIcon } from "@/components/icons";
 
-const Footer = () => {
-  return (
-    <footer>
-      <div className="wrap">
-        <div className="foot-top">
-          <div className="foot-brand">
-            <Image
-              src="/logo-light.png"
-              alt="Project IVY — Breksa AdvisED Global"
-              width={1665}
-              height={1304}
-              className="foot-logo"
-            />
-            <p>
-              Cambodia&apos;s academic advising service built for every student. Combining AI-powered tools
-              with human mentorship to unlock global opportunities.
-            </p>
-            <p className="foot-quote">&ldquo;Guiding your Education Journey&rdquo;</p>
-            <div className="foot-social">
-              <a
-                href="https://www.facebook.com/profile.php?id=61565295581796"
-                aria-label="Facebook"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FacebookIcon />
-              </a>
-            </div>
-          </div>
+const NAV_COLS = [
+  {
+    heading: "Programs",
+    links: [
+      { label: "University Readiness", href: "/programmes#university-readiness" },
+      { label: "University Application", href: "/programmes#university-application" },
+      { label: "Graduate School Advising", href: "/programmes#graduate-school" },
+      { label: "Scholarships", href: "/scholarships" },
+      // { label: "Service & Camps", href: "/camps" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Our Team", href: "/about#team" },
+      { label: "Events", href: "/events" },
+      // { label: "Camps", href: "/camps" },
+    ],
+  },
+  {
+    heading: "Contact",
+    links: [
+      { label: "Book a Consultation", href: "/contact" },
+      { label: "Workshops & Events", href: "/events" },
+      { label: "Partner With Us", href: "/contact" },
+    ],
+  },
+];
 
-          <div className="foot-col">
-            <h4>Programs</h4>
-            <ul>
-              <li><Link href="/programmes#university-readiness">University Readiness</Link></li>
-              <li><Link href="/programmes#university-application">University Application</Link></li>
-              <li><Link href="/programmes#graduate-school">Graduate School Advising</Link></li>
-              <li><Link href="/scholarships">Scholarships</Link></li>
-            </ul>
-          </div>
+const Footer = () => (
+  <footer className="relative z-[1] bg-[#091226] text-[rgba(247,241,230,0.72)] pt-20 pb-9">
+    <div className="wrap">
+      <div className="grid grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 max-[960px]:grid-cols-2 max-[960px]:gap-8">
 
-          <div className="foot-col">
-            <h4>Company</h4>
-            <ul>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/about#team">Our Team</Link></li>
-            </ul>
-          </div>
-
-          <div className="foot-col">
-            <h4>Contact</h4>
-            <ul>
-              <li><Link href="/contact">Book a Consultation</Link></li>
-              <li><Link href="/contact">Partner With Us</Link></li>
-            </ul>
+        {/* Brand */}
+        <div className="max-[960px]:col-span-full">
+          <Image
+            src="/logo-light.png"
+            alt="Project IVY — Breksa AdvisED Global"
+            width={1665}
+            height={1304}
+            className="w-40 h-auto mb-1.5"
+          />
+          <p className="text-[14.5px] leading-[1.65] max-w-[30em] mt-3.5">
+            Cambodia&apos;s academic advising service built for every student. Combining AI-powered
+            tools with human mentorship to unlock global opportunities.
+          </p>
+          <p className="font-display italic text-[18px] text-gold-soft mt-[18px]">
+            &ldquo;Guiding your Education Journey&rdquo;
+          </p>
+          <div className="mt-[22px] flex gap-3">
+            <a
+              href="https://www.facebook.com/profile.php?id=61565295581796"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="size-10 rounded-full border border-[rgba(243,237,226,0.18)] flex items-center justify-center text-cream-soft transition-[background,color,border-color] duration-[250ms] hover:bg-gold hover:text-navy-3 hover:border-gold"
+            >
+              <FacebookIcon />
+            </a>
           </div>
         </div>
 
-        <div className="foot-bottom">
-          <span>© 2026 Breksa — AdvisED Global. All rights reserved.</span>
-          <span>Cambodia&apos;s Academic Advising Platform</span>
-        </div>
+        {/* Nav columns */}
+        {NAV_COLS.map((col) => (
+          <div key={col.heading}>
+            <h4 className="font-bold text-[13px] tracking-[0.14em] uppercase text-cream mb-[18px]">
+              {col.heading}
+            </h4>
+            <ul className="flex flex-col gap-3 list-none p-0 m-0">
+              {col.links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-[14.5px] text-cream-soft transition-colors duration-200 hover:text-cream"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
-    </footer>
-  );
-};
+
+      <div className="mt-14 pt-[26px] border-t border-[rgba(243,237,226,0.12)] flex justify-between items-center gap-4 text-[13px] text-[rgba(243,237,226,0.55)] max-[640px]:flex-col max-[640px]:items-start">
+        <span>© 2026 Breksa — AdvisED Global. All rights reserved.</span>
+        <span>Cambodia&apos;s Academic Advising Platform</span>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;
