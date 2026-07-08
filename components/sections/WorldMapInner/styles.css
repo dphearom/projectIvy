@@ -1,0 +1,167 @@
+/* Leaflet control overrides — colocated with WorldMapInner since these
+   selectors target classes Leaflet generates itself (not Tailwind-reachable)
+   and are only ever rendered by this component. */
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background: rgba(14, 23, 41, 0.88) !important;
+  color: rgba(243, 237, 226, 0.9) !important;
+  border: 1px solid rgba(243, 237, 226, 0.14) !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 30px !important;
+  font-size: 1.1rem !important;
+  backdrop-filter: blur(8px) !important;
+  transition: background .2s ease, color .2s ease !important;
+}
+
+.leaflet-control-zoom-in {
+  border-radius: 8px 8px 0 0 !important;
+  border-bottom: none !important;
+}
+
+.leaflet-control-zoom-out {
+  border-radius: 0 0 8px 8px !important;
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+  background: rgba(184, 150, 90, 0.22) !important;
+  color: #b8965a !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(14, 23, 41, 0.72) !important;
+  color: rgba(243, 237, 226, 0.45) !important;
+  font-size: 0.62rem !important;
+  border-radius: 6px 0 0 0 !important;
+  backdrop-filter: blur(6px) !important;
+  padding: 3px 8px !important;
+}
+
+.leaflet-control-attribution a {
+  color: rgba(184, 150, 90, 0.75) !important;
+}
+
+/* Popup */
+.leaflet-popup-content-wrapper {
+  background: rgba(14, 23, 41, 0.92) !important;
+  border: 1px solid rgba(243, 237, 226, 0.14) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: blur(10px) !important;
+  color: var(--cream) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  padding: 12px 16px !important;
+}
+
+.map-popup strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+}
+
+.map-popup span {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: rgba(184, 150, 90, 0.85);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.leaflet-popup-tip-container .leaflet-popup-tip {
+  background: rgba(14, 23, 41, 0.92) !important;
+  box-shadow: none !important;
+}
+
+.leaflet-popup-close-button {
+  position: absolute !important;
+  top: -10px !important;
+  right: -10px !important;
+  width: 22px !important;
+  height: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  background: rgba(14, 23, 41, 0.95) !important;
+  border: 1px solid rgba(243, 237, 226, 0.2) !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  transition: background .2s ease, border-color .2s ease !important;
+}
+
+.leaflet-popup-close-button span {
+  display: none !important;
+}
+
+.leaflet-popup-close-button::before,
+.leaflet-popup-close-button::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: rgba(243, 237, 226, 0.75);
+  transition: background .2s ease;
+}
+
+.leaflet-popup-close-button::before {
+  transform: rotate(45deg);
+}
+
+.leaflet-popup-close-button::after {
+  transform: rotate(-45deg);
+}
+
+.leaflet-popup-close-button:hover {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+}
+
+.leaflet-popup-close-button:hover::before,
+.leaflet-popup-close-button:hover::after {
+  background: #fff;
+}
+
+/* Marker pulse */
+.map-marker-circle {
+  animation: marker-glow 2.8s ease-in-out infinite;
+}
+
+@keyframes marker-glow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.65; }
+}
+
+.continent-label-marker {
+  background: transparent;
+  border: none;
+}
+
+.continent-label {
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 1.1vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(243, 237, 226, 0.42);
+  pointer-events: none;
+  user-select: none;
+}

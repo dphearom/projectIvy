@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.css";
 
 type School = { name: string; logo?: string };
 
@@ -35,7 +36,7 @@ const ROW_2: School[] = [
 ];
 
 const SchoolSlot = ({ school }: { school: School }) => (
-  <div className="flex-none w-40 aspect-[2.4/1] rounded-[10px] border border-line bg-ivory-2 flex items-center justify-center px-4.5 py-3 transition-[border-color,box-shadow,transform,translate,scale,background] duration-250 hover:border-[rgba(184,150,90,0.8)] hover:shadow-[0_0_0_3px_rgba(184,150,90,0.15)] hover:scale-[1.08] hover:-translate-y-0.5 hover:bg-white">
+  <div className="flex-none w-40 mr-4.5 aspect-[2.4/1] rounded-[10px] border border-line bg-ivory-2 flex items-center justify-center px-4.5 py-3 transition-[border-color,box-shadow,transform,translate,scale,background] duration-250 hover:border-[rgba(184,150,90,0.8)] hover:shadow-[0_0_0_3px_rgba(184,150,90,0.15)] hover:scale-[1.08] hover:-translate-y-0.5 hover:bg-white">
     {school.logo ? (
       // eslint-disable-next-line @next/next/no-img-element
       <img
@@ -70,7 +71,7 @@ const AffiliationsPartners = () => (
       <div
         className="overflow-hidden py-2.5 mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] group"
       >
-        <div className="flex gap-4.5 w-max animate-[logo-marquee_38s_linear_infinite] group-hover:[animation-play-state:paused]">
+        <div className="flex w-max animate-[logo-marquee_38s_linear_infinite] group-hover:[animation-play-state:paused]">
           {[...ROW_1, ...ROW_1].map((school, i) => (
             <SchoolSlot key={`r1-${i}`} school={school} />
           ))}
@@ -81,7 +82,7 @@ const AffiliationsPartners = () => (
       <div
         className="overflow-hidden py-2.5 mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] group"
       >
-        <div className="flex gap-4.5 w-max animate-[logo-marquee_44s_linear_infinite_reverse] group-hover:[animation-play-state:paused]">
+        <div className="flex w-max animate-[logo-marquee_44s_linear_infinite_reverse] group-hover:[animation-play-state:paused]">
           {[...ROW_2, ...ROW_2].map((school, i) => (
             <SchoolSlot key={`r2-${i}`} school={school} />
           ))}

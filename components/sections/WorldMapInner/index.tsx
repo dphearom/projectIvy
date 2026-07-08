@@ -4,6 +4,7 @@ import L from "leaflet";
 import { CircleMarker, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { MAP_LEGEND, MAP_LOCATIONS } from "@/lib/map-locations";
 import "leaflet/dist/leaflet.css";
+import "./styles.css";
 
 const CONTINENT_LABELS = [
   { name: "North America", lat: 48,  lng: -105 },

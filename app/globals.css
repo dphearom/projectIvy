@@ -55,23 +55,25 @@
    component; each page now writes its own layout/spacing/typography
    inline. What's left here is only:
      - design tokens (:root) feeding @theme / Tailwind's `bg-navy` etc.
-     - primitives too complex or too widely shared to inline per-component
-       (`.wrap`, `.eyebrow`, `.btn*`, `.hero-stage`/`.hero-bg`, `.blob`/
-       `.grain`, `.ph-block`, `.tier-modal*`, Leaflet map overrides)
+     - primitives too widely shared across components to inline anywhere
+       in particular (`.wrap`, `.eyebrow`, `.btn*`, `.hero-stage`/
+       `.hero-bg`, `.blob`/`.grain`, `.ph-block`, `.tier-modal*` — the
+       tier modal is shared by both ProgrammeProducts and
+       ServiceCampsProgram, so it has no single component home)
      - the `[data-reveal]` scroll-in animation and its `@keyframes`
-     - CSS still backing components that exist in the repo but aren't
-       rendered by any page (kept in case they're revived — see each
-       section's own comment for which component it belongs to)
-   Do not add new rules here for a single component — write Tailwind
-   utilities in the component instead. Only add here if it's a genuinely
-   shared primitive multiple components need.
+   CSS that belongs to exactly one component lives in a colocated
+   `<ComponentName>.css` next to that component instead (e.g.
+   `components/sections/OurStory.css`, `components/EventModal.css`,
+   `components/sections/WorldMapInner.css`) — check there first before
+   assuming something is missing. Do not add new rules here for a single
+   component; only add here if it's a genuinely shared primitive multiple
+   components need.
 
    SECTIONS (in file order)
    Design tokens · Reset & base · Layout utilities · Eyebrow/Buttons ·
    Hero stage (blobs + grain) · Section frames & Features · Homepage
-   sections · Event modal · Responsive breakpoints · About page sections ·
-   Responsive (continued) · Skeleton loading · Ivy brand text ·
-   Package tier card stack · Tier/camp modal overlay · Reveal animations
+   sections · Responsive breakpoints · Ivy brand text ·
+   Tier/camp modal overlay · Reveal animations
    =================================================================== */
 
 
@@ -537,199 +539,6 @@ section {
   max-width: 85%;
 }
 
-/* Programmes page — product catalog */
-.page-hero-image {
-  min-height: min(72vh, 640px);
-}
-
-
-/* ── Leaflet control overrides ────────────────────────── */
-.leaflet-control-zoom {
-  border: none !important;
-  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5) !important;
-}
-
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out {
-  background: rgba(14, 23, 41, 0.88) !important;
-  color: rgba(243, 237, 226, 0.9) !important;
-  border: 1px solid rgba(243, 237, 226, 0.14) !important;
-  width: 32px !important;
-  height: 32px !important;
-  line-height: 30px !important;
-  font-size: 1.1rem !important;
-  backdrop-filter: blur(8px) !important;
-  transition: background .2s ease, color .2s ease !important;
-}
-
-.leaflet-control-zoom-in {
-  border-radius: 8px 8px 0 0 !important;
-  border-bottom: none !important;
-}
-
-.leaflet-control-zoom-out {
-  border-radius: 0 0 8px 8px !important;
-}
-
-.leaflet-control-zoom-in:hover,
-.leaflet-control-zoom-out:hover {
-  background: rgba(184, 150, 90, 0.22) !important;
-  color: #b8965a !important;
-}
-
-.leaflet-control-attribution {
-  background: rgba(14, 23, 41, 0.72) !important;
-  color: rgba(243, 237, 226, 0.45) !important;
-  font-size: 0.62rem !important;
-  border-radius: 6px 0 0 0 !important;
-  backdrop-filter: blur(6px) !important;
-  padding: 3px 8px !important;
-}
-
-.leaflet-control-attribution a {
-  color: rgba(184, 150, 90, 0.75) !important;
-}
-
-/* Popup */
-.leaflet-popup-content-wrapper {
-  background: rgba(14, 23, 41, 0.92) !important;
-  border: 1px solid rgba(243, 237, 226, 0.14) !important;
-  border-radius: 10px !important;
-  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.55) !important;
-  backdrop-filter: blur(10px) !important;
-  color: var(--cream) !important;
-  padding: 0 !important;
-}
-
-.leaflet-popup-content {
-  margin: 0 !important;
-  padding: 12px 16px !important;
-}
-
-.map-popup strong {
-  display: block;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--cream);
-  letter-spacing: 0.01em;
-}
-
-.map-popup span {
-  display: block;
-  margin-top: 2px;
-  font-size: 0.75rem;
-  color: rgba(184, 150, 90, 0.85);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.leaflet-popup-tip-container .leaflet-popup-tip {
-  background: rgba(14, 23, 41, 0.92) !important;
-  box-shadow: none !important;
-}
-
-.leaflet-popup-close-button {
-  position: absolute !important;
-  top: -10px !important;
-  right: -10px !important;
-  width: 22px !important;
-  height: 22px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-  border-radius: 50% !important;
-  background: rgba(14, 23, 41, 0.95) !important;
-  border: 1px solid rgba(243, 237, 226, 0.2) !important;
-  color: rgba(243, 237, 226, 0.75) !important;
-  font-size: 0.9rem !important;
-  line-height: 1 !important;
-  transition: background .2s ease, color .2s ease !important;
-}
-
-.leaflet-popup-close-button:hover {
-  background: #b8965a !important;
-  color: #fff !important;
-  border-color: #b8965a !important;
-}
-
-/* Marker pulse */
-.map-marker-circle {
-  animation: marker-glow 2.8s ease-in-out infinite;
-}
-
-@keyframes marker-glow {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.65; }
-}
-
-/* Referenced via Tailwind's animate-[logo-marquee_...] arbitrary value in
-   AffiliationsPartners.tsx — keep even though no plain "logo-marquee" class
-   string appears anywhere (it's embedded inside the animate-[] value). */
-@keyframes logo-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.continent-label-marker {
-  background: transparent;
-  border: none;
-}
-
-.continent-label {
-  display: inline-block;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  font-family: var(--font-body);
-  font-size: clamp(0.62rem, 1.1vw, 0.78rem);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(243, 237, 226, 0.42);
-  pointer-events: none;
-  user-select: none;
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   EVENT MODAL
-   ─────────────────────────────────────────────────────────────────
-   Pattern: fixed overlay (.ev-modal-backdrop) sits above everything
-   (z-index 300, higher than nav:50 and subnav:40). Clicking the
-   backdrop calls onClose; clicking inside the modal stops propagation.
-
-   backdrop-filter: blur(10px) blurs the page content behind the overlay.
-   JS in EventModal.tsx sets document.body.overflow = "hidden" while open
-   to prevent the page from scrolling behind the modal.
-
-   The modal itself uses a two-column grid:
-     .ev-modal-main   — scrollable event details (left)
-     .ev-modal-aside  — sticky booking form (right, position:sticky top:0)
-   On mobile (≤720px) this collapses to a single column bottom sheet.
-   ═══════════════════════════════════════════════════════════════════ */
-@keyframes backdropIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes modalIn {
-  from {
-    transform: translateY(18px) scale(0.98);
-    opacity: 0;
-  }
-
-  to {
-    transform: none;
-    opacity: 1;
-  }
-}
-
-
 /* ═══════════════════════════════════════════════════════════════════
    RESPONSIVE — main breakpoints
    ═══════════════════════════════════════════════════════════════════ */
@@ -762,46 +571,8 @@ section {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   ABOUT PAGE SECTIONS
+   RESPONSIVE (continued — full-width breakpoints)
    ═══════════════════════════════════════════════════════════════════ */
-
-/* Founder section */
-.founder-photo {
-  position: relative;
-}
-
-/* Decorative border frame offset behind the photo */
-.founder-photo::before {
-  content: "";
-  position: absolute;
-  top: -18px;
-  left: -18px;
-  width: 55%;
-  height: 55%;
-  border: 1px solid rgba(182, 146, 79, 0.6);
-  border-radius: var(--r);
-  z-index: 0;
-}
-
-.founder-photo img {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: auto;
-  border-radius: var(--r);
-  display: block;
-  box-shadow: 0 44px 90px -36px rgba(19, 35, 63, 0.5);
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   RESPONSIVE (continued — about page + full-width breakpoints)
-   ═══════════════════════════════════════════════════════════════════ */
-@media (max-width: 980px) {
-  .founder-photo {
-    max-width: 440px;
-  }
-}
-
 @media (max-width: 680px) {
   body {
     font-size: 16px;
@@ -828,15 +599,6 @@ section {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   SKELETON LOADING
-   ═══════════════════════════════════════════════════════════════════ */
-
-@keyframes shimmer {
-  to { background-position: -200% 0; }
-}
-
-
 
 /* ═══════════════════════════════════════════════════════════════════
    IVY brand text
@@ -845,14 +607,6 @@ section {
   font-style: italic;
   color: var(--gold-deep);
   letter-spacing: 0.02em;
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   Package tier card stack (programmes page reveal)
-   ══════════════════════════════════════════════════════════════════ */
-@keyframes pkg-stack-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ═══════════════════════════════════════════════════════════════════

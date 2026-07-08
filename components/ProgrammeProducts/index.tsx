@@ -7,6 +7,7 @@ import { PLACEHOLDERS } from "@/lib/placeholders";
 import { ADVISING_PROGRAM_DETAILS, type ProgramDetail, type ProgramTier } from "@/lib/programs";
 import { scrollToHashWhenReady } from "@/lib/scroll-to-hash";
 import { cn } from "@/lib/utils";
+import "./styles.css";
 
 const PROGRAM_PHOTOS: Record<string, string> = {
   "university-readiness": PLACEHOLDERS.PROGRAM_READINESS,

@@ -4,6 +4,7 @@ import { useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import BookingCard from "@/components/BookingCard";
 import type { EventDTO } from "@/lib/events";
+import "./styles.css";
 
 interface Props {
   event: EventDTO;
