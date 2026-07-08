@@ -95,6 +95,8 @@
   /* ── Nav layout ── */
   --nav-height: 80px;
   --nav-height-scroll: 60px;
+  --scroll-offset: 80px;
+  --scroll-offset-about: 128px;
 }
 
 /* Swap display font to Playfair Display when [data-heading="Playfair"] is set on <html> */
@@ -1726,7 +1728,7 @@ section {
 }
 
 .programme-product {
-  scroll-margin-top: 100px;
+  scroll-margin-top: var(--scroll-offset);
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -3815,6 +3817,11 @@ footer>.wrap {
   .nav-toggle {
     display: block;
   }
+
+  .nav-toggle.open {
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 @media (max-width: 680px) {
@@ -4358,9 +4365,17 @@ footer>.wrap {
 #mission,
 #vision,
 #who-we-are,
+#why-choose-us,
 #team,
 #stories {
-  scroll-margin-top: 128px;
+  scroll-margin-top: var(--scroll-offset-about);
+}
+
+#programs,
+#university-readiness,
+#university-application,
+#graduate-school {
+  scroll-margin-top: var(--scroll-offset);
 }
 
 .about-subnav a {
@@ -4887,7 +4902,7 @@ footer>.wrap {
 .mobile-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 48;
+  z-index: 998;
   border: none;
   padding: 0;
   background: rgba(8, 15, 30, 0.55);
@@ -4899,7 +4914,7 @@ footer>.wrap {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 49;
+  z-index: 999;
   width: min(360px, 88vw);
   background: var(--ink-2);
   transform: translateX(100%);
@@ -4927,6 +4942,8 @@ footer>.wrap {
 }
 
 .mobile-close {
+  position: relative;
+  z-index: 1;
   width: 40px;
   height: 40px;
   border: 1px solid var(--line-light);
@@ -4945,15 +4962,17 @@ footer>.wrap {
 }
 
 .mobile-list>li>a,
-.mobile-trigger {
+.mobile-trigger,
+.mobile-parent-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 14px 28px;
-  font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-family: var(--font-body);
+  font-size: 15px;
   font-weight: 600;
+  letter-spacing: 0.01em;
   color: var(--cream);
   background: none;
   border: none;
@@ -4962,8 +4981,40 @@ footer>.wrap {
   transition: color .25s ease;
 }
 
+.mobile-item-row {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.mobile-parent-link {
+  flex: 1;
+  justify-content: flex-start;
+  padding: 14px 12px 14px 28px;
+}
+
+.mobile-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--cream);
+  cursor: pointer;
+  transition: color .25s ease;
+}
+
+.mobile-list>li.open>.mobile-dropdown-toggle .nav-chevron {
+  transform: rotate(180deg);
+}
+
 .mobile-list>li>a:hover,
-.mobile-trigger:hover {
+.mobile-trigger:hover,
+.mobile-parent-link:hover,
+.mobile-dropdown-toggle:hover {
   color: var(--gold);
 }
 
@@ -4980,10 +5031,15 @@ footer>.wrap {
 }
 
 .mobile-sub a {
+  position: relative;
+  z-index: 1;
   display: block;
   padding: 12px 28px 12px 40px;
   font-family: var(--font-body);
-  font-size: 14.5px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.45;
   color: var(--cream-soft);
   transition: color .2s ease, background-color .2s ease;
 }
