@@ -1,0 +1,27 @@
+/* Founder photo — decorative offset border frame behind the image,
+   only expressible via a pseudo-element so it stays out of Tailwind. */
+.founder-photo {
+  position: relative;
+}
+
+.founder-photo::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 55%;
+  height: 55%;
+  border: 1px solid rgba(182, 146, 79, 0.6);
+  border-radius: var(--r);
+  z-index: 0;
+}
+
+.founder-photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  border-radius: var(--r);
+  display: block;
+  box-shadow: 0 44px 90px -36px rgba(19, 35, 63, 0.5);
+}

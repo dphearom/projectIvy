@@ -1,4 +1,5 @@
 import PageHeader from "@/components/PageHeader";
+import "./loading.css";
 
 export default function EventsLoading() {
   return (

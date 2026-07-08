@@ -2,7 +2,7 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import { PLACEHOLDERS } from "@/lib/placeholders";
 
 const ProgrammesHero = () => (
-  <section className="hero-stage hero-stage--image on-navy page-hero-image" id="top">
+  <section className="hero-stage hero-stage--image on-navy min-h-[min(72vh,640px)]" id="top">
     <div className="hero-bg hero-bg--image" aria-hidden="true">
       <PlaceholderImage name={PLACEHOLDERS.ADVISING_HERO_BG} className="ph-block--cover" />
     </div>

@@ -1,0 +1,6 @@
+/* Referenced via Tailwind's animate-[logo-marquee_...] arbitrary value in
+   this component's JSX. */
+@keyframes logo-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

@@ -326,7 +326,7 @@ const Navbar = () => {
             const isMobileOpen = openDropdown === mobileKey;
 
             const mobileLinkCls =
-              "flex items-center justify-between w-full px-7 py-3.5 font-display text-[1.35rem] font-semibold text-cream bg-transparent border-none cursor-pointer text-left transition-colors duration-250 hover:text-gold";
+              "flex items-center justify-between w-full px-7 py-3.5 font-body text-[1.35rem] font-semibold text-cream bg-transparent border-none cursor-pointer text-left transition-colors duration-250 hover:text-gold";
 
             if (!hasChildren) {
               return (
@@ -348,13 +348,13 @@ const Navbar = () => {
                   {item.href ? (
                     <Link
                       href={item.href}
-                      className="flex-1 px-7 py-[14px] font-display text-[1.35rem] font-semibold text-cream transition-colors duration-[250ms] hover:text-gold"
+                      className="flex-1 px-7 py-[14px] font-body text-[1.35rem] font-semibold text-cream transition-colors duration-[250ms] hover:text-gold"
                       onClick={handleNavLinkClick(item.href, true)}
                     >
                       {item.label}
                     </Link>
                   ) : (
-                    <span className="flex-1 px-7 py-[14px] font-display text-[1.35rem] font-semibold text-cream">
+                    <span className="flex-1 px-7 py-[14px] font-body text-[1.35rem] font-semibold text-cream">
                       {item.label}
                     </span>
                   )}

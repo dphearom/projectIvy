@@ -1,5 +1,6 @@
 import Image from "next/image";
 import FounderMessage from "@/components/sections/FounderMessage";
+import "./styles.css";
 
 const OurStory = () => (
   <section className="py-31 bg-cream" id="story">

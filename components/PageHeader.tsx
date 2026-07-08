@@ -5,7 +5,7 @@ interface Props {
   label?: string;
   title: string;
   subtitle?: string;
-  /** Adds a min-h-[60vh] floor — used by not-found/error states that don't have much content below. */
+  /** Fills the viewport and centers content — used by not-found/error states that don't have much content below. */
   compact?: boolean;
   /** Set false on routes without <RevealObserver/> (error/loading states) so content isn't stuck invisible. */
   reveal?: boolean;
@@ -18,7 +18,7 @@ const PageHeader = ({ label, title, subtitle, compact = false, reveal = true, ch
     <div
       className={cn(
         "relative overflow-hidden bg-(--ink-2) text-cream pt-40 pb-25",
-        compact && "min-h-[60vh]",
+        compact && "min-h-screen flex flex-col items-center justify-center",
       )}
     >
       <div className="hero-bg bg-[radial-gradient(120%_120%_at_50%_0%,var(--g2),var(--g1)_70%)]">
