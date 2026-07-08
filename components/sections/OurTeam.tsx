@@ -5,7 +5,7 @@ const OurTeam = () => (
   <section className="about-sec alt" id="team">
     <div className="wrap">
       <div className="section-head" data-reveal>
-        <span className="eyebrow center">Our Team</span>
+        <span className="eyebrow center">Our Advisors</span>
         <h2>Built by Khmer scholars who lived the journey</h2>
         <p>
           Project IVY is led by Cambodian scholars and mentors who have walked the path from

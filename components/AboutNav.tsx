@@ -1,12 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
+import { scrollToHashWhenReady } from "@/lib/scroll-to-hash";
 
 const LINKS = [
   { label: "Mission", id: "mission" },
   { label: "Vision", id: "vision" },
   { label: "Who We Are", id: "who-we-are" },
   { label: "Why Choose Us", id: "why-choose-us" },
-  { label: "Our Team", id: "team" },
+  { label: "Our Advisors", id: "team" },
 ];
 
 export default function AboutNav() {
@@ -36,6 +37,12 @@ export default function AboutNav() {
     return () => { heroObs.disconnect(); secObs.disconnect(); };
   }, []);
 
+  const handleSectionClick = (id: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.history.pushState(null, "", `#${id}`);
+    scrollToHashWhenReady(`#${id}`);
+  };
+
   return (
     <nav
       className={`about-subnav${visible ? " about-subnav--visible" : ""}`}
@@ -43,7 +50,12 @@ export default function AboutNav() {
     >
       <div className="about-subnav-inner">
         {LINKS.map(({ label, id }) => (
-          <a key={id} href={`#${id}`} className={active === id ? "active" : ""}>
+          <a
+            key={id}
+            href={`#${id}`}
+            className={active === id ? "active" : ""}
+            onClick={handleSectionClick(id)}
+          >
             {label}
           </a>
         ))}

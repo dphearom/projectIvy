@@ -1,11 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "@/components/icons";
 import { ADVISING_PROGRAM_SUMMARIES } from "@/lib/programs";
+import {
+  getHashFromHref,
+  getPathFromHref,
+  scrollToHashWhenReady,
+} from "@/lib/scroll-to-hash";
 
 type NavChild = { href: string; label: string };
 
@@ -25,7 +30,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Vision", href: "/about#vision" },
       { label: "Who We Are", href: "/about#who-we-are" },
       { label: "Why Choose Us", href: "/about#why-choose-us" },
-      { label: "Our Team", href: "/about#team" },
+      { label: "Our Advisors", href: "/about#team" },
     ],
   },
   {
@@ -56,6 +61,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -78,9 +84,14 @@ const Navbar = () => {
 
   useEffect(() => {
     const onPointerDown = (e: MouseEvent) => {
-      if (!navRef.current?.contains(e.target as Node)) {
-        setOpenDropdown(null);
+      const target = e.target as Node;
+      if (
+        navRef.current?.contains(target) ||
+        mobileMenuRef.current?.contains(target)
+      ) {
+        return;
       }
+      setOpenDropdown(null);
     };
     document.addEventListener("mousedown", onPointerDown);
     return () => document.removeEventListener("mousedown", onPointerDown);
@@ -89,6 +100,24 @@ const Navbar = () => {
   const toggleDropdown = (key: string) => {
     setOpenDropdown((current) => (current === key ? null : key));
   };
+
+  const handleNavLinkClick =
+    (href: string, closeMenu = false) =>
+    (e: ReactMouseEvent<HTMLAnchorElement>) => {
+      const path = getPathFromHref(href);
+      const hash = getHashFromHref(href);
+
+      if (closeMenu) {
+        setMenuOpen(false);
+        setOpenDropdown(null);
+      }
+
+      if (path === pathname && hash) {
+        e.preventDefault();
+        window.history.pushState(null, "", href);
+        scrollToHashWhenReady(hash);
+      }
+    };
 
   return (
     <>
@@ -136,7 +165,12 @@ const Navbar = () => {
                     <ul className="nav-dropdown" role="menu">
                       {item.children?.map((child) => (
                         <li key={child.href} role="none">
-                          <Link href={child.href} className="nav-dropdown-link" role="menuitem">
+                          <Link
+                            href={child.href}
+                            className="nav-dropdown-link"
+                            role="menuitem"
+                            onClick={handleNavLinkClick(child.href)}
+                          >
                             {child.label}
                           </Link>
                         </li>
@@ -173,7 +207,11 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <div className={`mobile-menu${menuOpen ? " open" : ""}`} aria-hidden={!menuOpen}>
+      <div
+        ref={mobileMenuRef}
+        className={`mobile-menu${menuOpen ? " open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
         <div className="mobile-menu-head">
           <Link href="/" className="brand" onClick={() => setMenuOpen(false)}>
             <Image className="logo-light" src="/logo-nav-light.png" alt="Project IVY" width={120} height={82} />
@@ -197,7 +235,7 @@ const Navbar = () => {
             if (!hasChildren) {
               return (
                 <li key={key}>
-                  <Link href={item.href ?? "/"} onClick={() => setMenuOpen(false)}>
+                  <Link href={item.href ?? "/"} onClick={handleNavLinkClick(item.href ?? "/", true)}>
                     {item.label}
                   </Link>
                 </li>
@@ -206,26 +244,32 @@ const Navbar = () => {
 
             return (
               <li key={key} className={openDropdown === mobileKey ? "open" : ""}>
-                <button
-                  type="button"
-                  className="mobile-trigger"
-                  aria-expanded={openDropdown === mobileKey}
-                  onClick={() => toggleDropdown(mobileKey)}
-                >
-                  {item.label}
-                  <ChevronDown className="nav-chevron" />
-                </button>
-                <ul className="mobile-sub">
-                  {item.href && (
-                    <li>
-                      <Link href={item.href} onClick={() => setMenuOpen(false)}>
-                        {item.label}
-                      </Link>
-                    </li>
+                <div className="mobile-item-row">
+                  {item.href ? (
+                    <Link
+                      href={item.href}
+                      className="mobile-parent-link"
+                      onClick={handleNavLinkClick(item.href, true)}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <span className="mobile-parent-link">{item.label}</span>
                   )}
+                  <button
+                    type="button"
+                    className="mobile-dropdown-toggle"
+                    aria-expanded={openDropdown === mobileKey}
+                    aria-label={`Toggle ${item.label} submenu`}
+                    onClick={() => toggleDropdown(mobileKey)}
+                  >
+                    <ChevronDown className="nav-chevron" />
+                  </button>
+                </div>
+                <ul className="mobile-sub">
                   {item.children?.map((child) => (
                     <li key={child.href}>
-                      <Link href={child.href} onClick={() => setMenuOpen(false)}>
+                      <Link href={child.href} onClick={handleNavLinkClick(child.href, true)}>
                         {child.label}
                       </Link>
                     </li>

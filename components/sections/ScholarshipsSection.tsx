@@ -42,7 +42,7 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => (
               <h3>{scholarship.title}</h3>
               <p className="scholarship-card__overview">{scholarship.overview}</p>
               <Link className="btn btn-gold scholarship-card__cta" href="/contact">
-                Learn More / Apply Now <span className="arrow">→</span>
+                Learn More <span className="arrow">→</span>
               </Link>
             </div>
 

@@ -16,7 +16,7 @@ const FinalCTA = () => (
       </p>
       <div className="mission-cta" data-reveal data-reveal-d="3">
         <a className="btn btn-gold" href="/contact">
-          Sign up for consultation <span className="arrow">→</span>
+          Sign up for advising <span className="arrow">→</span>
         </a>
       </div>
     </div>

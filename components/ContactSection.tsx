@@ -6,17 +6,17 @@ const ContactSection = () => (
       <div className="contact-info" data-reveal>
         <h2>Project <span className="ivy-brand">IVY</span></h2>
         <p className="contact-address">
-          Office: International Business School (IBS), Phnom Penh, Cambodia
+          Office: Phnom Penh, Cambodia
         </p>
         <ul className="contact-details">
           <li>
-            Hotline: <strong>+855 12 345 678</strong> · <strong>+855 98 765 432</strong>
+            Phone: <strong>+855889493577</strong> · <strong>+855964025628</strong>
           </li>
           <li>
-            Email: <a href="mailto:info@projectivy.edu.kh">info@projectivy.edu.kh</a>
+            Email: <a href="mailto:projectivykh@gmail.com">projectivykh@gmail.com</a>
           </li>
           <li>
-            Web: <a href="https://projectivy.edu.kh">www.projectivy.edu.kh</a>
+            Web: <a href="https://project-ivy-flame.vercel.app/">https://project-ivy-flame.vercel.app/</a>
           </li>
         </ul>
       </div>

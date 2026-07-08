@@ -5,6 +5,7 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import { CartIcon, ChevronDown } from "@/components/icons";
 import { PLACEHOLDERS } from "@/lib/placeholders";
 import { ADVISING_PROGRAM_DETAILS, type ProgramDetail, type ProgramTier } from "@/lib/programs";
+import { scrollToHashWhenReady } from "@/lib/scroll-to-hash";
 
 const PROGRAM_PHOTOS: Record<string, string> = {
   "university-readiness": PLACEHOLDERS.PROGRAM_READINESS,
@@ -94,6 +95,13 @@ const ProgrammeProducts = () => {
       setExpanded(hash);
     }
   }, []);
+
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash && expanded === hash) {
+      scrollToHashWhenReady(`#${hash}`);
+    }
+  }, [expanded]);
 
   useEffect(() => {
     expandFromHash();
