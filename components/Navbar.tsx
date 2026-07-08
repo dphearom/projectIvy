@@ -295,7 +295,7 @@ const Navbar = () => {
       <div
         ref={mobileMenuRef}
         className={cn(
-          "fixed top-0 right-0 bottom-0 z-49",
+          "fixed top-0 right-0 bottom-0 z-56",
           "w-[min(360px,88vw)] bg-(--ink-2) text-cream",
           "overflow-y-auto py-5 pb-8",
           "shadow-[-8px_0_40px_rgba(0,0,0,0.35)]",
@@ -399,7 +399,7 @@ const Navbar = () => {
       {menuOpen && (
         <button
           type="button"
-          className="fixed inset-0 z-48 border-none p-0 bg-[rgba(8,15,30,0.55)] cursor-pointer"
+          className="fixed inset-0 z-55 border-none p-0 bg-[rgba(8,15,30,0.55)] cursor-pointer"
           aria-label="Close menu"
           onClick={() => setMenuOpen(false)}
         />
