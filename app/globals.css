@@ -51,31 +51,32 @@
    Stack: Next.js App Router · Cormorant Garamond (display) · Manrope (body)
    Design language: Navy + gold prestige, grainy gradients, editorial serif.
 
-   TABLE OF CONTENTS
-   0. Design tokens (:root)
-   1. Reset & base
-   2. Layout utilities
-   3. Eyebrow / Buttons
-   4. Navbar  ← frosted-glass shrink-on-scroll
-   5. Hero stage  ← animated blobs + grain
-   6. Section frames & Features
-   7. Events grid  ← equal-height button cards
-   8. Event modal  ← blur-backdrop overlay
-   9. CTA band / Footer
-  10. Our Approach (about page feature rows)
-  11. Responsive breakpoints
-  12. Page header (subpages)
-  13. Event detail page + Booking card/form
-  14. Reveal animations
-  15. About — in-page subnav
-  16. About page sections
-  17. Mobile menu
-  18. Responsive (continued)
+   The site has been migrated to Tailwind utility classes component by
+   component; each page now writes its own layout/spacing/typography
+   inline. What's left here is only:
+     - design tokens (:root) feeding @theme / Tailwind's `bg-navy` etc.
+     - primitives too complex or too widely shared to inline per-component
+       (`.wrap`, `.eyebrow`, `.btn*`, `.hero-stage`/`.hero-bg`, `.blob`/
+       `.grain`, `.ph-block`, `.tier-modal*`, Leaflet map overrides)
+     - the `[data-reveal]` scroll-in animation and its `@keyframes`
+     - CSS still backing components that exist in the repo but aren't
+       rendered by any page (kept in case they're revived — see each
+       section's own comment for which component it belongs to)
+   Do not add new rules here for a single component — write Tailwind
+   utilities in the component instead. Only add here if it's a genuinely
+   shared primitive multiple components need.
+
+   SECTIONS (in file order)
+   Design tokens · Reset & base · Layout utilities · Eyebrow/Buttons ·
+   Hero stage (blobs + grain) · Section frames & Features · Homepage
+   sections · Event modal · Responsive breakpoints · About page sections ·
+   Responsive (continued) · Skeleton loading · Ivy brand text ·
+   Package tier card stack · Tier/camp modal overlay · Reveal animations
    =================================================================== */
 
 
 /* ═══════════════════════════════════════════════════════════════════
-   0. DESIGN TOKENS
+   DESIGN TOKENS
    All colours, fonts, and spacing live here. Edit this block to
    retheme the entire site. Never hardcode these values elsewhere.
    ═══════════════════════════════════════════════════════════════════ */
@@ -124,20 +125,15 @@
   /* Controls opacity of the SVG fractalNoise grain overlay (0–1) */
   --grain: 0.42;
 
-  /* ── Compatibility aliases ── */
-  /* Older subpages (about, events) reference these shorthand names.
-     They map 1:1 to the tokens above so both naming conventions work. */
-  --display: var(--font-display);
-  --body: var(--font-body);
+  /* ── Compatibility aliases ──
+     Still live consumers only (checked against every .tsx and the rest
+     of this file before keeping any of these — several more of these
+     aliases existed and were removed once their last consumer was
+     converted to Tailwind). */
   --r: 16px;
-  --wrap: 1200px;
-  --cream-2: var(--ivory-2);
   --muted: var(--ink-soft);
-  --muted-light: var(--cream-soft);
   --line-light: rgba(243, 237, 226, 0.16);
-  --gold-bright: var(--gold-soft);
   --ink-2: var(--navy-3);
-  --ink-3: #080f1e;
 
   /* ── Nav layout ── */
   --nav-height: 80px;
@@ -146,14 +142,9 @@
   --scroll-offset-about: 128px;
 }
 
-/* Swap display font to Playfair Display when [data-heading="Playfair"] is set on <html> */
-[data-heading="Playfair"] {
-  --font-display: var(--font-playfair), 'Playfair Display', Georgia, serif;
-}
-
 
 /* ═══════════════════════════════════════════════════════════════════
-   1. RESET & BASE
+   RESET & BASE
    ═══════════════════════════════════════════════════════════════════ */
 * {
   box-sizing: border-box;
@@ -214,7 +205,7 @@ body {
 @layer base {
 
 /* ═══════════════════════════════════════════════════════════════════
-   2. LAYOUT UTILITIES
+   LAYOUT UTILITIES
    ═══════════════════════════════════════════════════════════════════ */
 .wrap {
   width: 100%;
@@ -225,7 +216,7 @@ body {
 
 
 /* ═══════════════════════════════════════════════════════════════════
-   3. EYEBROW & BUTTONS
+   EYEBROW & BUTTONS
    ═══════════════════════════════════════════════════════════════════ */
 
 /* ── Eyebrow: small caps label with flanking gold rules ── */
@@ -311,7 +302,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   5. HERO STAGE
+   HERO STAGE
    ─────────────────────────────────────────────────────────────────
    Architecture:
      .hero-stage     — full-viewport dark section, overflow:hidden
@@ -489,7 +480,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   6. SECTION FRAMES & FEATURES
+   SECTION FRAMES & FEATURES
    ═══════════════════════════════════════════════════════════════════ */
 section {
   position: relative;
@@ -518,7 +509,7 @@ section {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   6b. HOMEPAGE SECTIONS (IvyPrep structure, Project Ivy styling)
+   HOMEPAGE SECTIONS (IvyPrep structure, Project Ivy styling)
    ═══════════════════════════════════════════════════════════════════ */
 
 /* Shared placeholder image block */
@@ -701,7 +692,7 @@ section {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   8. EVENT MODAL
+   EVENT MODAL
    ─────────────────────────────────────────────────────────────────
    Pattern: fixed overlay (.ev-modal-backdrop) sits above everything
    (z-index 300, higher than nav:50 and subnav:40). Clicking the
@@ -740,14 +731,7 @@ section {
 
 
 /* ═══════════════════════════════════════════════════════════════════
-   9. CTA BAND & FOOTER
-   ═══════════════════════════════════════════════════════════════════ */
-
-/* ── Footer ── */
-
-
-/* ═══════════════════════════════════════════════════════════════════
-  11. RESPONSIVE — main breakpoints
+   RESPONSIVE — main breakpoints
    ═══════════════════════════════════════════════════════════════════ */
 @media (max-width: 680px) {
   .wrap {
@@ -778,7 +762,7 @@ section {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-  16. ABOUT PAGE SECTIONS
+   ABOUT PAGE SECTIONS
    ═══════════════════════════════════════════════════════════════════ */
 
 /* Founder section */
@@ -810,7 +794,7 @@ section {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-  RESPONSIVE (continued — about page + full-width breakpoints)
+   RESPONSIVE (continued — about page + full-width breakpoints)
    ═══════════════════════════════════════════════════════════════════ */
 @media (max-width: 980px) {
   .founder-photo {
