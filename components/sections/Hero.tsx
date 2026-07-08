@@ -1,4 +1,5 @@
 import PlaceholderImage from "@/components/PlaceholderImage";
+import Button from "@/components/Button";
 import { PLACEHOLDERS } from "@/lib/placeholders";
 
 const Hero = () => {
@@ -25,9 +26,9 @@ const Hero = () => {
             Turn Your Ambition into Admission
           </p>
           <div className="flex flex-wrap gap-3.5 mt-9.5 justify-center" data-reveal data-reveal-d="2">
-            <a className="btn btn-gold" href="#story">
-              Learn more <span className="arrow">→</span>
-            </a>
+            <Button href="#story" arrow>
+              Learn more
+            </Button>
           </div>
         </div>
       </div>

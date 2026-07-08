@@ -53,27 +53,31 @@
 
    The site has been migrated to Tailwind utility classes component by
    component; each page now writes its own layout/spacing/typography
-   inline. What's left here is only:
+   inline. Repeated markup/behavior has also been pulled into real React
+   components where that gives more than styling reuse — see
+   `components/Button.tsx` (variant="gold"|"ghost-dark", href turns it
+   into a next/link) and `components/TierModal.tsx` (shared by
+   ProgrammeProducts and ServiceCampsProgram) before reaching for raw
+   markup. Each of those has its own colocated `styles.css`.
+   What's left here is only:
      - design tokens (:root) feeding @theme / Tailwind's `bg-navy` etc.
      - primitives too widely shared across components to inline anywhere
-       in particular (`.wrap`, `.eyebrow`, `.btn*`, `.hero-stage`/
-       `.hero-bg`, `.blob`/`.grain`, `.ph-block`, `.tier-modal*` — the
-       tier modal is shared by both ProgrammeProducts and
-       ServiceCampsProgram, so it has no single component home)
+       in particular (`.wrap`, `.eyebrow`, `.hero-stage`/`.hero-bg`,
+       `.blob`/`.grain`, `.ph-block`)
      - the `[data-reveal]` scroll-in animation and its `@keyframes`
-   CSS that belongs to exactly one component lives in a colocated
-   `<ComponentName>.css` next to that component instead (e.g.
-   `components/sections/OurStory.css`, `components/EventModal.css`,
-   `components/sections/WorldMapInner.css`) — check there first before
-   assuming something is missing. Do not add new rules here for a single
-   component; only add here if it's a genuinely shared primitive multiple
-   components need.
+   CSS that belongs to exactly one component (or one component + the
+   shared components above) lives in a colocated `styles.css` next to
+   it instead (e.g. `components/sections/OurStory/styles.css`,
+   `components/EventModal/styles.css`,
+   `components/sections/WorldMapInner/styles.css`) — check there first
+   before assuming something is missing. Do not add new rules here for a
+   single component; only add here if it's a genuinely shared primitive
+   multiple components need.
 
    SECTIONS (in file order)
-   Design tokens · Reset & base · Layout utilities · Eyebrow/Buttons ·
+   Design tokens · Reset & base · Layout utilities · Eyebrow ·
    Hero stage (blobs + grain) · Section frames & Features · Homepage
-   sections · Responsive breakpoints · Ivy brand text ·
-   Tier/camp modal overlay · Reveal animations
+   sections · Responsive breakpoints · Ivy brand text · Reveal animations
    =================================================================== */
 
 
@@ -218,7 +222,7 @@ body {
 
 
 /* ═══════════════════════════════════════════════════════════════════
-   EYEBROW & BUTTONS
+   EYEBROW
    ═══════════════════════════════════════════════════════════════════ */
 
 /* ── Eyebrow: small caps label with flanking gold rules ── */
@@ -255,52 +259,6 @@ body {
 .on-navy .eyebrow,
 .eyebrow.on-navy {
   color: var(--gold-soft);
-}
-
-/* ── Buttons ── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 15px;
-  padding: 14px 28px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: transform .25s ease, background .25s ease, box-shadow .25s ease, color .25s ease, border-color .25s ease;
-  white-space: nowrap;
-}
-
-.btn .arrow {
-  transition: transform .25s ease;
-}
-
-.btn:hover .arrow {
-  transform: translateX(4px);
-}
-
-.btn-gold {
-  background: var(--gold);
-  color: var(--navy-3);
-  box-shadow: 0 10px 30px -12px rgba(184, 150, 90, 0.7);
-}
-
-.btn-gold:hover {
-  background: var(--gold-soft);
-  transform: translateY(-2px);
-}
-
-.btn-ghost-dark {
-  background: transparent;
-  color: var(--navy);
-  border-color: rgba(27, 36, 54, 0.25);
-}
-
-.btn-ghost-dark:hover {
-  border-color: var(--gold-deep);
-  color: var(--gold-deep);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -607,169 +565,6 @@ section {
   font-style: italic;
   color: var(--gold-deep);
   letter-spacing: 0.02em;
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   Tier / camp modal overlay
-   ══════════════════════════════════════════════════════════════════ */
-.tier-modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9000;
-  background: rgba(10, 16, 30, 0.65);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  animation: fade-in-overlay .2s ease both;
-}
-
-@keyframes fade-in-overlay {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.tier-modal {
-  background: var(--paper);
-  border-radius: var(--radius);
-  max-width: 720px;
-  width: 100%;
-  max-height: 88vh;
-  overflow: hidden; /* clips border-radius on all sides, incl. scrollbar */
-  box-shadow: 0 40px 80px -20px rgba(10, 16, 30, 0.4);
-  animation: slide-up-modal .3s ease both;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-@keyframes slide-up-modal {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.tier-modal__scroll {
-  overflow-y: auto;
-  flex: 1;
-}
-
-.tier-modal__close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--ivory-2);
-  border: 1px solid var(--line);
-  cursor: pointer;
-  font-size: 1.35rem;
-  line-height: 1;
-  padding: 0;
-  display: grid;
-  place-items: center;
-  color: var(--ink);
-  transition: background .2s ease, color .2s ease;
-  z-index: 1;
-}
-
-.tier-modal__close:hover {
-  background: var(--gold);
-  color: var(--navy-3);
-  border-color: var(--gold);
-}
-
-.tier-modal__body {
-  padding: 28px 32px 36px;
-}
-
-.tier-modal__name {
-  font-family: var(--font-display);
-  font-size: clamp(1.45rem, 2.5vw, 1.9rem);
-  color: var(--navy);
-  margin: 0 0 10px;
-}
-
-.tier-modal__price {
-  display: inline-block;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--navy-3);
-  background: var(--gold);
-  padding: 5px 14px;
-  border-radius: 999px;
-  margin-bottom: 14px;
-}
-
-.tier-modal__tagline {
-  font-size: 1rem;
-  color: var(--ink-soft);
-  line-height: 1.6;
-  margin: 0 0 24px;
-}
-
-.tier-modal__features h5 {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--navy);
-  margin: 0 0 12px;
-}
-
-.tier-modal__features ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px 20px;
-}
-
-.tier-modal__features li {
-  position: relative;
-  padding-left: 18px;
-  font-size: 0.92rem;
-  color: var(--ink);
-  line-height: 1.5;
-}
-
-.tier-modal__features li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--gold);
-}
-
-.tier-modal__footer {
-  margin-top: 28px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-/* ─── Responsive overrides ───────────────────────────── */
-@media (max-width: 760px) {
-  .tier-modal__features ul {
-    grid-template-columns: 1fr;
-  }
-
-  .tier-modal__body {
-    padding: 20px 22px 28px;
-  }
-
-  .tier-modal__footer {
-    flex-direction: column;
-  }
-
-  .tier-modal__footer .btn {
-    width: 100%;
-    justify-content: center;
-  }
 }
 
 }

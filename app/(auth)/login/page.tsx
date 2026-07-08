@@ -46,7 +46,7 @@ export default function LoginPage() {
           required
         />
         {state.error && <p className="text-[#c0392b] text-[0.8rem] mt-[0.35rem]">{state.error}</p>}
-        <SubmitButton label="Sign in" pendingLabel="Signing in…" className="btn btn-gold w-full mt-2 justify-center" />
+        <SubmitButton label="Sign in" pendingLabel="Signing in…" className="w-full mt-2 justify-center" />
       </form>
     </>
   );

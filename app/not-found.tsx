@@ -1,5 +1,5 @@
-import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
+import Button from "@/components/Button";
 
 export default function NotFound() {
   return (
@@ -11,9 +11,9 @@ export default function NotFound() {
       reveal={false}
     >
       <div className="mt-2">
-        <Link className="btn btn-gold" href="/">
-          Back to home <span className="arrow">→</span>
-        </Link>
+        <Button href="/" arrow>
+          Back to home
+        </Button>
       </div>
     </PageHeader>
   );

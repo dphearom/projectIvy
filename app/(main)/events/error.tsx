@@ -1,6 +1,7 @@
 "use client";
 
 import PageHeader from "@/components/PageHeader";
+import Button from "@/components/Button";
 
 export default function EventsError({ reset }: { reset: () => void }) {
   return (
@@ -12,9 +13,9 @@ export default function EventsError({ reset }: { reset: () => void }) {
       reveal={false}
     >
       <div className="mt-2">
-        <button type="button" className="btn btn-gold" onClick={reset}>
-          Try again <span className="arrow">→</span>
-        </button>
+        <Button onClick={reset} arrow>
+          Try again
+        </Button>
       </div>
     </PageHeader>
   );

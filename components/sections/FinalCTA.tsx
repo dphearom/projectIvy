@@ -1,3 +1,5 @@
+import Button from "@/components/Button";
+
 // Dark grainy CTA band — same atmosphere pattern as VisionQuote and the hero sections.
 const FinalCTA = () => (
   <section className="relative overflow-hidden text-cream py-32.5 bg-(--ink-2)" id="about">
@@ -18,9 +20,9 @@ const FinalCTA = () => (
         Please contact us now to register for a Free 1-1 consultation with a Project Ivy advisor!
       </p>
       <div className="flex gap-3.5 justify-center flex-wrap" data-reveal data-reveal-d="3">
-        <a className="btn btn-gold" href="/contact">
-          Sign up for advising <span className="arrow">→</span>
-        </a>
+        <Button href="/contact" arrow>
+          Sign up for advising
+        </Button>
       </div>
     </div>
   </section>

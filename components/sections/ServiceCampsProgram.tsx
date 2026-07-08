@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import PlaceholderImage from "@/components/PlaceholderImage";
+import Button from "@/components/Button";
+import TierModal from "@/components/TierModal";
 import { SERVICE_CAMPS_DETAIL, type ProgramTier } from "@/lib/programs";
 
 const CAMP_OUTCOMES: Record<string, string> = {
@@ -18,72 +20,52 @@ const CAMP_OUTCOMES: Record<string, string> = {
 };
 
 const CampModal = ({ tier, onClose }: { tier: ProgramTier; onClose: () => void }) => {
-  const overlayRef = useRef<HTMLDivElement>(null);
   const slug = tier.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [onClose]);
-
   return (
-    <div
-      className="tier-modal-overlay"
-      ref={overlayRef}
-      onClick={(e) => e.target === overlayRef.current && onClose()}
+    <TierModal
+      title={tier.name}
+      price={tier.price}
+      tagline={tier.tagline}
+      onClose={onClose}
+      footer={
+        <>
+          <Button href="/contact" arrow>
+            Enquire about this camp
+          </Button>
+          <Button variant="ghost-dark" onClick={onClose}>
+            Close
+          </Button>
+        </>
+      }
     >
-      <div className="tier-modal" role="dialog" aria-modal="true" aria-label={tier.name}>
-        <button type="button" className="tier-modal__close" onClick={onClose} aria-label="Close">
-          ×
-        </button>
-        <div className="tier-modal__scroll">
-          <div className="tier-modal__body">
-            <h3 className="tier-modal__name">{tier.name}</h3>
-            <span className="tier-modal__price">{tier.price}</span>
-            <p className="tier-modal__tagline">{tier.tagline}</p>
-            <div className="grid grid-cols-2 gap-2.5 mb-6 max-[760px]:grid-cols-1">
-              <PlaceholderImage
-                name={`camps-brochure-${slug}-1`}
-                aspect="4 / 3"
-                className="rounded-[calc(var(--radius)-4px)]"
-              />
-              <PlaceholderImage
-                name={`camps-brochure-${slug}-2`}
-                aspect="4 / 3"
-                className="rounded-[calc(var(--radius)-4px)]"
-              />
-            </div>
-            <div className="tier-modal__features">
-              <h5>Program activities</h5>
-              <ul>
-                {tier.features.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-            </div>
-            {CAMP_OUTCOMES[tier.name] && (
-              <div className="mt-5 py-4 px-5 bg-ivory-2 rounded-[calc(var(--radius)-4px)] border-l-[3px] border-gold">
-                <h5 className="text-[0.95rem] text-navy mb-2">Outcome</h5>
-                <p className="text-[0.9rem] text-ink-soft leading-[1.6]">{CAMP_OUTCOMES[tier.name]}</p>
-              </div>
-            )}
-            <div className="tier-modal__footer">
-              <a className="btn btn-gold" href="/contact">
-                Enquire about this camp <span className="arrow">→</span>
-              </a>
-              <button type="button" className="btn btn-ghost-dark" onClick={onClose}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className="grid grid-cols-2 gap-2.5 mb-6 max-[760px]:grid-cols-1">
+        <PlaceholderImage
+          name={`camps-brochure-${slug}-1`}
+          aspect="4 / 3"
+          className="rounded-[calc(var(--radius)-4px)]"
+        />
+        <PlaceholderImage
+          name={`camps-brochure-${slug}-2`}
+          aspect="4 / 3"
+          className="rounded-[calc(var(--radius)-4px)]"
+        />
       </div>
-    </div>
+      <div className="tier-modal__features">
+        <h5>Program activities</h5>
+        <ul>
+          {tier.features.map((f) => (
+            <li key={f}>{f}</li>
+          ))}
+        </ul>
+      </div>
+      {CAMP_OUTCOMES[tier.name] && (
+        <div className="mt-5 py-4 px-5 bg-ivory-2 rounded-[calc(var(--radius)-4px)] border-l-[3px] border-gold">
+          <h5 className="text-[0.95rem] text-navy mb-2">Outcome</h5>
+          <p className="text-[0.9rem] text-ink-soft leading-[1.6]">{CAMP_OUTCOMES[tier.name]}</p>
+        </div>
+      )}
+    </TierModal>
   );
 };
 

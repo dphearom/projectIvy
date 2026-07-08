@@ -1,5 +1,5 @@
-﻿import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+﻿import PlaceholderImage from "@/components/PlaceholderImage";
+import Button from "@/components/Button";
 import { PLACEHOLDERS } from "@/lib/placeholders";
 
 const AboutHero = () => (
@@ -30,9 +30,9 @@ const AboutHero = () => (
             Cambodia, and scaling across Southeast Asia.
           </p>
           <div className="flex justify-center mt-9" data-reveal data-reveal-d="3">
-            <Link className="btn btn-gold" href="#mission">
-              Explore our mission &rarr;
-            </Link>
+            <Button href="#mission" arrow>
+              Explore our mission
+            </Button>
           </div>
         </div>
       </div>

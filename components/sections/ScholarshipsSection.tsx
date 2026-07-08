@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { SCHOLARSHIPS } from "@/lib/scholarships";
+import Button from "@/components/Button";
 
 type Props = {
   showPageHeader?: boolean;
@@ -45,9 +45,9 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => (
               <p className="mt-3 mb-5 text-[0.98rem] text-ink-soft leading-[1.55]">
                 {scholarship.overview}
               </p>
-              <Link className="btn btn-gold" href="/contact">
-                Learn More <span className="arrow">→</span>
-              </Link>
+              <Button href="/contact" arrow>
+                Learn More
+              </Button>
             </div>
 
             <div className="grid grid-cols-3 max-[680px]:grid-cols-1">

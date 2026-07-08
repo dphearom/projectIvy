@@ -1,5 +1,5 @@
-import Link from "next/link";
 import EventsGrid from "@/components/EventsGrid"; // client wrapper — keeps this component server-side
+import Button from "@/components/Button";
 import type { EventDTO } from "@/lib/events";     // type-only import — lib/events is server-only
 
 interface Props {
@@ -38,9 +38,9 @@ const UpcomingEvents = ({ events, preview = false, limit = 3, hideHeader = false
 
         {preview && shown.length > 0 && (
           <div className="text-center mt-13" data-reveal>
-            <Link className="btn btn-ghost-dark" href="/events">
-              View All Events <span className="arrow">→</span>
-            </Link>
+            <Button variant="ghost-dark" href="/events" arrow>
+              View All Events
+            </Button>
           </div>
         )}
       </div>

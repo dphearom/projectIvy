@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { createBooking } from "@/app/actions/bookings";
 import { EMAIL_RE } from "@/lib/utils";
+import Button from "@/components/Button";
 
 interface Props {
   eventTitle: string;
@@ -100,13 +101,11 @@ const BookingForm = ({ eventTitle, eventId, rawDate, rawTime, venue, location, d
         <p className="text-[0.95rem] text-ink-soft mb-5">
           Your spot for <strong>{eventTitle}</strong> is confirmed.
         </p>
-        <button
-          type="button"
-          className="btn btn-gold"
+        <Button
           onClick={() => downloadICS(eventTitle, rawDate, rawTime, venue, location, description)}
         >
           Add to Calendar
-        </button>
+        </Button>
       </div>
     );
   }
@@ -142,9 +141,9 @@ const BookingForm = ({ eventTitle, eventId, rawDate, rawTime, venue, location, d
         />
       </div>
       {error && <p className="text-[0.88rem] text-[#c0392b]">{error}</p>}
-      <button type="submit" className="btn btn-gold w-full justify-center mt-1" disabled={submitting}>
+      <Button type="submit" className="w-full justify-center mt-1" disabled={submitting}>
         {submitting ? "Reserving…" : "Reserve My Spot"}
-      </button>
+      </Button>
       <p className="text-[0.8rem] text-ink-soft text-center">Free to register · Limited seats available</p>
     </form>
   );
