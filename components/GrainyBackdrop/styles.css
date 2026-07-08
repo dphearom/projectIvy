@@ -1,0 +1,83 @@
+/* Large blurred circles, mix-blend-mode:screen so they lighten the navy
+   background without opaque overlap. `will-change: transform` +
+   `backface-visibility: hidden` promote each blob to its own GPU
+   compositor layer, preventing repaints during animation. translate3d()
+   (not translate) forces GPU compositing in older Chrome/Safari.
+
+   To add a new blob colour, add a --g* token in globals.css and a new
+   .blob.b4 rule here. */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.85;
+  mix-blend-mode: screen;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.b1 {
+  width: 55vw;
+  height: 55vw;
+  left: -12vw;
+  top: -8vw;
+  background: var(--g3);
+  animation: drift1 22s ease-in-out infinite;
+}
+
+.b2 {
+  width: 46vw;
+  height: 46vw;
+  right: -8vw;
+  top: -6vw;
+  background: var(--g4);
+  animation: drift2 26s ease-in-out infinite;
+}
+
+.b3 {
+  width: 50vw;
+  height: 50vw;
+  right: 6vw;
+  bottom: -18vw;
+  background: var(--g5);
+  opacity: 0.7;
+  animation: drift3 30s ease-in-out infinite;
+}
+
+/* translate3d keeps blobs on the GPU compositor layer throughout the animation */
+@keyframes drift1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(8vw, 5vw, 0) scale(1.12);
+  }
+}
+
+@keyframes drift2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-6vw, 7vw, 0) scale(1.1);
+  }
+}
+
+@keyframes drift3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-7vw, -6vw, 0) scale(1.15);
+  }
+}
+
+/* Respect OS reduced-motion preference — freeze all decorative animations */
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none !important;
+  }
+}

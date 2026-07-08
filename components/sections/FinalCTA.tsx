@@ -1,13 +1,11 @@
 import Button from "@/components/Button";
 import Eyebrow from "@/components/Eyebrow";
+import GrainyBackdrop from "@/components/GrainyBackdrop";
 
 // Dark grainy CTA band — same atmosphere pattern as VisionQuote and the hero sections.
 const FinalCTA = () => (
   <section className="relative overflow-hidden text-cream py-32.5 bg-(--ink-2)" id="about">
-    <div className="hero-bg bg-[radial-gradient(120%_130%_at_50%_120%,var(--g2),var(--g1)_70%)]">
-      <span className="blob b1" /><span className="blob b2" /><span className="blob b3" />
-    </div>
-    <div className="grain" />
+    <GrainyBackdrop gradientClassName="bg-[radial-gradient(120%_130%_at_50%_120%,var(--g2),var(--g1)_70%)]" />
     <div className="relative z-3 text-center max-w-230 mx-auto px-8">
       <Eyebrow center onNavy data-reveal>Start your journey</Eyebrow>
       <h2

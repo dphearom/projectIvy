@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import { cn } from "@/lib/utils";
+import "./styles.css";
 
 type Props = {
   id?: string;

@@ -33,6 +33,14 @@ export const MapPinIcon = ({ size = 15 }: { size?: number }) => (
   </svg>
 );
 
+export const ImageIcon = ({ className, size = 28 }: { className?: string; size?: number }) => (
+  <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <circle cx="9" cy="9" r="1.75" />
+    <path d="m21 15-5-5L5 21" />
+  </svg>
+);
+
 export const CartIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path d="M6 6h15l-1.5 9H7.5L6 6Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />

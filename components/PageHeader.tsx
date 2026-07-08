@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import Eyebrow from "@/components/Eyebrow";
+import GrainyBackdrop from "@/components/GrainyBackdrop";
 
 interface Props {
   label?: string;
@@ -22,12 +23,7 @@ const PageHeader = ({ label, title, subtitle, compact = false, reveal = true, ch
         compact && "min-h-screen flex flex-col items-center justify-center",
       )}
     >
-      <div className="hero-bg bg-[radial-gradient(120%_120%_at_50%_0%,var(--g2),var(--g1)_70%)]">
-        <span className="blob b1" />
-        <span className="blob b2" />
-        <span className="blob b3" />
-      </div>
-      <div className="grain" />
+      <GrainyBackdrop gradientClassName="bg-[radial-gradient(120%_120%_at_50%_0%,var(--g2),var(--g1)_70%)]" />
       <div className="relative z-3 max-w-300 mx-auto px-8 text-center">
         {label && (
           <Eyebrow center className="text-gold mb-4.5">

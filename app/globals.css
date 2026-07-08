@@ -56,30 +56,35 @@
    inline. Repeated markup/behavior has also been pulled into real React
    components where that gives more than styling reuse — see
    `components/Button.tsx` (variant="gold"|"ghost-dark", href turns it
-   into a next/link), `components/Eyebrow.tsx` (center? onNavy?), and
+   into a next/link), `components/Eyebrow.tsx` (center? onNavy?),
    `components/TierModal.tsx` (shared by ProgrammeProducts and
-   ServiceCampsProgram) before reaching for raw markup. Each of those
-   has its own colocated `styles.css` (Eyebrow and Button are pure
-   Tailwind, no CSS file needed).
+   ServiceCampsProgram), `components/HeroStage.tsx` (full-viewport
+   image-cover hero — Hero, AboutHero, ProgrammesHero), and
+   `components/GrainyBackdrop.tsx` (the animated blob+gradient dark
+   band — PageHeader, VisionQuote, FinalCTA), and `PlaceholderImage.tsx`
+   (the dev-time image-slot block) before reaching for raw markup. Each
+   of those has its own colocated `styles.css` (Eyebrow, Button, and
+   PlaceholderImage are pure Tailwind, no CSS file needed).
    What's left here is only:
      - design tokens (:root) feeding @theme / Tailwind's `bg-navy` etc.
      - primitives too widely shared across components to inline anywhere
-       in particular (`.wrap`, `.hero-stage`/`.hero-bg`, `.blob`/
-       `.grain`, `.ph-block`)
+       in particular (`.wrap`, `.hero-bg`/`.grain` — the two rules both
+       HeroStage and GrainyBackdrop build on)
      - the `[data-reveal]` scroll-in animation and its `@keyframes`
    CSS that belongs to exactly one component (or one component + the
    shared components above) lives in a colocated `styles.css` next to
    it instead (e.g. `components/sections/OurStory/styles.css`,
    `components/EventModal/styles.css`,
-   `components/sections/WorldMapInner/styles.css`) — check there first
-   before assuming something is missing. Do not add new rules here for a
+   `components/HeroStage/styles.css`,
+   `components/GrainyBackdrop/styles.css`) — check there first before
+   assuming something is missing. Do not add new rules here for a
    single component; only add here if it's a genuinely shared primitive
    multiple components need.
 
    SECTIONS (in file order)
-   Design tokens · Reset & base · Layout utilities · Hero stage (blobs +
-   grain) · Section frames & Features · Homepage sections · Responsive
-   breakpoints · Ivy brand text · Reveal animations
+   Design tokens · Reset & base · Layout utilities · Hero backdrop
+   primitives (.hero-bg + .grain) · Section frames & Features ·
+   Responsive breakpoints · Ivy brand text · Reveal animations
    =================================================================== */
 
 
@@ -206,10 +211,11 @@ body {
    (always emitted in @layer utilities, which is declared last in the
    `@layer theme, base, utilities;` line at the top of this file) can
    reliably override these rules when a component combines a kept class
-   (e.g. `.ph-block`, `.wrap`) with a Tailwind utility class
-   for a conflicting property. Without this, unlayered CSS always wins
-   over layered CSS regardless of specificity or source order — see the
-   `.ph-block` / `rounded-none` bug fixed on 2026-07-07. */
+   (e.g. `.wrap`) with a Tailwind utility class for a conflicting
+   property. Without this, unlayered CSS always wins over layered CSS
+   regardless of specificity or source order — see the historical
+   `.ph-block` / `rounded-none` bug fixed on 2026-07-07 (before
+   `.ph-block` itself was inlined into PlaceholderImage.tsx). */
 @layer base {
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -224,49 +230,14 @@ body {
 
 
 /* ═══════════════════════════════════════════════════════════════════
-   HERO STAGE
+   HERO BACKDROP PRIMITIVES
    ─────────────────────────────────────────────────────────────────
-   Architecture:
-     .hero-stage     — full-viewport dark section, overflow:hidden
-       .hero-bg        — contains blobs; `contain: layout style` creates a
-                         new stacking context, limiting repaint to this layer
-         .blob.b1–b4   — large blurred circles, mix-blend-mode:screen so
-                         they lighten the navy bg without opaque overlap.
-                         `will-change: transform` + `backface-visibility: hidden`
-                         promote each blob to its own GPU compositor layer,
-                         preventing repaints during animation.
-                         translate3d() (not translate) forces GPU compositing
-                         in older Chrome/Safari.
-       .grain          — SVG fractalNoise as data URI, mix-blend-mode:overlay
-       ::after          — radial vignette to darken edges
-       .hero-illo      — decorative SVG line drawing at bottom
-
-   To add a new blob colour, add a --g* token and a new .blob.b5 rule.
+   Shared by components/HeroStage (image-cover hero) and
+   components/GrainyBackdrop (blob+gradient dark bands — PageHeader,
+   VisionQuote, FinalCTA). Each of those owns the rest of its own
+   layer (blobs, vignette, etc.) in its own colocated styles.css —
+   only the two rules genuinely shared by both flavors live here.
    ═══════════════════════════════════════════════════════════════════ */
-.hero-stage {
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(120% 120% at 50% 0%, var(--g2), var(--g1) 70%);
-  color: var(--cream);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 150px 0 min(33vh, 320px);
-}
-
-/* Blobs and illustration are static on the landing hero — no drift or dash animation */
-.hero-stage .blob {
-  animation: none;
-}
-
-.hero-stage .illo-dash {
-  animation: none;
-}
-
-.hero-stage--image {
-  padding: 150px 0 110px;
-  min-height: min(100vh, 820px);
-}
 
 /* `contain: layout style` isolates blob repaints from the rest of the page */
 .hero-bg {
@@ -274,99 +245,6 @@ body {
   inset: 0;
   z-index: 0;
   contain: layout style;
-}
-
-.hero-bg--image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: radial-gradient(130% 90% at 50% 40%, rgba(7, 14, 30, 0.35), rgba(7, 14, 30, 0.72) 100%);
-}
-
-.hero-bg--image .ph-block--cover {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  aspect-ratio: unset;
-}
-
-/* Shared blob styles — each .b* sets size, position, colour, animation */
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.85;
-  mix-blend-mode: screen;
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-.b1 {
-  width: 55vw;
-  height: 55vw;
-  left: -12vw;
-  top: -8vw;
-  background: var(--g3);
-  animation: drift1 22s ease-in-out infinite;
-}
-
-.b2 {
-  width: 46vw;
-  height: 46vw;
-  right: -8vw;
-  top: -6vw;
-  background: var(--g4);
-  animation: drift2 26s ease-in-out infinite;
-}
-
-.b3 {
-  width: 50vw;
-  height: 50vw;
-  right: 6vw;
-  bottom: -18vw;
-  background: var(--g5);
-  opacity: 0.7;
-  animation: drift3 30s ease-in-out infinite;
-}
-
-/* translate3d keeps blobs on the GPU compositor layer throughout the animation */
-@keyframes drift1 {
-
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate3d(8vw, 5vw, 0) scale(1.12);
-  }
-}
-
-@keyframes drift2 {
-
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate3d(-6vw, 7vw, 0) scale(1.1);
-  }
-}
-
-@keyframes drift3 {
-
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate3d(-7vw, -6vw, 0) scale(1.15);
-  }
 }
 
 /* Grain texture — SVG fractalNoise encoded as data URI (no extra network request).
@@ -381,24 +259,6 @@ body {
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
-}
-
-/* Radial vignette — darkens edges to keep text readable over bright blobs */
-.hero-stage::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: radial-gradient(130% 90% at 50% 40%, transparent 50%, rgba(7, 14, 30, 0.55) 100%);
-}
-
-/* Respect OS reduced-motion preference — freeze all decorative animations */
-@media (prefers-reduced-motion: reduce) {
-
-  .blob {
-    animation: none !important;
-  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -428,35 +288,6 @@ section {
   color: var(--ink-soft);
   font-size: 17px;
   line-height: 1.65;
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   HOMEPAGE SECTIONS (IvyPrep structure, Project Ivy styling)
-   ═══════════════════════════════════════════════════════════════════ */
-
-/* Shared placeholder image block */
-.ph-block {
-  width: 100%;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background:
-    repeating-linear-gradient(135deg, rgba(19, 35, 63, 0.05) 0 12px, rgba(19, 35, 63, 0.09) 12px 24px),
-    var(--cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ph-block span {
-  font-family: ui-monospace, monospace;
-  font-size: 0.72rem;
-  color: var(--ink-soft);
-  background: var(--paper);
-  padding: 7px 12px;
-  border-radius: 6px;
-  border: 1px solid var(--line);
-  text-align: center;
-  max-width: 85%;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
