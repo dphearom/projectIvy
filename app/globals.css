@@ -56,14 +56,16 @@
    inline. Repeated markup/behavior has also been pulled into real React
    components where that gives more than styling reuse — see
    `components/Button.tsx` (variant="gold"|"ghost-dark", href turns it
-   into a next/link) and `components/TierModal.tsx` (shared by
-   ProgrammeProducts and ServiceCampsProgram) before reaching for raw
-   markup. Each of those has its own colocated `styles.css`.
+   into a next/link), `components/Eyebrow.tsx` (center? onNavy?), and
+   `components/TierModal.tsx` (shared by ProgrammeProducts and
+   ServiceCampsProgram) before reaching for raw markup. Each of those
+   has its own colocated `styles.css` (Eyebrow and Button are pure
+   Tailwind, no CSS file needed).
    What's left here is only:
      - design tokens (:root) feeding @theme / Tailwind's `bg-navy` etc.
      - primitives too widely shared across components to inline anywhere
-       in particular (`.wrap`, `.eyebrow`, `.hero-stage`/`.hero-bg`,
-       `.blob`/`.grain`, `.ph-block`)
+       in particular (`.wrap`, `.hero-stage`/`.hero-bg`, `.blob`/
+       `.grain`, `.ph-block`)
      - the `[data-reveal]` scroll-in animation and its `@keyframes`
    CSS that belongs to exactly one component (or one component + the
    shared components above) lives in a colocated `styles.css` next to
@@ -75,9 +77,9 @@
    multiple components need.
 
    SECTIONS (in file order)
-   Design tokens · Reset & base · Layout utilities · Eyebrow ·
-   Hero stage (blobs + grain) · Section frames & Features · Homepage
-   sections · Responsive breakpoints · Ivy brand text · Reveal animations
+   Design tokens · Reset & base · Layout utilities · Hero stage (blobs +
+   grain) · Section frames & Features · Homepage sections · Responsive
+   breakpoints · Ivy brand text · Reveal animations
    =================================================================== */
 
 
@@ -204,7 +206,7 @@ body {
    (always emitted in @layer utilities, which is declared last in the
    `@layer theme, base, utilities;` line at the top of this file) can
    reliably override these rules when a component combines a kept class
-   (e.g. `.ph-block`, `.wrap`, `.eyebrow`) with a Tailwind utility class
+   (e.g. `.ph-block`, `.wrap`) with a Tailwind utility class
    for a conflicting property. Without this, unlayered CSS always wins
    over layered CSS regardless of specificity or source order — see the
    `.ph-block` / `rounded-none` bug fixed on 2026-07-07. */
@@ -220,46 +222,6 @@ body {
   padding: 0 32px;
 }
 
-
-/* ═══════════════════════════════════════════════════════════════════
-   EYEBROW
-   ═══════════════════════════════════════════════════════════════════ */
-
-/* ── Eyebrow: small caps label with flanking gold rules ── */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-}
-
-/* ::before draws left rule; .center also shows right rule via ::after */
-.eyebrow::before,
-.eyebrow.center::after {
-  content: "";
-  height: 1px;
-  width: 38px;
-  background: var(--gold);
-  opacity: 0.7;
-}
-
-.eyebrow:not(.center)::before {
-  width: 38px;
-}
-
-.eyebrow.center {
-  justify-content: center;
-}
-
-.on-navy .eyebrow,
-.eyebrow.on-navy {
-  color: var(--gold-soft);
-}
 
 /* ═══════════════════════════════════════════════════════════════════
    HERO STAGE

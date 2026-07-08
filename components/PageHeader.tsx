@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import Eyebrow from "@/components/Eyebrow";
 
 interface Props {
   label?: string;
@@ -28,7 +29,11 @@ const PageHeader = ({ label, title, subtitle, compact = false, reveal = true, ch
       </div>
       <div className="grain" />
       <div className="relative z-3 max-w-300 mx-auto px-8 text-center">
-        {label && <span className="eyebrow gold center text-gold mb-4.5">{label}</span>}
+        {label && (
+          <Eyebrow center className="text-gold mb-4.5">
+            {label}
+          </Eyebrow>
+        )}
         <h1
           className="text-[clamp(44px,5.4vw,76px)] tracking-[-0.01em] mb-5"
           data-reveal={reveal || undefined}

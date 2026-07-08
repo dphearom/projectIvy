@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllEvents, getEventBySlug, type EventDTO } from "@/lib/events";
 import BookingCard from "@/components/BookingCard";
+import Eyebrow from "@/components/Eyebrow";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -59,7 +60,7 @@ const EventDetailPage = async ({ params }: PageProps) => {
         </Link>
 
         <div className="mb-10">
-          <span className="eyebrow gold text-gold mb-3">{event.organizer}</span>
+          <Eyebrow className="text-gold mb-3">{event.organizer}</Eyebrow>
           <h1 className="text-[clamp(2rem,4vw,3.2rem)] text-ink mt-3 mb-5">{event.title}</h1>
           <div className="flex flex-wrap gap-4.5 mb-4.5">
             {META_ICONS.map((m) => (

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import FounderMessage from "@/components/sections/FounderMessage";
+import Eyebrow from "@/components/Eyebrow";
 import "./styles.css";
 
 const OurStory = () => (
@@ -28,7 +29,7 @@ const OurStory = () => (
 
         {/* Bio column */}
         <div data-reveal data-reveal-d="2">
-          <span className="eyebrow gold">Founder&apos;s Story</span>
+          <Eyebrow>Founder&apos;s Story</Eyebrow>
           <h2 className="text-[clamp(2rem,3.6vw,3rem)] tracking-[-0.01em] mb-5 text-balance">
             Meet the Founder
           </h2>

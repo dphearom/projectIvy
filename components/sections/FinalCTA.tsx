@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import Eyebrow from "@/components/Eyebrow";
 
 // Dark grainy CTA band — same atmosphere pattern as VisionQuote and the hero sections.
 const FinalCTA = () => (
@@ -8,7 +9,7 @@ const FinalCTA = () => (
     </div>
     <div className="grain" />
     <div className="relative z-3 text-center max-w-230 mx-auto px-8">
-      <span className="eyebrow gold center" data-reveal>Start your journey</span>
+      <Eyebrow center onNavy data-reveal>Start your journey</Eyebrow>
       <h2
         className="mt-6.5 mb-7 text-[clamp(2.4rem,5vw,4.2rem)] tracking-[-0.01em] text-balance"
         data-reveal

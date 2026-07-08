@@ -1,5 +1,6 @@
 import EventsGrid from "@/components/EventsGrid"; // client wrapper — keeps this component server-side
 import Button from "@/components/Button";
+import Eyebrow from "@/components/Eyebrow";
 import type { EventDTO } from "@/lib/events";     // type-only import — lib/events is server-only
 
 interface Props {
@@ -17,7 +18,7 @@ const UpcomingEvents = ({ events, preview = false, limit = 3, hideHeader = false
       <div className="wrap">
         {!hideHeader && (
           <div className="text-center max-w-180 mx-auto" data-reveal>
-            <span className="eyebrow center">Upcoming Events</span>
+            <Eyebrow center>Upcoming Events</Eyebrow>
             <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
               Workshops &amp; Bootcamps to Get You There
             </h2>

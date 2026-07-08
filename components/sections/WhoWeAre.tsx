@@ -1,3 +1,5 @@
+import Eyebrow from "@/components/Eyebrow";
+
 const BLOCKS = [
   {
     num: "01",
@@ -23,7 +25,7 @@ const WhoWeAre = () => (
   <section className="py-30 bg-cream-2" id="who-we-are">
     <div className="wrap">
       <div className="text-center max-w-180 mx-auto" data-reveal>
-        <span className="eyebrow center">Who We Are</span>
+        <Eyebrow center>Who We Are</Eyebrow>
         <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
           The foundation behind Project IVY
         </h2>

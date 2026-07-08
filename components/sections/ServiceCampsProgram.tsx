@@ -4,6 +4,7 @@ import { useState } from "react";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import Button from "@/components/Button";
 import TierModal from "@/components/TierModal";
+import Eyebrow from "@/components/Eyebrow";
 import { SERVICE_CAMPS_DETAIL, type ProgramTier } from "@/lib/programs";
 
 const CAMP_OUTCOMES: Record<string, string> = {
@@ -77,7 +78,7 @@ const CampsProgram = () => {
     <section className="bg-ivory pt-25 pb-27.5" id="camps-program">
       <div className="wrap">
         <div className="text-center max-w-180 mx-auto" data-reveal>
-          <span className="eyebrow gold center">Service &amp; Cultural Immersion</span>
+          <Eyebrow center>Service &amp; Cultural Immersion</Eyebrow>
           <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
             {program.title}
           </h2>

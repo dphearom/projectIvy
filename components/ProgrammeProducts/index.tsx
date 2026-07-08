@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import Button from "@/components/Button";
 import TierModal from "@/components/TierModal";
+import Eyebrow from "@/components/Eyebrow";
 import { CartIcon, ChevronDown } from "@/components/icons";
 import { PLACEHOLDERS } from "@/lib/placeholders";
 import { ADVISING_PROGRAM_DETAILS, type ProgramDetail, type ProgramTier } from "@/lib/programs";
@@ -107,7 +108,7 @@ const ProgrammeProducts = () => {
     <section className="bg-ivory pt-25 pb-27.5" id="programs" aria-label="Advising programs">
       <div className="wrap">
         <div className="text-center max-w-180 mx-auto" data-reveal>
-          <span className="eyebrow gold center">Your roadmap</span>
+          <Eyebrow center>Your roadmap</Eyebrow>
           <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
             Choose your program
           </h2>

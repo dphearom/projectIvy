@@ -1,3 +1,5 @@
+import Eyebrow from "@/components/Eyebrow";
+
 const VisionQuote = () => (
   <section className="relative overflow-hidden text-cream py-28 bg-(--ink-2)" id="vision">
     <div className="hero-bg bg-[radial-gradient(120%_130%_at_50%_0%,var(--g2),var(--g1)_72%)]">
@@ -16,9 +18,9 @@ const VisionQuote = () => (
         A world where Cambodian students are recognized, represented, and respected in
         global spaces&mdash;creating impact at home and around the world.
       </h2>
-      <span className="eyebrow gold center" data-reveal data-reveal-d="2">
+      <Eyebrow center onNavy data-reveal data-reveal-d="2">
         Our Vision
-      </span>
+      </Eyebrow>
     </div>
   </section>
 );
