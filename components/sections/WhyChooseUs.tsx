@@ -22,17 +22,24 @@ const REASONS = [
 ] as const;
 
 const WhyChooseUs = () => (
-  <section className="about-sec" id="why-choose-us">
+  <section className="py-30 bg-cream" id="why-choose-us">
     <div className="wrap">
-      <div className="section-head" data-reveal>
+      <div className="text-center max-w-180 mx-auto" data-reveal>
         <span className="eyebrow center">Why You Should Choose Us</span>
-        <h2>What sets Project IVY apart</h2>
+        <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
+          What sets Project IVY apart
+        </h2>
       </div>
-      <div className="why-choose-grid">
+      <div className="mt-14 grid grid-cols-2 gap-6 max-[980px]:grid-cols-1">
         {REASONS.map(({ area, detail }, i) => (
-          <article className="why-choose-card" key={area} data-reveal data-reveal-d={String((i % 2) + 1)}>
-            <h3>{area}</h3>
-            <p>{detail}</p>
+          <article
+            className="bg-paper border border-line rounded-(--radius) py-8 px-7 transition-[transform,translate,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_44px_-24px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)]"
+            key={area}
+            data-reveal
+            data-reveal-d={String((i % 2) + 1)}
+          >
+            <h3 className="text-[1.2rem] text-navy leading-[1.2]">{area}</h3>
+            <p className="mt-3 text-[0.95rem] text-ink-soft leading-[1.6]">{detail}</p>
           </article>
         ))}
       </div>

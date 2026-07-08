@@ -6,22 +6,24 @@ const placeholderSlug = (name: string) =>
   `team-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
 
 const MeetOurTeamHome = () => (
-  <section className="about-sec alt" id="meet-our-team">
+  <section className="py-30 bg-cream-2" id="meet-our-team">
     <div className="wrap">
-      <div className="section-head" data-reveal>
+      <div className="text-center max-w-180 mx-auto" data-reveal>
         <span className="eyebrow center">Our Team</span>
-        <h2>Meet Our Team</h2>
+        <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
+          Meet Our Team
+        </h2>
       </div>
 
-      <div className="team-card-grid">
+      <div className="mt-14 grid grid-cols-3 gap-7 max-[980px]:grid-cols-2 max-[680px]:grid-cols-1">
         {CORE_TEAM.map((member, i) => (
           <article
-            className="team-card team-card--compact"
+            className="bg-paper border border-line rounded-(--radius) overflow-hidden"
             key={member.name}
             data-reveal
             data-reveal-d={String((i % 3) + 1)}
           >
-            <div className="team-card-photo" style={{ aspectRatio: "1 / 1", overflow: "hidden" }}>
+            <div className="aspect-square overflow-hidden">
               {member.photo ? (
                 <Image
                   src={`/images/${member.photo}`}
@@ -42,13 +44,14 @@ const MeetOurTeamHome = () => (
                 <PlaceholderImage
                   name={placeholderSlug(member.name)}
                   aspect="1 / 1"
+                  className="rounded-none"
                 />
               )}
             </div>
-            <div className="team-card-body">
-              <h3>{member.name}</h3>
-              <p className="team-school">{member.school}</p>
-              <p className="team-role">{member.role}</p>
+            <div className="pt-5.5 px-6 pb-5.5">
+              <h3 className="text-[1.25rem] text-navy leading-[1.15]">{member.name}</h3>
+              <p className="mt-2 mb-1.5 text-[0.82rem] text-ink-soft leading-[1.45]">{member.school}</p>
+              <p className="text-[0.82rem] font-semibold tracking-[0.08em] uppercase text-gold">{member.role}</p>
             </div>
           </article>
         ))}

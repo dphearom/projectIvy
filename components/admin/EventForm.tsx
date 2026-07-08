@@ -39,10 +39,13 @@ const EventForm = ({ event }: Props) => {
   const [state, formAction] = useActionState(action, initialState);
 
   return (
-    <form action={formAction} className="admin-form">
+    <form
+      action={formAction}
+      className="bg-paper rounded-xl p-8 border border-[color-mix(in_srgb,var(--ink)_8%,transparent)]"
+    >
       {isEdit && <input type="hidden" name="id" value={event!.id} />}
 
-      <div className="admin-form__grid">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-0 max-[768px]:grid-cols-1">
         <FormField
           label="Title"
           name="title"
@@ -140,9 +143,9 @@ const EventForm = ({ event }: Props) => {
         placeholder="Education, Mentorship, Bootcamp"
       />
 
-      {state.error && <p className="form-error">{state.error}</p>}
+      {state.error && <p className="text-[#c0392b] text-[0.8rem] mt-[0.35rem]">{state.error}</p>}
 
-      <div className="admin-form__footer">
+      <div className="mt-6 flex justify-end">
         <SubmitButton
           label={isEdit ? "Save changes" : "Create event"}
           pendingLabel="Saving…"

@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 interface Props {
   label: string;
   name: string;
@@ -24,13 +26,16 @@ const FormField = ({
   children,
 }: Props) => {
   const id = `field-${name}`;
-  const className = `form-control${error ? " form-control--error" : ""}`;
+  const className = cn(
+    "w-full py-[0.65rem] px-[0.85rem] border rounded-lg text-[0.9rem] bg-paper text-ink transition-colors duration-150 outline-none focus:border-gold",
+    error ? "border-[#c0392b]" : "border-[color-mix(in_srgb,var(--ink)_15%,transparent)]",
+  );
 
   return (
-    <div className="form-group">
-      <label htmlFor={id}>
+    <div className="mb-5">
+      <label htmlFor={id} className="block text-[0.85rem] font-medium text-ink mb-[0.35rem]">
         {label}
-        {required && <span className="form-required"> *</span>}
+        {required && <span className="text-gold"> *</span>}
       </label>
       {as === "textarea" ? (
         <textarea
@@ -63,7 +68,7 @@ const FormField = ({
           className={className}
         />
       )}
-      {error && <p className="form-error">{error}</p>}
+      {error && <p className="text-[#c0392b] text-[0.8rem] mt-[0.35rem]">{error}</p>}
     </div>
   );
 };

@@ -19,8 +19,10 @@ export default async function AdminEventsPage() {
 
   return (
     <>
-      <div className="admin-page-header">
-        <h1 className="admin-page-title">Events</h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="[font-family:var(--font-manrope)] text-[1.5rem] font-semibold text-ink mb-0">
+          Events
+        </h1>
         <Link href="/admin/events/new" className="btn btn-gold">
           + New Event
         </Link>

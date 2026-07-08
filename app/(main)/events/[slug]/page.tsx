@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllEvents, getEventBySlug, type EventDTO } from "@/lib/events";
-import BookingForm from "@/components/BookingForm";
+import BookingCard from "@/components/BookingCard";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -49,33 +49,41 @@ const EventDetailPage = async ({ params }: PageProps) => {
   }
 
   return (
-    <section className="event-detail">
+    <section className="bg-cream pt-15 pb-25">
       <div className="container">
-        <Link href="/events" className="event-back">
+        <Link
+          href="/events"
+          className="inline-flex items-center gap-2 text-[0.9rem] font-medium text-ink-soft mb-9 transition-colors duration-300 hover:text-ink"
+        >
           ← Back to all events
         </Link>
 
-        <div className="event-detail-head">
-          <span className="eyebrow gold">{event.organizer}</span>
-          <h1>{event.title}</h1>
-          <div className="event-meta-row">
+        <div className="mb-10">
+          <span className="eyebrow gold text-gold mb-3">{event.organizer}</span>
+          <h1 className="text-[clamp(2rem,4vw,3.2rem)] text-ink mt-3 mb-5">{event.title}</h1>
+          <div className="flex flex-wrap gap-4.5 mb-4.5">
             {META_ICONS.map((m) => (
-              <span className="event-meta-item" key={m.icon}>
+              <span className="inline-flex items-center gap-1.5 text-[0.9rem] text-ink-soft" key={m.icon}>
                 <Image src={m.icon} alt="" width={16} height={16} style={{ width: "auto", height: "auto" }} />
                 {m.value(event)}
               </span>
             ))}
           </div>
-          <div className="event-tags">
+          <div className="flex flex-wrap gap-2">
             {event.tags.map((tag) => (
-              <span className="event-tag" key={tag}>{tag}</span>
+              <span
+                className="font-body font-semibold text-[11px] tracking-[0.12em] uppercase text-gold border border-[rgba(182,146,79,0.3)] rounded-full py-1 px-3 bg-[rgba(182,146,79,0.06)]"
+                key={tag}
+              >
+                {tag}
+              </span>
             ))}
           </div>
         </div>
 
-        <div className="event-layout">
-          <div className="event-content">
-            <div className="event-banner">
+        <div className="grid grid-cols-[1fr_380px] gap-12 items-start max-[980px]:grid-cols-1">
+          <div className="flex flex-col">
+            <div className="relative aspect-[16/9] rounded-(--radius) overflow-hidden mb-10">
               <Image
                 src={event.image}
                 alt={event.title}
@@ -85,18 +93,20 @@ const EventDetailPage = async ({ params }: PageProps) => {
               />
             </div>
 
-            <div className="event-block">
-              <h2>About this event</h2>
-              <p>{event.description}</p>
+            <div className="py-8 border-t border-line">
+              <h2 className="text-[1.6rem] text-ink mb-3.5">About this event</h2>
+              <p className="text-[1.05rem] text-ink-soft leading-[1.7]">{event.description}</p>
             </div>
 
             {event.agenda.length > 0 && (
-              <div className="event-block">
-                <h2>What we&apos;ll cover</h2>
-                <ul className="event-agenda">
+              <div className="py-8 border-t border-line">
+                <h2 className="text-[1.6rem] text-ink mb-3.5">What we&apos;ll cover</h2>
+                <ul className="list-none p-0 m-0 flex flex-col gap-3.5">
                   {event.agenda.map((item, i) => (
-                    <li key={item}>
-                      <span className="marker">{i + 1}</span>
+                    <li key={item} className="flex gap-4 items-start text-[1.02rem] text-ink">
+                      <span className="flex-none w-7 h-7 rounded-full bg-[rgba(182,146,79,0.12)] border border-[rgba(182,146,79,0.3)] text-gold text-[0.78rem] font-bold flex items-center justify-center">
+                        {i + 1}
+                      </span>
                       {item}
                     </li>
                   ))}
@@ -106,48 +116,7 @@ const EventDetailPage = async ({ params }: PageProps) => {
           </div>
 
           <aside>
-            <div className="booking-card">
-              <span className="price-tag">Free Registration</span>
-              <h3>Reserve your spot</h3>
-              <div className="booking-summary">
-                <div className="booking-summary-item">
-                  <div className="b-icon">
-                    <Image src="/icons/calendar.svg" alt="" width={16} height={16} style={{ width: "auto", height: "auto" }} />
-                  </div>
-                  <div>
-                    <div className="b-label">Date</div>
-                    <div className="b-value">{event.date}</div>
-                  </div>
-                </div>
-                <div className="booking-summary-item">
-                  <div className="b-icon">
-                    <Image src="/icons/clock.svg" alt="" width={16} height={16} style={{ width: "auto", height: "auto" }} />
-                  </div>
-                  <div>
-                    <div className="b-label">Time</div>
-                    <div className="b-value">{event.time}</div>
-                  </div>
-                </div>
-                <div className="booking-summary-item">
-                  <div className="b-icon">
-                    <Image src="/icons/pin.svg" alt="" width={16} height={16} style={{ width: "auto", height: "auto" }} />
-                  </div>
-                  <div>
-                    <div className="b-label">Venue</div>
-                    <div className="b-value">{event.venue}</div>
-                  </div>
-                </div>
-              </div>
-              <BookingForm
-                eventTitle={event.title}
-                eventId={event.id}
-                rawDate={event.rawDate}
-                rawTime={event.rawTime}
-                venue={event.venue}
-                location={event.location}
-                description={event.description}
-              />
-            </div>
+            <BookingCard event={event} />
           </aside>
         </div>
       </div>
