@@ -1,5 +1,5 @@
-import Link from "next/link";
 import PlaceholderImage from "@/components/PlaceholderImage";
+import Button from "@/components/Button";
 import { PLACEHOLDERS } from "@/lib/placeholders";
 import { ADVISING_PROGRAM_SUMMARIES } from "@/lib/programs";
 
@@ -40,9 +40,9 @@ const AdvisingPrograms = () => (
                 <h3 className="text-[1.35rem] text-navy leading-[1.12]">{program.title}</h3>
                 <p className="mt-2.5 text-[0.95rem] text-ink-soft leading-[1.55]">{program.desc}</p>
               </div>
-              <Link className="btn btn-ghost-dark self-start mt-5" href={program.href}>
-                View details <span className="arrow">→</span>
-              </Link>
+              <Button variant="ghost-dark" href={program.href} className="self-start mt-5" arrow>
+                View details
+              </Button>
             </div>
           </article>
         ))}

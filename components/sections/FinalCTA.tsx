@@ -1,12 +1,13 @@
+import Button from "@/components/Button";
+import Eyebrow from "@/components/Eyebrow";
+import GrainyBackdrop from "@/components/GrainyBackdrop";
+
 // Dark grainy CTA band — same atmosphere pattern as VisionQuote and the hero sections.
 const FinalCTA = () => (
   <section className="relative overflow-hidden text-cream py-32.5 bg-(--ink-2)" id="about">
-    <div className="hero-bg bg-[radial-gradient(120%_130%_at_50%_120%,var(--g2),var(--g1)_70%)]">
-      <span className="blob b1" /><span className="blob b2" /><span className="blob b3" />
-    </div>
-    <div className="grain" />
+    <GrainyBackdrop gradientClassName="bg-[radial-gradient(120%_130%_at_50%_120%,var(--g2),var(--g1)_70%)]" />
     <div className="relative z-3 text-center max-w-230 mx-auto px-8">
-      <span className="eyebrow gold center" data-reveal>Start your journey</span>
+      <Eyebrow center onNavy data-reveal>Start your journey</Eyebrow>
       <h2
         className="mt-6.5 mb-7 text-[clamp(2.4rem,5vw,4.2rem)] tracking-[-0.01em] text-balance"
         data-reveal
@@ -18,9 +19,9 @@ const FinalCTA = () => (
         Please contact us now to register for a Free 1-1 consultation with a Project Ivy advisor!
       </p>
       <div className="flex gap-3.5 justify-center flex-wrap" data-reveal data-reveal-d="3">
-        <a className="btn btn-gold" href="/contact">
-          Sign up for advising <span className="arrow">→</span>
-        </a>
+        <Button href="/contact" arrow>
+          Sign up for advising
+        </Button>
       </div>
     </div>
   </section>

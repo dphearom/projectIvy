@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn, EMAIL_RE } from "@/lib/utils";
+import Button from "@/components/Button";
 
 const ConsultationForm = () => {
   const [role, setRole] = useState<"parent" | "student">("student");
@@ -184,9 +185,9 @@ const ConsultationForm = () => {
 
       {error && <p className="text-[0.88rem] text-[#c0392b]">{error}</p>}
 
-      <button type="submit" className="btn btn-gold w-full justify-center" disabled={submitting}>
+      <Button type="submit" className="w-full justify-center" disabled={submitting}>
         {submitting ? "Submitting…" : "Sign up for consultation"}
-      </button>
+      </Button>
     </form>
   );
 };

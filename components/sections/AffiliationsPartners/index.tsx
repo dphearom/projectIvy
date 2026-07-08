@@ -72,7 +72,7 @@ const AffiliationsPartners = () => (
         className="overflow-hidden py-2.5 mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] group"
       >
         <div className="flex w-max animate-[logo-marquee_38s_linear_infinite] group-hover:[animation-play-state:paused]">
-          {[...ROW_1, ...ROW_1].map((school, i) => (
+          {[...ROW_1, ...ROW_1, ...ROW_1, ...ROW_1].map((school, i) => (
             <SchoolSlot key={`r1-${i}`} school={school} />
           ))}
         </div>
@@ -83,7 +83,7 @@ const AffiliationsPartners = () => (
         className="overflow-hidden py-2.5 mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] group"
       >
         <div className="flex w-max animate-[logo-marquee_44s_linear_infinite_reverse] group-hover:[animation-play-state:paused]">
-          {[...ROW_2, ...ROW_2].map((school, i) => (
+          {[...ROW_2, ...ROW_2, ...ROW_2, ...ROW_2].map((school, i) => (
             <SchoolSlot key={`r2-${i}`} school={school} />
           ))}
         </div>

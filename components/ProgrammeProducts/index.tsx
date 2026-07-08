@@ -1,7 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import PlaceholderImage from "@/components/PlaceholderImage";
+import Button from "@/components/Button";
+import TierModal from "@/components/TierModal";
+import Eyebrow from "@/components/Eyebrow";
 import { CartIcon, ChevronDown } from "@/components/icons";
 import { PLACEHOLDERS } from "@/lib/placeholders";
 import { ADVISING_PROGRAM_DETAILS, type ProgramDetail, type ProgramTier } from "@/lib/programs";
@@ -17,71 +20,52 @@ const PROGRAM_PHOTOS: Record<string, string> = {
 
 type ModalData = { program: ProgramDetail; tier: ProgramTier };
 
-const TierModal = ({ data, onClose }: { data: ModalData; onClose: () => void }) => {
-  const overlayRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [onClose]);
-
+const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => void }) => {
   const tierIndex = data.program.tiers.indexOf(data.tier) + 1;
 
   return (
-    <div
-      className="tier-modal-overlay"
-      ref={overlayRef}
-      onClick={(e) => e.target === overlayRef.current && onClose()}
+    <TierModal
+      title={data.tier.name}
+      price={data.tier.price}
+      tagline={data.tier.tagline}
+      onClose={onClose}
+      media={
+        <PlaceholderImage
+          name={`${data.program.id}-pkg-${tierIndex}`}
+          aspect="16 / 7"
+          className="rounded-none"
+        />
+      }
+      footer={
+        <>
+          <Button href="/contact" arrow>
+            Enquire now
+          </Button>
+          <Button variant="ghost-dark" onClick={onClose}>
+            Close
+          </Button>
+        </>
+      }
     >
-      <div className="tier-modal" role="dialog" aria-modal="true" aria-label={data.tier.name}>
-        <button type="button" className="tier-modal__close" onClick={onClose} aria-label="Close">
-          ×
-        </button>
-        <div className="tier-modal__scroll">
-          <PlaceholderImage
-            name={`${data.program.id}-pkg-${tierIndex}`}
-            aspect="16 / 7"
-            className="rounded-none"
-          />
-          <div className="tier-modal__body">
-            <h3 className="tier-modal__name">{data.tier.name}</h3>
-            <span className="tier-modal__price">{data.tier.price}</span>
-            <p className="tier-modal__tagline">{data.tier.tagline}</p>
-            <div className="tier-modal__features">
-              <h5>What&apos;s included</h5>
-              <ul>
-                {data.tier.features.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-            </div>
-            {data.tier.deliverables && data.tier.deliverables.length > 0 && (
-              <div className="tier-modal__features mt-5 pt-5 border-t border-line">
-                <h5>Deliverables</h5>
-                <ul>
-                  {data.tier.deliverables.map((d) => (
-                    <li key={d}>{d}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <div className="tier-modal__footer">
-              <a className="btn btn-gold" href="/contact">
-                Enquire now <span className="arrow">→</span>
-              </a>
-              <button type="button" className="btn btn-ghost-dark" onClick={onClose}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className="tier-modal__features">
+        <h5>What&apos;s included</h5>
+        <ul>
+          {data.tier.features.map((f) => (
+            <li key={f}>{f}</li>
+          ))}
+        </ul>
       </div>
-    </div>
+      {data.tier.deliverables && data.tier.deliverables.length > 0 && (
+        <div className="tier-modal__features mt-5 pt-5 border-t border-line">
+          <h5>Deliverables</h5>
+          <ul>
+            {data.tier.deliverables.map((d) => (
+              <li key={d}>{d}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </TierModal>
   );
 };
 
@@ -124,7 +108,7 @@ const ProgrammeProducts = () => {
     <section className="bg-ivory pt-25 pb-27.5" id="programs" aria-label="Advising programs">
       <div className="wrap">
         <div className="text-center max-w-180 mx-auto" data-reveal>
-          <span className="eyebrow gold center">Your roadmap</span>
+          <Eyebrow center>Your roadmap</Eyebrow>
           <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
             Choose your program
           </h2>
@@ -142,9 +126,9 @@ const ProgrammeProducts = () => {
             <span className="font-semibold text-navy">
               {cart.length} program{cart.length !== 1 ? "s" : ""} in your inquiry list
             </span>
-            <a className="btn btn-gold max-[980px]:justify-center max-[980px]:w-full" href="/contact">
-              Request consultation <span className="arrow">→</span>
-            </a>
+            <Button href="/contact" className="max-[980px]:justify-center max-[980px]:w-full" arrow>
+              Request consultation
+            </Button>
           </div>
         )}
 
@@ -254,7 +238,7 @@ const ProgrammeProducts = () => {
         </div>
       </div>
 
-      {modalData && <TierModal data={modalData} onClose={() => setModalData(null)} />}
+      {modalData && <ProgramTierModal data={modalData} onClose={() => setModalData(null)} />}
     </section>
   );
 };
