@@ -216,7 +216,7 @@ const ProgrammeProducts = () => {
                     {program.tiers.map((tier, ti) => (
                       <article
                         key={tier.name}
-                        className="bg-paper border border-line rounded-[calc(var(--radius)-2px)] overflow-hidden cursor-pointer transition-[border-color,box-shadow,transform] duration-300 flex flex-col hover:border-[rgba(184,150,90,0.55)] hover:shadow-[0_18px_38px_-20px_rgba(14,23,41,0.22)] hover:-translate-y-1"
+                        className="bg-paper border border-line rounded-[calc(var(--radius)-2px)] overflow-hidden cursor-pointer transition-[border-color,box-shadow,transform,translate] duration-300 flex flex-col hover:border-[rgba(184,150,90,0.55)] hover:shadow-[0_18px_38px_-20px_rgba(14,23,41,0.22)] hover:-translate-y-1"
                         onClick={() => setModalData({ program, tier })}
                       >
                         <PlaceholderImage

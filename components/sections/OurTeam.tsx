@@ -19,7 +19,7 @@ const OurTeam = () => (
       <div className="mt-14 grid grid-cols-3 gap-7 max-[980px]:grid-cols-2 max-[680px]:grid-cols-1">
         {MENTOR_TEAM.map((member, i) => (
           <article
-            className="bg-paper border border-line rounded-(--radius) overflow-hidden transition-[transform,box-shadow,border-color] duration-350 hover:-translate-y-1.25 hover:shadow-[0_28px_50px_-28px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)]"
+            className="bg-paper border border-line rounded-(--radius) overflow-hidden transition-[transform,translate,box-shadow,border-color] duration-350 hover:-translate-y-1.25 hover:shadow-[0_28px_50px_-28px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)]"
             key={member.name}
             data-reveal
             data-reveal-d={String((i % 3) + 1)}

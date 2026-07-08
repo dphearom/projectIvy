@@ -35,7 +35,7 @@ const ROW_2: School[] = [
 ];
 
 const SchoolSlot = ({ school }: { school: School }) => (
-  <div className="flex-none w-40 aspect-[2.4/1] rounded-[10px] border border-line bg-ivory-2 flex items-center justify-center px-4.5 py-3 transition-[border-color,box-shadow,transform,background] duration-250 hover:border-[rgba(184,150,90,0.8)] hover:shadow-[0_0_0_3px_rgba(184,150,90,0.15)] hover:scale-[1.08] hover:-translate-y-0.5 hover:bg-white">
+  <div className="flex-none w-40 aspect-[2.4/1] rounded-[10px] border border-line bg-ivory-2 flex items-center justify-center px-4.5 py-3 transition-[border-color,box-shadow,transform,translate,scale,background] duration-250 hover:border-[rgba(184,150,90,0.8)] hover:shadow-[0_0_0_3px_rgba(184,150,90,0.15)] hover:scale-[1.08] hover:-translate-y-0.5 hover:bg-white">
     {school.logo ? (
       // eslint-disable-next-line @next/next/no-img-element
       <img

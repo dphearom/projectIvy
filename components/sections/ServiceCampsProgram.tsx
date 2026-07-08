@@ -108,7 +108,7 @@ const CampsProgram = () => {
             return (
               <article
                 key={tier.name}
-                className="bg-paper border border-line rounded-(--radius) overflow-hidden cursor-pointer transition-[border-color,box-shadow,transform] duration-300 flex flex-col hover:border-[rgba(184,150,90,0.55)] hover:shadow-[0_22px_48px_-24px_rgba(14,23,41,0.26)] hover:-translate-y-1.25"
+                className="bg-paper border border-line rounded-(--radius) overflow-hidden cursor-pointer transition-[border-color,box-shadow,transform,translate] duration-300 flex flex-col hover:border-[rgba(184,150,90,0.55)] hover:shadow-[0_22px_48px_-24px_rgba(14,23,41,0.26)] hover:-translate-y-1.25"
                 data-reveal
                 data-reveal-d={String((i % 3) + 1)}
                 onClick={() => setModalTier(tier)}

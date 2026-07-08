@@ -33,7 +33,7 @@ const WhyChooseUs = () => (
       <div className="mt-14 grid grid-cols-2 gap-6 max-[980px]:grid-cols-1">
         {REASONS.map(({ area, detail }, i) => (
           <article
-            className="bg-paper border border-line rounded-(--radius) py-8 px-7 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_44px_-24px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)]"
+            className="bg-paper border border-line rounded-(--radius) py-8 px-7 transition-[transform,translate,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_44px_-24px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)]"
             key={area}
             data-reveal
             data-reveal-d={String((i % 2) + 1)}

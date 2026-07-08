@@ -25,7 +25,7 @@ const AdvisingPrograms = () => (
       <div className="mt-12 flex flex-col gap-5">
         {ALL_PROGRAMS.map((program, i) => (
           <article
-            className="grid grid-cols-[260px_1fr] min-h-47.5 bg-paper border border-line rounded-(--radius) overflow-hidden transition-[transform,box-shadow,border-color] duration-350 ease hover:-translate-y-1.25 hover:shadow-[0_28px_50px_-28px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)] max-[980px]:grid-cols-[220px_1fr] max-[760px]:grid-cols-1"
+            className="grid grid-cols-[260px_1fr] min-h-47.5 bg-paper border border-line rounded-(--radius) overflow-hidden transition-[transform,translate,box-shadow,border-color] duration-350 ease hover:-translate-y-1.25 hover:shadow-[0_28px_50px_-28px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)] max-[980px]:grid-cols-[220px_1fr] max-[760px]:grid-cols-1"
             key={program.id}
             data-reveal
             data-reveal-d={String((i % 3) + 1)}

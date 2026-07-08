@@ -34,7 +34,7 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => (
       <div className="grid gap-7">
         {SCHOLARSHIPS.map((scholarship, i) => (
           <article
-            className="bg-paper border border-line rounded-(--radius) overflow-hidden transition-[transform,box-shadow,border-color] duration-350 hover:-translate-y-1 hover:shadow-[0_24px_44px_-24px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)]"
+            className="bg-paper border border-line rounded-(--radius) overflow-hidden transition-[transform,translate,box-shadow,border-color] duration-350 hover:-translate-y-1 hover:shadow-[0_24px_44px_-24px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)]"
             key={scholarship.id}
             id={scholarship.id}
             data-reveal

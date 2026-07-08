@@ -270,7 +270,7 @@ const Navbar = () => {
               </button>
               <button
                 type="button"
-                className="font-body text-[14px] font-semibold rounded-full cursor-pointer py-2.25 px-4.5 border border-transparent bg-gold text-navy-3 shadow-[0_8px_24px_-12px_rgba(184,150,90,0.65)] transition-[background-color,transform] duration-250 hover:bg-gold-soft hover:-translate-y-px"
+                className="font-body text-[14px] font-semibold rounded-full cursor-pointer py-2.25 px-4.5 border border-transparent bg-gold text-navy-3 shadow-[0_8px_24px_-12px_rgba(184,150,90,0.65)] transition-[background-color,transform,translate] duration-250 hover:bg-gold-soft hover:-translate-y-px"
               >
                 Sign up
               </button>

@@ -8,7 +8,7 @@ const FeaturedNews = () => (
       </div>
 
       <div
-        className="bg-paper border border-line rounded-(--radius) overflow-hidden transition-[transform,box-shadow,border-color] duration-350 hover:-translate-y-1 hover:shadow-[0_28px_50px_-28px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)] max-w-205 mx-auto mt-12"
+        className="bg-paper border border-line rounded-(--radius) overflow-hidden transition-[transform,translate,box-shadow,border-color] duration-350 hover:-translate-y-1 hover:shadow-[0_28px_50px_-28px_rgba(14,23,41,0.28)] hover:border-[rgba(184,150,90,0.4)] max-w-205 mx-auto mt-12"
         data-reveal
         data-reveal-d="1"
       >
