@@ -10,7 +10,7 @@ export default function NotFound() {
       compact
       reveal={false}
     >
-      <div className="mt-2">
+      <div className="mt-6">
         <Button href="/" arrow>
           Back to home
         </Button>
