@@ -7,6 +7,12 @@ export type ProgramSummary = {
 
 export const ADVISING_PROGRAM_SUMMARIES: ProgramSummary[] = [
   {
+    id: "middle-school",
+    title: "Middle School Program",
+    desc: "Discover strengths, explore interests, and build strong foundations in Grades 6–8.",
+    href: "/programmes#middle-school",
+  },
+  {
     id: "university-readiness",
     title: "University Readiness Program",
     desc: "Build the foundation for long-term academic and admissions success.",
@@ -53,6 +59,38 @@ export type ProgramDetail = {
 };
 
 export const PROGRAM_DETAILS: ProgramDetail[] = [
+  {
+    id: "middle-school",
+    title: "Middle School Program",
+    tagline: "Discover your strengths and explore a world of possibilities",
+    description:
+      "The Exploration Year helps students in Grades 6–8 discover their strengths, build strong study habits, and explore clubs, sports, arts, STEM, and entrepreneurship — with services tailored to each student's unique needs.",
+    tiers: [
+      {
+        name: "Middle School (6th - 8th Grade) — The Exploration Year",
+        price: "$599",
+        tagline: "Discover Your Strengths and Explore a World of Possibilities",
+        features: [
+          "Strengths and interests assessment",
+          "Study habits and time management",
+          "Exploration of clubs, sports, arts, STEM, entrepreneurship",
+          "Reading and communication development",
+          "Academic goal setting",
+          "Early leadership opportunities",
+          "Community service introduction",
+          "Summer planning",
+          "Parent Consultation (1 per year)",
+          "6 one-on-one advising sessions per year",
+        ],
+        deliverables: [
+          "Interest Map",
+          "Activity Portfolio",
+          "Academic Roadmap",
+          "Annual Growth Plan",
+        ],
+      },
+    ],
+  },
   {
     id: "university-readiness",
     title: "University Readiness Program",

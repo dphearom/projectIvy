@@ -12,7 +12,7 @@ const ContactSection = () => (
         </p>
         <ul className="list-none m-0 p-0 flex flex-col gap-3.5 text-[0.98rem] text-ink-soft leading-[1.55]">
           <li>
-            Phone: <strong>+855889493577</strong> · <strong>+855964025628</strong>
+            Telegram: <strong>+855889493577</strong> · <strong>+855964025628</strong>
           </li>
           <li>
             Email:{" "}

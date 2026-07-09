@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import "./styles.css";
 
 const PROGRAM_PHOTOS: Record<string, string> = {
+  "middle-school": PLACEHOLDERS.PROGRAM_MIDDLE_SCHOOL,
   "university-readiness": PLACEHOLDERS.PROGRAM_READINESS,
   "university-application": PLACEHOLDERS.PROGRAM_APPLICATION,
   "graduate-school": PLACEHOLDERS.PROGRAM_GRADUATE_SCHOOL,

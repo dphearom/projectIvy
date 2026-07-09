@@ -1,10 +1,25 @@
-/* Referenced via Tailwind's animate-[logo-marquee_...] arbitrary value in
-   this component's JSX. The track renders each row's logos 4x over so the
-   loop stays seamless even on very wide viewports — translating by exactly
-   one set's width (-25% of the 4x-duplicated track) rather than -50% (which
-   only works if the viewport is narrower than one full set, otherwise the
-   marquee runs out of duplicated content and shows a gap before it loops). */
-@keyframes logo-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-25%); }
+/* Pixel-distance marquee — --marquee-distance is set per row from measured set width. */
+@keyframes logo-marquee-px {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(calc(var(--marquee-distance) * -1), 0, 0); }
+}
+
+@keyframes logo-marquee-px-reverse {
+  from { transform: translate3d(calc(var(--marquee-distance) * -1), 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+.logo-marquee-track {
+  animation-duration: var(--marquee-duration);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.logo-marquee-track--forward {
+  animation-name: logo-marquee-px;
+}
+
+.logo-marquee-track--reverse {
+  animation-name: logo-marquee-px-reverse;
 }

@@ -1,6 +1,10 @@
 import Image from "next/image";
+import PlaceholderImage from "@/components/PlaceholderImage";
 import Eyebrow from "@/components/Eyebrow";
 import { MENTOR_TEAM, PHOTO_POSITION, PHOTO_SCALE } from "@/lib/team";
+
+const placeholderSlug = (name: string) =>
+  `team-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
 
 const OurTeam = () => (
   <section className="py-30 bg-cream-2" id="team">
@@ -26,13 +30,29 @@ const OurTeam = () => (
             data-reveal-d={String((i % 3) + 1)}
           >
             <div className="aspect-square overflow-hidden">
-              <Image
-                src={`/images/${member.photo}.jpg`}
-                alt={member.name}
-                width={400}
-                height={400}
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: PHOTO_POSITION[member.name] ?? "center top", transform: PHOTO_SCALE[member.name] ? `scale(${PHOTO_SCALE[member.name]})` : undefined }}
-              />
+              {member.photo ? (
+                <Image
+                  src={`/images/${member.photo}.jpg`}
+                  alt={member.name}
+                  width={400}
+                  height={400}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: PHOTO_POSITION[member.name] ?? "center top",
+                    transform: PHOTO_SCALE[member.name]
+                      ? `scale(${PHOTO_SCALE[member.name]})`
+                      : undefined,
+                  }}
+                />
+              ) : (
+                <PlaceholderImage
+                  name={placeholderSlug(member.name)}
+                  aspect="1 / 1"
+                  className="rounded-none h-full"
+                />
+              )}
             </div>
             <div className="pt-5.5 px-6 pb-6.5">
               <h3 className="text-[1.25rem] text-navy leading-[1.15]">{member.name}</h3>
