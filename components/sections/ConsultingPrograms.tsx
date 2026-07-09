@@ -4,6 +4,7 @@ import { PLACEHOLDERS } from "@/lib/placeholders";
 import { ADVISING_PROGRAM_SUMMARIES } from "@/lib/programs";
 
 const PROGRAM_PHOTOS: Record<string, string> = {
+  "middle-school": PLACEHOLDERS.PROGRAM_MIDDLE_SCHOOL,
   "university-readiness": PLACEHOLDERS.PROGRAM_READINESS,
   "university-application": PLACEHOLDERS.PROGRAM_APPLICATION,
   "graduate-school": PLACEHOLDERS.PROGRAM_GRADUATE_SCHOOL,

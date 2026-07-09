@@ -25,7 +25,7 @@ const ConsultationForm = () => {
 
     if (!name.trim()) return setError("Please enter your full name.");
     if (!EMAIL_RE.test(email)) return setError("Please enter a valid email address.");
-    if (!phone.trim()) return setError("Please enter your phone number.");
+    if (!phone.trim()) return setError("Please enter your Telegram.");
     if (isParent && !childName.trim()) return setError("Please enter your child's name.");
     if (!grade) return setError(`Please select ${isParent ? "your child's" : "your"} grade.`);
     if (!school.trim()) return setError("Please enter the current school.");
@@ -114,7 +114,7 @@ const ConsultationForm = () => {
       </div>
 
       <div>
-        <label htmlFor="consult-phone" className={labelCls}>Phone (*)</label>
+        <label htmlFor="consult-phone" className={labelCls}>Telegram (*)</label>
         <input
           id="consult-phone"
           type="tel"
