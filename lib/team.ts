@@ -42,13 +42,7 @@ export const CORE_TEAM: TeamMember[] = [
     school: "University of Puthisastra, Phnom Penh",
     role: "Full Stack Developer",
     photo: "core-team/sophat-tann.jpg",
-  },
-  {
-    name: "Phalla",
-    school: "Tufts University",
-    role: "Full Stack Developer",
-    photo: "core-team/phalla.png",
-  },
+  }
 ];
 
 export const MENTOR_TEAM: TeamMember[] = [
