@@ -13,6 +13,9 @@ const LOGO_STYLE: Record<string, React.CSSProperties> = {
   Harvard: { maxHeight: 36, maxWidth: 120 },
   Lehigh: { maxHeight: 36, maxWidth: 120 },
   Northwestern: { maxHeight: 36, maxWidth: 120 },
+  Taft: { maxHeight: 36, maxWidth: 120 },
+  Syracuse: { maxHeight: 36, maxWidth: 120 },
+  Denison: { maxHeight: 36, maxWidth: 120 },
 };
 
 const ROW_1: School[] = [
