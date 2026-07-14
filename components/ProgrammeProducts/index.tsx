@@ -152,14 +152,14 @@ const ProgrammeProducts = () => {
                   added && "border-[rgba(184,150,90,0.55)]",
                 )}
               >
-                <div className="grid grid-cols-[280px_1fr] max-[980px]:grid-cols-1">
+                <div className="grid grid-cols-[400px_1fr] max-[980px]:grid-cols-1">
                   <SmartImage
                     name={PROGRAM_PHOTOS[program.id]}
                     alt={program.title}
                     available={PHOTO_READY.has(PROGRAM_PHOTOS[program.id])}
-                    aspect="4 / 3"
+                    aspect="unset"
                     className="rounded-none h-full min-h-55"
-                    sizes="(max-width: 980px) 100vw, 280px"
+                    sizes="(max-width: 980px) 100vw, 400px"
                   />
 
                   <div className="flex flex-col justify-between py-7 px-8 gap-6 max-[980px]:p-6">
