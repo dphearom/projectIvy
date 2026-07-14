@@ -9,11 +9,11 @@ export const PLACEHOLDERS = {
   ADVISING_HERO_BG: "advising-hero-bg",
 
   // Advising programs
-  PROGRAM_MIDDLE_SCHOOL: "program-middle-school",
-  PROGRAM_READINESS: "program-university-readiness",
-  PROGRAM_APPLICATION: "program-university-application",
-  PROGRAM_GRADUATE_SCHOOL: "program-graduate-school",
-  PROGRAM_SERVICE_CAMPS: "program-service-camps",
+  PROGRAM_MIDDLE_SCHOOL: "programs/program-middle-school",
+  PROGRAM_READINESS: "programs/program-university-readiness",
+  PROGRAM_APPLICATION: "programs/program-university-application",
+  PROGRAM_GRADUATE_SCHOOL: "programs/program-graduate-school",
+  PROGRAM_SERVICE_CAMPS: "programs/program-service-camps",
 
   // Homepage sections
   HOME_PARTNER_MAP: "home-partner-universities-map",
@@ -39,6 +39,25 @@ export const PLACEHOLDERS = {
 } as const;
 
 export type PlaceholderSlug = (typeof PLACEHOLDERS)[keyof typeof PLACEHOLDERS];
+
+/** Slugs with a real photo saved at `public/images/{slug}.jpg` — everything else still renders PlaceholderImage. */
+export const PHOTO_READY = new Set<string>([
+  PLACEHOLDERS.PROGRAM_MIDDLE_SCHOOL,
+  PLACEHOLDERS.PROGRAM_READINESS,
+  PLACEHOLDERS.PROGRAM_APPLICATION,
+  PLACEHOLDERS.PROGRAM_GRADUATE_SCHOOL,
+  "programs/packages/middle-school-pkg-1",
+  "programs/packages/university-readiness-pkg-1",
+  "programs/packages/university-readiness-pkg-2",
+  "programs/packages/university-readiness-pkg-3",
+  "programs/packages/university-application-pkg-1",
+  "programs/packages/university-application-pkg-2",
+  "programs/packages/university-application-pkg-3",
+  "programs/packages/graduate-school-pkg-1",
+  "programs/packages/graduate-school-pkg-2",
+  "programs/packages/graduate-school-pkg-3",
+  "programs/packages/graduate-school-pkg-4",
+]);
 
 export function newsArticlePhoto(slug: string): string {
   return `news-${slug}`;

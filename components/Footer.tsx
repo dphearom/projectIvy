@@ -41,7 +41,7 @@ const Footer = () => (
         {/* Brand */}
         <div className="max-[960px]:col-span-full">
           <Image
-            src="/logo-light.png"
+            src="/images/brand/logo-light.png"
             alt="Project IVY — Breksa AdvisED Global"
             width={1665}
             height={1304}
@@ -90,7 +90,9 @@ const Footer = () => (
       </div>
 
       <div className="mt-14 pt-6.5 border-t border-[rgba(243,237,226,0.12)] flex justify-between items-center gap-4 text-[13px] text-[rgba(243,237,226,0.55)] max-[640px]:flex-col max-[640px]:items-start">
-        <span>© 2026 Breksa — AdvisED Global. All rights reserved.</span>
+        <span>
+          © 2026 Project <span className="ivy-brand">IVY</span>. All rights reserved.
+        </span>
         <span>Cambodia&apos;s Academic Advising Platform</span>
       </div>
     </div>

@@ -148,7 +148,7 @@ const Navbar = () => {
           {/* Brand */}
           <Link href="/#top" className="inline-flex items-center flex-1 leading-none" aria-label="Project IVY home">
             <Image
-              src="/logo-nav-light.png"
+              src="/images/brand/logo-nav-light.png"
               alt="Project IVY"
               width={120}
               height={82}
@@ -159,7 +159,7 @@ const Navbar = () => {
               )}
             />
             <Image
-              src="/logo-nav-dark.png"
+              src="/images/brand/logo-nav-dark.png"
               alt="Project IVY"
               width={120}
               height={82}
@@ -253,29 +253,8 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Right: auth + hamburger */}
+          {/* Right: hamburger */}
           <div className="flex items-center gap-3 flex-1 justify-end">
-            <div className="flex items-center gap-2.5 max-[1100px]:hidden">
-              <button
-                type="button"
-                className={cn(
-                  "font-body text-[14px] font-semibold rounded-full cursor-pointer bg-transparent",
-                  "py-2.25 px-4.5 border transition-[color,border-color] duration-250",
-                  scrolled
-                    ? "text-ink-soft border-line hover:text-gold-deep hover:border-[rgba(184,150,90,0.45)]"
-                    : "text-cream-soft border-[rgba(243,237,226,0.28)] hover:text-gold-soft hover:border-[rgba(184,150,90,0.45)]",
-                )}
-              >
-                Log in
-              </button>
-              <button
-                type="button"
-                className="font-body text-[14px] font-semibold rounded-full cursor-pointer py-2.25 px-4.5 border border-transparent bg-gold text-navy-3 shadow-[0_8px_24px_-12px_rgba(184,150,90,0.65)] transition-[background-color,transform,translate] duration-250 hover:bg-gold-soft hover:-translate-y-px"
-              >
-                Sign up
-              </button>
-            </div>
-
             <button
               type="button"
               className="hidden max-[1100px]:flex w-10.5 h-10.5 p-0 border-none bg-transparent cursor-pointer flex-col items-center justify-center"
@@ -306,7 +285,7 @@ const Navbar = () => {
       >
         <div className="flex items-center justify-between px-6 pb-4.5 border-b border-line-light">
           <Link href="/" className="inline-flex items-center leading-none" onClick={() => setMenuOpen(false)}>
-            <Image src="/logo-nav-light.png" alt="Project IVY" width={120} height={82} className="block h-10 w-auto" />
+            <Image src="/images/brand/logo-nav-light.png" alt="Project IVY" width={120} height={82} className="block h-10 w-auto" />
           </Link>
           <button
             type="button"
@@ -385,15 +364,6 @@ const Navbar = () => {
             );
           })}
         </ul>
-
-        <div className="flex flex-col gap-2.5 mt-6 pt-5 px-7 border-t border-line-light">
-          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-3.5 px-4.5 border border-line-light text-cream-soft bg-transparent text-center">
-            Log in
-          </button>
-          <button type="button" className="w-full font-body text-[14px] font-semibold rounded-full cursor-pointer py-3.5 px-4.5 border border-transparent bg-gold text-navy-3 text-center">
-            Sign up
-          </button>
-        </div>
       </div>
 
       {menuOpen && (

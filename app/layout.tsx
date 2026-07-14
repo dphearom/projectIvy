@@ -16,7 +16,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Project IVY – AdvisED Global | Turn Your Ambition Into Admission",
+  title: "Project IVY | Turn Your Ambition Into Admission",
   description:
     "Cambodia's academic advising service built for every student. Combining AI-powered tools with human mentorship to unlock global opportunities.",
 };
