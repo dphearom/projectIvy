@@ -41,7 +41,7 @@ const Footer = () => (
         {/* Brand */}
         <div className="max-[960px]:col-span-full">
           <Image
-            src="/logo-light.png"
+            src="/images/brand/logo-light.png"
             alt="Project IVY — Breksa AdvisED Global"
             width={1665}
             height={1304}

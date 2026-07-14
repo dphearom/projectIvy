@@ -148,7 +148,7 @@ const Navbar = () => {
           {/* Brand */}
           <Link href="/#top" className="inline-flex items-center flex-1 leading-none" aria-label="Project IVY home">
             <Image
-              src="/logo-nav-light.png"
+              src="/images/brand/logo-nav-light.png"
               alt="Project IVY"
               width={120}
               height={82}
@@ -159,7 +159,7 @@ const Navbar = () => {
               )}
             />
             <Image
-              src="/logo-nav-dark.png"
+              src="/images/brand/logo-nav-dark.png"
               alt="Project IVY"
               width={120}
               height={82}
@@ -285,7 +285,7 @@ const Navbar = () => {
       >
         <div className="flex items-center justify-between px-6 pb-4.5 border-b border-line-light">
           <Link href="/" className="inline-flex items-center leading-none" onClick={() => setMenuOpen(false)}>
-            <Image src="/logo-nav-light.png" alt="Project IVY" width={120} height={82} className="block h-10 w-auto" />
+            <Image src="/images/brand/logo-nav-light.png" alt="Project IVY" width={120} height={82} className="block h-10 w-auto" />
           </Link>
           <button
             type="button"
