@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const event = await getEventBySlug(slug);
-  if (!event) return { title: "Event Not Found | Breksa – AdvisED Global" };
+  if (!event) return { title: "Event Not Found | Project IVY" };
   return {
     title: `${event.title} | Breksa Events`,
     description: event.overview,

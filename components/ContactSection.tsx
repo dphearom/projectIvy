@@ -26,10 +26,10 @@ const ContactSection = () => (
           <li>
             Web:{" "}
             <a
-              href="https://project-ivy-flame.vercel.app/"
+              href="https://project-ivy.com"
               className="text-navy font-medium transition-colors duration-200 hover:text-gold-deep"
             >
-              https://project-ivy-flame.vercel.app/
+              https://project-ivy.com
             </a>
           </li>
         </ul>

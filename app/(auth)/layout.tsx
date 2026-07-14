@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Login | Project IVY – AdvisED Global",
+  title: "Login | Project IVY",
 };
 
 export default function AuthLayout({

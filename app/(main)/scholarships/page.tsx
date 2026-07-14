@@ -5,7 +5,7 @@ import ScholarshipsSection from "@/components/sections/ScholarshipsSection";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Scholarships | Project IVY – AdvisED Global",
+  title: "Scholarships | Project IVY",
   description:
     "Need-based scholarships for university applications and IELTS — financial support for motivated students at Project IVY.",
 };

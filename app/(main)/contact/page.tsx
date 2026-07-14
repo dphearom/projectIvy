@@ -4,7 +4,7 @@ import PageHeader from "@/components/PageHeader";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Contact | Project IVY – AdvisED Global",
+  title: "Contact | Project IVY",
   description: "Contact Project Ivy for a free consultation with an academic advisor.",
 };
 
