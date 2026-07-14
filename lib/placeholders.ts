@@ -40,6 +40,25 @@ export const PLACEHOLDERS = {
 
 export type PlaceholderSlug = (typeof PLACEHOLDERS)[keyof typeof PLACEHOLDERS];
 
+/** Slugs with a real photo saved at `public/images/{slug}.jpg` — everything else still renders PlaceholderImage. */
+export const PHOTO_READY = new Set<string>([
+  PLACEHOLDERS.PROGRAM_MIDDLE_SCHOOL,
+  PLACEHOLDERS.PROGRAM_READINESS,
+  PLACEHOLDERS.PROGRAM_APPLICATION,
+  PLACEHOLDERS.PROGRAM_GRADUATE_SCHOOL,
+  "middle-school-pkg-1",
+  "university-readiness-pkg-1",
+  "university-readiness-pkg-2",
+  "university-readiness-pkg-3",
+  "university-application-pkg-1",
+  "university-application-pkg-2",
+  "university-application-pkg-3",
+  "graduate-school-pkg-1",
+  "graduate-school-pkg-2",
+  "graduate-school-pkg-3",
+  "graduate-school-pkg-4",
+]);
+
 export function newsArticlePhoto(slug: string): string {
   return `news-${slug}`;
 }
