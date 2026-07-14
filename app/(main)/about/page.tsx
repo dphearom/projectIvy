@@ -10,7 +10,7 @@ import OurTeam from "@/components/sections/OurTeam";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "About | Project IVY – AdvisED Global",
+  title: "About | Project IVY",
   description:
     "Project IVY mission, vision, team, and why Cambodian students choose us — an educational advisory organization built by Khmer scholars.",
 };

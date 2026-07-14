@@ -5,7 +5,7 @@ import CampsProgram from "@/components/sections/ServiceCampsProgram";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Camps | Project IVY – AdvisED Global",
+  title: "Camps | Project IVY",
   description:
     "Service & Cultural Immersion Programs — immersive week-long programs that build leadership, empathy, and global perspective.",
 };

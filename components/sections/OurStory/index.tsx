@@ -13,7 +13,7 @@ const OurStory = () => (
         {/* Photo column */}
         <div className="founder-photo max-[980px]:max-w-110" data-reveal>
           <Image
-            src="/brand_assets/founder.jpg"
+            src="/images/about/founder.jpg"
             alt="Somphors Tann, Founder & Programme Director of Project IVY"
             width={540}
             height={680}

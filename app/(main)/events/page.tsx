@@ -6,7 +6,7 @@ import FinalCTA from "@/components/sections/FinalCTA";
 import { getAllEvents } from "@/lib/events";
 
 export const metadata: Metadata = {
-  title: "Events | Project IVY – AdvisED Global",
+  title: "Events | Project IVY",
   description:
     "Workshops, bootcamps, and upcoming events — all in one place at Project IVY.",
 };

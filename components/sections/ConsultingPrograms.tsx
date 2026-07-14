@@ -1,6 +1,6 @@
-import PlaceholderImage from "@/components/PlaceholderImage";
+import SmartImage from "@/components/SmartImage";
 import Button from "@/components/Button";
-import { PLACEHOLDERS } from "@/lib/placeholders";
+import { PHOTO_READY, PLACEHOLDERS } from "@/lib/placeholders";
 import { ADVISING_PROGRAM_SUMMARIES } from "@/lib/programs";
 
 const PROGRAM_PHOTOS: Record<string, string> = {
@@ -31,10 +31,13 @@ const AdvisingPrograms = () => (
             data-reveal
             data-reveal-d={String((i % 3) + 1)}
           >
-            <PlaceholderImage
+            <SmartImage
               name={PROGRAM_PHOTOS[program.id] ?? program.id}
+              alt={program.title}
+              available={PHOTO_READY.has(PROGRAM_PHOTOS[program.id] ?? program.id)}
               aspect="unset"
               className="rounded-none h-full min-h-47.5 max-[760px]:h-55 max-[760px]:min-h-55"
+              sizes="(max-width: 760px) 100vw, 260px"
             />
             <div className="flex flex-col justify-between p-[28px_30px]">
               <div>

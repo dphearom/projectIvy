@@ -17,7 +17,7 @@ export default function LoginPage() {
       <div className="text-center mb-8 flex flex-col items-center">
         <Link href="/">
           <Image
-            src="/logo-nav-dark.png"
+            src="/images/brand/logo-nav-dark.png"
             alt="Project IVY"
             width={100}
             height={68}

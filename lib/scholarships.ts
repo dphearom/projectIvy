@@ -1,6 +1,8 @@
 export type Scholarship = {
   id: string;
   title: string;
+  /** Filename slug — resolves to `public/images/{photo}.jpg` when set. */
+  photo?: string;
   overview: string;
   learnMore: string;
   eligibility: string[];
@@ -12,6 +14,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
   {
     id: "university-application",
     title: "University Application Scholarship",
+    photo: "scholarships/university-application-scholarship",
     overview:
       "Application guidance for students with ambition and financial need.",
     learnMore:
@@ -36,6 +39,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
   {
     id: "university-application-fee",
     title: "University Application Fee Scholarship",
+    photo: "scholarships/university-application-fee-scholarship",
     overview:
       "Provides financial assistance to help students offset application-related costs.",
     learnMore:
@@ -60,6 +64,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
   {
     id: "ielts-fee",
     title: "IELTS Fee Scholarship",
+    photo: "scholarships/ielts-fee-scholarship",
     overview:
       "Provides financial assistance to help students offset IELTS testing fee.",
     learnMore:

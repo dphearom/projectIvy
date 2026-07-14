@@ -16,7 +16,7 @@ const AdminSidebar = () => {
   return (
     <aside className="w-60 bg-navy text-white py-6 flex flex-col shrink-0 max-[768px]:w-full max-[768px]:p-4">
       <div className="pt-0 pb-6 px-5 flex items-center gap-[0.6rem] border-b border-white/10 mb-4">
-        <Image src="/logo-nav-light.png" alt="Project IVY" width={80} height={55} />
+        <Image src="/images/brand/logo-nav-light.png" alt="Project IVY" width={80} height={55} />
         <span className="text-[0.65rem] font-semibold uppercase bg-gold text-navy py-[0.15rem] px-2 rounded tracking-[0.05em]">
           Admin
         </span>
