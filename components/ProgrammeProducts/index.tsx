@@ -23,7 +23,7 @@ type ModalData = { program: ProgramDetail; tier: ProgramTier };
 
 const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => void }) => {
   const tierIndex = data.program.tiers.indexOf(data.tier) + 1;
-  const tierPhotoName = `${data.program.id}-pkg-${tierIndex}`;
+  const tierPhotoName = `programs/packages/${data.program.id}-pkg-${tierIndex}`;
 
   return (
     <TierModal
@@ -206,7 +206,7 @@ const ProgrammeProducts = () => {
                 {isOpen && (
                   <div className="border-t border-line bg-ivory-2 pt-7 px-7 pb-8 grid grid-cols-3 gap-4.5 animate-[pkg-stack-in_0.35s_ease_both] max-[760px]:grid-cols-1 max-[760px]:p-5">
                     {program.tiers.map((tier, ti) => {
-                      const tierPhotoName = `${program.id}-pkg-${ti + 1}`;
+                      const tierPhotoName = `programs/packages/${program.id}-pkg-${ti + 1}`;
 
                       return (
                         <article

@@ -45,7 +45,7 @@ const SchoolSlot = ({ school }: { school: School }) => (
     {school.logo ? (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src={`/images/logos/${school.logo}`}
+        src={`/images/affiliate-logos/${school.logo}`}
         alt={school.name}
         width={160}
         height={60}
