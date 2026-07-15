@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import RevealObserver from "@/components/RevealObserver";
-import PageHeader from "@/components/PageHeader";
+import ContactHero from "@/components/sections/ContactHero";
 import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
@@ -19,10 +19,7 @@ const ContactPage = async ({ searchParams }: Props) => {
   return (
     <>
       <RevealObserver />
-      <PageHeader
-        title="Contact us"
-        subtitle="Please fill out the information form below — Project Ivy will contact you for consultation as soon as possible!"
-      />
+      <ContactHero />
       <ContactSection inquiries={selected} />
     </>
   );

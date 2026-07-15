@@ -29,7 +29,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: radial-gradient(130% 90% at 50% 40%, rgba(7, 14, 30, 0.35), rgba(7, 14, 30, 0.72) 100%);
+  background: radial-gradient(130% 90% at 50% 40%, rgba(6, 12, 26, 0.52), rgba(6, 12, 26, 0.8) 100%);
 }
 
 .hero-bg--image .ph-block--cover {
@@ -49,4 +49,14 @@
   z-index: 1;
   pointer-events: none;
   background: radial-gradient(130% 90% at 50% 40%, transparent 50%, rgba(7, 14, 30, 0.55) 100%);
+}
+
+/* Photo backgrounds are busier than the placeholder pattern — give the heading and
+   subtitle a shadow so they stay legible regardless of what's directly behind them. */
+.hero-stage--image h1 {
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero-stage--image p {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }

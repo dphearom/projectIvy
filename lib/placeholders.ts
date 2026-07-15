@@ -4,9 +4,10 @@ import { MENTOR_TEAM } from "@/lib/team";
 
 export const PLACEHOLDERS = {
   // Page heroes
-  HOME_HERO_BG: "home-hero-bg",
+  HOME_HERO_BG: "home/home-hero",
   ABOUT_HERO_BG: "about-hero-bg",
   ADVISING_HERO_BG: "advising-hero-bg",
+  CONTACT_HERO_BG: "contact/contact-hero",
 
   // Advising programs
   PROGRAM_MIDDLE_SCHOOL: "programs/program-middle-school",
@@ -42,6 +43,8 @@ export type PlaceholderSlug = (typeof PLACEHOLDERS)[keyof typeof PLACEHOLDERS];
 
 /** Slugs with a real photo saved at `public/images/{slug}.jpg` — everything else still renders PlaceholderImage. */
 export const PHOTO_READY = new Set<string>([
+  PLACEHOLDERS.HOME_HERO_BG,
+  PLACEHOLDERS.CONTACT_HERO_BG,
   PLACEHOLDERS.PROGRAM_MIDDLE_SCHOOL,
   PLACEHOLDERS.PROGRAM_READINESS,
   PLACEHOLDERS.PROGRAM_APPLICATION,
@@ -68,6 +71,7 @@ export const PLACEHOLDER_MANIFEST = [
   { slug: PLACEHOLDERS.HOME_HERO_BG, location: "Home — hero background", aspect: "cover" },
   { slug: PLACEHOLDERS.ABOUT_HERO_BG, location: "About — hero background", aspect: "cover" },
   { slug: PLACEHOLDERS.ADVISING_HERO_BG, location: "Advising Program — hero background", aspect: "cover" },
+  { slug: PLACEHOLDERS.CONTACT_HERO_BG, location: "Contact — hero background", aspect: "cover" },
   { slug: PLACEHOLDERS.HOME_PARTNER_MAP, location: "Home — development journey map", aspect: "4 / 3.2" },
   { slug: PLACEHOLDERS.PROGRAM_MIDDLE_SCHOOL, location: "Home + Advising — Middle School Program", aspect: "16/10 · 4/3" },
   { slug: PLACEHOLDERS.PROGRAM_READINESS, location: "Home + Advising — University Readiness Program", aspect: "16/10 · 4/3" },
