@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: "📊" },
   { href: "/admin/events", label: "Events", icon: "📅" },
+  { href: "/admin/inquiries", label: "Inquiries", icon: "✉️" },
 ];
 
 const AdminSidebar = () => {

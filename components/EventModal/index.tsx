@@ -4,6 +4,7 @@ import { useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import BookingCard from "@/components/BookingCard";
 import type { EventDTO } from "@/lib/events";
+import { useFadeInImage } from "@/lib/useFadeInImage";
 import "./styles.css";
 
 interface Props {
@@ -15,6 +16,7 @@ const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), selec
 
 export default function EventModal({ event, onClose }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null);
+  const fade = useFadeInImage();
 
   const trapFocus = useCallback((e: KeyboardEvent) => {
     if (e.key !== "Tab" || !dialogRef.current) return;
@@ -77,6 +79,8 @@ export default function EventModal({ event, onClose }: Props) {
             fill
             sizes="(max-width: 720px) 100vw, 920px"
             style={{ objectFit: "cover" }}
+            className={fade.className}
+            onLoad={fade.onLoad}
             priority
           />
         </div>

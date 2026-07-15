@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useFadeInImage } from "@/lib/useFadeInImage";
 
 interface Props {
   title: string;
@@ -34,6 +37,7 @@ function parseEventDate(rawDate: string, date: string) {
 
 const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Props) => {
   const { day, month, year } = parseEventDate(rawDate, date);
+  const fade = useFadeInImage();
 
   // <button> instead of <Link> because clicking opens the EventModal, not a new page.
   // CSS resets button appearance (border, background, font, padding) in globals.css .ev rule.
@@ -51,6 +55,8 @@ const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Pro
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 380px"
             style={{ objectFit: "cover" }}
+            className={fade.className}
+            onLoad={fade.onLoad}
           />
         </div>
         {day && month && (

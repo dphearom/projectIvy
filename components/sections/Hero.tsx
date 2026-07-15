@@ -1,11 +1,15 @@
 import Button from "@/components/Button";
 import HeroStage from "@/components/HeroStage";
-import { PLACEHOLDERS } from "@/lib/placeholders";
+import { PHOTO_READY, PLACEHOLDERS } from "@/lib/placeholders";
 
 const Hero = () => (
-  <HeroStage image={PLACEHOLDERS.HOME_HERO_BG}>
+  <HeroStage
+    image={PLACEHOLDERS.HOME_HERO_BG}
+    available={PHOTO_READY.has(PLACEHOLDERS.HOME_HERO_BG)}
+    imagePosition="center 68%"
+  >
     <h1
-      className="text-[clamp(3.2rem,7.5vw,6.6rem)] leading-[0.97] tracking-[-0.01em] mt-6 text-balance"
+      className="text-[clamp(3.2rem,7.5vw,6.6rem)] leading-[0.97] tracking-[-0.01em] mt-[clamp(5rem,20vh,10rem)] text-balance"
       data-reveal
     >
       Project <span className="ivy-brand">IVY</span>

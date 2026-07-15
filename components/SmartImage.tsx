@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import { cn } from "@/lib/utils";
+import { useFadeInImage } from "@/lib/useFadeInImage";
 
 interface Props {
   /** Filename slug — resolves to `public/images/{name}.jpg` when available. */
@@ -14,6 +17,8 @@ interface Props {
 }
 
 const SmartImage = ({ name, alt, available, aspect = "16 / 10", className, sizes = "100vw" }: Props) => {
+  const fade = useFadeInImage("object-cover");
+
   if (!available) {
     return <PlaceholderImage name={name} aspect={aspect} className={className} />;
   }
@@ -23,7 +28,14 @@ const SmartImage = ({ name, alt, available, aspect = "16 / 10", className, sizes
       className={cn("relative w-full overflow-hidden rounded-(--radius)", className)}
       style={{ aspectRatio: aspect }}
     >
-      <Image src={`/images/${name}.jpg`} alt={alt} fill sizes={sizes} className="object-cover" />
+      <Image
+        src={`/images/${name}.jpg`}
+        alt={alt}
+        fill
+        sizes={sizes}
+        className={fade.className}
+        onLoad={fade.onLoad}
+      />
     </div>
   );
 };

@@ -1,10 +1,34 @@
+"use client";
+
 import Image from "next/image";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import Eyebrow from "@/components/Eyebrow";
 import { MENTOR_TEAM, PHOTO_POSITION, PHOTO_SCALE } from "@/lib/team";
+import { useFadeInImage } from "@/lib/useFadeInImage";
 
 const placeholderSlug = (name: string) =>
   `team-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
+
+const MentorPhoto = ({ name, photo }: { name: string; photo: string }) => {
+  const fade = useFadeInImage();
+  return (
+    <Image
+      src={`/images/${photo}.jpg`}
+      alt={name}
+      width={400}
+      height={400}
+      onLoad={fade.onLoad}
+      className={fade.className}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        objectPosition: PHOTO_POSITION[name] ?? "center top",
+        transform: PHOTO_SCALE[name] ? `scale(${PHOTO_SCALE[name]})` : undefined,
+      }}
+    />
+  );
+};
 
 const OurTeam = () => (
   <section className="py-30 bg-cream-2" id="team">
@@ -31,21 +55,7 @@ const OurTeam = () => (
           >
             <div className="aspect-square overflow-hidden">
               {member.photo ? (
-                <Image
-                  src={`/images/${member.photo}.jpg`}
-                  alt={member.name}
-                  width={400}
-                  height={400}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: PHOTO_POSITION[member.name] ?? "center top",
-                    transform: PHOTO_SCALE[member.name]
-                      ? `scale(${PHOTO_SCALE[member.name]})`
-                      : undefined,
-                  }}
-                />
+                <MentorPhoto name={member.name} photo={member.photo} />
               ) : (
                 <PlaceholderImage
                   name={placeholderSlug(member.name)}
