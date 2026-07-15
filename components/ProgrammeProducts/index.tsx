@@ -130,7 +130,11 @@ const ProgrammeProducts = () => {
             <span className="font-semibold text-navy">
               {cart.length} program{cart.length !== 1 ? "s" : ""} in your inquiry list
             </span>
-            <Button href="/contact" className="max-[980px]:justify-center max-[980px]:w-full" arrow>
+            <Button
+              href={`/contact?inquiries=${cart.join(",")}`}
+              className="max-[980px]:justify-center max-[980px]:w-full"
+              arrow
+            >
               Request consultation
             </Button>
           </div>

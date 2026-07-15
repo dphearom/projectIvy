@@ -172,3 +172,18 @@ export const eventBookings = pgTable(
   },
   (t) => [unique("event_bookings_event_email_uniq").on(t.eventId, t.email)]
 )
+
+// ── Consultation Requests ──
+
+export const consultationRequests = pgTable("consultation_requests", {
+  id: serial("id").primaryKey(),
+  role: text("role").notNull(), // 'parent' | 'student'
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  childName: text("child_name"),
+  grade: text("grade").notNull(),
+  school: text("school").notNull(),
+  inquiries: text("inquiries").array().notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+})

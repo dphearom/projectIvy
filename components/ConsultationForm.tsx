@@ -3,8 +3,22 @@
 import { useState } from "react";
 import { cn, EMAIL_RE } from "@/lib/utils";
 import Button from "@/components/Button";
+import { submitConsultation } from "@/app/actions/consultation";
 
-const ConsultationForm = () => {
+const PROGRAM_NAMES: Record<string, string> = {
+  "middle-school": "Middle School Program",
+  "university-readiness": "University Readiness Program",
+  "university-application": "University Application Program",
+  "graduate-school": "Graduate School Advising Program",
+  "service-camps": "Service & Camps Programs",
+};
+
+type Props = {
+  inquiries?: string[];
+  onSuccess?: () => void;
+};
+
+const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
   const [role, setRole] = useState<"parent" | "student">("student");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,9 +46,24 @@ const ConsultationForm = () => {
     if (!terms) return setError("Please agree to the Terms & Conditions.");
 
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 600));
-    setSubmitting(false);
-    setDone(true);
+    try {
+      await submitConsultation({
+        role,
+        name,
+        email,
+        phone,
+        childName: isParent ? childName : undefined,
+        grade,
+        school,
+        inquiries,
+      });
+      setDone(true);
+      onSuccess?.();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const labelCls = "font-body text-[0.85rem] font-semibold text-ink block mb-1.5";
@@ -57,6 +86,22 @@ const ConsultationForm = () => {
 
   return (
     <form className="flex flex-col gap-4.5" onSubmit={handleSubmit} noValidate>
+      {inquiries.length > 0 && (
+        <div className="rounded-[10px] border border-[rgba(184,150,90,0.35)] bg-[rgba(184,150,90,0.06)] px-4 py-3.5">
+          <p className="text-[0.8rem] font-semibold text-gold-deep uppercase tracking-wide mb-2">
+            Selected programs
+          </p>
+          <ul className="list-none m-0 p-0 flex flex-col gap-1">
+            {inquiries.map((id) => (
+              <li key={id} className="text-[0.9rem] text-ink flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-gold-deep shrink-0" />
+                {PROGRAM_NAMES[id] ?? id}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <fieldset className="border-none m-0 p-0">
         <legend className={cn(labelCls, "mb-2.5")}>You are:</legend>
         <div className="flex gap-2.5">

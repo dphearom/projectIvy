@@ -1,6 +1,10 @@
 import ConsultationForm from "@/components/ConsultationForm";
 
-const ContactSection = () => (
+type Props = {
+  inquiries?: string[];
+};
+
+const ContactSection = ({ inquiries }: Props) => (
   <section className="bg-ivory pt-18 pb-27.5">
     <div className="wrap grid grid-cols-[0.9fr_1.1fr] gap-14 items-start max-[980px]:grid-cols-1 max-[980px]:gap-9">
       <div data-reveal>
@@ -40,7 +44,7 @@ const ContactSection = () => (
         data-reveal
         data-reveal-d="1"
       >
-        <ConsultationForm />
+        <ConsultationForm inquiries={inquiries} />
       </div>
     </div>
   </section>
