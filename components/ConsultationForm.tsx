@@ -4,14 +4,7 @@ import { useState } from "react";
 import { cn, EMAIL_RE } from "@/lib/utils";
 import Button from "@/components/Button";
 import { submitConsultation } from "@/app/actions/consultation";
-
-const PROGRAM_NAMES: Record<string, string> = {
-  "middle-school": "Middle School Program",
-  "university-readiness": "University Readiness Program",
-  "university-application": "University Application Program",
-  "graduate-school": "Graduate School Advising Program",
-  "service-camps": "Service & Camps Programs",
-};
+import { inquiryLabel } from "@/lib/inquiries";
 
 type Props = {
   inquiries?: string[];
@@ -95,7 +88,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
             {inquiries.map((id) => (
               <li key={id} className="text-[0.9rem] text-ink flex items-center gap-2">
                 <span className="size-1.5 rounded-full bg-gold-deep shrink-0" />
-                {PROGRAM_NAMES[id] ?? id}
+                {inquiryLabel(id)}
               </li>
             ))}
           </ul>

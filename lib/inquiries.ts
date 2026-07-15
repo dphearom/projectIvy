@@ -1,0 +1,10 @@
+/** Human-readable labels for the ids stored in `consultation_requests.inquiries`. */
+export const INQUIRY_LABELS: Record<string, string> = {
+  "middle-school": "Middle School Program",
+  "university-readiness": "University Readiness Program",
+  "university-application": "University Application Program",
+  "graduate-school": "Graduate School Advising Program",
+  "service-camps": "Service & Camps Programs",
+};
+
+export const inquiryLabel = (id: string) => INQUIRY_LABELS[id] ?? id;

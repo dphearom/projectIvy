@@ -1,16 +1,18 @@
 import { count } from "drizzle-orm";
 import { db } from "@/lib/db";
-import { events, eventBookings } from "@/database/schema";
+import { events, eventBookings, consultationRequests } from "@/database/schema";
 
 export default async function AdminDashboard() {
-  const [[eventCount], [bookingCount]] = await Promise.all([
+  const [[eventCount], [bookingCount], [inquiryCount]] = await Promise.all([
     db.select({ value: count() }).from(events),
     db.select({ value: count() }).from(eventBookings),
+    db.select({ value: count() }).from(consultationRequests),
   ]);
 
   const stats = [
     { label: "Total Events", value: eventCount?.value ?? 0 },
     { label: "Event Bookings", value: bookingCount?.value ?? 0 },
+    { label: "Inquiries", value: inquiryCount?.value ?? 0 },
   ];
 
   return (
