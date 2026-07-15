@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useFadeInImage } from "@/lib/useFadeInImage";
 import "./styles.css";
 
 type School = { name: string; logo?: string };
@@ -40,27 +41,33 @@ const ROW_2: School[] = [
   { name: "Reed College", logo: "reed-college.png" },
 ];
 
-const SchoolSlot = ({ school }: { school: School }) => (
-  <div className="flex-none w-40 aspect-[2.4/1] rounded-[10px] border border-line bg-ivory-2 flex items-center justify-center px-4.5 py-3">
-    {school.logo ? (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={`/images/affiliate-logos/${school.logo}`}
-        alt={school.name}
-        width={160}
-        height={60}
-        loading="eager"
-        decoding="sync"
-        draggable={false}
-        style={{ maxHeight: 60, maxWidth: 160, objectFit: "contain", ...LOGO_STYLE[school.name] }}
-      />
-    ) : (
-      <span className="text-[0.72rem] font-semibold tracking-wider uppercase text-ink-soft text-center leading-[1.2]">
-        {school.name}
-      </span>
-    )}
-  </div>
-);
+const SchoolSlot = ({ school }: { school: School }) => {
+  const fade = useFadeInImage();
+
+  return (
+    <div className="flex-none w-40 aspect-[2.4/1] rounded-[10px] border border-line bg-ivory-2 flex items-center justify-center px-4.5 py-3">
+      {school.logo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={`/images/affiliate-logos/${school.logo}`}
+          alt={school.name}
+          width={160}
+          height={60}
+          loading="eager"
+          decoding="sync"
+          draggable={false}
+          onLoad={fade.onLoad}
+          className={fade.className}
+          style={{ maxHeight: 60, maxWidth: 160, objectFit: "contain", ...LOGO_STYLE[school.name] }}
+        />
+      ) : (
+        <span className="text-[0.72rem] font-semibold tracking-wider uppercase text-ink-soft text-center leading-[1.2]">
+          {school.name}
+        </span>
+      )}
+    </div>
+  );
+};
 
 type MarqueeConfig = {
   distance: number;
