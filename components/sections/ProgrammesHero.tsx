@@ -1,10 +1,15 @@
 import Eyebrow from "@/components/Eyebrow";
 import HeroStage from "@/components/HeroStage";
-import { PLACEHOLDERS } from "@/lib/placeholders";
+import { PHOTO_READY, PLACEHOLDERS } from "@/lib/placeholders";
 
 const ProgrammesHero = () => (
-  <HeroStage image={PLACEHOLDERS.ADVISING_HERO_BG} className="min-h-[min(72vh,640px)]">
-    <div className="max-w-170 mx-auto">
+  <HeroStage
+    image={PLACEHOLDERS.ADVISING_HERO_BG}
+    available={PHOTO_READY.has(PLACEHOLDERS.ADVISING_HERO_BG)}
+    imagePosition="center 22%"
+    className="min-h-[min(80vh,720px)]"
+  >
+    <div className="max-w-170 mx-auto mt-[clamp(7rem,26vh,13rem)]">
       <Eyebrow onNavy data-reveal>
         Advising Program
       </Eyebrow>
