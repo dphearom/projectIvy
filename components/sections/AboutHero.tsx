@@ -1,10 +1,15 @@
 ﻿import Button from "@/components/Button";
 import Eyebrow from "@/components/Eyebrow";
 import HeroStage from "@/components/HeroStage";
-import { PLACEHOLDERS } from "@/lib/placeholders";
+import { PHOTO_READY, PLACEHOLDERS } from "@/lib/placeholders";
 
 const AboutHero = () => (
-  <HeroStage image={PLACEHOLDERS.ABOUT_HERO_BG} className="min-h-[min(72vh,640px)]">
+  <HeroStage
+    image={PLACEHOLDERS.ABOUT_HERO_BG}
+    available={PHOTO_READY.has(PLACEHOLDERS.ABOUT_HERO_BG)}
+    imagePosition="center 30%"
+    className="min-h-[min(72vh,640px)]"
+  >
     <div className="max-w-170 mx-auto">
       <Eyebrow onNavy data-reveal>
         About Project IVY

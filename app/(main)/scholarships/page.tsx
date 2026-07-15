@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import RevealObserver from "@/components/RevealObserver";
-import PageHeader from "@/components/PageHeader";
+import ScholarshipsHero from "@/components/sections/ScholarshipsHero";
 import ScholarshipsSection from "@/components/sections/ScholarshipsSection";
 import FinalCTA from "@/components/sections/FinalCTA";
 
@@ -13,11 +13,7 @@ export const metadata: Metadata = {
 const ScholarshipsPage = () => (
   <>
     <RevealObserver />
-    <PageHeader
-      label="Financial Support"
-      title="Scholarships at Project IVY"
-      subtitle="Need-based scholarships available for university applications and IELTS."
-    />
+    <ScholarshipsHero />
     <ScholarshipsSection showPageHeader={false} />
     <FinalCTA />
   </>
