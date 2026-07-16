@@ -18,7 +18,7 @@ const AdvisingPrograms = () => (
       <div className="section-head" data-reveal>
         <h2>Advising programs at Project IVY</h2>
         <p>
-          Personalized advising from Grade 9 through graduate school — programs
+          Personalized advising from Middle School through graduate school — programs
           designed to meet students where they are.
         </p>
       </div>

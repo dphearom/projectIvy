@@ -2,12 +2,18 @@
 
 import { useCallback, useEffect, useState } from "react";
 import SmartImage from "@/components/SmartImage";
+import VideoThumbnail from "@/components/VideoThumbnail";
 import Button from "@/components/Button";
 import TierModal from "@/components/TierModal";
 import Eyebrow from "@/components/Eyebrow";
 import { CartIcon, ChevronDown } from "@/components/icons";
 import { PHOTO_READY, PLACEHOLDERS } from "@/lib/placeholders";
-import { ADVISING_PROGRAM_DETAILS, type ProgramDetail, type ProgramTier } from "@/lib/programs";
+import {
+  ADVISING_PROGRAM_DETAILS,
+  tierVideoUrl,
+  type ProgramDetail,
+  type ProgramTier,
+} from "@/lib/programs";
 import { scrollToHashWhenReady } from "@/lib/scroll-to-hash";
 import { cn } from "@/lib/utils";
 import "./styles.css";
@@ -19,11 +25,53 @@ const PROGRAM_PHOTOS: Record<string, string> = {
   "graduate-school": PLACEHOLDERS.PROGRAM_GRADUATE_SCHOOL,
 };
 
-type ModalData = { program: ProgramDetail; tier: ProgramTier };
+type ModalData = { program: ProgramDetail; tier: ProgramTier; tierIndex: number };
+
+const TierThumbnail = ({
+  programId,
+  tierIndex,
+  tierPhotoName,
+  alt,
+  aspect = "4 / 3",
+  sizes,
+}: {
+  programId: string;
+  tierIndex: number;
+  tierPhotoName: string;
+  alt: string;
+  aspect?: string;
+  sizes?: string;
+}) => {
+  const videoUrl = tierVideoUrl(programId, tierIndex);
+  const available = PHOTO_READY.has(tierPhotoName);
+
+  if (videoUrl) {
+    return (
+      <VideoThumbnail
+        name={tierPhotoName}
+        alt={alt}
+        available={available}
+        videoUrl={videoUrl}
+        aspect={aspect}
+        sizes={sizes}
+      />
+    );
+  }
+
+  return (
+    <SmartImage
+      name={tierPhotoName}
+      alt={alt}
+      available={available}
+      aspect={aspect}
+      className="rounded-none"
+      sizes={sizes}
+    />
+  );
+};
 
 const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => void }) => {
-  const tierIndex = data.program.tiers.indexOf(data.tier) + 1;
-  const tierPhotoName = `programs/packages/${data.program.id}-pkg-${tierIndex}`;
+  const tierPhotoName = `programs/packages/${data.program.id}-pkg-${data.tierIndex + 1}`;
 
   return (
     <TierModal
@@ -32,12 +80,13 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
       tagline={data.tier.tagline}
       onClose={onClose}
       media={
-        <SmartImage
-          name={tierPhotoName}
+        <TierThumbnail
+          programId={data.program.id}
+          tierIndex={data.tierIndex}
+          tierPhotoName={tierPhotoName}
           alt={data.tier.name}
-          available={PHOTO_READY.has(tierPhotoName)}
           aspect="16 / 7"
-          className="rounded-none"
+          sizes="100vw"
         />
       }
       footer={
@@ -65,6 +114,16 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
           <ul>
             {data.tier.deliverables.map((d) => (
               <li key={d}>{d}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {data.tier.pricingSection && (
+        <div className="tier-modal__features mt-5 pt-5 border-t border-line">
+          <h5>{data.tier.pricingSection.title}</h5>
+          <ul>
+            {data.tier.pricingSection.items.map((item) => (
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
@@ -216,14 +275,13 @@ const ProgrammeProducts = () => {
                         <article
                           key={tier.name}
                           className="bg-paper border border-line rounded-[calc(var(--radius)-2px)] overflow-hidden cursor-pointer transition-[border-color,box-shadow,transform,translate] duration-300 flex flex-col hover:border-[rgba(184,150,90,0.55)] hover:shadow-[0_18px_38px_-20px_rgba(14,23,41,0.22)] hover:-translate-y-1"
-                          onClick={() => setModalData({ program, tier })}
+                          onClick={() => setModalData({ program, tier, tierIndex: ti })}
                         >
-                          <SmartImage
-                            name={tierPhotoName}
+                          <TierThumbnail
+                            programId={program.id}
+                            tierIndex={ti}
+                            tierPhotoName={tierPhotoName}
                             alt={tier.name}
-                            available={PHOTO_READY.has(tierPhotoName)}
-                            aspect="4 / 3"
-                            className="rounded-none"
                             sizes="(max-width: 760px) 100vw, 33vw"
                           />
                           <div className="pt-4 px-4.5 pb-5 flex flex-col flex-1">
@@ -232,13 +290,30 @@ const ProgrammeProducts = () => {
                             <span className="inline-block mt-3 text-[0.85rem] font-bold text-navy-3 bg-gold py-1 px-3 rounded-full self-start">
                               {tier.price}
                             </span>
+                            {tier.pricingSection && (
+                              <div className="mt-3.5 pt-3.5 border-t border-line">
+                                <p className="text-[0.82rem] font-semibold text-navy">
+                                  {tier.pricingSection.title}
+                                </p>
+                                <ul className="mt-2 pl-[1.1rem] [&>li+li]:mt-1">
+                                  {tier.pricingSection.items.map((item) => (
+                                    <li
+                                      key={item}
+                                      className="text-[0.8rem] text-ink-soft leading-[1.45]"
+                                    >
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
                             <div className="mt-3.5">
                               <button
                                 type="button"
                                 className="font-body inline-flex items-center justify-center w-full text-[0.85rem] font-semibold text-navy bg-transparent border border-[rgba(27,36,54,0.2)] rounded-full py-2.25 px-3.5 cursor-pointer transition-[border-color,color] duration-200 hover:border-gold-deep hover:text-gold-deep"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  setModalData({ program, tier });
+                                  setModalData({ program, tier, tierIndex: ti });
                                 }}
                               >
                                 See full details

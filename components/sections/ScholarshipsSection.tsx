@@ -5,6 +5,7 @@ import { SCHOLARSHIPS } from "@/lib/scholarships";
 import Button from "@/components/Button";
 import Eyebrow from "@/components/Eyebrow";
 import SmartImage from "@/components/SmartImage";
+import VideoThumbnail from "@/components/VideoThumbnail";
 import { ChevronDown } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
@@ -58,14 +59,26 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
                 data-reveal-d={String((i % 3) + 1)}
               >
                 <div className="grid grid-cols-[280px_1fr] max-[980px]:grid-cols-1">
-                  <SmartImage
-                    name={scholarship.photo ?? scholarship.id}
-                    alt={scholarship.title}
-                    available={Boolean(scholarship.photo)}
-                    aspect="4 / 3"
-                    className="rounded-none h-full min-h-55"
-                    sizes="(max-width: 980px) 100vw, 280px"
-                  />
+                  {scholarship.videoUrl ? (
+                    <VideoThumbnail
+                      name={scholarship.photo ?? scholarship.id}
+                      alt={scholarship.title}
+                      available={Boolean(scholarship.photo)}
+                      videoUrl={scholarship.videoUrl}
+                      aspect="4 / 3"
+                      className="rounded-none h-full min-h-55"
+                      sizes="(max-width: 980px) 100vw, 280px"
+                    />
+                  ) : (
+                    <SmartImage
+                      name={scholarship.photo ?? scholarship.id}
+                      alt={scholarship.title}
+                      available={Boolean(scholarship.photo)}
+                      aspect="4 / 3"
+                      className="rounded-none h-full min-h-55"
+                      sizes="(max-width: 980px) 100vw, 280px"
+                    />
+                  )}
                   <div className="pt-8 px-7 pb-6 flex flex-col justify-center max-[980px]:p-6">
                     <h3 className="text-[1.35rem] text-navy leading-[1.2]">{scholarship.title}</h3>
                     <p className="mt-3 mb-5 text-[0.98rem] text-ink-soft leading-[1.55]">

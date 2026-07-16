@@ -20,7 +20,7 @@
   &::-webkit-scrollbar { display: none; }
 }
 
-/* ─── Project Ivy design tokens → Tailwind utilities ───────────────
+/* ─── Project IVY design tokens → Tailwind utilities ───────────────
    @theme inline wires the :root CSS vars to Tailwind class names
    without emitting duplicate custom properties (no circular refs).
    Usage: bg-navy-3, text-gold-soft, font-display, font-body, etc.

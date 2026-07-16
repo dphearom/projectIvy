@@ -15,13 +15,13 @@ export const CORE_TEAM: TeamMember[] = [
   },
   {
     name: "Rasy Hai",
-    school: "Asian University for Women: BSc Public Health & Environmental Sciences",
+    school: "Asian University for Women",
     role: "Program Manager",
     photo: "team/core/rasy-hai.jpg",
   },
   {
     name: "Vanndet Va",
-    school: "Lafayette College: Civil Engineering",
+    school: "Lafayette College",
     role: "Advisor Coordinator",
     photo: "team/core/vanndet-va.jpg",
   },
@@ -39,7 +39,7 @@ export const CORE_TEAM: TeamMember[] = [
   },
   {
     name: "Sophat Tann",
-    school: "University of Puthisastra, Phnom Penh",
+    school: "University of Puthisastra",
     role: "Full Stack Developer",
     photo: "team/core/sophat-tann.jpg",
   }
