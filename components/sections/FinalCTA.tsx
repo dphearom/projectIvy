@@ -16,7 +16,7 @@ const FinalCTA = () => (
         Your Future Starts Here
       </h2>
       <p className="text-[1.18rem] text-cream-soft max-w-[60ch] mx-auto mb-9.5" data-reveal data-reveal-d="2">
-        Please contact us now to register for a Free 1-1 consultation with a Project Ivy advisor!
+        Please contact us now to register for a Free 1-1 consultation with a Project IVY advisor!
       </p>
       <div className="flex gap-3.5 justify-center flex-wrap" data-reveal data-reveal-d="3">
         <Button href="/contact" arrow>

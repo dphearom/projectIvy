@@ -224,7 +224,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       {error && <p className="text-[0.88rem] text-[#c0392b]">{error}</p>}
 
       <Button type="submit" className="w-full justify-center" disabled={submitting}>
-        {submitting ? "Submitting…" : "Sign up for consultation"}
+        {submitting ? "Submitting…" : "Sign Up for Advising"}
       </Button>
     </form>
   );
