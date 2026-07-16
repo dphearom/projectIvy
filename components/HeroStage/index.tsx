@@ -10,10 +10,8 @@ type Props = {
   image: string;
   /** Set once a real photo has been saved for `image` (resolves to `public/images/{image}.jpg`). */
   available?: boolean;
-  /** CSS object-position for the real photo on desktop, e.g. "center 70%". */
+  /** CSS object-position for the real photo, e.g. "center 70%" to bias the crop upward. */
   imagePosition?: string;
-  /** CSS object-position override for mobile (≤640px). Falls back to imagePosition. */
-  mobileImagePosition?: string;
   className?: string;
   children: ReactNode;
 };
@@ -23,18 +21,10 @@ const HeroStage = ({
   image,
   available = false,
   imagePosition = "center",
-  mobileImagePosition,
   className,
   children,
 }: Props) => (
-  <section
-    className={cn("hero-stage hero-stage--image", className)}
-    id={id}
-    style={{
-      "--hero-pos": imagePosition,
-      "--hero-pos-mobile": mobileImagePosition ?? imagePosition,
-    } as React.CSSProperties}
-  >
+  <section className={cn("hero-stage hero-stage--image", className)} id={id}>
     <div className="hero-bg hero-bg--image" aria-hidden="true">
       {available ? (
         <Image
@@ -44,6 +34,7 @@ const HeroStage = ({
           priority
           sizes="100vw"
           className="ph-block--cover"
+          style={{ objectFit: "cover", objectPosition: imagePosition }}
         />
       ) : (
         <PlaceholderImage name={image} className="ph-block--cover" />

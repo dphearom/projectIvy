@@ -7,10 +7,9 @@ const ScholarshipsHero = () => (
     image={PLACEHOLDERS.SCHOLARSHIPS_HERO_BG}
     available={PHOTO_READY.has(PLACEHOLDERS.SCHOLARSHIPS_HERO_BG)}
     imagePosition="center 35%"
-    mobileImagePosition="center 45%"
     className="min-h-[min(85vh,760px)]"
   >
-    <div className="max-w-170 mx-auto mt-4 sm:mt-[clamp(7rem,26vh,13rem)]">
+    <div className="max-w-170 mx-auto mt-[clamp(7rem,26vh,13rem)]">
       <Eyebrow onNavy data-reveal>
         Financial Support
       </Eyebrow>

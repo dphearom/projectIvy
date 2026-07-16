@@ -1,40 +1,25 @@
-/*
-  Two-set infinite marquee.
-  Each .logo-marquee-set has padding-right equal to the gap (18px = gap-4.5),
-  so both sets are identical in total width and -50% lands exactly on the
-  loop point — no JS measurement needed, always visible from first render.
-*/
-
-@keyframes logo-marquee-fwd {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+/* Pixel-distance marquee — --marquee-distance is set per row from measured set width. */
+@keyframes logo-marquee-px {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(calc(var(--marquee-distance) * -1), 0, 0); }
 }
 
-@keyframes logo-marquee-rev {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
+@keyframes logo-marquee-px-reverse {
+  from { transform: translate3d(calc(var(--marquee-distance) * -1), 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
 }
 
 .logo-marquee-track {
-  display: flex;
-  animation-duration: var(--marquee-duration, 40s);
+  animation-duration: var(--marquee-duration);
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-fill-mode: both;
   will-change: transform;
 }
 
 .logo-marquee-track--forward {
-  animation-name: logo-marquee-fwd;
+  animation-name: logo-marquee-px;
 }
 
 .logo-marquee-track--reverse {
-  animation-name: logo-marquee-rev;
-}
-
-.logo-marquee-set {
-  display: flex;
-  gap: 18px;         /* matches Tailwind gap-4.5 (4.5 × 4px) */
-  padding-right: 18px; /* trailing gap makes each set's total width identical */
-  flex-shrink: 0;
+  animation-name: logo-marquee-px-reverse;
 }

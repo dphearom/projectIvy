@@ -7,10 +7,9 @@ const Hero = () => (
     image={PLACEHOLDERS.HOME_HERO_BG}
     available={PHOTO_READY.has(PLACEHOLDERS.HOME_HERO_BG)}
     imagePosition="center 68%"
-    mobileImagePosition="center 55%"
   >
     <h1
-      className="text-[clamp(3.2rem,7.5vw,6.6rem)] leading-[0.97] tracking-[-0.01em] mt-4 sm:mt-[clamp(5rem,20vh,10rem)] text-balance"
+      className="text-[clamp(3.2rem,7.5vw,6.6rem)] leading-[0.97] tracking-[-0.01em] mt-[clamp(5rem,20vh,10rem)] text-balance"
       data-reveal
     >
       Project <span className="ivy-brand">IVY</span>
