@@ -25,8 +25,8 @@ const ContactHero = () => (
         data-reveal
         data-reveal-d="2"
       >
-        Please fill out the information form below — Project Ivy will contact you for
-        consultation as soon as possible!
+        Please fill out the form below, and Project IVY will contact you as soon as
+        possible to discuss your advising needs.
       </p>
     </div>
   </HeroStage>

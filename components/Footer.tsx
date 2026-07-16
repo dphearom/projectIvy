@@ -6,7 +6,7 @@ const NAV_COLS = [
   {
     heading: "Programs",
     links: [
-      { label: "Middle School", href: "/programmes#middle-school" },
+      { label: "Exploration Program", href: "/programmes#middle-school" },
       { label: "University Readiness", href: "/programmes#university-readiness" },
       { label: "University Application", href: "/programmes#university-application" },
       { label: "Graduate School Advising", href: "/programmes#graduate-school" },
