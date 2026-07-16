@@ -78,7 +78,7 @@ export const PLACEHOLDER_MANIFEST = [
   { slug: PLACEHOLDERS.CONTACT_HERO_BG, location: "Contact — hero background", aspect: "cover" },
   { slug: PLACEHOLDERS.SCHOLARSHIPS_HERO_BG, location: "Scholarships — hero background", aspect: "cover" },
   { slug: PLACEHOLDERS.HOME_PARTNER_MAP, location: "Home — development journey map", aspect: "4 / 3.2" },
-  { slug: PLACEHOLDERS.PROGRAM_MIDDLE_SCHOOL, location: "Home + Advising — Middle School Program", aspect: "16/10 · 4/3" },
+  { slug: PLACEHOLDERS.PROGRAM_MIDDLE_SCHOOL, location: "Home + Advising — Exploration Program", aspect: "16/10 · 4/3" },
   { slug: PLACEHOLDERS.PROGRAM_READINESS, location: "Home + Advising — University Readiness Program", aspect: "16/10 · 4/3" },
   { slug: PLACEHOLDERS.PROGRAM_APPLICATION, location: "Home + Advising — University Application Program", aspect: "16/10 · 4/3" },
   { slug: PLACEHOLDERS.PROGRAM_SERVICE_CAMPS, location: "Events — Service & Camps Program", aspect: "4 / 3" },

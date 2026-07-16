@@ -3,6 +3,8 @@ export type Scholarship = {
   title: string;
   /** Filename slug — resolves to `public/images/{photo}.jpg` when set. */
   photo?: string;
+  /** YouTube video URL for the package thumbnail preview. */
+  videoUrl?: string;
   overview: string;
   learnMore: string;
   eligibility: string[];
@@ -15,6 +17,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
     id: "university-application",
     title: "University Application Scholarship",
     photo: "scholarships/university-application-scholarship",
+    videoUrl: "https://youtu.be/JG71m85v0xE",
     overview:
       "Application guidance for students with ambition and financial need.",
     learnMore:
@@ -40,6 +43,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
     id: "university-application-fee",
     title: "University Application Fee Scholarship",
     photo: "scholarships/university-application-fee-scholarship",
+    videoUrl: "https://youtu.be/fXmSIm8n0hY",
     overview:
       "Provides financial assistance to help students offset application-related costs.",
     learnMore:
@@ -65,6 +69,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
     id: "ielts-fee",
     title: "IELTS Fee Scholarship",
     photo: "scholarships/ielts-fee-scholarship",
+    videoUrl: "https://youtu.be/sFfvw7rhdT8",
     overview:
       "Provides financial assistance to help students offset IELTS testing fee.",
     learnMore:

@@ -7,9 +7,10 @@ const ProgrammesHero = () => (
     image={PLACEHOLDERS.ADVISING_HERO_BG}
     available={PHOTO_READY.has(PLACEHOLDERS.ADVISING_HERO_BG)}
     imagePosition="center 22%"
+    mobileImagePosition="center 35%"
     className="min-h-[min(80vh,720px)]"
   >
-    <div className="max-w-170 mx-auto mt-[clamp(7rem,26vh,13rem)]">
+    <div className="max-w-170 mx-auto mt-4 sm:mt-[clamp(7rem,26vh,13rem)]">
       <Eyebrow onNavy data-reveal>
         Advising Program
       </Eyebrow>

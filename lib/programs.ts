@@ -8,7 +8,7 @@ export type ProgramSummary = {
 export const ADVISING_PROGRAM_SUMMARIES: ProgramSummary[] = [
   {
     id: "middle-school",
-    title: "Middle School Program",
+    title: "Exploration Program",
     desc: "Discover strengths, explore interests, and build strong foundations in Grades 6–8.",
     href: "/programmes#middle-school",
   },
@@ -48,7 +48,27 @@ export type ProgramTier = {
   tagline: string;
   features: string[];
   deliverables?: string[];
+  /** Optional section shown below features — e.g. Additional Fees or Pricing Details. */
+  pricingSection?: {
+    title: string;
+    items: string[];
+  };
 };
+
+/** YouTube video URLs keyed by `{programId}:{tierIndex}` (0-based). */
+export const TIER_VIDEO_URLS: Record<string, string> = {
+  "middle-school:0": "https://youtu.be/ffKhMqp-4j8",
+  "university-readiness:1": "https://youtu.be/2gne7H72qW4",
+  "university-readiness:2": "https://youtu.be/S7SbcYYy6w8",
+  "university-application:0": "https://youtu.be/N0H4t_3tZE8",
+  "university-application:1": "https://youtu.be/OfQTP1fkqjg",
+  "university-application:2": "https://youtu.be/ViG-bNcQAdk",
+  "graduate-school:0": "https://youtu.be/16kjRTmha34",
+  "graduate-school:1": "https://youtu.be/gPztz9dTo_M",
+};
+
+export const tierVideoUrl = (programId: string, tierIndex: number) =>
+  TIER_VIDEO_URLS[`${programId}:${tierIndex}`];
 
 export type ProgramDetail = {
   id: string;
@@ -61,13 +81,13 @@ export type ProgramDetail = {
 export const PROGRAM_DETAILS: ProgramDetail[] = [
   {
     id: "middle-school",
-    title: "Middle School Program",
+    title: "Exploration Program",
     tagline: "Discover your strengths and explore a world of possibilities",
     description:
       "The Exploration Year helps students in Grades 6–8 discover their strengths, build strong study habits, and explore clubs, sports, arts, STEM, and entrepreneurship — with services tailored to each student's unique needs.",
     tiers: [
       {
-        name: "Middle School (6th - 8th Grade) — The Exploration Year",
+        name: "Exploration Package (6th - 8th Grade)",
         price: "$599",
         tagline: "Discover Your Strengths and Explore a World of Possibilities",
         features: [
@@ -179,6 +199,13 @@ export const PROGRAM_DETAILS: ProgramDetail[] = [
           "3 personal statement and supplemental essays reviews",
           "Application review and submission support",
         ],
+        pricingSection: {
+          title: "Additional Fees",
+          items: [
+            "$100 per university requiring supplemental essays",
+            "$50 per university without supplemental essays",
+          ],
+        },
       },
       {
         name: "Premium Package",
@@ -190,6 +217,13 @@ export const PROGRAM_DETAILS: ProgramDetail[] = [
           "Scholarship guidance",
           "Strategic positioning for competitive admissions",
         ],
+        pricingSection: {
+          title: "Additional Fees",
+          items: [
+            "$100 per university requiring supplemental essays",
+            "$50 per university without supplemental essays",
+          ],
+        },
       },
       {
         name: "Elite Package",
@@ -203,6 +237,13 @@ export const PROGRAM_DETAILS: ProgramDetail[] = [
           "Application narrative strategy",
           "Priority support",
         ],
+        pricingSection: {
+          title: "Additional Fees",
+          items: [
+            "$100 per university requiring supplemental essays",
+            "$50 per university without supplemental essays",
+          ],
+        },
       },
     ],
   },
@@ -229,6 +270,12 @@ export const PROGRAM_DETAILS: ProgramDetail[] = [
           "Interview preparation",
           "Application review",
         ],
+        pricingSection: {
+          title: "Pricing Details",
+          items: [
+            "Pricing varies based on the duration of the program and the services selected.",
+          ],
+        },
       },
       {
         name: "Standard Package",
@@ -241,6 +288,13 @@ export const PROGRAM_DETAILS: ProgramDetail[] = [
           "3 SOPs reviews",
           "Application review and submission support",
         ],
+        pricingSection: {
+          title: "Additional Fees",
+          items: [
+            "$100 per university requiring supplemental essays",
+            "$50 per university without supplemental essays",
+          ],
+        },
       },
       {
         name: "Premium Package",
@@ -252,6 +306,13 @@ export const PROGRAM_DETAILS: ProgramDetail[] = [
           "Scholarship guidance",
           "Strategic positioning for competitive admissions",
         ],
+        pricingSection: {
+          title: "Additional Fees",
+          items: [
+            "$100 per university requiring supplemental essays",
+            "$50 per university without supplemental essays",
+          ],
+        },
       },
       {
         name: "Elite Package",
@@ -265,6 +326,13 @@ export const PROGRAM_DETAILS: ProgramDetail[] = [
           "Application narrative strategy",
           "Priority support",
         ],
+        pricingSection: {
+          title: "Additional Fees",
+          items: [
+            "$100 per university requiring supplemental essays",
+            "$50 per university without supplemental essays",
+          ],
+        },
       },
     ],
   },

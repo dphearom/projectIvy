@@ -5,7 +5,7 @@ import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
   title: "Contact | Project IVY",
-  description: "Contact Project Ivy for a free consultation with an academic advisor.",
+  description: "Contact Project IVY for a free consultation with an academic advisor.",
 };
 
 type Props = {

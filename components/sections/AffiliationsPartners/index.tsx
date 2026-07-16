@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React from "react";
 import { useFadeInImage } from "@/lib/useFadeInImage";
 import "./styles.css";
 
@@ -69,11 +69,6 @@ const SchoolSlot = ({ school }: { school: School }) => {
   );
 };
 
-type MarqueeConfig = {
-  distance: number;
-  copies: number;
-};
-
 const MarqueeRow = ({
   schools,
   duration,
@@ -82,88 +77,23 @@ const MarqueeRow = ({
   schools: School[];
   duration: number;
   reverse?: boolean;
-}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const measureRef = useRef<HTMLDivElement>(null);
-  const [config, setConfig] = useState<MarqueeConfig | null>(null);
-
-  const measure = useCallback(() => {
-    const setEl = measureRef.current;
-    const containerEl = containerRef.current;
-    if (!setEl || !containerEl) return;
-
-    const setWidth = setEl.getBoundingClientRect().width;
-    const containerWidth = containerEl.getBoundingClientRect().width;
-    if (setWidth <= 0 || containerWidth <= 0) return;
-
-    // One repeat period in a flat flex row = set width + one inter-item gap.
-    const gap = parseFloat(getComputedStyle(setEl).columnGap || getComputedStyle(setEl).gap || "0");
-    const period = setWidth + gap;
-
-    const copies = Math.max(3, Math.ceil(containerWidth / period) + 2);
-    setConfig({ distance: period, copies });
-  }, []);
-
-  useLayoutEffect(() => {
-    measure();
-  }, [measure, schools]);
-
-  useEffect(() => {
-    const setEl = measureRef.current;
-    const containerEl = containerRef.current;
-    if (!setEl || !containerEl) return;
-
-    const observer = new ResizeObserver(measure);
-    observer.observe(setEl);
-    observer.observe(containerEl);
-    window.addEventListener("load", measure);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("load", measure);
-    };
-  }, [measure, schools]);
-
-  const trackStyle = {
-    "--marquee-distance": `${config?.distance ?? 0}px`,
-    "--marquee-duration": `${duration}s`,
-    ...(config ? {} : { visibility: "hidden" as const }),
-  } as React.CSSProperties;
-
-  return (
+}) => (
+  <div className="relative overflow-hidden py-2.5 mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
     <div
-      ref={containerRef}
-      className="relative overflow-hidden py-2.5 mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] [-webkit-mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]"
+      className={`logo-marquee-track ${reverse ? "logo-marquee-track--reverse" : "logo-marquee-track--forward"}`}
+      style={{ "--marquee-duration": `${duration}s` } as React.CSSProperties}
     >
-      {/* Hidden single-set ruler — period = width + one flex gap */}
-      <div
-        ref={measureRef}
-        className="pointer-events-none absolute left-0 top-0 flex gap-4.5 opacity-0"
-        aria-hidden
-      >
-        {schools.map((school) => (
-          <SchoolSlot key={`measure-${school.name}`} school={school} />
-        ))}
-      </div>
-
-      <div
-        className={`logo-marquee-track flex w-max gap-4.5 ${
-          reverse ? "logo-marquee-track--reverse" : "logo-marquee-track--forward"
-        }`}
-        style={trackStyle}
-      >
-        {Array.from({ length: config?.copies ?? 4 }, (_, copyIndex) =>
-          schools.map((school, schoolIndex) => (
-            <SchoolSlot
-              key={`${copyIndex}-${schoolIndex}-${school.name}`}
-              school={school}
-            />
-          )),
-        )}
-      </div>
+      {/* Two identical sets. padding-right on each set = gap, so -50% lands exactly on the loop point. */}
+      {[0, 1].map((setIndex) => (
+        <div key={setIndex} className="logo-marquee-set">
+          {schools.map((school) => (
+            <SchoolSlot key={school.name} school={school} />
+          ))}
+        </div>
+      ))}
     </div>
-  );
-};
+  </div>
+);
 
 const AffiliationsPartners = () => (
   <section className="bg-paper py-27.5 overflow-hidden">

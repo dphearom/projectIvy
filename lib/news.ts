@@ -25,7 +25,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     slug: "2025-2026-university-deadlines",
     title: "2025–2026 University Deadlines: Monthly Checklist & Tips",
     excerpt:
-      "The Project Ivy counseling team is here to guide you every step of the way. Staying on top of deadlines is key — missing one could mean waiting another year. This guide highlights the must-know dates for the 2025–2026 admissions cycle.",
+      "The Project IVY counseling team is here to guide you every step of the way. Staying on top of deadlines is key — missing one could mean waiting another year. This guide highlights the must-know dates for the 2025–2026 admissions cycle.",
     category: "study-abroad-trends",
     day: "12",
     month: "Sep",
@@ -59,7 +59,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
   },
   {
     slug: "project-ivy-partner-school-tour",
-    title: "Project Ivy School Tour: Career Guidance in Phnom Penh",
+    title: "Project IVY School Tour: Career Guidance in Phnom Penh",
     excerpt:
       "Our latest education news from partner schools — workshops on communication, marketing pathways, and building language skills for global study.",
     category: "education-news",
