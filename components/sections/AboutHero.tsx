@@ -8,6 +8,7 @@ const AboutHero = () => (
     image={PLACEHOLDERS.ABOUT_HERO_BG}
     available={PHOTO_READY.has(PLACEHOLDERS.ABOUT_HERO_BG)}
     imagePosition="center 30%"
+    mobileImagePosition="center 40%"
     className="min-h-[min(72vh,640px)]"
   >
     <div className="max-w-170 mx-auto">

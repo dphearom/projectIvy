@@ -24,6 +24,31 @@
   min-height: min(100vh, 820px);
 }
 
+/* object-fit must live in CSS (not inline) so the mobile media query can override it */
+.hero-bg--image img {
+  object-fit: cover;
+  object-position: var(--hero-pos, center);
+}
+
+/* On mobile, images are 3:2 landscape in a tall portrait viewport.
+   object-fit:cover crops ~54% of the image width — people disappear.
+   Switch to contain so the full image is visible, anchored to the top,
+   with the text content in the dark section below the photo.
+   calc(100vw * 2/3) = exact natural height for the 3:2 hero images. */
+@media (max-width: 640px) {
+  .hero-stage--image {
+    min-height: unset !important;
+    padding-top: calc(100vw * 2 / 3 + 40px) !important;
+    padding-bottom: 56px !important;
+    align-items: flex-start;
+  }
+
+  .hero-bg--image img {
+    object-fit: contain;
+    object-position: top center;
+  }
+}
+
 .hero-bg--image::after {
   content: "";
   position: absolute;

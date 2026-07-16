@@ -7,6 +7,7 @@ const ContactHero = () => (
     image={PLACEHOLDERS.CONTACT_HERO_BG}
     available={PHOTO_READY.has(PLACEHOLDERS.CONTACT_HERO_BG)}
     imagePosition="center 32%"
+    mobileImagePosition="center 42%"
     className="min-h-[min(85vh,760px)]"
   >
     <div className="max-w-170 mx-auto">
