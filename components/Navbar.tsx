@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "@/components/icons";
+import LanguageToggle from "@/components/LanguageToggle";
 import { ADVISING_PROGRAM_SUMMARIES } from "@/lib/programs";
 import {
   getHashFromHref,
@@ -253,8 +254,9 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Right: hamburger */}
+          {/* Right: language toggle + hamburger */}
           <div className="flex items-center gap-3 flex-1 justify-end">
+            <LanguageToggle scrolled={scrolled} />
             <button
               type="button"
               className="hidden max-[1100px]:flex w-10.5 h-10.5 p-0 border-none bg-transparent cursor-pointer flex-col items-center justify-center"

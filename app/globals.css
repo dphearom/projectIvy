@@ -155,6 +155,17 @@
   --scroll-offset-about: 128px;
 }
 
+/* Khmer script needs dedicated glyph coverage — Cormorant Garamond and
+   Manrope don't include Khmer, so <html lang="km"> swaps --font-display/
+   --font-body to the Noto Khmer pairing (loaded via next/font in
+   app/layout.tsx). Every existing font-display/font-body utility and
+   h1/h2/h3 rule already reads these two vars, so no component changes
+   are needed for the font swap itself. */
+html[lang="km"] {
+  --font-display: var(--font-khmer-display), 'Noto Serif Khmer', serif;
+  --font-body: var(--font-khmer-body), 'Noto Sans Khmer', sans-serif;
+}
+
 
 /* ═══════════════════════════════════════════════════════════════════
    RESET & BASE
