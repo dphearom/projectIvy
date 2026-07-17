@@ -7,6 +7,38 @@
       "cta": "Sign up for advising"
     }
   },
+  "footer": {
+    "description": "Cambodia's academic advising service built for every student. Combining AI-powered tools with human mentorship to unlock global opportunities.",
+    "tagline": "“Guiding your Education Journey”",
+    "columns": {
+      "programs": {
+        "heading": "Programs",
+        "links": {
+          "exploration": "Exploration Program",
+          "universityReadiness": "University Readiness",
+          "universityApplication": "University Application",
+          "graduateSchool": "Graduate School Advising",
+          "scholarships": "Scholarships"
+        }
+      },
+      "company": {
+        "heading": "Company",
+        "links": {
+          "aboutUs": "About Us",
+          "ourTeam": "Our Team",
+          "events": "Events"
+        }
+      },
+      "contact": {
+        "heading": "Contact",
+        "links": {
+          "bookConsultation": "Book a Consultation",
+          "workshopsEvents": "Workshops & Events",
+          "partnerWithUs": "Partner With Us"
+        }
+      }
+    }
+  },
   "contact": {
     "hero": {
       "eyebrow": "Get in Touch",
