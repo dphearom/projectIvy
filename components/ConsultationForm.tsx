@@ -5,6 +5,7 @@ import { cn, EMAIL_RE } from "@/lib/utils";
 import Button from "@/components/Button";
 import { submitConsultation } from "@/app/actions/consultation";
 import { inquiryLabel } from "@/lib/inquiries";
+import { useTranslation } from "@/components/useTranslation";
 
 type Props = {
   inquiries?: string[];
@@ -12,6 +13,7 @@ type Props = {
 };
 
 const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
+  const { t } = useTranslation("contact.form");
   const [role, setRole] = useState<"parent" | "student">("student");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -96,7 +98,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       )}
 
       <fieldset className="border-none m-0 p-0">
-        <legend className={cn(labelCls, "mb-2.5")}>You are:</legend>
+        <legend className={cn(labelCls, "mb-2.5")}>{t("youAre")}</legend>
         <div className="flex gap-2.5">
           {(["parent", "student"] as const).map((value) => {
             const active = role === value;
@@ -118,7 +120,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
                   onChange={() => setRole(value)}
                   className="absolute opacity-0 pointer-events-none"
                 />
-                {value === "parent" ? "Parents" : "Student"}
+                {value === "parent" ? t("roleParent") : t("roleStudent")}
               </label>
             );
           })}
@@ -127,7 +129,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
 
       <div>
         <label htmlFor="consult-name" className={labelCls}>
-          {isParent ? "Parent's full name" : "Full name"} (*)
+          {isParent ? t("nameParent") : t("nameStudent")} (*)
         </label>
         <input
           id="consult-name"
@@ -140,7 +142,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       </div>
 
       <div>
-        <label htmlFor="consult-email" className={labelCls}>Email (*)</label>
+        <label htmlFor="consult-email" className={labelCls}>{t("email")} (*)</label>
         <input
           id="consult-email"
           type="email"
@@ -152,7 +154,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       </div>
 
       <div>
-        <label htmlFor="consult-phone" className={labelCls}>Telegram (*)</label>
+        <label htmlFor="consult-phone" className={labelCls}>{t("telegram")} (*)</label>
         <input
           id="consult-phone"
           type="tel"
@@ -165,7 +167,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
 
       {isParent && (
         <div>
-          <label htmlFor="consult-child-name" className={labelCls}>Child&apos;s name (*)</label>
+          <label htmlFor="consult-child-name" className={labelCls}>{t("childName")} (*)</label>
           <input
             id="consult-child-name"
             type="text"
@@ -178,7 +180,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
 
       <div>
         <label htmlFor="consult-grade" className={labelCls}>
-          {isParent ? "Child's grade level" : "Grade"} (*)
+          {isParent ? t("gradeParent") : t("gradeStudent")} (*)
         </label>
         <select
           id="consult-grade"
@@ -201,7 +203,9 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       </div>
 
       <div>
-        <label htmlFor="consult-school" className={labelCls}>School currently attending (*)</label>
+        <label htmlFor="consult-school" className={labelCls}>
+          {isParent ? t("schoolParent") : t("schoolStudent")} (*)
+        </label>
         <input
           id="consult-school"
           type="text"
@@ -218,13 +222,13 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
           onChange={(e) => setTerms(e.target.checked)}
           className="mt-0.75"
         />
-        I agree to the Terms &amp; Conditions
+        {t("terms")}
       </label>
 
       {error && <p className="text-[0.88rem] text-[#c0392b]">{error}</p>}
 
       <Button type="submit" className="w-full justify-center" disabled={submitting}>
-        {submitting ? "Submitting…" : "Sign Up for Advising"}
+        {submitting ? "Submitting…" : t("submit")}
       </Button>
     </form>
   );

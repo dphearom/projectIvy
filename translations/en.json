@@ -7,6 +7,35 @@
       "cta": "Sign up for advising"
     }
   },
+  "contact": {
+    "hero": {
+      "eyebrow": "Get in Touch",
+      "heading": "Contact us",
+      "paragraph": "Please fill out the form below, and Project IVY will contact you as soon as possible to discuss your advising needs."
+    },
+    "info": {
+      "office": "Office: Phnom Penh, Cambodia",
+      "telegramLabel": "Telegram",
+      "emailLabel": "Email",
+      "webLabel": "Web"
+    },
+    "form": {
+      "youAre": "You are:",
+      "roleParent": "Parents",
+      "roleStudent": "Student",
+      "nameParent": "Parent's full name",
+      "nameStudent": "Full name",
+      "email": "Email",
+      "telegram": "Telegram",
+      "childName": "Child's name",
+      "gradeParent": "Child's grade level",
+      "gradeStudent": "Grade",
+      "schoolParent": "The school your child is currently attending",
+      "schoolStudent": "School currently attending",
+      "terms": "I agree to the Terms & Conditions",
+      "submit": "Sign Up for Advising"
+    }
+  },
   "home": {
     "founderStory": {
       "eyebrow": "Founder's Story",

@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { kmPresence } from "@/lib/i18n/messages";
 import { cn } from "@/lib/utils";
 
@@ -31,9 +31,10 @@ type FontKind = "display" | "body";
  */
 export function useTranslation(namespace: string) {
   const translate = useTranslations(namespace);
+  const locale = useLocale();
 
   const wrap = (path: string, content: ReactNode, kind: FontKind): ReactNode =>
-    getAtPath(kmPresence, `${namespace}.${path}`) === true ? (
+    locale === "km" && getAtPath(kmPresence, `${namespace}.${path}`) === true ? (
       <span lang="km" className={cn("khmer-script", kind === "display" ? "font-display" : "font-body")}>
         {content}
       </span>
