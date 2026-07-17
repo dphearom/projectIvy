@@ -1,4 +1,12 @@
 {
+  "shared": {
+    "finalCta": {
+      "eyebrow": "Start your journey",
+      "heading": "Your Future Starts Here",
+      "paragraph": "Please contact us today to register for a free 1-on-1 advising session with a Project IVY advisor!",
+      "cta": "Sign up for advising"
+    }
+  },
   "home": {
     "founderStory": {
       "eyebrow": "Founder's Story",
@@ -102,6 +110,157 @@
       "heading": "Latest from Project IVY",
       "title": "More news coming soon",
       "paragraph": "Stay tuned — we'll be sharing updates and announcements here."
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "About Project IVY",
+      "heading": "Building Cambodia's <em>Academic Advising</em> Infrastructure",
+      "subtitle": "Making world-class academic guidance a right, not a privilege — starting in Cambodia, and scaling across Southeast Asia.",
+      "cta": "Explore our mission"
+    },
+    "mission": {
+      "eyebrow": "Mission",
+      "heading": "Our Mission",
+      "paragraph": "To build a Khmer for Khmer ecosystem where experienced Cambodian scholars empower and equip the next generation with essential skills, allowing them to successfully navigate not only the admission process to global universities, but become future leaders and impactful global citizens."
+    },
+    "vision": {
+      "eyebrow": "Our Vision",
+      "quote": "A world where Cambodian students are recognized, represented, and respected in global spaces—creating impact at home and around the world."
+    },
+    "whoWeAre": {
+      "eyebrow": "Who We Are",
+      "heading": "The foundation behind Project IVY",
+      "blocks": {
+        "01": {
+          "num": "01",
+          "title": "Who We Are",
+          "desc": "Project IVY is an educational advisory and mentorship organization founded in Cambodia. We support high-potential students in navigating international education pathways with confidence and purpose."
+        },
+        "02": {
+          "num": "02",
+          "title": "What We Do",
+          "desc": "We provide expert guidance on academic planning, application strategy, scholarships, and personal branding. Through our programs, advising, and resources, we help students turn their potential into opportunity."
+        },
+        "03": {
+          "num": "03",
+          "title": "Why We Exist",
+          "desc": "We exist to level the playing field. Every Cambodian student deserves access to the right information, the right advisors, and the right opportunities to build a global future, regardless of their background."
+        }
+      }
+    },
+    "whyChooseUs": {
+      "eyebrow": "Why Should You Choose Us",
+      "heading": "What sets Project IVY apart",
+      "reasons": {
+        "built-by-khmer-scholars": {
+          "area": "Built by Khmer Scholars",
+          "detail": "Our advisors are not generic admissions coaches. They are Cambodian students and alumni who earned scholarships to the world's best schools and chose to come back to share everything they know. They understand your background, your barriers, and your potential in a way no outside consultant can."
+        },
+        "small-selective-personal": {
+          "area": "Small, Selective, and Personal",
+          "detail": "Project IVY caps enrollment intentionally. Every student receives real one-on-one time with an advisor. You are not a number here. You are a scholar with a story worth telling, and we take the time to hear it."
+        },
+        "real-deliverables-guaranteed": {
+          "area": "Real Deliverables: Guaranteed",
+          "detail": "You will not leave Project IVY with just inspiration. You will leave with a drafted personal statement, a personalised school list, a completed activity resume, a test prep strategy, and an application roadmap, or we will give you a full refund."
+        },
+        "holistic-approach": {
+          "area": "Holistic Approach",
+          "detail": "We work on the whole application: your story, your strategy, your essays, your activities, and your mindset. We help you understand what top admissions officers actually look for and how to present who you are in a way that is authentic and compelling."
+        }
+      }
+    },
+    "advisors": {
+      "eyebrow": "Our Advisors",
+      "heading": "Built by Khmer scholars who lived the journey",
+      "paragraph": "Project IVY is led by Cambodian scholars and mentors who have walked the path from local classrooms to global universities — and are dedicated to helping the next generation do the same.",
+      "members": {
+        "Somphors Tann": {
+          "name": "Somphors Tann",
+          "role": "Founder & Program Director",
+          "school": "Harvard Graduate School of Education, Kenyon College, Aiglon College",
+          "bio": "Somphors is a Cambodian education professional and first-generation university graduate from Siem Reap, who earned scholarships to Aiglon College in Switzerland, Kenyon College in the US, and Harvard's Graduate School of Education. Drawing on her own journey, she founded Higher Education Dreamers, Kone Khmer Project, and Project IVY to advise high-achieving Cambodian students through college admissions, scholarships, and financial aid. She built this program to be the guidance she never had."
+        },
+        "Kaitlyn Mady": {
+          "name": "Kaitlyn Mady",
+          "role": "University Admissions Advisor",
+          "school": "Harvard University : Government & Educational Studies",
+          "bio": "Kaitlyn studies at Harvard while working as a Recruitment Ambassador at Harvard's own Admissions and Financial Aid office, making her one of the most uniquely positioned advisors in the program. As founder of Harvard's Khmer Students' Association and a volunteer in legal aid and youth music programs, she is an ideal guide for first-generation students navigating this process for the first time."
+        },
+        "Virithkarvan (Vaughn) Van Chum": {
+          "name": "Virithkarvan (Vaughn) Van Chum",
+          "role": "University Admissions Advisor",
+          "school": "Harvard University : Biomedical Engineering (Secondary: Economics)",
+          "bio": "Vaughn's experience at Harvard spans water quality research, housing advocacy for homeless families, entrepreneurship, and market research consulting for the Boston Symphony Orchestra. He brings a rare ability to connect across fields and at Project IVY, he helps students discover that their most valuable asset is often the exact intersection of interests they've been told doesn't make sense."
+        },
+        "Peipei Soeung": {
+          "name": "Peipei Soeung",
+          "role": "University Admissions Advisor",
+          "school": "Dartmouth College : Computer Science with Digital Arts (SHE-CAN Scholar)",
+          "bio": "Peipei works across software engineering, AI, and interactive media, including Python animation pipelines, Unity UI systems, and Khmer natural language processing research. At Project IVY, she helps students craft clear, compelling narratives from their academic and extracurricular experiences, especially for students applying to STEM and interdisciplinary programs."
+        },
+        "Sonisa Leng": {
+          "name": "Sonisa Leng",
+          "role": "University Admissions Advisor",
+          "school": "Dartmouth College (incoming) : previously Aiglon College (full IB scholarship)",
+          "bio": "Sonisa earned a full scholarship to the IB program at Aiglon College in Switzerland, where she founded the school's first K-pop dance club, served as MUN Secretary-General, and mentored peers across multiple subjects. A self-directed learner and natural teacher who also completed a teaching internship in Cambodia, she now heads to Dartmouth College and brings both her boarding school and university application journeys to Project IVY."
+        },
+        "Ayden Hayes": {
+          "name": "Ayden Hayes",
+          "role": "University Admissions Advisor",
+          "school": "Dartmouth College : Computer Science & Earth Science",
+          "bio": "Ayden bridges technology and real-world impact through machine learning and environmental data science at Dartmouth College. A Teaching Assistant across five CS courses and SAT tutor to 25+ students, he has a gift for making complex ideas accessible and for helping students see the intellectual depth already present in their own curiosity."
+        },
+        "Sophuth Phon": {
+          "name": "Sophuth Phon",
+          "role": "University Admissions Advisor",
+          "school": "Georgia State University : MSc Geosciences",
+          "bio": "Sophuth's research spans urban tree removal, flood risk modelling in Cambodia, and environmental policy advocacy. At Project IVY, he brings years of teaching experience and a grounded, research-backed approach to helping students understand their own academic profile and how to articulate it to the world's best universities."
+        },
+        "Rathanakmealea (Mealea) Mang": {
+          "name": "Rathanakmealea (Mealea) Mang",
+          "role": "University Admissions Advisor",
+          "school": "Northwestern University : Data Science & Economics",
+          "bio": "From managing a $50,000 graduation exhibition at Liger Leadership Academy to conducting cross-university research at Northwestern, Mealea brings analytical depth and real leadership experience to her work with students. She helps Project IVY scholars build compelling, competitive profiles by understanding exactly how admissions readers weigh data, story, and initiative together."
+        },
+        "Vanndet Va": {
+          "name": "Vanndet Va",
+          "role": "University & Boarding School Admissions Advisor",
+          "school": "Lafayette College : Civil Engineering",
+          "bio": "Vanndet is a Civil Engineering graduate from Lafayette College who has redesigned fish ladders in Wyoming, built homes with Habitat for Humanity in Cambodia, and now serves as Assistant Project Manager on the Chea Chanto College project. At Project IVY, he brings the same hands-on, community-first mindset to helping students build their academic future — and is one of our advisors with direct boarding school experience through the ASSIST program."
+        },
+        "Rasy Hai": {
+          "name": "Rasy Hai",
+          "role": "University Admissions Advisor",
+          "school": "Asian University for Women : BSc Public Health & Environmental Sciences",
+          "bio": "Rasy holds a degree from the Asian University for Women and currently works as an Education program Coordinator at Chea Chanto College. With national-level experience in policy research, curriculum development, and teacher training, she has mentored hundreds of students across Cambodia. At Project IVY, she helps students craft authentic, compelling narratives for university applications."
+        },
+        "Jennifer Chheang Kheng": {
+          "name": "Jennifer Chheang Kheng",
+          "role": "University Admissions Advisor",
+          "school": "Lehigh University (incoming) : previously Aiglon College",
+          "bio": "Jennifer attended Aiglon College before heading to Lehigh University to pursue a 4+1 program in Chemical Engineering. At Aiglon, she founded a jewelry-making club, completed the Duke of Edinburgh Gold Award, and was part of the CubeSat and Philanthropy teams. Later, she volunteered at a provincial hospital in Ratanakiri. She also attended summer programs including Yale Young Global Scholars and a psychology program at the University of Hong Kong."
+        },
+        "Sokniza Noeun": {
+          "name": "Sokniza Noeun",
+          "role": "University Admissions Advisor",
+          "school": "Babson College (incoming, SHE-CAN Scholar) : Business Administration",
+          "bio": "Niza will attend Babson College this fall with a focus on Business Analytics and Entrepreneurship. She brings experience in admissions advising, educational coordination, and outreach. At Project IVY, she offers both professional expertise and personal insight into what it takes to build a strong, honest application."
+        },
+        "Pichanbormey (Violette) Pisith": {
+          "name": "Pichanbormey (Violette) Pisith",
+          "role": "University Admissions Advisor",
+          "school": "Denison University (incoming, SHE-CAN Scholar) : Politics & Public Affairs / PPE",
+          "bio": "Violette graduated as Valedictorian, became a SHE-CAN scholar, and was elected cohort leader before organising InterLawked, a youth initiative promoting legal literacy and human rights through Khmer folktales. At Project IVY, she advises students through authentic storytelling, leadership, and writing, with a particular focus on helping young people find confidence in their own voice."
+        },
+        "Sreynich Vann": {
+          "name": "Sreynich Vann",
+          "role": "University Admissions Advisor",
+          "school": "Bucknell University (incoming, SHE-CAN Scholar) : Environmental Studies",
+          "bio": "Sreynich is a SHE-CAN Scholar and Stanford Climate Leaders Fellow whose high school career included an internship at APSARA, contributing to the excavation of historical artefacts and exploring the intersection of history and geology. At Project IVY, she helps students connect their interests, experiences, and values into a cohesive, compelling application narrative."
+        }
+      }
     }
   }
 }

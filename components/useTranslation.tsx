@@ -32,13 +32,13 @@ type FontKind = "display" | "body";
 export function useTranslation(namespace: string) {
   const translate = useTranslations(namespace);
 
-  const wrap = (path: string, text: string, kind: FontKind): ReactNode =>
+  const wrap = (path: string, content: ReactNode, kind: FontKind): ReactNode =>
     getAtPath(kmPresence, `${namespace}.${path}`) === true ? (
       <span lang="km" className={cn("khmer-script", kind === "display" ? "font-display" : "font-body")}>
-        {text}
+        {content}
       </span>
     ) : (
-      text
+      content
     );
 
   const t = (key: string, kind: FontKind = "body"): ReactNode => wrap(key, translate(key), kind);
@@ -47,5 +47,20 @@ export function useTranslation(namespace: string) {
   const tArray = (key: string, kind: FontKind = "body"): ReactNode[] =>
     (translate.raw(key) as string[]).map((text, i) => wrap(`${key}.${i}`, text, kind));
 
-  return { t, tArray };
+  /**
+   * For a string containing an inline tag (e.g. "Building <em>Academic Advising</em>
+   * Infrastructure") — reconstructs the embedded element via next-intl's rich-text
+   * API. If a language's translation doesn't include the tag, it's simply omitted
+   * and the text renders flat, so a Khmer string that skips the marker still works.
+   */
+  const tRich = (
+    key: string,
+    components: Record<string, (chunks: ReactNode) => ReactNode>,
+    kind: FontKind = "body",
+  ): ReactNode => wrap(key, translate.rich(key, components), kind);
+
+  /** Whether `key` has an entry in translations/en.json at all — for content (e.g. a long list of records) not yet fully migrated into the dictionary, so untranslated items can keep rendering straight from their original data source. */
+  const has = (key: string): boolean => translate.has(key);
+
+  return { t, tArray, tRich, has };
 }
