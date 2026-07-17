@@ -90,10 +90,10 @@ export const MENTOR_TEAM: TeamMember[] = [
   },
   {
     name: "Sophuth Phon",
-    school: "Georgia State University : MSc Geosciences (NSF-funded)",
+    school: "Georgia State University : MSc Geosciences",
     role: "University Admissions Advisor",
     photo: "team/mentors/sophuth-phon",
-    bio: "Sophuth's NSF-funded research spans urban tree removal, flood risk modelling in Cambodia, and environmental policy advocacy. At Project IVY, he brings years of teaching experience and a grounded, research-backed approach to helping students understand their own academic profile and how to articulate it to the world's best universities.",
+    bio: "Sophuth's research spans urban tree removal, flood risk modelling in Cambodia, and environmental policy advocacy. At Project IVY, he brings years of teaching experience and a grounded, research-backed approach to helping students understand their own academic profile and how to articulate it to the world's best universities.",
   },
   {
     name: "Rathanakmealea (Mealea) Mang",
@@ -156,6 +156,12 @@ export const PHOTO_POSITION: Record<string, string> = {
   "Rasy Hai": "center 40%",
   "Sokniza Noeun": "center 45%",
   "Sreynich Vann": "center 35%",
+};
+
+/** Advisor-section photo framing (Our Advisors on About Us). */
+export const MENTOR_PHOTO_POSITION: Record<string, string> = {
+  "Vanndet Va": "center 32%",
+  "Rasy Hai": "center 30%",
 };
 
 export const PHOTO_SCALE: Record<string, number> = {};

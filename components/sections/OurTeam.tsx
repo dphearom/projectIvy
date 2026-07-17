@@ -3,7 +3,7 @@
 import Image from "next/image";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import Eyebrow from "@/components/Eyebrow";
-import { MENTOR_TEAM, PHOTO_POSITION, PHOTO_SCALE } from "@/lib/team";
+import { MENTOR_TEAM, MENTOR_PHOTO_POSITION, PHOTO_POSITION, PHOTO_SCALE } from "@/lib/team";
 import { useFadeInImage } from "@/lib/useFadeInImage";
 
 const placeholderSlug = (name: string) =>
@@ -23,7 +23,7 @@ const MentorPhoto = ({ name, photo }: { name: string; photo: string }) => {
         width: "100%",
         height: "100%",
         objectFit: "cover",
-        objectPosition: PHOTO_POSITION[name] ?? "center top",
+        objectPosition: MENTOR_PHOTO_POSITION[name] ?? PHOTO_POSITION[name] ?? "center top",
         transform: PHOTO_SCALE[name] ? `scale(${PHOTO_SCALE[name]})` : undefined,
       }}
     />
