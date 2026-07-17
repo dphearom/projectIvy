@@ -20,6 +20,20 @@
   &::-webkit-scrollbar { display: none; }
 }
 
+/* Opt-in Khmer typography — applied only to text nodes that actually have a
+   real Khmer translation (see components/useTranslation.tsx), never globally
+   by page language. This keeps any string still falling back to English
+   (untranslated key, or a page not yet localized) on the site's normal
+   Latin fonts instead of inheriting a mismatched Khmer typeface.
+   Deliberately NOT named font-* — tailwind-merge (lib/utils.ts's `cn`)
+   treats any font-*-prefixed class as the same "font family" conflict
+   group and silently drops all but the last one, which combined with the
+   font-display/font-body classes below would strip this one out. */
+@utility khmer-script {
+  --font-display: var(--font-khmer-display), 'Noto Serif Khmer', serif;
+  --font-body: var(--font-khmer-body), 'Noto Sans Khmer', sans-serif;
+}
+
 /* ─── Project IVY design tokens → Tailwind utilities ───────────────
    @theme inline wires the :root CSS vars to Tailwind class names
    without emitting duplicate custom properties (no circular refs).
@@ -153,17 +167,6 @@
   --nav-height-scroll: 60px;
   --scroll-offset: 80px;
   --scroll-offset-about: 128px;
-}
-
-/* Khmer script needs dedicated glyph coverage — Cormorant Garamond and
-   Manrope don't include Khmer, so <html lang="km"> swaps --font-display/
-   --font-body to the Noto Khmer pairing (loaded via next/font in
-   app/layout.tsx). Every existing font-display/font-body utility and
-   h1/h2/h3 rule already reads these two vars, so no component changes
-   are needed for the font swap itself. */
-html[lang="km"] {
-  --font-display: var(--font-khmer-display), 'Noto Serif Khmer', serif;
-  --font-body: var(--font-khmer-body), 'Noto Sans Khmer', sans-serif;
 }
 
 

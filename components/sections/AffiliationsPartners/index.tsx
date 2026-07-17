@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useFadeInImage } from "@/lib/useFadeInImage";
+import { useTranslation } from "@/components/useTranslation";
 import "./styles.css";
 
 type School = { name: string; logo?: string };
@@ -165,25 +166,28 @@ const MarqueeRow = ({
   );
 };
 
-const AffiliationsPartners = () => (
-  <section className="bg-paper py-27.5 overflow-hidden">
-    <div className="wrap">
-      <div className="text-center max-w-170 mx-auto mb-12" data-reveal>
-        <h2 className="text-[clamp(2rem,3.6vw,3rem)] tracking-[-0.01em]">
-          Experienced advisors from leading institutions
-        </h2>
-        <p className="mt-4.5 text-[1.05rem] leading-[1.65] text-ink-soft">
-          Project IVY mentors bring firsthand experience from world-class universities and
-          schools — guiding students with insight earned on the journey.
-        </p>
-      </div>
-    </div>
+const AffiliationsPartners = () => {
+  const { t } = useTranslation("home.affiliations");
 
-    <div className="flex flex-col gap-4.5">
-      <MarqueeRow schools={ROW_1} duration={38} />
-      <MarqueeRow schools={ROW_2} duration={44} reverse />
-    </div>
-  </section>
-);
+  return (
+    <section className="bg-paper py-27.5 overflow-hidden">
+      <div className="wrap">
+        <div className="text-center max-w-170 mx-auto mb-12" data-reveal>
+          <h2 className="text-[clamp(2rem,3.6vw,3rem)] tracking-[-0.01em]">
+            {t("heading", "display")}
+          </h2>
+          <p className="mt-4.5 text-[1.05rem] leading-[1.65] text-ink-soft">
+            {t("paragraph")}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-4.5">
+        <MarqueeRow schools={ROW_1} duration={38} />
+        <MarqueeRow schools={ROW_2} duration={44} reverse />
+      </div>
+    </section>
+  );
+};
 
 export default AffiliationsPartners;

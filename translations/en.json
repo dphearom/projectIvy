@@ -1,0 +1,107 @@
+{
+  "home": {
+    "founderStory": {
+      "eyebrow": "Founder's Story",
+      "heading": "Meet the Founder",
+      "bio1": "Ms. Somphors Tann is a Cambodian education professional and first-generation university graduate from a rural community in Siem Reap. She received a full scholarship to attend Aiglon College in Switzerland for high school (Grades 9–12), followed by a full scholarship to pursue her bachelor's degree at Kenyon College in the United States, where she double majored in Economics and International Studies. She later earned a Master's degree in Human Development and Education from the Harvard Graduate School of Education.",
+      "bio2": "Her work focuses on expanding access to quality education, student advising, and human capital development in Cambodia. Somphors has experience working across both international and local education initiatives and is currently involved in building educational opportunities for students from underserved communities.",
+      "bio3": "Drawing from her personal journey, from studying by candlelight in rural Cambodia to graduating from Harvard, she is passionate about empowering young people to navigate education pathways, take risks, and unlock their full potential.",
+      "photoName": "Somphors Tann",
+      "photoRole": "Founder & Programme Director · Project IVY"
+    },
+    "founderMessage": {
+      "heading": "Message from the Founder",
+      "tagline": "Welcome to Project IVY: Turn Your Ambition into Admission.",
+      "readMore": "Read full message",
+      "showLess": "Show less",
+      "body": [
+        "I am so honored to welcome you to this program, not only as the Program Director, but as someone who deeply understands what it means to dream beyond the limits of where you begin.",
+        "Project IVY was born from a simple but powerful belief: talent is everywhere, but guidance is not. Across Cambodia, there are students with extraordinary potential—students with intelligence, discipline, creativity, courage, and ambition—who simply have not always had access to the right information, advising, or support. Many students are expected to make life-changing decisions about their education without a clear roadmap, without someone to explain the process, and without a community that truly understands the journey.",
+        "Project IVY was created to change that.",
+        "Project IVY is built and run by Khmer Scholars and global advisors who have walked the path before you. Many of us know what it feels like to come from communities where international education can seem distant, complicated, or even impossible. We know the uncertainty of applying to schools abroad, searching for scholarships, writing essays that capture who you are, and learning how to present your story with confidence. More importantly, we know that with the right guidance, students do not have to navigate this journey alone.",
+        "On behalf of myself and all Project IVY advisors, I want you to know that this program was designed with great care. Every meeting, workshop, discussion, activity, and one-on-one session has been shaped around one goal: to help you leave with more than inspiration. We want you to leave with direction. We want you to leave with a well-rounded profile, stronger application materials, a clearer sense of your story, a deeper understanding of your options, and the confidence to take your next step.",
+        "You will be challenged to think honestly about who you are, what you value, and what kind of future you want to build. You will learn how to research schools strategically, strengthen your academic profile, write with authenticity, prepare for interviews, and turn your experiences into a compelling application narrative. But beyond practical tools, I hope you also discover something even more important: that your story matters.",
+        "Project IVY is not only about admission. It is about preparation, self discovery, and possibility. It is about helping Cambodian students see that global education is not reserved for a select few. It is about building a generation of young people who are ready to step into the world with courage, skill, and purpose—and one day, use those opportunities to open doors for others.",
+        "As you begin this journey, I encourage you to be brave. Ask questions. Take notes. Share honestly. Revise your work. Make mistakes. Fix those gaps. Listen to your advisors. Learn from your peers. Be willing to grow.",
+        "Take the first step in becoming the narrator of your own story. Welcome to Project IVY."
+      ],
+      "signatureClosing": "With warmth and belief in your potential,",
+      "signatureName": "Somphors Tann",
+      "signatureTitle": "Founder & Program Director, Project IVY"
+    },
+    "worldMap": {
+      "heading": "Our global reach",
+      "paragraph": "Project IVY advisors bring experience from leading institutions worldwide – and help students pursue opportunities across the United States.",
+      "legendAdvisor": "Where are our advisors from",
+      "legendDestination": "Where our students would go"
+    },
+    "advisingPrograms": {
+      "heading": "Advising programs at Project IVY",
+      "subtitle": "Personalized advising from Middle School through graduate school — programs designed to meet students where they are.",
+      "viewDetails": "View details",
+      "programs": {
+        "middle-school": {
+          "title": "Exploration Program",
+          "desc": "Discover strengths, explore interests, and build strong foundations in Grades 6–8."
+        },
+        "university-readiness": {
+          "title": "University Readiness Program",
+          "desc": "Build the foundation for long-term academic and admissions success."
+        },
+        "university-application": {
+          "title": "University Application Program",
+          "desc": "Craft compelling applications that open doors to top universities."
+        },
+        "graduate-school": {
+          "title": "Graduate School Advising Program",
+          "desc": "Turn your experience into admission to world-class graduate schools."
+        }
+      }
+    },
+    "affiliations": {
+      "heading": "Experienced advisors from leading institutions",
+      "paragraph": "Project IVY mentors bring firsthand experience from world-class universities and schools — guiding students with insight earned on the journey."
+    },
+    "team": {
+      "eyebrow": "Our Team",
+      "heading": "Meet Our Team",
+      "members": {
+        "Somphors Tann": {
+          "name": "Somphors Tann",
+          "role": "Founder & Program Director",
+          "school": "Harvard Graduate School of Education, Kenyon College, Aiglon College"
+        },
+        "Rasy Hai": {
+          "name": "Rasy Hai",
+          "role": "Program Manager",
+          "school": "Asian University for Women"
+        },
+        "Vanndet Va": {
+          "name": "Vanndet Va",
+          "role": "Advisor Coordinator",
+          "school": "Lafayette College"
+        },
+        "Phearom Duong": {
+          "name": "Phearom Duong",
+          "role": "Full Stack Developer",
+          "school": "Wesleyan University"
+        },
+        "Macara Teu": {
+          "name": "Macara Teu",
+          "role": "Full Stack Developer",
+          "school": "Rhodes College"
+        },
+        "Sophat Tann": {
+          "name": "Sophat Tann",
+          "role": "Full Stack Developer",
+          "school": "University of Puthisastra"
+        }
+      }
+    },
+    "news": {
+      "heading": "Latest from Project IVY",
+      "title": "More news coming soon",
+      "paragraph": "Stay tuned — we'll be sharing updates and announcements here."
+    }
+  }
+}

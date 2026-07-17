@@ -5,10 +5,13 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
+import { NextIntlClientProvider } from "next-intl";
 import { DEFAULT_LANGUAGE, LANGUAGE_STORAGE_KEY, isLanguage, type Language } from "@/lib/i18n/language";
+import { getMessages } from "@/lib/i18n/messages";
 
 type LanguageContextValue = {
   language: Language;
@@ -37,6 +40,7 @@ const getServerSnapshot = (): Language => DEFAULT_LANGUAGE;
 
 const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const language = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const messages = useMemo(() => getMessages(language), [language]);
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -49,7 +53,9 @@ const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
-      {children}
+      <NextIntlClientProvider locale={language} messages={messages}>
+        {children}
+      </NextIntlClientProvider>
     </LanguageContext.Provider>
   );
 };
