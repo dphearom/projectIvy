@@ -3,7 +3,7 @@
     "finalCta": {
       "eyebrow": "Start your journey",
       "heading": "Your Future Starts Here",
-      "paragraph": "Please contact us today to register for a free 1-on-1 advising session with a Project IVY advisor!",
+      "paragraph": "Please contact us now to register for a Free 1-1 consultation with a Project Ivy advisor!",
       "cta": "Sign up for advising"
     }
   },
@@ -34,6 +34,82 @@
       "schoolStudent": "School currently attending",
       "terms": "I agree to the Terms & Conditions",
       "submit": "Sign Up for Advising"
+    }
+  },
+  "scholarships": {
+    "hero": {
+      "eyebrow": "Financial Support",
+      "heading": "Scholarships at Project IVY",
+      "subtitle": "Need-based scholarships available for university applications and IELTS."
+    },
+    "intro": "At Project IVY, we believe that financial limitations should not prevent motivated students from accessing high-quality academic advising, application support, and English test preparation. Through our need-based scholarship opportunities, selected students may receive partial support for Project IVY programs, university applications, and IELTS based on financial need, academic motivation, and commitment to the application journey.",
+    "ui": {
+      "learnMore": "Learn More",
+      "showLess": "Show less",
+      "details": "Learn More",
+      "whoCanApply": "Who Can Apply?",
+      "howWeSelect": "How We Select Scholarship Recipients",
+      "decisionsBasedOn": "Scholarship decisions are based on:"
+    },
+    "items": {
+      "university-application": {
+        "title": "University Application Scholarship",
+        "overview": "Application guidance for students with ambition and financial need.",
+        "learnMore": "Need-based support for selected students from the Project IVY team throughout the university application process. Selected students may receive advising support for essays, school lists, scholarships, interviews, and application strategy.",
+        "eligibility": [
+          "Are preparing for university applications",
+          "Need professional advising to strengthen their applications",
+          "Show academic motivation and personal commitment",
+          "Are willing to actively participate in advising sessions",
+          "Can complete required tasks and meet program deadlines"
+        ],
+        "selectionCriteria": [
+          "Academic background",
+          "Motivation and personal goals",
+          "Commitment to the program",
+          "Readiness to complete application",
+          "Availability of scholarship funding"
+        ],
+        "footnote": "Scholarships are limited and may be offered as partial support depending on each student's situation and available funding."
+      },
+      "university-application-fee": {
+        "title": "University Application Fee Scholarship",
+        "overview": "Provides financial assistance to help students offset application-related costs.",
+        "learnMore": "Need-based support to help students offset application-related costs. This scholarship may help cover or reduce costs such as university application fees, standardized test score report fees, document submission costs, or other approved application-related expenses.",
+        "eligibility": [
+          "Read to apply but demonstrate financial needs in submitting their applications",
+          "Show academic motivation and personal commitment",
+          "Are willing to actively participate in advising sessions",
+          "Can complete required tasks and meet program deadlines"
+        ],
+        "selectionCriteria": [
+          "Financial need",
+          "Academic background",
+          "Motivation and personal goals",
+          "Commitment to the program",
+          "Readiness to complete application",
+          "Availability of scholarship funding"
+        ],
+        "footnote": "Scholarships are limited and may be offered as partial support depending on each student's situation and available funding."
+      },
+      "ielts-fee": {
+        "title": "IELTS Fee Scholarship",
+        "overview": "Provides financial assistance to help students offset IELTS testing fee.",
+        "learnMore": "Support for students preparing for IELTS as part of their university or scholarship journey. Selected students may receive partial scholarships to offset the IELTS fee.",
+        "eligibility": [
+          "Are preparing for IELTS test",
+          "Demonstrate financial need",
+          "Show academic motivation and personal commitment",
+          "Can complete required tasks and meet deadlines"
+        ],
+        "selectionCriteria": [
+          "Financial need",
+          "Academic background",
+          "Motivation and personal goals",
+          "Readiness to take IELTS",
+          "Availability of scholarship funding"
+        ]
+      }
     }
   },
   "home": {

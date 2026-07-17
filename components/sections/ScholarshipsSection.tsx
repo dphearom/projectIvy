@@ -8,12 +8,14 @@ import SmartImage from "@/components/SmartImage";
 import VideoThumbnail from "@/components/VideoThumbnail";
 import { ChevronDown } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/components/useTranslation";
 
 type Props = {
   showPageHeader?: boolean;
 };
 
 const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
+  const { t, tArray, has } = useTranslation("scholarships");
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const toggleExpand = (id: string) => {
@@ -25,30 +27,29 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
       <div className="wrap">
         {showPageHeader && (
           <div className="text-center max-w-180 mx-auto" data-reveal>
-            <Eyebrow center>Financial Support</Eyebrow>
+            <Eyebrow center>{t("hero.eyebrow")}</Eyebrow>
             <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
-              Scholarships at Project IVY
+              {t("hero.heading", "display")}
             </h2>
             <p className="mt-4.5 text-ink-soft text-[17px] leading-[1.65]">
-              Need-based scholarships available for university applications and IELTS.
+              {t("hero.subtitle")}
             </p>
           </div>
         )}
 
         <div className="max-w-190 mx-auto mb-12 text-center" data-reveal data-reveal-d="1">
           <p className="text-[1.02rem] text-ink-soft leading-[1.65]">
-            At Project IVY, we believe that financial limitations should not prevent motivated
-            students from accessing high-quality academic advising, application support, and
-            English test preparation. Through our need-based scholarship opportunities, selected
-            students may receive partial support for Project IVY programs, university applications,
-            and IELTS based on financial need, academic motivation, and commitment to the
-            application journey.
+            {t("intro")}
           </p>
         </div>
 
         <div className="grid gap-7">
           {SCHOLARSHIPS.map((scholarship, i) => {
             const isOpen = expanded === scholarship.id;
+            // Only scholarships already migrated into translations/en.json go through
+            // the dictionary — everyone else still renders straight from lib/scholarships.ts
+            // until their translation arrives.
+            const isTranslated = has(`items.${scholarship.id}.title`);
 
             return (
               <article
@@ -80,16 +81,18 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
                     />
                   )}
                   <div className="pt-8 px-7 pb-6 flex flex-col justify-center max-[980px]:p-6">
-                    <h3 className="text-[1.35rem] text-navy leading-[1.2]">{scholarship.title}</h3>
+                    <h3 className="text-[1.35rem] text-navy leading-[1.2]">
+                      {isTranslated ? t(`items.${scholarship.id}.title`, "display") : scholarship.title}
+                    </h3>
                     <p className="mt-3 mb-5 text-[0.98rem] text-ink-soft leading-[1.55]">
-                      {scholarship.overview}
+                      {isTranslated ? t(`items.${scholarship.id}.overview`) : scholarship.overview}
                     </p>
                     <Button
                       onClick={() => toggleExpand(scholarship.id)}
                       className="self-start"
                       aria-expanded={isOpen}
                     >
-                      {isOpen ? "Show less" : "Learn More"}
+                      {isOpen ? t("ui.showLess") : t("ui.learnMore")}
                       <ChevronDown
                         className={cn("transition-transform duration-300", isOpen && "rotate-180")}
                       />
@@ -106,15 +109,23 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
                   <div className="overflow-hidden">
                     <div className="grid grid-cols-3 border-t border-line max-[680px]:grid-cols-1">
                       <div className="pt-6 px-7 pb-7 border-r border-line last:border-r-0 max-[680px]:border-r-0 max-[680px]:border-b max-[680px]:last:border-b-0">
-                        <h4 className="text-[1rem] text-navy mb-3">Learn More</h4>
-                        <p className="text-[0.9rem] text-ink-soft leading-[1.55]">{scholarship.learnMore}</p>
+                        <h4 className="text-[1rem] text-navy mb-3">{t("ui.details")}</h4>
+                        <p className="text-[0.9rem] text-ink-soft leading-[1.55]">
+                          {isTranslated ? t(`items.${scholarship.id}.learnMore`) : scholarship.learnMore}
+                        </p>
                       </div>
 
                       <div className="pt-6 px-7 pb-7 border-r border-line last:border-r-0 max-[680px]:border-r-0 max-[680px]:border-b max-[680px]:last:border-b-0">
-                        <h4 className="text-[1rem] text-navy mb-3">Who Can Apply?</h4>
+                        <h4 className="text-[1rem] text-navy mb-3">{t("ui.whoCanApply")}</h4>
                         <ul className="mt-2 pl-[1.1rem] [&>li+li]:mt-1.5">
-                          {scholarship.eligibility.map((item) => (
-                            <li key={item} className="text-[0.9rem] text-ink-soft leading-[1.55]">
+                          {(isTranslated
+                            ? tArray(`items.${scholarship.id}.eligibility`)
+                            : scholarship.eligibility
+                          ).map((item, itemIndex) => (
+                            <li
+                              key={typeof item === "string" ? item : itemIndex}
+                              className="text-[0.9rem] text-ink-soft leading-[1.55]"
+                            >
                               {item}
                             </li>
                           ))}
@@ -122,17 +133,25 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
                       </div>
 
                       <div className="pt-6 px-7 pb-7 border-r border-line last:border-r-0 max-[680px]:border-r-0 max-[680px]:border-b max-[680px]:last:border-b-0">
-                        <h4 className="text-[1rem] text-navy mb-3">How We Select Scholarship Recipients</h4>
-                        <p className="text-[0.9rem] text-ink-soft leading-[1.55]">Scholarship decisions are based on:</p>
+                        <h4 className="text-[1rem] text-navy mb-3">{t("ui.howWeSelect")}</h4>
+                        <p className="text-[0.9rem] text-ink-soft leading-[1.55]">{t("ui.decisionsBasedOn")}</p>
                         <ul className="mt-2 pl-[1.1rem] [&>li+li]:mt-1.5">
-                          {scholarship.selectionCriteria.map((item) => (
-                            <li key={item} className="text-[0.9rem] text-ink-soft leading-[1.55]">
+                          {(isTranslated
+                            ? tArray(`items.${scholarship.id}.selectionCriteria`)
+                            : scholarship.selectionCriteria
+                          ).map((item, itemIndex) => (
+                            <li
+                              key={typeof item === "string" ? item : itemIndex}
+                              className="text-[0.9rem] text-ink-soft leading-[1.55]"
+                            >
                               {item}
                             </li>
                           ))}
                         </ul>
                         {scholarship.footnote && (
-                          <p className="mt-3 text-[0.84rem] italic text-ink-soft">{scholarship.footnote}</p>
+                          <p className="mt-3 text-[0.84rem] italic text-ink-soft">
+                            {isTranslated ? t(`items.${scholarship.id}.footnote`) : scholarship.footnote}
+                          </p>
                         )}
                       </div>
                     </div>
