@@ -26,6 +26,7 @@ const CampModal = ({ tier, onClose }: { tier: ProgramTier; onClose: () => void }
   return (
     <TierModal
       title={tier.name}
+      ariaLabel={tier.name}
       price={tier.price}
       tagline={tier.tagline}
       onClose={onClose}

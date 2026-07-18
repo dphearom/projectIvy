@@ -63,5 +63,8 @@ export function useTranslation(namespace: string) {
   /** Whether `key` has an entry in translations/en.json at all — for content (e.g. a long list of records) not yet fully migrated into the dictionary, so untranslated items can keep rendering straight from their original data source. */
   const has = (key: string): boolean => translate.has(key);
 
-  return { t, tArray, tRich, has };
+  /** Plain localized string, without the khmer-script font wrapper — for contexts that require a real string (e.g. `aria-label`), not a ReactNode. */
+  const tPlain = (key: string): string => translate(key);
+
+  return { t, tArray, tRich, has, tPlain };
 }

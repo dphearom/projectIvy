@@ -39,6 +39,252 @@
       }
     }
   },
+  "programmes": {
+    "hero": {
+      "eyebrow": "Advising Program",
+      "heading": "Programs at Project IVY",
+      "subtitle": "Personalized advising roadmap from Grade 9 to university application — readiness and application programs built for every stage of the journey."
+    },
+    "section": {
+      "eyebrow": "Your roadmap",
+      "heading": "Choose your program",
+      "subtitle": "Programs from readiness through graduate school — select a program to explore packages and add it to your inquiry list."
+    },
+    "ui": {
+      "whatsIncluded": "What's included",
+      "deliverables": "Deliverables"
+    },
+    "details": {
+      "middle-school": {
+        "title": "Exploration Program",
+        "tagline": "Discover your strengths and explore a world of possibilities",
+        "description": "The Exploration Year helps students in Grades 6–8 discover their strengths, build strong study habits, and explore clubs, sports, arts, STEM, and entrepreneurship — with services tailored to each student's unique needs.",
+        "tiers": [
+          {
+            "name": "Exploration Package (6th - 8th Grade)",
+            "tagline": "Discover Your Strengths and Explore a World of Possibilities",
+            "features": [
+              "Strengths and interests assessment",
+              "Study habits and time management",
+              "Exploration of clubs, sports, arts, STEM, entrepreneurship",
+              "Reading and communication development",
+              "Academic goal setting",
+              "Early leadership opportunities",
+              "Community service introduction",
+              "Summer planning",
+              "Parent Consultation (1 per year)",
+              "6 one-on-one advising sessions per year"
+            ],
+            "deliverables": [
+              "Interest Map",
+              "Activity Portfolio",
+              "Academic Roadmap",
+              "Annual Growth Plan"
+            ]
+          }
+        ]
+      },
+      "university-readiness": {
+        "title": "University Readiness Program",
+        "tagline": "Personalized advising roadmap from Grade 9 to university application",
+        "description": "Build the foundation for long-term academic and admissions success with grade-by-grade guidance that helps students discover interests, develop depth, and shape a standout profile.",
+        "tiers": [
+          {
+            "name": "Grade 9 — The Foundation Year",
+            "tagline": "Build The Profile That Opens Every Door",
+            "features": [
+              "Initial Profile Assessment",
+              "Goal & Interest Discovery",
+              "Academic Planning (Grades 9-12 roadmap)",
+              "Course selection guidance",
+              "Extracurricular Exploration Strategy",
+              "Leadership & Community Service Guidance",
+              "Parent Consultation (1 per year)",
+              "6 one-on-one advising sessions"
+            ],
+            "deliverables": [
+              "Personalized 4-year roadmap",
+              "Activity portfolio tracker",
+              "Summer program recommendations"
+            ]
+          },
+          {
+            "name": "Grade 10 — The Building Year",
+            "tagline": "Turn Your Interests Into a Compelling Track Record",
+            "features": [
+              "Everything from Grade 9",
+              "Leadership development planning",
+              "Competition recommendations",
+              "Scholarship and enrichment opportunities",
+              "Summer program guidance",
+              "Resume development",
+              "LinkedIn profile setup (optional)",
+              "6 one-on-one advising sessions"
+            ],
+            "deliverables": [
+              "Leadership project roadmap",
+              "Activity Portfolio",
+              "Updated student profile"
+            ]
+          },
+          {
+            "name": "Grade 11 — The Strategy Year",
+            "tagline": "Refine Your Profile and Define Your Path to Top Universities",
+            "features": [
+              "University fit assessment",
+              "College list development",
+              "SAT/ACT strategy (if applicable)",
+              "Major exploration",
+              "Summer program planning",
+              "Personal brand and narrative development",
+              "Activities list optimization",
+              "Essay brainstorming",
+              "6 one-on-one advising sessions"
+            ],
+            "deliverables": [
+              "Preliminary university list",
+              "Personal narrative framework",
+              "Application strategy document"
+            ]
+          }
+        ]
+      },
+      "university-application": {
+        "title": "University Application Program",
+        "tagline": "Turn your ambition into admission",
+        "description": "Craft compelling applications that open doors to top universities with hands-on coaching across every stage of the application process.",
+        "tiers": [
+          {
+            "name": "Standard Package",
+            "tagline": "Up to 3 universities (Acceptance rate above 20%)",
+            "features": [
+              "Common App guidance",
+              "University selection",
+              "Activities list review",
+              "3 personal statement and supplemental essays reviews",
+              "Application review and submission support"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          },
+          {
+            "name": "Premium Package",
+            "tagline": "Up to 3 universities (Top 50-100)",
+            "features": [
+              "Everything in Standard",
+              "5 personal statement and supplemental essays reviews",
+              "Scholarship guidance",
+              "Strategic positioning for competitive admissions"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          },
+          {
+            "name": "Elite Package",
+            "tagline": "Up to 3 universities (Ivy League, Stanford, MIT, Caltech, Duke, Cambridge, Oxford, and similar institutions)",
+            "features": [
+              "Everything in Premium",
+              "10 personal statement and supplemental essays reviews",
+              "Interview preparation",
+              "Application narrative strategy",
+              "Priority support"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          }
+        ]
+      },
+      "graduate-school": {
+        "title": "Graduate School Advising Program",
+        "tagline": "Turn your experience into admission to world-class graduate schools",
+        "description": "Build the profile that opens doors to top graduate schools with expert guidance across every stage of the graduate admissions process.",
+        "tiers": [
+          {
+            "name": "Readiness Package",
+            "tagline": "Build the profile that opens doors to top graduate schools. Pricing varies based on the duration of the program and the services selected.",
+            "features": [
+              "Career and graduate study advising",
+              "University and program selection",
+              "Scholarship application support",
+              "CV refinement",
+              "Statement of Purpose coaching",
+              "Research proposal guidance (if applicable)",
+              "Recommendation letter strategy",
+              "Interview preparation",
+              "Application review"
+            ],
+            "pricingSection": {
+              "items": [
+                "Pricing varies based on the duration of the program and the services selected."
+              ]
+            }
+          },
+          {
+            "name": "Standard Package",
+            "tagline": "Up to 3 universities (Acceptance rate above 20%)",
+            "features": [
+              "Application guidance",
+              "University selection",
+              "Activities list review",
+              "3 SOPs reviews",
+              "Application review and submission support"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          },
+          {
+            "name": "Premium Package",
+            "tagline": "Up to 3 universities (Top 50-100)",
+            "features": [
+              "Everything in Standard",
+              "5 SOPs reviews",
+              "Scholarship guidance",
+              "Strategic positioning for competitive admissions"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          },
+          {
+            "name": "Elite Package",
+            "tagline": "Up to 3 universities (Ivy League, Stanford, MIT, Caltech, Duke, Cambridge, Oxford, and similar institutions)",
+            "features": [
+              "Everything in Premium",
+              "10 SOPs reviews",
+              "Interview preparation",
+              "Application narrative strategy",
+              "Priority support"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
   "contact": {
     "hero": {
       "eyebrow": "Get in Touch",
