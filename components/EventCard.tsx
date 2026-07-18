@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useFadeInImage } from "@/lib/useFadeInImage";
 
@@ -38,6 +39,12 @@ function parseEventDate(rawDate: string, date: string) {
 const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Props) => {
   const { day, month, year } = parseEventDate(rawDate, date);
   const fade = useFadeInImage();
+  const { markLoaded } = fade;
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) markLoaded();
+  }, [markLoaded]);
 
   // <button> instead of <Link> because clicking opens the EventModal, not a new page.
   // CSS resets button appearance (border, background, font, padding) in globals.css .ev rule.
@@ -50,6 +57,7 @@ const EventCard = ({ title, image, location, date, time, rawDate, onClick }: Pro
       <div className="aspect-[16/10] relative">
         <div className="absolute inset-0" aria-label={title}>
           <Image
+            ref={imgRef}
             src={image}
             alt={title}
             fill

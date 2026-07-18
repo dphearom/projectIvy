@@ -1,35 +1,41 @@
+"use client";
+
 import Eyebrow from "@/components/Eyebrow";
 import HeroStage from "@/components/HeroStage";
 import { PHOTO_READY, PLACEHOLDERS } from "@/lib/placeholders";
+import { useTranslation } from "@/components/useTranslation";
 
-const ContactHero = () => (
-  <HeroStage
-    image={PLACEHOLDERS.CONTACT_HERO_BG}
-    available={PHOTO_READY.has(PLACEHOLDERS.CONTACT_HERO_BG)}
-    imagePosition="center 32%"
-    className="min-h-[min(85vh,760px)]"
-  >
-    <div className="max-w-170 mx-auto">
-      <Eyebrow onNavy data-reveal>
-        Get in Touch
-      </Eyebrow>
-      <h1
-        className="text-[clamp(3.2rem,7.5vw,6.6rem)] leading-[0.97] tracking-[-0.01em] mt-6 text-balance"
-        data-reveal
-        data-reveal-d="1"
-      >
-        Contact us
-      </h1>
-      <p
-        className="mt-6.5 max-w-[42ch] mx-auto text-[1.18rem] leading-[1.62] text-cream-soft"
-        data-reveal
-        data-reveal-d="2"
-      >
-        Please fill out the form below, and Project IVY will contact you as soon as
-        possible to discuss your advising needs.
-      </p>
-    </div>
-  </HeroStage>
-);
+const ContactHero = () => {
+  const { t } = useTranslation("contact.hero");
+
+  return (
+    <HeroStage
+      image={PLACEHOLDERS.CONTACT_HERO_BG}
+      available={PHOTO_READY.has(PLACEHOLDERS.CONTACT_HERO_BG)}
+      imagePosition="center 32%"
+      className="min-h-[min(85vh,760px)]"
+    >
+      <div className="max-w-170 mx-auto">
+        <Eyebrow onNavy data-reveal>
+          {t("eyebrow")}
+        </Eyebrow>
+        <h1
+          className="text-[clamp(3.2rem,7.5vw,6.6rem)] leading-[0.97] tracking-[-0.01em] mt-6 text-balance"
+          data-reveal
+          data-reveal-d="1"
+        >
+          {t("heading", "display", "text-[clamp(2.4rem,5.6vw,5rem)]")}
+        </h1>
+        <p
+          className="mt-6.5 max-w-[42ch] mx-auto text-[1.18rem] leading-[1.62] text-cream-soft"
+          data-reveal
+          data-reveal-d="2"
+        >
+          {t("paragraph")}
+        </p>
+      </div>
+    </HeroStage>
+  );
+};
 
 export default ContactHero;

@@ -17,6 +17,12 @@ const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), selec
 export default function EventModal({ event, onClose }: Props) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const fade = useFadeInImage();
+  const { markLoaded } = fade;
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) markLoaded();
+  }, [markLoaded]);
 
   const trapFocus = useCallback((e: KeyboardEvent) => {
     if (e.key !== "Tab" || !dialogRef.current) return;
@@ -74,6 +80,7 @@ export default function EventModal({ event, onClose }: Props) {
 
         <div className="relative aspect-[16/7] rounded-t-[20px] overflow-hidden">
           <Image
+            ref={imgRef}
             src={event.image}
             alt={event.title}
             fill

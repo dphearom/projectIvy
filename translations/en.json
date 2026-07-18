@@ -1,0 +1,683 @@
+{
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About us",
+    "advisingProgram": "Advising Program",
+    "scholarships": "Scholarships",
+    "contact": "Contact",
+    "mission": "Mission",
+    "vision": "Vision",
+    "whoWeAre": "Who We Are",
+    "whyChooseUs": "Why Choose Us",
+    "ourAdvisors": "Our Advisors",
+    "programsOverview": "Programs overview",
+    "toggleMenu": "Toggle menu",
+    "closeMenu": "Close menu"
+  },
+  "shared": {
+    "finalCta": {
+      "eyebrow": "Start your journey",
+      "heading": "Your Future Starts Here",
+      "paragraph": "Please contact us now to register for a Free 1-1 consultation with a Project Ivy advisor!",
+      "cta": "Sign up for advising"
+    },
+    "buttons": {
+      "viewDetails": "View details",
+      "hidePackages": "Hide packages",
+      "addToInquiry": "Add to inquiry",
+      "added": "Added",
+      "seeFullDetails": "See full details",
+      "enquireNow": "Enquire now",
+      "close": "Close",
+      "watchVideo": "Watch video"
+    }
+  },
+  "footer": {
+    "description": "Cambodia's academic advising service built for every student. Combining AI-powered tools with human mentorship to unlock global opportunities.",
+    "tagline": "“Guiding your Education Journey”",
+    "columns": {
+      "programs": {
+        "heading": "Programs",
+        "links": {
+          "exploration": "Exploration Program",
+          "universityReadiness": "University Readiness",
+          "universityApplication": "University Application",
+          "graduateSchool": "Graduate School Advising",
+          "scholarships": "Scholarships"
+        }
+      },
+      "company": {
+        "heading": "Company",
+        "links": {
+          "aboutUs": "About Us",
+          "ourTeam": "Our Team",
+          "events": "Events"
+        }
+      },
+      "contact": {
+        "heading": "Contact",
+        "links": {
+          "bookConsultation": "Book a Consultation",
+          "workshopsEvents": "Workshops & Events",
+          "partnerWithUs": "Partner With Us"
+        }
+      }
+    }
+  },
+  "programmes": {
+    "hero": {
+      "eyebrow": "Advising Program",
+      "heading": "Programs at Project IVY",
+      "subtitle": "Personalized advising roadmap from Grade 9 to university application — readiness and application programs built for every stage of the journey."
+    },
+    "section": {
+      "eyebrow": "Your roadmap",
+      "heading": "Choose your program",
+      "subtitle": "Programs from readiness through graduate school — select a program to explore packages and add it to your inquiry list."
+    },
+    "ui": {
+      "whatsIncluded": "What's included",
+      "deliverables": "Deliverables"
+    },
+    "details": {
+      "middle-school": {
+        "title": "Exploration Program",
+        "tagline": "Discover your strengths and explore a world of possibilities",
+        "description": "The Exploration Year helps students in Grades 6–8 discover their strengths, build strong study habits, and explore clubs, sports, arts, STEM, and entrepreneurship — with services tailored to each student's unique needs.",
+        "tiers": [
+          {
+            "name": "Exploration Package (6th - 8th Grade)",
+            "tagline": "Discover Your Strengths and Explore a World of Possibilities",
+            "features": [
+              "Strengths and interests assessment",
+              "Study habits and time management",
+              "Exploration of clubs, sports, arts, STEM, entrepreneurship",
+              "Reading and communication development",
+              "Academic goal setting",
+              "Early leadership opportunities",
+              "Community service introduction",
+              "Summer planning",
+              "Parent Consultation (1 per year)",
+              "6 one-on-one advising sessions per year"
+            ],
+            "deliverables": [
+              "Interest Map",
+              "Activity Portfolio",
+              "Academic Roadmap",
+              "Annual Growth Plan"
+            ]
+          }
+        ]
+      },
+      "university-readiness": {
+        "title": "University Readiness Program",
+        "tagline": "Personalized advising roadmap from Grade 9 to university application",
+        "description": "Build the foundation for long-term academic and admissions success with grade-by-grade guidance that helps students discover interests, develop depth, and shape a standout profile.",
+        "tiers": [
+          {
+            "name": "Grade 9 — The Foundation Year",
+            "tagline": "Build The Profile That Opens Every Door",
+            "features": [
+              "Initial Profile Assessment",
+              "Goal & Interest Discovery",
+              "Academic Planning (Grades 9-12 roadmap)",
+              "Course selection guidance",
+              "Extracurricular Exploration Strategy",
+              "Leadership & Community Service Guidance",
+              "Parent Consultation (1 per year)",
+              "6 one-on-one advising sessions"
+            ],
+            "deliverables": [
+              "Personalized 4-year roadmap",
+              "Activity portfolio tracker",
+              "Summer program recommendations"
+            ]
+          },
+          {
+            "name": "Grade 10 — The Building Year",
+            "tagline": "Turn Your Interests Into a Compelling Track Record",
+            "features": [
+              "Everything from Grade 9",
+              "Leadership development planning",
+              "Competition recommendations",
+              "Scholarship and enrichment opportunities",
+              "Summer program guidance",
+              "Resume development",
+              "LinkedIn profile setup (optional)",
+              "6 one-on-one advising sessions"
+            ],
+            "deliverables": [
+              "Leadership project roadmap",
+              "Activity Portfolio",
+              "Updated student profile"
+            ]
+          },
+          {
+            "name": "Grade 11 — The Strategy Year",
+            "tagline": "Refine Your Profile and Define Your Path to Top Universities",
+            "features": [
+              "University fit assessment",
+              "College list development",
+              "SAT/ACT strategy (if applicable)",
+              "Major exploration",
+              "Summer program planning",
+              "Personal brand and narrative development",
+              "Activities list optimization",
+              "Essay brainstorming",
+              "6 one-on-one advising sessions"
+            ],
+            "deliverables": [
+              "Preliminary university list",
+              "Personal narrative framework",
+              "Application strategy document"
+            ]
+          }
+        ]
+      },
+      "university-application": {
+        "title": "University Application Program",
+        "tagline": "Turn your ambition into admission",
+        "description": "Craft compelling applications that open doors to top universities with hands-on coaching across every stage of the application process.",
+        "tiers": [
+          {
+            "name": "Standard Package",
+            "tagline": "Up to 3 universities (Acceptance rate above 20%)",
+            "features": [
+              "Common App guidance",
+              "University selection",
+              "Activities list review",
+              "3 personal statement and supplemental essays reviews",
+              "Application review and submission support"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          },
+          {
+            "name": "Premium Package",
+            "tagline": "Up to 3 universities (Top 50-100)",
+            "features": [
+              "Everything in Standard",
+              "5 personal statement and supplemental essays reviews",
+              "Scholarship guidance",
+              "Strategic positioning for competitive admissions"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          },
+          {
+            "name": "Elite Package",
+            "tagline": "Up to 3 universities (Ivy League, Stanford, MIT, Caltech, Duke, Cambridge, Oxford, and similar institutions)",
+            "features": [
+              "Everything in Premium",
+              "10 personal statement and supplemental essays reviews",
+              "Interview preparation",
+              "Application narrative strategy",
+              "Priority support"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          }
+        ]
+      },
+      "graduate-school": {
+        "title": "Graduate School Advising Program",
+        "tagline": "Turn your experience into admission to world-class graduate schools",
+        "description": "Build the profile that opens doors to top graduate schools with expert guidance across every stage of the graduate admissions process.",
+        "tiers": [
+          {
+            "name": "Readiness Package",
+            "tagline": "Build the profile that opens doors to top graduate schools. Pricing varies based on the duration of the program and the services selected.",
+            "features": [
+              "Career and graduate study advising",
+              "University and program selection",
+              "Scholarship application support",
+              "CV refinement",
+              "Statement of Purpose coaching",
+              "Research proposal guidance (if applicable)",
+              "Recommendation letter strategy",
+              "Interview preparation",
+              "Application review"
+            ],
+            "pricingSection": {
+              "items": [
+                "Pricing varies based on the duration of the program and the services selected."
+              ]
+            }
+          },
+          {
+            "name": "Standard Package",
+            "tagline": "Up to 3 universities (Acceptance rate above 20%)",
+            "features": [
+              "Application guidance",
+              "University selection",
+              "Activities list review",
+              "3 SOPs reviews",
+              "Application review and submission support"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          },
+          {
+            "name": "Premium Package",
+            "tagline": "Up to 3 universities (Top 50-100)",
+            "features": [
+              "Everything in Standard",
+              "5 SOPs reviews",
+              "Scholarship guidance",
+              "Strategic positioning for competitive admissions"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          },
+          {
+            "name": "Elite Package",
+            "tagline": "Up to 3 universities (Ivy League, Stanford, MIT, Caltech, Duke, Cambridge, Oxford, and similar institutions)",
+            "features": [
+              "Everything in Premium",
+              "10 SOPs reviews",
+              "Interview preparation",
+              "Application narrative strategy",
+              "Priority support"
+            ],
+            "pricingSection": {
+              "items": [
+                "$100 per university requiring supplemental essays",
+                "$50 per university without supplemental essays"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Get in Touch",
+      "heading": "Contact us",
+      "paragraph": "Please fill out the form below, and Project IVY will contact you as soon as possible to discuss your advising needs."
+    },
+    "info": {
+      "office": "Office: Phnom Penh, Cambodia",
+      "telegramLabel": "Telegram",
+      "emailLabel": "Email",
+      "webLabel": "Web"
+    },
+    "form": {
+      "youAre": "You are:",
+      "roleParent": "Parents",
+      "roleStudent": "Student",
+      "nameParent": "Parent's full name",
+      "nameStudent": "Full name",
+      "email": "Email",
+      "telegram": "Telegram",
+      "childName": "Child's name",
+      "gradeParent": "Child's grade level",
+      "gradeStudent": "Grade",
+      "schoolParent": "The school your child is currently attending",
+      "schoolStudent": "School currently attending",
+      "selectPlaceholder": "Select...",
+      "grade9": "Grade 9",
+      "grade10": "Grade 10",
+      "grade11": "Grade 11",
+      "grade12": "Grade 12",
+      "terms": "I agree to the Terms & Conditions",
+      "submit": "Sign Up for Advising"
+    }
+  },
+  "scholarships": {
+    "hero": {
+      "eyebrow": "Financial Support",
+      "heading": "Scholarships at Project IVY",
+      "subtitle": "Need-based scholarships available for university applications and IELTS."
+    },
+    "intro": "At Project IVY, we believe that financial limitations should not prevent motivated students from accessing high-quality academic advising, application support, and English test preparation. Through our need-based scholarship opportunities, selected students may receive partial support for Project IVY programs, university applications, and IELTS based on financial need, academic motivation, and commitment to the application journey.",
+    "ui": {
+      "learnMore": "Learn More",
+      "showLess": "Show less",
+      "details": "Learn More",
+      "whoCanApply": "Who Can Apply?",
+      "howWeSelect": "How We Select Scholarship Recipients",
+      "decisionsBasedOn": "Scholarship decisions are based on:"
+    },
+    "items": {
+      "university-application": {
+        "title": "University Application Scholarship",
+        "overview": "Application guidance for students with ambition and financial need.",
+        "learnMore": "Need-based support for selected students from the Project IVY team throughout the university application process. Selected students may receive advising support for essays, school lists, scholarships, interviews, and application strategy.",
+        "eligibility": [
+          "Are preparing for university applications",
+          "Need professional advising to strengthen their applications",
+          "Show academic motivation and personal commitment",
+          "Are willing to actively participate in advising sessions",
+          "Can complete required tasks and meet program deadlines"
+        ],
+        "selectionCriteria": [
+          "Academic background",
+          "Motivation and personal goals",
+          "Commitment to the program",
+          "Readiness to complete application",
+          "Availability of scholarship funding"
+        ],
+        "footnote": "Scholarships are limited and may be offered as partial support depending on each student's situation and available funding."
+      },
+      "university-application-fee": {
+        "title": "University Application Fee Scholarship",
+        "overview": "Provides financial assistance to help students offset application-related costs.",
+        "learnMore": "Need-based support to help students offset application-related costs. This scholarship may help cover or reduce costs such as university application fees, standardized test score report fees, document submission costs, or other approved application-related expenses.",
+        "eligibility": [
+          "Read to apply but demonstrate financial needs in submitting their applications",
+          "Show academic motivation and personal commitment",
+          "Are willing to actively participate in advising sessions",
+          "Can complete required tasks and meet program deadlines"
+        ],
+        "selectionCriteria": [
+          "Financial need",
+          "Academic background",
+          "Motivation and personal goals",
+          "Commitment to the program",
+          "Readiness to complete application",
+          "Availability of scholarship funding"
+        ],
+        "footnote": "Scholarships are limited and may be offered as partial support depending on each student's situation and available funding."
+      },
+      "ielts-fee": {
+        "title": "IELTS Fee Scholarship",
+        "overview": "Provides financial assistance to help students offset IELTS testing fee.",
+        "learnMore": "Support for students preparing for IELTS as part of their university or scholarship journey. Selected students may receive partial scholarships to offset the IELTS fee.",
+        "eligibility": [
+          "Are preparing for IELTS test",
+          "Demonstrate financial need",
+          "Show academic motivation and personal commitment",
+          "Can complete required tasks and meet deadlines"
+        ],
+        "selectionCriteria": [
+          "Financial need",
+          "Academic background",
+          "Motivation and personal goals",
+          "Readiness to take IELTS",
+          "Availability of scholarship funding"
+        ]
+      }
+    }
+  },
+  "home": {
+    "hero": {
+      "tagline": "Turn Your Ambition into Admission",
+      "cta": "Learn more"
+    },
+    "founderStory": {
+      "eyebrow": "Founder's Story",
+      "heading": "Meet the Founder",
+      "bio1": "Ms. Somphors Tann is a Cambodian education professional and first-generation university graduate from a rural community in Siem Reap. She received a full scholarship to attend Aiglon College in Switzerland for high school (Grades 9–12), followed by a full scholarship to pursue her bachelor's degree at Kenyon College in the United States, where she double majored in Economics and International Studies. She later earned a Master's degree in Human Development and Education from the Harvard Graduate School of Education.",
+      "bio2": "Her work focuses on expanding access to quality education, student advising, and human capital development in Cambodia. Somphors has experience working across both international and local education initiatives and is currently involved in building educational opportunities for students from underserved communities.",
+      "bio3": "Drawing from her personal journey, from studying by candlelight in rural Cambodia to graduating from Harvard, she is passionate about empowering young people to navigate education pathways, take risks, and unlock their full potential.",
+      "photoName": "Somphors Tann",
+      "photoRole": "Founder & Programme Director · Project IVY"
+    },
+    "founderMessage": {
+      "heading": "Message from the Founder",
+      "tagline": "Welcome to Project IVY: Turn Your Ambition into Admission.",
+      "readMore": "Read full message",
+      "showLess": "Show less",
+      "body": [
+        "I am so honored to welcome you to this program, not only as the Program Director, but as someone who deeply understands what it means to dream beyond the limits of where you begin.",
+        "Project IVY was born from a simple but powerful belief: talent is everywhere, but guidance is not. Across Cambodia, there are students with extraordinary potential—students with intelligence, discipline, creativity, courage, and ambition—who simply have not always had access to the right information, advising, or support. Many students are expected to make life-changing decisions about their education without a clear roadmap, without someone to explain the process, and without a community that truly understands the journey.",
+        "Project IVY was created to change that.",
+        "Project IVY is built and run by Khmer Scholars and global advisors who have walked the path before you. Many of us know what it feels like to come from communities where international education can seem distant, complicated, or even impossible. We know the uncertainty of applying to schools abroad, searching for scholarships, writing essays that capture who you are, and learning how to present your story with confidence. More importantly, we know that with the right guidance, students do not have to navigate this journey alone.",
+        "On behalf of myself and all Project IVY advisors, I want you to know that this program was designed with great care. Every meeting, workshop, discussion, activity, and one-on-one session has been shaped around one goal: to help you leave with more than inspiration. We want you to leave with direction. We want you to leave with a well-rounded profile, stronger application materials, a clearer sense of your story, a deeper understanding of your options, and the confidence to take your next step.",
+        "You will be challenged to think honestly about who you are, what you value, and what kind of future you want to build. You will learn how to research schools strategically, strengthen your academic profile, write with authenticity, prepare for interviews, and turn your experiences into a compelling application narrative. But beyond practical tools, I hope you also discover something even more important: that your story matters.",
+        "Project IVY is not only about admission. It is about preparation, self discovery, and possibility. It is about helping Cambodian students see that global education is not reserved for a select few. It is about building a generation of young people who are ready to step into the world with courage, skill, and purpose—and one day, use those opportunities to open doors for others.",
+        "As you begin this journey, I encourage you to be brave. Ask questions. Take notes. Share honestly. Revise your work. Make mistakes. Fix those gaps. Listen to your advisors. Learn from your peers. Be willing to grow.",
+        "Take the first step in becoming the narrator of your own story. Welcome to Project IVY."
+      ],
+      "signatureClosing": "With warmth and belief in your potential,",
+      "signatureName": "Somphors Tann",
+      "signatureTitle": "Founder & Program Director, Project IVY"
+    },
+    "worldMap": {
+      "heading": "Our global reach",
+      "paragraph": "Project IVY advisors bring experience from leading institutions worldwide – and help students pursue opportunities across the United States.",
+      "legendAdvisor": "Where are our advisors from",
+      "legendDestination": "Where our students would go"
+    },
+    "advisingPrograms": {
+      "heading": "Advising programs at Project IVY",
+      "subtitle": "Personalized advising from Middle School through graduate school — programs designed to meet students where they are.",
+      "viewDetails": "View details",
+      "programs": {
+        "middle-school": {
+          "title": "Exploration Program",
+          "desc": "Discover strengths, explore interests, and build strong foundations in Grades 6–8."
+        },
+        "university-readiness": {
+          "title": "University Readiness Program",
+          "desc": "Build the foundation for long-term academic and admissions success."
+        },
+        "university-application": {
+          "title": "University Application Program",
+          "desc": "Craft compelling applications that open doors to top universities."
+        },
+        "graduate-school": {
+          "title": "Graduate School Advising Program",
+          "desc": "Turn your experience into admission to world-class graduate schools."
+        }
+      }
+    },
+    "affiliations": {
+      "heading": "Experienced advisors from leading institutions",
+      "paragraph": "Project IVY mentors bring firsthand experience from world-class universities and schools — guiding students with insight earned on the journey."
+    },
+    "team": {
+      "eyebrow": "Our Team",
+      "heading": "Meet Our Team",
+      "members": {
+        "Somphors Tann": {
+          "name": "Somphors Tann",
+          "role": "Founder & Program Director",
+          "school": "Harvard Graduate School of Education, Kenyon College, Aiglon College"
+        },
+        "Rasy Hai": {
+          "name": "Rasy Hai",
+          "role": "Program Manager",
+          "school": "Asian University for Women"
+        },
+        "Vanndet Va": {
+          "name": "Vanndet Va",
+          "role": "Advisor Coordinator",
+          "school": "Lafayette College"
+        },
+        "Phearom Duong": {
+          "name": "Phearom Duong",
+          "role": "Full Stack Developer",
+          "school": "Wesleyan University"
+        },
+        "Macara Teu": {
+          "name": "Macara Teu",
+          "role": "Full Stack Developer",
+          "school": "Rhodes College"
+        },
+        "Sophat Tann": {
+          "name": "Sophat Tann",
+          "role": "Full Stack Developer",
+          "school": "University of Puthisastra"
+        }
+      }
+    },
+    "news": {
+      "heading": "Latest from Project IVY",
+      "title": "More news coming soon",
+      "paragraph": "Stay tuned — we'll be sharing updates and announcements here."
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "About Project IVY",
+      "heading": "Building Cambodia's <em>Academic Advising</em> Infrastructure",
+      "subtitle": "Making world-class academic guidance a right, not a privilege — starting in Cambodia, and scaling across Southeast Asia.",
+      "cta": "Explore our mission"
+    },
+    "mission": {
+      "eyebrow": "Mission",
+      "heading": "Our Mission",
+      "paragraph": "To build a Khmer for Khmer ecosystem where experienced Cambodian scholars empower and equip the next generation with essential skills, allowing them to successfully navigate not only the admission process to global universities, but become future leaders and impactful global citizens."
+    },
+    "vision": {
+      "eyebrow": "Our Vision",
+      "quote": "A world where Cambodian students are recognized, represented, and respected in global spaces—creating impact at home and around the world."
+    },
+    "whoWeAre": {
+      "eyebrow": "Who We Are",
+      "heading": "The foundation behind Project IVY",
+      "blocks": {
+        "01": {
+          "num": "01",
+          "title": "Who We Are",
+          "desc": "Project IVY is an educational advisory and mentorship organization founded in Cambodia. We support high-potential students in navigating international education pathways with confidence and purpose."
+        },
+        "02": {
+          "num": "02",
+          "title": "What We Do",
+          "desc": "We provide expert guidance on academic planning, application strategy, scholarships, and personal branding. Through our programs, advising, and resources, we help students turn their potential into opportunity."
+        },
+        "03": {
+          "num": "03",
+          "title": "Why We Exist",
+          "desc": "We exist to level the playing field. Every Cambodian student deserves access to the right information, the right advisors, and the right opportunities to build a global future, regardless of their background."
+        }
+      }
+    },
+    "whyChooseUs": {
+      "eyebrow": "Why Should You Choose Us",
+      "heading": "What sets Project IVY apart",
+      "reasons": {
+        "built-by-khmer-scholars": {
+          "area": "Built by Khmer Scholars",
+          "detail": "Our advisors are not generic admissions coaches. They are Cambodian students and alumni who earned scholarships to the world's best schools and chose to come back to share everything they know. They understand your background, your barriers, and your potential in a way no outside consultant can."
+        },
+        "small-selective-personal": {
+          "area": "Small, Selective, and Personal",
+          "detail": "Project IVY caps enrollment intentionally. Every student receives real one-on-one time with an advisor. You are not a number here. You are a scholar with a story worth telling, and we take the time to hear it."
+        },
+        "real-deliverables-guaranteed": {
+          "area": "Real Deliverables: Guaranteed",
+          "detail": "You will not leave Project IVY with just inspiration. You will leave with a drafted personal statement, a personalised school list, a completed activity resume, a test prep strategy, and an application roadmap, or we will give you a full refund."
+        },
+        "holistic-approach": {
+          "area": "Holistic Approach",
+          "detail": "We work on the whole application: your story, your strategy, your essays, your activities, and your mindset. We help you understand what top admissions officers actually look for and how to present who you are in a way that is authentic and compelling."
+        }
+      }
+    },
+    "advisors": {
+      "eyebrow": "Our Advisors",
+      "heading": "Built by Khmer scholars who lived the journey",
+      "paragraph": "Project IVY is led by Cambodian scholars and mentors who have walked the path from local classrooms to global universities — and are dedicated to helping the next generation do the same.",
+      "members": {
+        "Somphors Tann": {
+          "name": "Somphors Tann",
+          "role": "Founder & Program Director",
+          "school": "Harvard Graduate School of Education, Kenyon College, Aiglon College",
+          "bio": "Somphors is a Cambodian education professional and first-generation university graduate from Siem Reap, who earned scholarships to Aiglon College in Switzerland, Kenyon College in the US, and Harvard's Graduate School of Education. Drawing on her own journey, she founded Higher Education Dreamers, Kone Khmer Project, and Project IVY to advise high-achieving Cambodian students through college admissions, scholarships, and financial aid. She built this program to be the guidance she never had."
+        },
+        "Kaitlyn Mady": {
+          "name": "Kaitlyn Mady",
+          "role": "University Admissions Advisor",
+          "school": "Harvard University : Government & Educational Studies",
+          "bio": "Kaitlyn studies at Harvard while working as a Recruitment Ambassador at Harvard's own Admissions and Financial Aid office, making her one of the most uniquely positioned advisors in the program. As founder of Harvard's Khmer Students' Association and a volunteer in legal aid and youth music programs, she is an ideal guide for first-generation students navigating this process for the first time."
+        },
+        "Virithkarvan (Vaughn) Van Chum": {
+          "name": "Virithkarvan (Vaughn) Van Chum",
+          "role": "University Admissions Advisor",
+          "school": "Harvard University : Biomedical Engineering (Secondary: Economics)",
+          "bio": "Vaughn's experience at Harvard spans water quality research, housing advocacy for homeless families, entrepreneurship, and market research consulting for the Boston Symphony Orchestra. He brings a rare ability to connect across fields and at Project IVY, he helps students discover that their most valuable asset is often the exact intersection of interests they've been told doesn't make sense."
+        },
+        "Peipei Soeung": {
+          "name": "Peipei Soeung",
+          "role": "University Admissions Advisor",
+          "school": "Dartmouth College : Computer Science with Digital Arts (SHE-CAN Scholar)",
+          "bio": "Peipei works across software engineering, AI, and interactive media, including Python animation pipelines, Unity UI systems, and Khmer natural language processing research. At Project IVY, she helps students craft clear, compelling narratives from their academic and extracurricular experiences, especially for students applying to STEM and interdisciplinary programs."
+        },
+        "Sonisa Leng": {
+          "name": "Sonisa Leng",
+          "role": "University Admissions Advisor",
+          "school": "Dartmouth College (incoming) : previously Aiglon College (full IB scholarship)",
+          "bio": "Sonisa earned a full scholarship to the IB program at Aiglon College in Switzerland, where she founded the school's first K-pop dance club, served as MUN Secretary-General, and mentored peers across multiple subjects. A self-directed learner and natural teacher who also completed a teaching internship in Cambodia, she now heads to Dartmouth College and brings both her boarding school and university application journeys to Project IVY."
+        },
+        "Ayden Hayes": {
+          "name": "Ayden Hayes",
+          "role": "University Admissions Advisor",
+          "school": "Dartmouth College : Computer Science & Earth Science",
+          "bio": "Ayden bridges technology and real-world impact through machine learning and environmental data science at Dartmouth College. A Teaching Assistant across five CS courses and SAT tutor to 25+ students, he has a gift for making complex ideas accessible and for helping students see the intellectual depth already present in their own curiosity."
+        },
+        "Sophuth Phon": {
+          "name": "Sophuth Phon",
+          "role": "University Admissions Advisor",
+          "school": "Georgia State University : MSc Geosciences",
+          "bio": "Sophuth's research spans urban tree removal, flood risk modelling in Cambodia, and environmental policy advocacy. At Project IVY, he brings years of teaching experience and a grounded, research-backed approach to helping students understand their own academic profile and how to articulate it to the world's best universities."
+        },
+        "Rathanakmealea (Mealea) Mang": {
+          "name": "Rathanakmealea (Mealea) Mang",
+          "role": "University Admissions Advisor",
+          "school": "Northwestern University : Data Science & Economics",
+          "bio": "From managing a $50,000 graduation exhibition at Liger Leadership Academy to conducting cross-university research at Northwestern, Mealea brings analytical depth and real leadership experience to her work with students. She helps Project IVY scholars build compelling, competitive profiles by understanding exactly how admissions readers weigh data, story, and initiative together."
+        },
+        "Vanndet Va": {
+          "name": "Vanndet Va",
+          "role": "University & Boarding School Admissions Advisor",
+          "school": "Lafayette College : Civil Engineering",
+          "bio": "Vanndet is a Civil Engineering graduate from Lafayette College who has redesigned fish ladders in Wyoming, built homes with Habitat for Humanity in Cambodia, and now serves as Assistant Project Manager on the Chea Chanto College project. At Project IVY, he brings the same hands-on, community-first mindset to helping students build their academic future — and is one of our advisors with direct boarding school experience through the ASSIST program."
+        },
+        "Rasy Hai": {
+          "name": "Rasy Hai",
+          "role": "University Admissions Advisor",
+          "school": "Asian University for Women : BSc Public Health & Environmental Sciences",
+          "bio": "Rasy holds a degree from the Asian University for Women and currently works as an Education program Coordinator at Chea Chanto College. With national-level experience in policy research, curriculum development, and teacher training, she has mentored hundreds of students across Cambodia. At Project IVY, she helps students craft authentic, compelling narratives for university applications."
+        },
+        "Jennifer Chheang Kheng": {
+          "name": "Jennifer Chheang Kheng",
+          "role": "University Admissions Advisor",
+          "school": "Lehigh University (incoming) : previously Aiglon College",
+          "bio": "Jennifer attended Aiglon College before heading to Lehigh University to pursue a 4+1 program in Chemical Engineering. At Aiglon, she founded a jewelry-making club, completed the Duke of Edinburgh Gold Award, and was part of the CubeSat and Philanthropy teams. Later, she volunteered at a provincial hospital in Ratanakiri. She also attended summer programs including Yale Young Global Scholars and a psychology program at the University of Hong Kong."
+        },
+        "Sokniza Noeun": {
+          "name": "Sokniza Noeun",
+          "role": "University Admissions Advisor",
+          "school": "Babson College (incoming, SHE-CAN Scholar) : Business Administration",
+          "bio": "Niza will attend Babson College this fall with a focus on Business Analytics and Entrepreneurship. She brings experience in admissions advising, educational coordination, and outreach. At Project IVY, she offers both professional expertise and personal insight into what it takes to build a strong, honest application."
+        },
+        "Pichanbormey (Violette) Pisith": {
+          "name": "Pichanbormey (Violette) Pisith",
+          "role": "University Admissions Advisor",
+          "school": "Denison University (incoming, SHE-CAN Scholar) : Politics & Public Affairs / PPE",
+          "bio": "Violette graduated as Valedictorian, became a SHE-CAN scholar, and was elected cohort leader before organising InterLawked, a youth initiative promoting legal literacy and human rights through Khmer folktales. At Project IVY, she advises students through authentic storytelling, leadership, and writing, with a particular focus on helping young people find confidence in their own voice."
+        },
+        "Sreynich Vann": {
+          "name": "Sreynich Vann",
+          "role": "University Admissions Advisor",
+          "school": "Bucknell University (incoming, SHE-CAN Scholar) : Environmental Studies",
+          "bio": "Sreynich is a SHE-CAN Scholar and Stanford Climate Leaders Fellow whose high school career included an internship at APSARA, contributing to the excavation of historical artefacts and exploring the intersection of history and geology. At Project IVY, she helps students connect their interests, experiences, and values into a cohesive, compelling application narrative."
+        }
+      }
+    }
+  }
+}

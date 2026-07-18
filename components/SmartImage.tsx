@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,12 @@ interface Props {
 
 const SmartImage = ({ name, alt, available, aspect = "16 / 10", className, sizes = "100vw" }: Props) => {
   const fade = useFadeInImage("object-cover");
+  const { markLoaded } = fade;
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) markLoaded();
+  }, [markLoaded]);
 
   if (!available) {
     return <PlaceholderImage name={name} aspect={aspect} className={className} />;
@@ -29,6 +36,7 @@ const SmartImage = ({ name, alt, available, aspect = "16 / 10", className, sizes
       style={{ aspectRatio: aspect }}
     >
       <Image
+        ref={imgRef}
         src={`/images/${name}.jpg`}
         alt={alt}
         fill

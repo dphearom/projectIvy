@@ -16,6 +16,7 @@ import {
 } from "@/lib/programs";
 import { scrollToHashWhenReady } from "@/lib/scroll-to-hash";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/components/useTranslation";
 import "./styles.css";
 
 const PROGRAM_PHOTOS: Record<string, string> = {
@@ -72,12 +73,17 @@ const TierThumbnail = ({
 
 const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => void }) => {
   const tierPhotoName = `programs/packages/${data.program.id}-pkg-${data.tierIndex + 1}`;
+  const { t, tArray, tPlain } = useTranslation("programmes");
+  const { t: tButton, tPlain: tButtonPlain } = useTranslation("shared.buttons");
+  const tierPath = `details.${data.program.id}.tiers.${data.tierIndex}`;
 
   return (
     <TierModal
-      title={data.tier.name}
+      title={t(`${tierPath}.name`, "display")}
+      ariaLabel={tPlain(`${tierPath}.name`)}
+      closeAriaLabel={tButtonPlain("close")}
       price={data.tier.price}
-      tagline={data.tier.tagline}
+      tagline={t(`${tierPath}.tagline`)}
       onClose={onClose}
       media={
         <TierThumbnail
@@ -92,28 +98,28 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
       footer={
         <>
           <Button href="/contact" arrow>
-            Enquire now
+            {tButton("enquireNow")}
           </Button>
           <Button variant="ghost-dark" onClick={onClose}>
-            Close
+            {tButton("close")}
           </Button>
         </>
       }
     >
       <div className="tier-modal__features">
-        <h5>What&apos;s included</h5>
+        <h5>{t("ui.whatsIncluded")}</h5>
         <ul>
-          {data.tier.features.map((f) => (
-            <li key={f}>{f}</li>
+          {tArray(`${tierPath}.features`).map((f, i) => (
+            <li key={typeof f === "string" ? f : i}>{f}</li>
           ))}
         </ul>
       </div>
       {data.tier.deliverables && data.tier.deliverables.length > 0 && (
         <div className="tier-modal__features mt-5 pt-5 border-t border-line">
-          <h5>Deliverables</h5>
+          <h5>{t("ui.deliverables")}</h5>
           <ul>
-            {data.tier.deliverables.map((d) => (
-              <li key={d}>{d}</li>
+            {tArray(`${tierPath}.deliverables`).map((d, i) => (
+              <li key={typeof d === "string" ? d : i}>{d}</li>
             ))}
           </ul>
         </div>
@@ -122,8 +128,8 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
         <div className="tier-modal__features mt-5 pt-5 border-t border-line">
           <h5>{data.tier.pricingSection.title}</h5>
           <ul>
-            {data.tier.pricingSection.items.map((item) => (
-              <li key={item}>{item}</li>
+            {tArray(`${tierPath}.pricingSection.items`).map((item, i) => (
+              <li key={typeof item === "string" ? item : i}>{item}</li>
             ))}
           </ul>
         </div>
@@ -133,6 +139,8 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
 };
 
 const ProgrammeProducts = () => {
+  const { t, tArray } = useTranslation("programmes");
+  const { t: tButton } = useTranslation("shared.buttons");
   const [expanded, setExpanded] = useState<string | null>(null);
   const [cart, setCart] = useState<string[]>([]);
   const [modalData, setModalData] = useState<ModalData | null>(null);
@@ -171,13 +179,12 @@ const ProgrammeProducts = () => {
     <section className="bg-ivory pt-25 pb-27.5" id="programs" aria-label="Advising programs">
       <div className="wrap">
         <div className="text-center max-w-180 mx-auto" data-reveal>
-          <Eyebrow center>Your roadmap</Eyebrow>
+          <Eyebrow center>{t("section.eyebrow")}</Eyebrow>
           <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
-            Choose your program
+            {t("section.heading", "display")}
           </h2>
           <p className="mt-4.5 text-ink-soft text-[17px] leading-[1.65]">
-            Programs from readiness through graduate school — select a program to explore packages
-            and add it to your inquiry list.
+            {t("section.subtitle")}
           </p>
         </div>
 
@@ -228,13 +235,13 @@ const ProgrammeProducts = () => {
                   <div className="flex flex-col justify-between py-7 px-8 gap-6 max-[980px]:p-6">
                     <div>
                       <h3 className="text-[clamp(1.5rem,2.2vw,1.85rem)] text-navy leading-[1.12] mt-3">
-                        {program.title}
+                        {t(`details.${program.id}.title`, "display")}
                       </h3>
                       <p className="mt-2.5 text-[0.98rem] text-ink-soft leading-[1.55]">
-                        {program.tagline}
+                        {t(`details.${program.id}.tagline`)}
                       </p>
                       <p className="mt-3 text-[0.96rem] text-ink-soft leading-[1.7] max-w-[72ch]">
-                        {program.description}
+                        {t(`details.${program.id}.description`)}
                       </p>
                     </div>
 
@@ -245,7 +252,7 @@ const ProgrammeProducts = () => {
                         aria-expanded={isOpen}
                         onClick={() => toggleExpand(program.id)}
                       >
-                        {isOpen ? "Hide packages" : "View details"}
+                        {isOpen ? tButton("hidePackages") : tButton("viewDetails")}
                         <ChevronDown className={cn("transition-transform duration-300", isOpen && "rotate-180")} />
                       </button>
                       <button
@@ -260,7 +267,7 @@ const ProgrammeProducts = () => {
                         disabled={added}
                       >
                         <CartIcon />
-                        {added ? "Added" : "Add to inquiry"}
+                        {added ? tButton("added") : tButton("addToInquiry")}
                       </button>
                     </div>
                   </div>
@@ -285,8 +292,12 @@ const ProgrammeProducts = () => {
                             sizes="(max-width: 760px) 100vw, 33vw"
                           />
                           <div className="pt-4 px-4.5 pb-5 flex flex-col flex-1">
-                            <h4 className="text-[1.05rem] text-navy leading-[1.2]">{tier.name}</h4>
-                            <p className="mt-1.5 text-[0.87rem] text-ink-soft leading-[1.45]">{tier.tagline}</p>
+                            <h4 className="text-[1.05rem] text-navy leading-[1.2]">
+                              {t(`details.${program.id}.tiers.${ti}.name`)}
+                            </h4>
+                            <p className="mt-1.5 text-[0.87rem] text-ink-soft leading-[1.45]">
+                              {t(`details.${program.id}.tiers.${ti}.tagline`)}
+                            </p>
                             <span className="inline-block mt-3 text-[0.85rem] font-bold text-navy-3 bg-gold py-1 px-3 rounded-full self-start">
                               {tier.price}
                             </span>
@@ -296,14 +307,16 @@ const ProgrammeProducts = () => {
                                   {tier.pricingSection.title}
                                 </p>
                                 <ul className="mt-2 pl-[1.1rem] [&>li+li]:mt-1">
-                                  {tier.pricingSection.items.map((item) => (
-                                    <li
-                                      key={item}
-                                      className="text-[0.8rem] text-ink-soft leading-[1.45]"
-                                    >
-                                      {item}
-                                    </li>
-                                  ))}
+                                  {tArray(`details.${program.id}.tiers.${ti}.pricingSection.items`).map(
+                                    (item, itemIndex) => (
+                                      <li
+                                        key={typeof item === "string" ? item : itemIndex}
+                                        className="text-[0.8rem] text-ink-soft leading-[1.45]"
+                                      >
+                                        {item}
+                                      </li>
+                                    ),
+                                  )}
                                 </ul>
                               </div>
                             )}
@@ -316,7 +329,7 @@ const ProgrammeProducts = () => {
                                   setModalData({ program, tier, tierIndex: ti });
                                 }}
                               >
-                                See full details
+                                {tButton("seeFullDetails")}
                               </button>
                             </div>
                           </div>
