@@ -79,6 +79,11 @@
       "whatsIncluded": "What's included",
       "deliverables": "Deliverables"
     },
+    "cart": {
+      "singular": "program in your inquiry list",
+      "plural": "programs in your inquiry list",
+      "requestConsultation": "Request consultation"
+    },
     "details": {
       "middle-school": {
         "title": "Exploration Program",
@@ -341,7 +346,20 @@
       "grade11": "Grade 11",
       "grade12": "Grade 12",
       "terms": "I agree to the Terms & Conditions",
-      "submit": "Sign Up for Advising"
+      "submit": "Sign Up for Advising",
+      "submitting": "Submitting…",
+      "selectedPrograms": "Selected programs",
+      "errorName": "Please enter your full name.",
+      "errorEmail": "Please enter a valid email address.",
+      "errorPhone": "Please enter your Telegram.",
+      "errorChildName": "Please enter your child's name.",
+      "errorGradeParent": "Please select your child's grade.",
+      "errorGradeStudent": "Please select your grade.",
+      "errorSchool": "Please enter the current school.",
+      "errorTerms": "Please agree to the Terms & Conditions.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "successTitle": "Thank you!",
+      "successBody": "Your information has been submitted successfully. We will contact you as soon as possible."
     }
   },
   "scholarships": {
