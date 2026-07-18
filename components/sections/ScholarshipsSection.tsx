@@ -15,7 +15,7 @@ type Props = {
 };
 
 const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
-  const { t, tArray, has } = useTranslation("scholarships");
+  const { t, tRich, tArray, has } = useTranslation("scholarships");
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const toggleExpand = (id: string) => {
@@ -29,7 +29,7 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
           <div className="text-center max-w-180 mx-auto" data-reveal>
             <Eyebrow center>{t("hero.eyebrow")}</Eyebrow>
             <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
-              {t("hero.heading", "display")}
+              {tRich("hero.heading", { ivy: (chunks) => <span className="ivy-brand">{chunks}</span> }, "display")}
             </h2>
             <p className="mt-4.5 text-ink-soft text-[17px] leading-[1.65]">
               {t("hero.subtitle")}

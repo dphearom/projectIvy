@@ -16,13 +16,13 @@ const PROGRAM_PHOTOS: Record<string, string> = {
 const ALL_PROGRAMS = [...ADVISING_PROGRAM_SUMMARIES];
 
 const AdvisingPrograms = () => {
-  const { t } = useTranslation("home.advisingPrograms");
+  const { t, tRich } = useTranslation("home.advisingPrograms");
 
   return (
     <section className="bg-ivory py-27.5" id="programmes">
       <div className="wrap">
         <div className="section-head" data-reveal>
-          <h2>{t("heading", "display")}</h2>
+          <h2>{tRich("heading", { ivy: (chunks) => <span className="ivy-brand">{chunks}</span> }, "display")}</h2>
           <p>{t("subtitle")}</p>
         </div>
 

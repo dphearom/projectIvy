@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const FounderMessage = () => {
   const [expanded, setExpanded] = useState(false);
-  const { t, tArray } = useTranslation("home.founderMessage");
+  const { t, tRich, tArray } = useTranslation("home.founderMessage");
   const body = tArray("body", "display");
 
   return (
@@ -63,7 +63,7 @@ const FounderMessage = () => {
               <br />
               <strong className="not-italic font-semibold text-navy">{t("signatureName", "display")}</strong>
               <br />
-              {t("signatureTitle", "display")}
+              {tRich("signatureTitle", { ivy: (chunks) => <span className="ivy-brand">{chunks}</span> }, "display")}
             </p>
           </div>
         </div>

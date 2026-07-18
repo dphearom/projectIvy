@@ -67,7 +67,7 @@
   "programmes": {
     "hero": {
       "eyebrow": "Advising Program",
-      "heading": "Programs at Project IVY",
+      "heading": "Programs at Project <ivy>IVY</ivy>",
       "subtitle": "Personalized advising roadmap from Grade 9 to university application — readiness and application programs built for every stage of the journey."
     },
     "section": {
@@ -365,7 +365,7 @@
   "scholarships": {
     "hero": {
       "eyebrow": "Financial Support",
-      "heading": "Scholarships at Project IVY",
+      "heading": "Scholarships at Project <ivy>IVY</ivy>",
       "subtitle": "Need-based scholarships available for university applications and IELTS."
     },
     "intro": "At Project IVY, we believe that financial limitations should not prevent motivated students from accessing high-quality academic advising, application support, and English test preparation. Through our need-based scholarship opportunities, selected students may receive partial support for Project IVY programs, university applications, and IELTS based on financial need, academic motivation, and commitment to the application journey.",
@@ -450,7 +450,7 @@
       "bio2": "Her work focuses on expanding access to quality education, student advising, and human capital development in Cambodia. Somphors has experience working across both international and local education initiatives and is currently involved in building educational opportunities for students from underserved communities.",
       "bio3": "Drawing from her personal journey, from studying by candlelight in rural Cambodia to graduating from Harvard, she is passionate about empowering young people to navigate education pathways, take risks, and unlock their full potential.",
       "photoName": "Somphors Tann",
-      "photoRole": "Founder & Programme Director · Project IVY"
+      "photoRole": "Founder & Programme Director · Project <ivy>IVY</ivy>"
     },
     "founderMessage": {
       "heading": "Message from the Founder",
@@ -470,7 +470,7 @@
       ],
       "signatureClosing": "With warmth and belief in your potential,",
       "signatureName": "Somphors Tann",
-      "signatureTitle": "Founder & Program Director, Project IVY"
+      "signatureTitle": "Founder & Program Director, Project <ivy>IVY</ivy>"
     },
     "worldMap": {
       "heading": "Our global reach",
@@ -479,7 +479,7 @@
       "legendDestination": "Where our students would go"
     },
     "advisingPrograms": {
-      "heading": "Advising programs at Project IVY",
+      "heading": "Advising programs at Project <ivy>IVY</ivy>",
       "subtitle": "Personalized advising from Middle School through graduate school — programs designed to meet students where they are.",
       "viewDetails": "View details",
       "programs": {
@@ -542,14 +542,14 @@
       }
     },
     "news": {
-      "heading": "Latest from Project IVY",
+      "heading": "Latest from Project <ivy>IVY</ivy>",
       "title": "More news coming soon",
       "paragraph": "Stay tuned — we'll be sharing updates and announcements here."
     }
   },
   "about": {
     "hero": {
-      "eyebrow": "About Project IVY",
+      "eyebrow": "About Project <ivy>IVY</ivy>",
       "heading": "Building Cambodia's <em>Academic Advising</em> Infrastructure",
       "subtitle": "Making world-class academic guidance a right, not a privilege — starting in Cambodia, and scaling across Southeast Asia.",
       "cta": "Explore our mission"
@@ -565,7 +565,7 @@
     },
     "whoWeAre": {
       "eyebrow": "Who We Are",
-      "heading": "The foundation behind Project IVY",
+      "heading": "The foundation behind Project <ivy>IVY</ivy>",
       "blocks": {
         "01": {
           "num": "01",
@@ -586,7 +586,7 @@
     },
     "whyChooseUs": {
       "eyebrow": "Why Should You Choose Us",
-      "heading": "What sets Project IVY apart",
+      "heading": "What sets Project <ivy>IVY</ivy> apart",
       "reasons": {
         "built-by-khmer-scholars": {
           "area": "Built by Khmer Scholars",

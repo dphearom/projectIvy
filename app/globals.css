@@ -371,11 +371,12 @@ section {
    ══════════════════════════════════════════════════════════════════ */
 .ivy-brand {
   font-style: italic;
+  font-weight: 700;
   color: var(--gold-deep);
   letter-spacing: 0.02em;
 }
 
-}
+} /* end @layer base */
 
 /* ═══════════════════════════════════════════════════════════════════
    REVEAL ANIMATIONS — same style as the package-tier stack reveal

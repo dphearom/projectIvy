@@ -7,7 +7,7 @@ import Eyebrow from "@/components/Eyebrow";
 import "./styles.css";
 
 const OurStory = () => {
-  const { t } = useTranslation("home.founderStory");
+  const { t, tRich } = useTranslation("home.founderStory");
 
   return (
     <section className="py-31 bg-cream" id="story">
@@ -30,7 +30,7 @@ const OurStory = () => {
                 {t("photoName", "display")}
               </b>
               <span className="text-[0.8rem] text-(--muted) tracking-[0.02em]">
-                {t("photoRole")}
+                {tRich("photoRole", { ivy: (chunks) => <span className="ivy-brand">{chunks}</span> })}
               </span>
             </div>
           </div>

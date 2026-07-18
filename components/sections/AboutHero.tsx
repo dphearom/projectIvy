@@ -18,7 +18,7 @@ const AboutHero = () => {
     >
       <div className="max-w-170 mx-auto">
         <Eyebrow onNavy data-reveal>
-          {t("eyebrow")}
+          {tRich("eyebrow", { ivy: (chunks) => <span className="ivy-brand">{chunks}</span> })}
         </Eyebrow>
         <h1
           className="text-[clamp(3.2rem,7.5vw,6.6rem)] leading-[0.97] tracking-[-0.01em] mt-6 text-balance [&_em]:text-gold-soft [&_em]:font-semibold"
