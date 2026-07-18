@@ -13,7 +13,7 @@ type Props = {
 };
 
 const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
-  const { t } = useTranslation("contact.form");
+  const { t, tPlain } = useTranslation("contact.form");
   const [role, setRole] = useState<"parent" | "student">("student");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -194,11 +194,11 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
             backgroundSize: "16px 16px",
           }}
         >
-          <option value="">Select...</option>
-          <option value="9">Grade 9</option>
-          <option value="10">Grade 10</option>
-          <option value="11">Grade 11</option>
-          <option value="12">Grade 12</option>
+          <option value="">{tPlain("selectPlaceholder")}</option>
+          <option value="9">{tPlain("grade9")}</option>
+          <option value="10">{tPlain("grade10")}</option>
+          <option value="11">{tPlain("grade11")}</option>
+          <option value="12">{tPlain("grade12")}</option>
         </select>
       </div>
 

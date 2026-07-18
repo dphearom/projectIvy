@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import Eyebrow from "@/components/Eyebrow";
@@ -12,8 +13,16 @@ const placeholderSlug = (name: string) =>
 
 const MentorPhoto = ({ name, photo }: { name: string; photo: string }) => {
   const fade = useFadeInImage();
+  const { markLoaded } = fade;
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) markLoaded();
+  }, [markLoaded]);
+
   return (
     <Image
+      ref={imgRef}
       src={`/images/${photo}.jpg`}
       alt={name}
       width={400}

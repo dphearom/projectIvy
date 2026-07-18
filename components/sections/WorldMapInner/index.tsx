@@ -35,7 +35,7 @@ const WorldMapInner = () => {
   return (
     <div className="absolute inset-0 z-0">
       <MapContainer
-        center={[25, -20]}
+        center={[15, -35]}
         zoom={2}
         minZoom={2}
         maxZoom={4}

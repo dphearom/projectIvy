@@ -25,7 +25,12 @@ const AboutHero = () => {
           data-reveal
           data-reveal-d="1"
         >
-          {tRich("heading", { em: (chunks) => <em>{chunks}</em> }, "display")}
+          {tRich(
+            "heading",
+            { em: (chunks) => <em>{chunks}</em> },
+            "display",
+            "text-[clamp(2.4rem,5.6vw,5rem)] leading-[1.4] tracking-normal",
+          )}
         </h1>
         <p
           className="mt-6.5 max-w-[42ch] mx-auto text-[1.18rem] leading-[1.62] text-cream-soft"

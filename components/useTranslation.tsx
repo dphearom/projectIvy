@@ -33,16 +33,28 @@ export function useTranslation(namespace: string) {
   const translate = useTranslations(namespace);
   const locale = useLocale();
 
-  const wrap = (path: string, content: ReactNode, kind: FontKind): ReactNode =>
+  const wrap = (path: string, content: ReactNode, kind: FontKind, extraClassName?: string): ReactNode =>
     locale === "km" && getAtPath(kmPresence, `${namespace}.${path}`) === true ? (
-      <span lang="km" className={cn("khmer-script", kind === "display" ? "font-display" : "font-body")}>
+      <span
+        lang="km"
+        className={cn(
+          "khmer-script",
+          // Khmer's stacked vowel/coeng marks need more vertical room than the tight
+          // leading (often <1) used for Latin display headings — without this override,
+          // wrapped Khmer heading lines collide into each other.
+          kind === "display" ? "font-display leading-[1.35]" : "font-body",
+          extraClassName,
+        )}
+      >
         {content}
       </span>
     ) : (
       content
     );
 
-  const t = (key: string, kind: FontKind = "body"): ReactNode => wrap(key, translate(key), kind);
+  /** `extraClassName` (e.g. a smaller text-[...] size) is applied only to the Khmer-rendered span — the English string is untouched. */
+  const t = (key: string, kind: FontKind = "body", extraClassName?: string): ReactNode =>
+    wrap(key, translate(key), kind, extraClassName);
 
   /** For a translated array (e.g. a list of paragraphs) — use each returned node as a single child, not spread as siblings. */
   const tArray = (key: string, kind: FontKind = "body"): ReactNode[] =>
@@ -58,7 +70,8 @@ export function useTranslation(namespace: string) {
     key: string,
     components: Record<string, (chunks: ReactNode) => ReactNode>,
     kind: FontKind = "body",
-  ): ReactNode => wrap(key, translate.rich(key, components), kind);
+    extraClassName?: string,
+  ): ReactNode => wrap(key, translate.rich(key, components), kind, extraClassName);
 
   /** Whether `key` has an entry in translations/en.json at all — for content (e.g. a long list of records) not yet fully migrated into the dictionary, so untranslated items can keep rendering straight from their original data source. */
   const has = (key: string): boolean => translate.has(key);

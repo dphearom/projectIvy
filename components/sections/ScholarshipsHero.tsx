@@ -24,7 +24,7 @@ const ScholarshipsHero = () => {
           data-reveal
           data-reveal-d="1"
         >
-          {t("heading", "display")}
+          {t("heading", "display", "text-[clamp(2.4rem,5.6vw,5rem)]")}
         </h1>
         <p
           className="mt-6.5 max-w-[42ch] mx-auto text-[1.18rem] leading-[1.62] text-cream-soft"

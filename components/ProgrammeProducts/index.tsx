@@ -74,12 +74,14 @@ const TierThumbnail = ({
 const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => void }) => {
   const tierPhotoName = `programs/packages/${data.program.id}-pkg-${data.tierIndex + 1}`;
   const { t, tArray, tPlain } = useTranslation("programmes");
+  const { t: tButton, tPlain: tButtonPlain } = useTranslation("shared.buttons");
   const tierPath = `details.${data.program.id}.tiers.${data.tierIndex}`;
 
   return (
     <TierModal
       title={t(`${tierPath}.name`, "display")}
       ariaLabel={tPlain(`${tierPath}.name`)}
+      closeAriaLabel={tButtonPlain("close")}
       price={data.tier.price}
       tagline={t(`${tierPath}.tagline`)}
       onClose={onClose}
@@ -96,10 +98,10 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
       footer={
         <>
           <Button href="/contact" arrow>
-            Enquire now
+            {tButton("enquireNow")}
           </Button>
           <Button variant="ghost-dark" onClick={onClose}>
-            Close
+            {tButton("close")}
           </Button>
         </>
       }
@@ -138,6 +140,7 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
 
 const ProgrammeProducts = () => {
   const { t, tArray } = useTranslation("programmes");
+  const { t: tButton } = useTranslation("shared.buttons");
   const [expanded, setExpanded] = useState<string | null>(null);
   const [cart, setCart] = useState<string[]>([]);
   const [modalData, setModalData] = useState<ModalData | null>(null);
@@ -249,7 +252,7 @@ const ProgrammeProducts = () => {
                         aria-expanded={isOpen}
                         onClick={() => toggleExpand(program.id)}
                       >
-                        {isOpen ? "Hide packages" : "View details"}
+                        {isOpen ? tButton("hidePackages") : tButton("viewDetails")}
                         <ChevronDown className={cn("transition-transform duration-300", isOpen && "rotate-180")} />
                       </button>
                       <button
@@ -264,7 +267,7 @@ const ProgrammeProducts = () => {
                         disabled={added}
                       >
                         <CartIcon />
-                        {added ? "Added" : "Add to inquiry"}
+                        {added ? tButton("added") : tButton("addToInquiry")}
                       </button>
                     </div>
                   </div>
@@ -326,7 +329,7 @@ const ProgrammeProducts = () => {
                                   setModalData({ program, tier, tierIndex: ti });
                                 }}
                               >
-                                See full details
+                                {tButton("seeFullDetails")}
                               </button>
                             </div>
                           </div>

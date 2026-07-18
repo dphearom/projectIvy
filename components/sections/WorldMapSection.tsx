@@ -14,7 +14,7 @@ const WorldMapCaption = ({ className = "" }: { className?: string }) => {
   return (
     <div className={className} data-reveal>
       <h2 className="text-[clamp(2rem,3.6vw,3rem)] tracking-[-0.01em] text-cream">
-        {t("heading", "display")}
+        {t("heading", "display", "text-[clamp(1.5rem,2.6vw,2.1rem)]")}
       </h2>
       <p className="mt-3.5 text-[1.05rem] leading-[1.65] text-cream-soft max-w-[42ch]">
         {t("paragraph")}

@@ -44,12 +44,19 @@ const ROW_2: School[] = [
 
 const SchoolSlot = ({ school }: { school: School }) => {
   const fade = useFadeInImage();
+  const { markLoaded } = fade;
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) markLoaded();
+  }, [markLoaded]);
 
   return (
     <div className="flex-none w-40 aspect-[2.4/1] rounded-[10px] border border-line bg-ivory-2 flex items-center justify-center px-4.5 py-3">
       {school.logo ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
+          ref={imgRef}
           src={`/images/affiliate-logos/${school.logo}`}
           alt={school.name}
           width={160}

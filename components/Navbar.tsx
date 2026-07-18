@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "@/components/icons";
 import LanguageToggle from "@/components/LanguageToggle";
+import { useTranslation } from "@/components/useTranslation";
 import { ADVISING_PROGRAM_SUMMARIES } from "@/lib/programs";
 import {
   getHashFromHref,
@@ -14,32 +15,34 @@ import {
 } from "@/lib/scroll-to-hash";
 import { cn } from "@/lib/utils";
 
-type NavChild = { href: string; label: string };
-type NavItem = { label: string; href?: string; children?: NavChild[] };
+/** `key` is a translation key under the `nav` namespace, or `program.<id>` to reuse that
+ * program's title from `home.advisingPrograms.programs.<id>.title` instead of duplicating it. */
+type NavChild = { href: string; key: string };
+type NavItem = { key: string; href?: string; children?: NavChild[] };
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Home", href: "/" },
+  { key: "home", href: "/" },
   {
-    label: "About us",
+    key: "aboutUs",
     href: "/about",
     children: [
-      { label: "Mission", href: "/about#mission" },
-      { label: "Vision", href: "/about#vision" },
-      { label: "Who We Are", href: "/about#who-we-are" },
-      { label: "Why Choose Us", href: "/about#why-choose-us" },
-      { label: "Our Advisors", href: "/about#team" },
+      { key: "mission", href: "/about#mission" },
+      { key: "vision", href: "/about#vision" },
+      { key: "whoWeAre", href: "/about#who-we-are" },
+      { key: "whyChooseUs", href: "/about#why-choose-us" },
+      { key: "ourAdvisors", href: "/about#team" },
     ],
   },
   {
-    label: "Advising Program",
+    key: "advisingProgram",
     href: "/programmes",
     children: [
-      { label: "Programs overview", href: "/programmes" },
-      ...ADVISING_PROGRAM_SUMMARIES.map((p) => ({ label: p.title, href: p.href })),
+      { key: "programsOverview", href: "/programmes" },
+      ...ADVISING_PROGRAM_SUMMARIES.map((p) => ({ key: `program.${p.id}`, href: p.href })),
     ],
   },
-  { label: "Scholarships", href: "/scholarships" },
-  { label: "Contact", href: "/contact" },
+  { key: "scholarships", href: "/scholarships" },
+  { key: "contact", href: "/contact" },
 ];
 
 const isActive = (pathname: string, href?: string) => {
@@ -59,6 +62,16 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  const { t: tNav, tPlain: tNavPlain } = useTranslation("nav");
+  const { t: tProgram, tPlain: tProgramPlain } = useTranslation("home.advisingPrograms");
+
+  // A `program.<id>` key reuses that program's title from home.advisingPrograms instead of
+  // duplicating the string under `nav` — keeps the two in sync as programs change.
+  const navLabel = (key: string) =>
+    key.startsWith("program.") ? tProgram(`programs.${key.slice(8)}.title`) : tNav(key);
+  const navLabelPlain = (key: string) =>
+    key.startsWith("program.") ? tProgramPlain(`programs.${key.slice(8)}.title`) : tNavPlain(key);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -176,7 +189,7 @@ const Navbar = () => {
           <div className="flex-1 flex justify-center max-[1100px]:hidden">
             <ul className="flex items-center flex-nowrap gap-2.5 list-none m-0 p-0">
               {NAV_ITEMS.map((item) => {
-                const key = item.label;
+                const key = item.key;
                 const active = isActive(pathname, item.href);
                 const hasChildren = Boolean(item.children?.length);
                 const isOpen = openDropdown === key;
@@ -200,7 +213,7 @@ const Navbar = () => {
                   return (
                     <li key={key}>
                       <Link href={item.href ?? "/"} className={linkCls}>
-                        {item.label}
+                        {navLabel(item.key)}
                       </Link>
                     </li>
                   );
@@ -217,7 +230,7 @@ const Navbar = () => {
                         isOpen && "after:scale-x-100",
                       )}
                     >
-                      {item.label}
+                      {navLabel(item.key)}
                       <ChevronDown className="flex-none mt-px opacity-75" />
                     </Link>
 
@@ -243,7 +256,7 @@ const Navbar = () => {
                             className="block px-4 py-3 mb-0.5 rounded-[10px] font-body text-[14px] leading-[1.45] text-ink-soft transition-[background-color,color] duration-200 hover:bg-ivory hover:text-navy"
                             onClick={handleNavLinkClick(child.href)}
                           >
-                            {child.label}
+                            {navLabel(child.key)}
                           </Link>
                         </li>
                       ))}
@@ -260,7 +273,7 @@ const Navbar = () => {
             <button
               type="button"
               className="hidden max-[1100px]:flex w-10.5 h-10.5 p-0 border-none bg-transparent cursor-pointer flex-col items-center justify-center"
-              aria-label="Toggle menu"
+              aria-label={navLabelPlain("toggleMenu")}
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((o) => !o)}
             >
@@ -292,7 +305,7 @@ const Navbar = () => {
           <button
             type="button"
             className="w-10 h-10 border border-line-light rounded-full bg-transparent text-cream text-[24px] leading-none cursor-pointer"
-            aria-label="Close menu"
+            aria-label={navLabelPlain("closeMenu")}
             onClick={() => setMenuOpen(false)}
           >
             ×
@@ -301,7 +314,7 @@ const Navbar = () => {
 
         <ul className="list-none m-0 pt-3 p-0">
           {NAV_ITEMS.map((item) => {
-            const key = item.label;
+            const key = item.key;
             const mobileKey = `mobile-${key}`;
             const hasChildren = Boolean(item.children?.length);
             const isMobileOpen = openDropdown === mobileKey;
@@ -317,7 +330,7 @@ const Navbar = () => {
                     className={mobileLinkCls}
                     onClick={handleNavLinkClick(item.href ?? "/", true)}
                   >
-                    {item.label}
+                    {navLabel(item.key)}
                   </Link>
                 </li>
               );
@@ -332,18 +345,18 @@ const Navbar = () => {
                       className="flex-1 px-7 py-[14px] font-body text-[1.35rem] font-semibold text-cream transition-colors duration-[250ms] hover:text-gold"
                       onClick={handleNavLinkClick(item.href, true)}
                     >
-                      {item.label}
+                      {navLabel(item.key)}
                     </Link>
                   ) : (
                     <span className="flex-1 px-7 py-[14px] font-body text-[1.35rem] font-semibold text-cream">
-                      {item.label}
+                      {navLabel(item.key)}
                     </span>
                   )}
                   <button
                     type="button"
                     className="p-2 mr-5 bg-transparent border-none cursor-pointer text-cream"
                     aria-expanded={isMobileOpen}
-                    aria-label={`Toggle ${item.label} submenu`}
+                    aria-label={navLabelPlain(item.key)}
                     onClick={() => toggleDropdown(mobileKey)}
                   >
                     <ChevronDown className={cn("flex-none transition-transform duration-300", isMobileOpen && "rotate-180")} />
@@ -357,7 +370,7 @@ const Navbar = () => {
                         className="block px-7 py-3 pl-10 font-body text-[14.5px] text-cream-soft transition-[color,background-color] duration-200 hover:text-gold hover:bg-[rgba(184,150,90,0.08)]"
                         onClick={handleNavLinkClick(child.href, true)}
                       >
-                        {child.label}
+                        {navLabel(child.key)}
                       </Link>
                     </li>
                   ))}
@@ -372,7 +385,7 @@ const Navbar = () => {
         <button
           type="button"
           className="fixed inset-0 z-55 border-none p-0 bg-[rgba(8,15,30,0.55)] cursor-pointer"
-          aria-label="Close menu"
+          aria-label={navLabelPlain("closeMenu")}
           onClick={() => setMenuOpen(false)}
         />
       )}
