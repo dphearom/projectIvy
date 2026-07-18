@@ -6,7 +6,7 @@ import { useTranslation } from "@/components/useTranslation";
 const BLOCK_IDS = ["01", "02", "03"] as const;
 
 const WhoWeAre = () => {
-  const { t } = useTranslation("about.whoWeAre");
+  const { t, tRich } = useTranslation("about.whoWeAre");
 
   return (
     <section className="py-30 bg-cream-2" id="who-we-are">
@@ -14,7 +14,7 @@ const WhoWeAre = () => {
         <div className="text-center max-w-180 mx-auto" data-reveal>
           <Eyebrow center>{t("eyebrow")}</Eyebrow>
           <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
-            {t("heading", "display")}
+            {tRich("heading", { ivy: (chunks) => <span className="ivy-brand">{chunks}</span> }, "display")}
           </h2>
         </div>
         <div className="mt-14 grid grid-cols-3 gap-6 max-[980px]:grid-cols-2 max-[680px]:grid-cols-1">

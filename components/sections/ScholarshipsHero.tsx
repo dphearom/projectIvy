@@ -6,7 +6,7 @@ import { PHOTO_READY, PLACEHOLDERS } from "@/lib/placeholders";
 import { useTranslation } from "@/components/useTranslation";
 
 const ScholarshipsHero = () => {
-  const { t } = useTranslation("scholarships.hero");
+  const { t, tRich } = useTranslation("scholarships.hero");
 
   return (
     <HeroStage
@@ -24,7 +24,12 @@ const ScholarshipsHero = () => {
           data-reveal
           data-reveal-d="1"
         >
-          {t("heading", "display", "text-[clamp(2.4rem,5.6vw,5rem)]")}
+          {tRich(
+            "heading",
+            { ivy: (chunks) => <span className="ivy-brand">{chunks}</span> },
+            "display",
+            "text-[clamp(2.4rem,5.6vw,5rem)]",
+          )}
         </h1>
         <p
           className="mt-6.5 max-w-[42ch] mx-auto text-[1.18rem] leading-[1.62] text-cream-soft"

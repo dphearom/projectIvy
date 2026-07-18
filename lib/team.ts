@@ -160,8 +160,8 @@ export const PHOTO_POSITION: Record<string, string> = {
 
 /** Advisor-section photo framing (Our Advisors on About Us). */
 export const MENTOR_PHOTO_POSITION: Record<string, string> = {
-  "Vanndet Va": "center 32%",
-  "Rasy Hai": "center 30%",
+  "Vanndet Va": "center 10%",
+  "Rasy Hai": "center 10%",
 };
 
 export const PHOTO_SCALE: Record<string, number> = {};

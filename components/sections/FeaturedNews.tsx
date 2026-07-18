@@ -3,14 +3,14 @@
 import { useTranslation } from "@/components/useTranslation";
 
 const FeaturedNews = () => {
-  const { t } = useTranslation("home.news");
+  const { t, tRich } = useTranslation("home.news");
 
   return (
     <section className="bg-ivory-2 py-27.5" id="news">
       <div className="wrap">
         <div className="text-center max-w-170 mx-auto" data-reveal>
           <h2 className="text-[clamp(36px,4.4vw,56px)] leading-[1.04] mt-4.5 tracking-[-0.005em]">
-            {t("heading", "display")}
+            {tRich("heading", { ivy: (chunks) => <span className="ivy-brand">{chunks}</span> }, "display")}
           </h2>
         </div>
 
