@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { cn, EMAIL_RE } from "@/lib/utils";
 import Button from "@/components/Button";
 import { submitConsultation } from "@/app/actions/consultation";
 import { inquiryLabel } from "@/lib/inquiries";
+import { useTranslation } from "@/components/useTranslation";
 
 type Props = {
   inquiries?: string[];
@@ -12,6 +13,7 @@ type Props = {
 };
 
 const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
+  const { t, tPlain } = useTranslation("contact.form");
   const [role, setRole] = useState<"parent" | "student">("student");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +22,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
   const [grade, setGrade] = useState("");
   const [school, setSchool] = useState("");
   const [terms, setTerms] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<ReactNode>("");
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
 
@@ -30,13 +32,13 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
     e.preventDefault();
     setError("");
 
-    if (!name.trim()) return setError("Please enter your full name.");
-    if (!EMAIL_RE.test(email)) return setError("Please enter a valid email address.");
-    if (!phone.trim()) return setError("Please enter your Telegram.");
-    if (isParent && !childName.trim()) return setError("Please enter your child's name.");
-    if (!grade) return setError(`Please select ${isParent ? "your child's" : "your"} grade.`);
-    if (!school.trim()) return setError("Please enter the current school.");
-    if (!terms) return setError("Please agree to the Terms & Conditions.");
+    if (!name.trim()) return setError(t("errorName"));
+    if (!EMAIL_RE.test(email)) return setError(t("errorEmail"));
+    if (!phone.trim()) return setError(t("errorPhone"));
+    if (isParent && !childName.trim()) return setError(t("errorChildName"));
+    if (!grade) return setError(t(isParent ? "errorGradeParent" : "errorGradeStudent"));
+    if (!school.trim()) return setError(t("errorSchool"));
+    if (!terms) return setError(t("errorTerms"));
 
     setSubmitting(true);
     try {
@@ -53,7 +55,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       setDone(true);
       onSuccess?.();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setError(err instanceof Error ? err.message : t("errorGeneric"));
     } finally {
       setSubmitting(false);
     }
@@ -69,9 +71,9 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
         <div className="size-14 rounded-full bg-[linear-gradient(180deg,var(--gold-soft),var(--gold))] text-[#1a1505] text-[1.4rem] font-bold flex items-center justify-center mx-auto mb-4">
           ✓
         </div>
-        <h4 className="text-[1.3rem] text-ink mb-2">Thank you!</h4>
+        <h4 className="text-[1.3rem] text-ink mb-2">{t("successTitle")}</h4>
         <p className="text-[0.95rem] text-ink-soft mb-5">
-          Your information has been submitted successfully. We will contact you as soon as possible.
+          {t("successBody")}
         </p>
       </div>
     );
@@ -82,7 +84,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       {inquiries.length > 0 && (
         <div className="rounded-[10px] border border-[rgba(184,150,90,0.35)] bg-[rgba(184,150,90,0.06)] px-4 py-3.5">
           <p className="text-[0.8rem] font-semibold text-gold-deep uppercase tracking-wide mb-2">
-            Selected programs
+            {t("selectedPrograms")}
           </p>
           <ul className="list-none m-0 p-0 flex flex-col gap-1">
             {inquiries.map((id) => (
@@ -96,7 +98,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       )}
 
       <fieldset className="border-none m-0 p-0">
-        <legend className={cn(labelCls, "mb-2.5")}>You are:</legend>
+        <legend className={cn(labelCls, "mb-2.5")}>{t("youAre")}</legend>
         <div className="flex gap-2.5">
           {(["parent", "student"] as const).map((value) => {
             const active = role === value;
@@ -118,7 +120,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
                   onChange={() => setRole(value)}
                   className="absolute opacity-0 pointer-events-none"
                 />
-                {value === "parent" ? "Parents" : "Student"}
+                {value === "parent" ? t("roleParent") : t("roleStudent")}
               </label>
             );
           })}
@@ -127,7 +129,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
 
       <div>
         <label htmlFor="consult-name" className={labelCls}>
-          {isParent ? "Parent's full name" : "Full name"} (*)
+          {isParent ? t("nameParent") : t("nameStudent")} (*)
         </label>
         <input
           id="consult-name"
@@ -140,7 +142,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       </div>
 
       <div>
-        <label htmlFor="consult-email" className={labelCls}>Email (*)</label>
+        <label htmlFor="consult-email" className={labelCls}>{t("email")} (*)</label>
         <input
           id="consult-email"
           type="email"
@@ -152,7 +154,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
       </div>
 
       <div>
-        <label htmlFor="consult-phone" className={labelCls}>Telegram (*)</label>
+        <label htmlFor="consult-phone" className={labelCls}>{t("telegram")} (*)</label>
         <input
           id="consult-phone"
           type="tel"
@@ -165,7 +167,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
 
       {isParent && (
         <div>
-          <label htmlFor="consult-child-name" className={labelCls}>Child&apos;s name (*)</label>
+          <label htmlFor="consult-child-name" className={labelCls}>{t("childName")} (*)</label>
           <input
             id="consult-child-name"
             type="text"
@@ -178,7 +180,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
 
       <div>
         <label htmlFor="consult-grade" className={labelCls}>
-          {isParent ? "Child's grade level" : "Grade"} (*)
+          {isParent ? t("gradeParent") : t("gradeStudent")} (*)
         </label>
         <select
           id="consult-grade"
@@ -192,16 +194,18 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
             backgroundSize: "16px 16px",
           }}
         >
-          <option value="">Select...</option>
-          <option value="9">Grade 9</option>
-          <option value="10">Grade 10</option>
-          <option value="11">Grade 11</option>
-          <option value="12">Grade 12</option>
+          <option value="">{tPlain("selectPlaceholder")}</option>
+          <option value="9">{tPlain("grade9")}</option>
+          <option value="10">{tPlain("grade10")}</option>
+          <option value="11">{tPlain("grade11")}</option>
+          <option value="12">{tPlain("grade12")}</option>
         </select>
       </div>
 
       <div>
-        <label htmlFor="consult-school" className={labelCls}>School currently attending (*)</label>
+        <label htmlFor="consult-school" className={labelCls}>
+          {isParent ? t("schoolParent") : t("schoolStudent")} (*)
+        </label>
         <input
           id="consult-school"
           type="text"
@@ -218,13 +222,13 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
           onChange={(e) => setTerms(e.target.checked)}
           className="mt-0.75"
         />
-        I agree to the Terms &amp; Conditions
+        {t("terms")}
       </label>
 
       {error && <p className="text-[0.88rem] text-[#c0392b]">{error}</p>}
 
       <Button type="submit" className="w-full justify-center" disabled={submitting}>
-        {submitting ? "Submitting…" : "Sign Up for Advising"}
+        {submitting ? t("submitting") : t("submit")}
       </Button>
     </form>
   );

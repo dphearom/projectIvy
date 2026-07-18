@@ -1,23 +1,27 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useTranslation } from "@/components/useTranslation";
 
 const WorldMapInner = dynamic(() => import("@/components/sections/WorldMapInner"), {
   ssr: false,
   loading: () => <div className="absolute inset-0 bg-navy-3" aria-label="Loading map" />,
 });
 
-const WorldMapCaption = ({ className = "" }: { className?: string }) => (
-  <div className={className} data-reveal>
-    <h2 className="text-[clamp(2rem,3.6vw,3rem)] tracking-[-0.01em] text-cream">
-      Our global reach
-    </h2>
-    <p className="mt-3.5 text-[1.05rem] leading-[1.65] text-cream-soft max-w-[42ch]">
-      Project IVY advisors bring experience from leading institutions worldwide &mdash; and
-      help students pursue opportunities across the United States.
-    </p>
-  </div>
-);
+const WorldMapCaption = ({ className = "" }: { className?: string }) => {
+  const { t } = useTranslation("home.worldMap");
+
+  return (
+    <div className={className} data-reveal>
+      <h2 className="text-[clamp(2rem,3.6vw,3rem)] tracking-[-0.01em] text-cream">
+        {t("heading", "display", "text-[clamp(1.5rem,2.6vw,2.1rem)]")}
+      </h2>
+      <p className="mt-3.5 text-[1.05rem] leading-[1.65] text-cream-soft max-w-[42ch]">
+        {t("paragraph")}
+      </p>
+    </div>
+  );
+};
 
 const WorldMapSection = () => (
   <section className="bg-navy-3 text-cream">

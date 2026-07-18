@@ -58,6 +58,7 @@ export type ProgramTier = {
 /** YouTube video URLs keyed by `{programId}:{tierIndex}` (0-based). */
 export const TIER_VIDEO_URLS: Record<string, string> = {
   "middle-school:0": "https://youtu.be/ffKhMqp-4j8",
+  "university-readiness:0": "https://youtu.be/HhHZ1cKpOyY",
   "university-readiness:1": "https://youtu.be/2gne7H72qW4",
   "university-readiness:2": "https://youtu.be/S7SbcYYy6w8",
   "university-application:0": "https://youtu.be/N0H4t_3tZE8",
@@ -65,6 +66,8 @@ export const TIER_VIDEO_URLS: Record<string, string> = {
   "university-application:2": "https://youtu.be/ViG-bNcQAdk",
   "graduate-school:0": "https://youtu.be/16kjRTmha34",
   "graduate-school:1": "https://youtu.be/gPztz9dTo_M",
+  "graduate-school:2": "https://youtu.be/OfQTP1fkqjg",
+  "graduate-school:3": "https://youtu.be/irpkrUu5H08",
 };
 
 export const tierVideoUrl = (programId: string, tierIndex: number) =>

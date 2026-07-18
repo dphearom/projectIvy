@@ -4,9 +4,13 @@ import { useEffect, useRef, type ReactNode } from "react";
 import "./styles.css";
 
 type Props = {
-  title: string;
+  title: ReactNode;
+  /** Plain-string equivalent of `title` — required since aria-label cannot take a ReactNode. */
+  ariaLabel: string;
+  /** Plain-string label for the × close button's aria-label. */
+  closeAriaLabel?: string;
   price: string;
-  tagline: string;
+  tagline: ReactNode;
   /** Rendered above the padded body — e.g. a full-bleed cover image. */
   media?: ReactNode;
   onClose: () => void;
@@ -15,7 +19,17 @@ type Props = {
   footer: ReactNode;
 };
 
-const TierModal = ({ title, price, tagline, media, onClose, children, footer }: Props) => {
+const TierModal = ({
+  title,
+  ariaLabel,
+  closeAriaLabel = "Close",
+  price,
+  tagline,
+  media,
+  onClose,
+  children,
+  footer,
+}: Props) => {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,8 +48,8 @@ const TierModal = ({ title, price, tagline, media, onClose, children, footer }: 
       ref={overlayRef}
       onClick={(e) => e.target === overlayRef.current && onClose()}
     >
-      <div className="tier-modal" role="dialog" aria-modal="true" aria-label={title}>
-        <button type="button" className="tier-modal__close" onClick={onClose} aria-label="Close">
+      <div className="tier-modal" role="dialog" aria-modal="true" aria-label={ariaLabel}>
+        <button type="button" className="tier-modal__close" onClick={onClose} aria-label={closeAriaLabel}>
           ×
         </button>
         <div className="tier-modal__scroll">
