@@ -1,95 +1,87 @@
-import Link from "next/link";
-import { unpublishEvent, publishEvent } from "@/app/actions/admin-events";
-import { cn } from "@/lib/utils";
+"use client";
 
-interface EventRow {
-  id: number;
-  title: string;
-  date: string;
-  mode: string;
-  location: string;
-  published: boolean;
-}
+import { useState } from "react";
+import type { ColumnDef } from "@tanstack/react-table";
+import { ChevronDown } from "lucide-react";
+import DataTable from "@/components/admin/DataTable";
+import EventDetailDialog, { type EventDetailRow } from "@/components/admin/EventDetailDialog";
+import { Badge } from "@/components/ui/badge";
 
-const EventsTable = ({ events }: { events: EventRow[] }) => {
-  if (events.length === 0) {
-    return <p className="text-center text-ink-soft py-12">No events yet.</p>;
-  }
+const filterSelectCls =
+  "h-[2.6rem] py-[0.65rem] pl-[0.85rem] pr-9 border border-[color-mix(in_srgb,var(--ink)_15%,transparent)] rounded-lg text-[0.9rem] bg-paper text-ink transition-colors duration-150 outline-none focus:border-gold appearance-none";
 
-  const btnCls =
-    "text-[0.8rem] py-[0.3rem] px-[0.65rem] rounded-md no-underline border-none cursor-pointer transition-opacity duration-150 hover:opacity-85";
-  const cellCls = (published: boolean) => cn("py-3 px-4 border-b border-[color-mix(in_srgb,var(--ink)_6%,transparent)] text-ink", !published && "opacity-55");
+const columns: ColumnDef<EventDetailRow, unknown>[] = [
+  {
+    id: "title",
+    header: "Title",
+    accessorFn: (row) => `${row.title} ${row.location} ${row.mode}`,
+    cell: ({ row }) => row.original.title,
+  },
+  {
+    id: "date",
+    header: "Date",
+    accessorFn: (row) => row.date,
+    enableGlobalFilter: false,
+  },
+  {
+    id: "mode",
+    header: "Mode",
+    accessorFn: (row) => row.mode,
+    enableGlobalFilter: false,
+  },
+  {
+    id: "location",
+    header: "Location",
+    accessorFn: (row) => row.location,
+    enableGlobalFilter: false,
+  },
+  {
+    id: "published",
+    header: "Status",
+    accessorFn: (row) => (row.published ? "live" : "unpublished"),
+    filterFn: "equalsString",
+    enableGlobalFilter: false,
+    cell: ({ row }) => (
+      <Badge variant={row.original.published ? "default" : "secondary"}>
+        {row.original.published ? "Live" : "Unpublished"}
+      </Badge>
+    ),
+  },
+];
+
+const EventsTable = ({ events }: { events: EventDetailRow[] }) => {
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const selected = events.find((row) => row.id === selectedId) ?? null;
 
   return (
-    <div className="overflow-x-auto bg-paper rounded-xl border border-[color-mix(in_srgb,var(--ink)_8%,transparent)]">
-      <table className="w-full border-collapse text-[0.9rem]">
-        <thead>
-          <tr>
-            <th className="text-left py-[0.85rem] px-4 font-semibold text-[0.8rem] uppercase tracking-[0.04em] text-ink-soft border-b border-[color-mix(in_srgb,var(--ink)_10%,transparent)]">
-              Title
-            </th>
-            <th className="text-left py-[0.85rem] px-4 font-semibold text-[0.8rem] uppercase tracking-[0.04em] text-ink-soft border-b border-[color-mix(in_srgb,var(--ink)_10%,transparent)]">
-              Date
-            </th>
-            <th className="text-left py-[0.85rem] px-4 font-semibold text-[0.8rem] uppercase tracking-[0.04em] text-ink-soft border-b border-[color-mix(in_srgb,var(--ink)_10%,transparent)]">
-              Mode
-            </th>
-            <th className="text-left py-[0.85rem] px-4 font-semibold text-[0.8rem] uppercase tracking-[0.04em] text-ink-soft border-b border-[color-mix(in_srgb,var(--ink)_10%,transparent)]">
-              Location
-            </th>
-            <th className="text-left py-[0.85rem] px-4 font-semibold text-[0.8rem] uppercase tracking-[0.04em] text-ink-soft border-b border-[color-mix(in_srgb,var(--ink)_10%,transparent)]">
-              Status
-            </th>
-            <th className="text-left py-[0.85rem] px-4 font-semibold text-[0.8rem] uppercase tracking-[0.04em] text-ink-soft border-b border-[color-mix(in_srgb,var(--ink)_10%,transparent)]">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {events.map((event) => (
-            <tr key={event.id} className="last:[&>td]:border-b-0">
-              <td className={cellCls(event.published)}>{event.title}</td>
-              <td className={cellCls(event.published)}>{event.date}</td>
-              <td className={cellCls(event.published)}>{event.mode}</td>
-              <td className={cellCls(event.published)}>{event.location}</td>
-              <td className={cellCls(event.published)}>
-                <span
-                  className={cn(
-                    "text-[0.75rem] font-semibold py-[0.2rem] px-2 rounded",
-                    event.published ? "bg-[#e8f5e9] text-[#27ae60]" : "bg-[#f0f0f0] text-[#95a5a6]",
-                  )}
-                >
-                  {event.published ? "Live" : "Unpublished"}
-                </span>
-              </td>
-              <td className="py-3 px-4 border-b border-[color-mix(in_srgb,var(--ink)_6%,transparent)] text-ink flex gap-2">
-                <Link
-                  href={`/admin/events/${event.id}/edit`}
-                  className={cn(btnCls, "bg-navy text-white")}
-                >
-                  Edit
-                </Link>
-                {event.published ? (
-                  <form action={unpublishEvent} style={{ display: "inline" }}>
-                    <input type="hidden" name="id" value={event.id} />
-                    <button type="submit" className={cn(btnCls, "bg-[#95a5a6] text-white")}>
-                      Unpublish
-                    </button>
-                  </form>
-                ) : (
-                  <form action={publishEvent} style={{ display: "inline" }}>
-                    <input type="hidden" name="id" value={event.id} />
-                    <button type="submit" className={cn(btnCls, "bg-[#27ae60] text-white")}>
-                      Publish
-                    </button>
-                  </form>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <DataTable
+        columns={columns}
+        data={events}
+        onRowClick={(row) => setSelectedId(row.id)}
+        rowClassName={(row) => (row.published ? "" : "opacity-55")}
+        searchPlaceholder="Search title, location, mode…"
+        emptyMessage="No events yet."
+        filterSlot={(table) => {
+          const value = (table.getColumn("published")?.getFilterValue() as string) ?? "all";
+          return (
+            <div className="relative">
+              <select
+                value={value}
+                onChange={(e) => table.getColumn("published")?.setFilterValue(e.target.value === "all" ? undefined : e.target.value)}
+                className={filterSelectCls}
+              >
+                <option value="all">All statuses</option>
+                <option value="live">Live</option>
+                <option value="unpublished">Unpublished</option>
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 size-4 text-ink-soft" />
+            </div>
+          );
+        }}
+      />
+      <EventDetailDialog key={selectedId ?? "closed"} event={selected} onClose={() => setSelectedId(null)} />
+    </>
   );
 };
 

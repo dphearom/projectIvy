@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -45,18 +46,21 @@ const FormField = ({
           required={required}
           defaultValue={defaultValue}
           rows={rows}
-          className={className}
+          className={cn(className, "resize-y")}
         />
       ) : as === "select" ? (
-        <select
-          id={id}
-          name={name}
-          required={required}
-          defaultValue={defaultValue}
-          className={className}
-        >
-          {children}
-        </select>
+        <div className="relative">
+          <select
+            id={id}
+            name={name}
+            required={required}
+            defaultValue={defaultValue}
+            className={cn(className, "appearance-none pr-9")}
+          >
+            {children}
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 size-4 text-ink-soft" />
+        </div>
       ) : (
         <input
           id={id}

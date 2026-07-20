@@ -5,17 +5,7 @@ import EventsTable from "@/components/admin/EventsTable";
 import Button from "@/components/Button";
 
 export default async function AdminEventsPage() {
-  const rows = await db
-    .select({
-      id: events.id,
-      title: events.title,
-      date: events.date,
-      mode: events.mode,
-      location: events.location,
-      published: events.published,
-    })
-    .from(events)
-    .orderBy(asc(events.date));
+  const rows = await db.select().from(events).orderBy(asc(events.date));
 
   return (
     <>
