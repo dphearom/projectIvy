@@ -1,4 +1,5 @@
 import { inquiryLabel } from "@/lib/inquiries";
+import InquiryStatusControl from "@/components/admin/InquiryStatusControl";
 
 interface InquiryRow {
   id: number;
@@ -10,6 +11,8 @@ interface InquiryRow {
   grade: string;
   school: string;
   inquiries: string[];
+  status: string;
+  notes: string | null;
   createdAt: Date;
 }
 
@@ -36,6 +39,7 @@ const InquiriesTable = ({ inquiries }: { inquiries: InquiryRow[] }) => {
             <th className={headCellCls}>Student</th>
             <th className={headCellCls}>School / Grade</th>
             <th className={headCellCls}>Inquiries</th>
+            <th className={headCellCls}>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -57,6 +61,9 @@ const InquiriesTable = ({ inquiries }: { inquiries: InquiryRow[] }) => {
               </td>
               <td className={cellCls}>
                 {row.inquiries.length > 0 ? row.inquiries.map(inquiryLabel).join(", ") : "—"}
+              </td>
+              <td className={cellCls}>
+                <InquiryStatusControl id={row.id} status={row.status} notes={row.notes} />
               </td>
             </tr>
           ))}

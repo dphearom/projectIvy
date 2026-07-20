@@ -38,6 +38,12 @@ export const paymentStatusEnum = pgEnum("payment_status", [
   "failed",
 ])
 
+export const inquiryStatusEnum = pgEnum("inquiry_status", [
+  "pending",
+  "contacted",
+  "handled",
+])
+
 // ── Core: Users & Auth ──
 
 export const users = pgTable("users", {
@@ -185,5 +191,9 @@ export const consultationRequests = pgTable("consultation_requests", {
   grade: text("grade").notNull(),
   school: text("school").notNull(),
   inquiries: text("inquiries").array().notNull(),
+  status: inquiryStatusEnum("status").default("pending").notNull(),
+  notes: text("notes"),
+  handledBy: integer("handled_by").references(() => users.id, { onDelete: "set null" }),
+  handledAt: timestamp("handled_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 })
