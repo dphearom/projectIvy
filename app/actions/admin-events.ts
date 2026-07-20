@@ -46,6 +46,7 @@ function extractEventData(formData: FormData) {
 
 export interface EventFormState {
   error?: string
+  success?: boolean
 }
 
 export async function createEvent(
@@ -106,7 +107,7 @@ export async function updateEvent(
 
   revalidatePath("/admin/events")
   revalidatePath("/events")
-  redirect("/admin/events")
+  return { success: true }
 }
 
 export async function unpublishEvent(formData: FormData) {

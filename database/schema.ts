@@ -42,6 +42,7 @@ export const inquiryStatusEnum = pgEnum("inquiry_status", [
   "pending",
   "contacted",
   "handled",
+  "archived",
 ])
 
 // ── Core: Users & Auth ──
@@ -194,6 +195,7 @@ export const consultationRequests = pgTable("consultation_requests", {
   status: inquiryStatusEnum("status").default("pending").notNull(),
   notes: text("notes"),
   handledBy: integer("handled_by").references(() => users.id, { onDelete: "set null" }),
+  handledByTelegram: text("handled_by_telegram"),
   handledAt: timestamp("handled_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 })

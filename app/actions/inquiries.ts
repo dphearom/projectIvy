@@ -5,12 +5,12 @@ import { revalidatePath } from "next/cache"
 import { requireRole } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { consultationRequests } from "@/database/schema"
+import { INQUIRY_STATUSES, type InquiryStatus } from "@/lib/inquiries"
 
 export interface InquiryStatusState {
   error?: string
+  success?: boolean
 }
-
-const STATUSES = ["pending", "contacted", "handled"] as const
 
 export async function updateInquiryStatus(
   _prev: InquiryStatusState,
@@ -23,12 +23,13 @@ export async function updateInquiryStatus(
   const notes = (formData.get("notes") as string)?.trim() || null
 
   if (!id) return { error: "Inquiry not found." }
-  if (!STATUSES.includes(status as (typeof STATUSES)[number])) return { error: "Invalid status." }
+  if (!INQUIRY_STATUSES.includes(status as InquiryStatus)) return { error: "Invalid status." }
+  if (status === "archived" && !notes) return { error: "A remark is required to archive." }
 
   await db
     .update(consultationRequests)
     .set({
-      status: status as (typeof STATUSES)[number],
+      status: status as InquiryStatus,
       notes,
       handledBy: session.userId,
       handledAt: new Date(),
@@ -36,5 +37,5 @@ export async function updateInquiryStatus(
     .where(eq(consultationRequests.id, id))
 
   revalidatePath("/admin/inquiries")
-  return {}
+  return { success: true }
 }

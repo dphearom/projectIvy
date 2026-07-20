@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import FormField from "@/components/forms/FormField";
 import SubmitButton from "@/components/forms/SubmitButton";
+import { cn } from "@/lib/utils";
 import {
   createEvent,
   updateEvent,
@@ -29,19 +30,26 @@ interface EventData {
 
 interface Props {
   event?: EventData;
+  onSuccess?: () => void;
+  /** True when rendered inside a Dialog, which already provides its own card surface. */
+  bare?: boolean;
 }
 
 const initialState: EventFormState = {};
 
-const EventForm = ({ event }: Props) => {
+const EventForm = ({ event, onSuccess, bare = false }: Props) => {
   const isEdit = Boolean(event?.id);
   const action = isEdit ? updateEvent : createEvent;
   const [state, formAction] = useActionState(action, initialState);
 
+  useEffect(() => {
+    if (state.success) onSuccess?.();
+  }, [state.success, onSuccess]);
+
   return (
     <form
       action={formAction}
-      className="bg-paper rounded-xl p-8 border border-[color-mix(in_srgb,var(--ink)_8%,transparent)]"
+      className={cn(!bare && "bg-paper rounded-xl p-8 border border-[color-mix(in_srgb,var(--ink)_8%,transparent)]")}
     >
       {isEdit && <input type="hidden" name="id" value={event!.id} />}
 
@@ -149,6 +157,7 @@ const EventForm = ({ event }: Props) => {
         <SubmitButton
           label={isEdit ? "Save changes" : "Create event"}
           pendingLabel="Saving…"
+          className={bare ? "text-[0.8rem] py-[0.4rem] px-3" : undefined}
         />
       </div>
     </form>

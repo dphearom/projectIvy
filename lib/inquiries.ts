@@ -8,3 +8,6 @@ export const INQUIRY_LABELS: Record<string, string> = {
 };
 
 export const inquiryLabel = (id: string) => INQUIRY_LABELS[id] ?? id;
+
+export const INQUIRY_STATUSES = ["pending", "contacted", "handled", "archived"] as const;
+export type InquiryStatus = (typeof INQUIRY_STATUSES)[number];
