@@ -1,17 +1,20 @@
 "use client";
 import { useEffect, useState, type MouseEvent } from "react";
 import { scrollToHashWhenReady } from "@/lib/scroll-to-hash";
+import { useTranslation } from "@/components/useTranslation";
 import { cn } from "@/lib/utils";
 
-const LINKS = [
-  { label: "Mission", id: "mission" },
-  { label: "Vision", id: "vision" },
-  { label: "Who We Are", id: "who-we-are" },
-  { label: "Why Choose Us", id: "why-choose-us" },
-  { label: "Our Advisors", id: "team" },
-];
+const IDS = ["mission", "vision", "who-we-are", "why-choose-us", "team"] as const;
+const KEY_BY_ID: Record<(typeof IDS)[number], string> = {
+  mission: "mission",
+  vision: "vision",
+  "who-we-are": "whoWeAre",
+  "why-choose-us": "whyChooseUs",
+  team: "team",
+};
 
 export default function AboutNav() {
+  const { t } = useTranslation("about.nav");
   const [active, setActive] = useState("");
   const [visible, setVisible] = useState(false);
 
@@ -24,7 +27,7 @@ export default function AboutNav() {
     );
     if (hero) heroObs.observe(hero);
 
-    const sectionEls = LINKS.map(({ id }) => document.getElementById(id)).filter(
+    const sectionEls = IDS.map((id) => document.getElementById(id)).filter(
       (el): el is HTMLElement => el !== null
     );
     const secObs = new IntersectionObserver(
@@ -57,7 +60,7 @@ export default function AboutNav() {
       aria-label="Page sections"
     >
       <div className="flex items-center max-w-(--maxw) mx-auto px-8 max-[680px]:px-2 overflow-x-auto scrollbar-hide">
-        {LINKS.map(({ label, id }) => (
+        {IDS.map((id) => (
           <a
             key={id}
             href={`#${id}`}
@@ -71,10 +74,10 @@ export default function AboutNav() {
             )}
             onClick={handleSectionClick(id)}
           >
-            {label}
+            {t(KEY_BY_ID[id])}
           </a>
         ))}
       </div>
-    </nav>
+    </nav >
   );
 }

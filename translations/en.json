@@ -554,6 +554,13 @@
       "subtitle": "Making world-class academic guidance a right, not a privilege — starting in Cambodia, and scaling across Southeast Asia.",
       "cta": "Explore our mission"
     },
+    "nav": {
+      "mission": "Mission",
+      "vision": "Vision",
+      "whoWeAre": "Who We Are",
+      "whyChooseUs": "Why Choose Us",
+      "team": "Our Advisors"
+    },
     "mission": {
       "eyebrow": "Mission",
       "heading": "Our Mission",
