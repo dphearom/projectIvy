@@ -32,6 +32,7 @@
 @utility khmer-script {
   --font-display: var(--font-khmer-display), 'Noto Serif Khmer', serif;
   --font-body: var(--font-khmer-body), 'Noto Sans Khmer', sans-serif;
+  letter-spacing: normal; /* Khmer's coeng stacks & diacritics collide under wide tracking (e.g. eyebrow's tracking-[0.28em]) */
 }
 
 /* ─── Project IVY design tokens → Tailwind utilities ───────────────

@@ -174,14 +174,14 @@ const MarqueeRow = ({
 };
 
 const AffiliationsPartners = () => {
-  const { t } = useTranslation("home.affiliations");
+  const { t, tRich } = useTranslation("home.affiliations");
 
   return (
     <section className="bg-paper py-27.5 overflow-hidden">
       <div className="wrap">
         <div className="text-center max-w-170 mx-auto mb-12" data-reveal>
           <h2 className="text-[clamp(2rem,3.6vw,3rem)] tracking-[-0.01em]">
-            {t("heading", "display")}
+            {tRich("heading", { nowrap: (chunks) => <span className="whitespace-nowrap">{chunks}</span> }, "display")}
           </h2>
           <p className="mt-4.5 text-[1.05rem] leading-[1.65] text-ink-soft">
             {t("paragraph")}
