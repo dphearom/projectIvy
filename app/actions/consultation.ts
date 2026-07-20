@@ -3,6 +3,7 @@
 import { db } from "@/lib/db"
 import { consultationRequests } from "@/database/schema"
 import { EMAIL_RE } from "@/lib/utils"
+import { sendTelegramMessage } from "@/lib/telegram"
 
 export type ConsultationInput = {
   role: "parent" | "student"
@@ -33,4 +34,17 @@ export async function submitConsultation(data: ConsultationInput) {
     school: data.school.trim(),
     inquiries: data.inquiries,
   })
+
+  const lines = [
+    "New consultation request",
+    `Name: ${data.name.trim()}`,
+    `Role: ${data.role}`,
+    `Email: ${data.email.trim().toLowerCase()}`,
+    `Telegram: ${data.phone.trim()}`,
+  ]
+  if (data.role === "parent" && data.childName?.trim()) lines.push(`Child: ${data.childName.trim()}`)
+  lines.push(`Grade: ${data.grade}`, `School: ${data.school.trim()}`)
+  if (data.inquiries.length > 0) lines.push(`Inquiries: ${data.inquiries.join(", ")}`)
+
+  await sendTelegramMessage(lines.join("\n"))
 }
