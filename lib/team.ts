@@ -55,14 +55,14 @@ export const MENTOR_TEAM: TeamMember[] = [
   },
   {
     name: "Kaitlyn Mady",
-    school: "Harvard University : Government & Educational Studies",
+    school: "Harvard College : Government & Educational Studies",
     role: "University Admissions Advisor",
     photo: "team/mentors/kaitlyn-mady",
     bio: "Kaitlyn studies at Harvard while working as a Recruitment Ambassador at Harvard's own Admissions and Financial Aid office, making her one of the most uniquely positioned advisors in the program. As founder of Harvard's Khmer Students' Association and a volunteer in legal aid and youth music programs, she is an ideal guide for first-generation students navigating this process for the first time.",
   },
   {
     name: "Virithkarvan (Vaughn) Van Chum",
-    school: "Harvard University : Biomedical Engineering (Secondary: Economics)",
+    school: "Harvard College : Biomedical Engineering (Secondary: Economics)",
     role: "University Admissions Advisor",
     photo: "team/mentors/vaughn-van-chum",
     bio: "Vaughn's experience at Harvard spans water quality research, housing advocacy for homeless families, entrepreneurship, and market research consulting for the Boston Symphony Orchestra. He brings a rare ability to connect across fields and at Project IVY, he helps students discover that their most valuable asset is often the exact intersection of interests they've been told doesn't make sense.",
