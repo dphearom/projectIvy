@@ -20,7 +20,7 @@ const OurStory = () => {
           <div className="founder-photo max-[980px]:max-w-110" data-reveal>
             <Image
               src="/images/about/founder.jpg"
-              alt="Somphors Tann, Founder & Programme Director of Project IVY"
+              alt="Somphors Tann, Founder & Program Director of Project IVY"
               width={540}
               height={680}
               style={{ width: "100%", height: "auto" }}

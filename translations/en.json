@@ -195,6 +195,7 @@
               "Application review and submission support"
             ],
             "pricingSection": {
+              "title": "Additional Fees",
               "items": [
                 "$100 per university requiring supplemental essays",
                 "$50 per university without supplemental essays"
@@ -211,6 +212,7 @@
               "Strategic positioning for competitive admissions"
             ],
             "pricingSection": {
+              "title": "Additional Fees",
               "items": [
                 "$100 per university requiring supplemental essays",
                 "$50 per university without supplemental essays"
@@ -228,6 +230,7 @@
               "Priority support"
             ],
             "pricingSection": {
+              "title": "Additional Fees",
               "items": [
                 "$100 per university requiring supplemental essays",
                 "$50 per university without supplemental essays"
@@ -256,6 +259,7 @@
               "Application review"
             ],
             "pricingSection": {
+              "title": "Pricing Details",
               "items": [
                 "Pricing varies based on the duration of the program and the services selected."
               ]
@@ -272,6 +276,7 @@
               "Application review and submission support"
             ],
             "pricingSection": {
+              "title": "Additional Fees",
               "items": [
                 "$100 per university requiring supplemental essays",
                 "$50 per university without supplemental essays"
@@ -288,6 +293,7 @@
               "Strategic positioning for competitive admissions"
             ],
             "pricingSection": {
+              "title": "Additional Fees",
               "items": [
                 "$100 per university requiring supplemental essays",
                 "$50 per university without supplemental essays"
@@ -305,6 +311,7 @@
               "Priority support"
             ],
             "pricingSection": {
+              "title": "Additional Fees",
               "items": [
                 "$100 per university requiring supplemental essays",
                 "$50 per university without supplemental essays"
@@ -450,7 +457,7 @@
       "bio2": "Her work focuses on expanding access to quality education, student advising, and human capital development in Cambodia. Somphors has experience working across both international and local education initiatives and is currently involved in building educational opportunities for students from underserved communities.",
       "bio3": "Drawing from her personal journey, from studying by candlelight in rural Cambodia to graduating from Harvard, she is passionate about empowering young people to navigate education pathways, take risks, and unlock their full potential.",
       "photoName": "Somphors Tann",
-      "photoRole": "Founder & Programme Director · Project <ivy>IVY</ivy>"
+      "photoRole": "Founder & Program Director · Project <ivy>IVY</ivy>"
     },
     "founderMessage": {
       "heading": "Message from the Founder",
@@ -627,13 +634,13 @@
         "Kaitlyn Mady": {
           "name": "Kaitlyn Mady",
           "role": "University Admissions Advisor",
-          "school": "Harvard University : Government & Educational Studies",
+          "school": "Harvard College : Government & Educational Studies",
           "bio": "Kaitlyn studies at Harvard while working as a Recruitment Ambassador at Harvard's own Admissions and Financial Aid office, making her one of the most uniquely positioned advisors in the program. As founder of Harvard's Khmer Students' Association and a volunteer in legal aid and youth music programs, she is an ideal guide for first-generation students navigating this process for the first time."
         },
         "Virithkarvan (Vaughn) Van Chum": {
           "name": "Virithkarvan (Vaughn) Van Chum",
           "role": "University Admissions Advisor",
-          "school": "Harvard University : Biomedical Engineering (Secondary: Economics)",
+          "school": "Harvard College : Biomedical Engineering (Secondary: Economics)",
           "bio": "Vaughn's experience at Harvard spans water quality research, housing advocacy for homeless families, entrepreneurship, and market research consulting for the Boston Symphony Orchestra. He brings a rare ability to connect across fields and at Project IVY, he helps students discover that their most valuable asset is often the exact intersection of interests they've been told doesn't make sense."
         },
         "Peipei Soeung": {

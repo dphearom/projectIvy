@@ -126,7 +126,7 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
       )}
       {data.tier.pricingSection && (
         <div className="tier-modal__features mt-5 pt-5 border-t border-line">
-          <h5>{data.tier.pricingSection.title}</h5>
+          <h5>{t(`${tierPath}.pricingSection.title`)}</h5>
           <ul>
             {tArray(`${tierPath}.pricingSection.items`).map((item, i) => (
               <li key={typeof item === "string" ? item : i}>{item}</li>
@@ -304,7 +304,7 @@ const ProgrammeProducts = () => {
                             {tier.pricingSection && (
                               <div className="mt-3.5 pt-3.5 border-t border-line">
                                 <p className="text-[0.82rem] font-semibold text-navy">
-                                  {tier.pricingSection.title}
+                                  {t(`details.${program.id}.tiers.${ti}.pricingSection.title`)}
                                 </p>
                                 <ul className="mt-2 pl-[1.1rem] [&>li+li]:mt-1">
                                   {tArray(`details.${program.id}.tiers.${ti}.pricingSection.items`).map(
