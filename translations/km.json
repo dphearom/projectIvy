@@ -332,7 +332,9 @@
       "office": "ទីតាំង: រាជធានីភ្នំពេញ ប្រទេសកម្ពុជា",
       "telegramLabel": "លេខទំនាក់ទំនង",
       "emailLabel": "អ៊ីមែល",
-      "webLabel": "គេហទំព័រ"
+      "webLabel": "គេហទំព័រ",
+      "facebookQrLabel": "ស្កេនដើម្បីតាមដានទំព័រ Facebook របស់យើង",
+      "telegramQrLabel": "ស្កេនដើម្បីជជែកជាមួយ Somphors Tann លើ Telegram"
     },
     "form": {
       "youAre": "អ្នកជា៖",
@@ -365,8 +367,10 @@
       "errorSchool": "សូមបញ្ចូលឈ្មោះសាលាបច្ចុប្បន្ន។",
       "errorTerms": "សូមយល់ព្រមនឹងលក្ខខណ្ឌនានា។",
       "errorGeneric": "មានបញ្ហាកើតឡើង។ សូមព្យាយាមម្តងទៀត។",
-      "successTitle": "សូមអរគុណ!",
-      "successBody": "ព័ត៌មានរបស់អ្នកត្រូវបានបញ្ជូនដោយជោគជ័យ។ ក្រុមការងារនឹងទាក់ទងទៅអ្នកឆាប់ៗនេះ។"
+      "successGreeting": "សូមគោរពជូន {name},",
+      "successBody": "សូមអរគុណដែលបានទាក់ទងមកកាន់ Project IVY។ យើងខ្ញុំបានទទួលសំណើររបស់អ្នកហើយ ហើយក្រុមការងាររបស់យើងនឹងឆ្លើយតបទៅអ្នកឆាប់ៗនេះ។",
+      "successSignoff": "ដោយក្តីគោរព,",
+      "successTeam": "ក្រុមការងារ Project IVY"
     }
   },
   "scholarships": {

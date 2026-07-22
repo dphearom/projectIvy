@@ -67,13 +67,20 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
 
   if (done) {
     return (
-      <div className="text-center py-5">
+      <div className="py-5">
         <div className="size-14 rounded-full bg-[linear-gradient(180deg,var(--gold-soft),var(--gold))] text-[#1a1505] text-[1.4rem] font-bold flex items-center justify-center mx-auto mb-4">
           ✓
         </div>
-        <h4 className="text-[1.3rem] text-ink mb-2">{t("successTitle")}</h4>
+        <p className="text-[1.05rem] text-ink font-medium mb-3">
+          {t("successGreeting", "body", undefined, { name: name.trim() })}
+        </p>
         <p className="text-[0.95rem] text-ink-soft mb-5">
           {t("successBody")}
+        </p>
+        <p className="text-[0.95rem] text-ink-soft">
+          {t("successSignoff")}
+          <br />
+          {t("successTeam")}
         </p>
       </div>
     );

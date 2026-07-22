@@ -332,7 +332,9 @@
       "office": "Office: Phnom Penh, Cambodia",
       "telegramLabel": "Telegram",
       "emailLabel": "Email",
-      "webLabel": "Web"
+      "webLabel": "Web",
+      "facebookQrLabel": "Scan to follow our Facebook page",
+      "telegramQrLabel": "Scan to message Somphors Tann on Telegram"
     },
     "form": {
       "youAre": "You are:",
@@ -365,8 +367,10 @@
       "errorSchool": "Please enter the current school.",
       "errorTerms": "Please agree to the Terms & Conditions.",
       "errorGeneric": "Something went wrong. Please try again.",
-      "successTitle": "Thank you!",
-      "successBody": "Your information has been submitted successfully. We will contact you as soon as possible."
+      "successGreeting": "Dear {name},",
+      "successBody": "Thank you for contacting Project IVY. We have received your inquiry, and our team will get back to you soon.",
+      "successSignoff": "Warm regards,",
+      "successTeam": "The Project IVY Team"
     }
   },
   "scholarships": {

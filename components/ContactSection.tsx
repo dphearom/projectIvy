@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import ConsultationForm from "@/components/ConsultationForm";
 import { useTranslation } from "@/components/useTranslation";
+import { FacebookIcon, TelegramIcon } from "@/components/icons";
 
 type Props = {
   inquiries?: string[];
@@ -43,6 +45,52 @@ const ContactSection = ({ inquiries }: Props) => {
               </a>
             </li>
           </ul>
+
+          <div className="flex flex-wrap gap-4 mt-6">
+            <a
+              href="https://www.facebook.com/people/Project-IVY/61565295581796/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-3 text-center bg-paper border border-line rounded-(--radius) p-4 shadow-[0_18px_40px_-26px_rgba(14,23,41,0.2)] transition-transform duration-200 hover:-translate-y-1"
+            >
+              <Image
+                src="/images/facebook-qr.png"
+                alt="QR code linking to Project IVY's Facebook page"
+                width={128}
+                height={128}
+                className="rounded-[10px]"
+              />
+              <span className="flex items-center gap-1.5 text-[0.85rem] font-medium text-navy">
+                <FacebookIcon />
+                Facebook
+              </span>
+              <span className="text-[0.78rem] text-ink-soft max-w-[18ch] leading-[1.4]">
+                {t("facebookQrLabel")}
+              </span>
+            </a>
+
+            <a
+              href="https://t.me/SomphorsT"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-3 text-center bg-paper border border-line rounded-(--radius) p-4 shadow-[0_18px_40px_-26px_rgba(14,23,41,0.2)] transition-transform duration-200 hover:-translate-y-1"
+            >
+              <Image
+                src="/images/telegram-qr.png"
+                alt="QR code linking to Somphors Tann's Telegram"
+                width={128}
+                height={128}
+                className="rounded-[10px]"
+              />
+              <span className="flex items-center gap-1.5 text-[0.85rem] font-medium text-navy">
+                <TelegramIcon />
+                Telegram
+              </span>
+              <span className="text-[0.78rem] text-ink-soft max-w-[18ch] leading-[1.4]">
+                {t("telegramQrLabel")}
+              </span>
+            </a>
+          </div>
         </div>
 
         <div
