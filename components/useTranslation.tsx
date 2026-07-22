@@ -52,9 +52,17 @@ export function useTranslation(namespace: string) {
       content
     );
 
-  /** `extraClassName` (e.g. a smaller text-[...] size) is applied only to the Khmer-rendered span — the English string is untouched. */
-  const t = (key: string, kind: FontKind = "body", extraClassName?: string): ReactNode =>
-    wrap(key, translate(key), kind, extraClassName);
+  /**
+   * `extraClassName` (e.g. a smaller text-[...] size) is applied only to the Khmer-rendered span —
+   * the English string is untouched. `values` fills ICU placeholders (e.g. "Dear {name},") with
+   * runtime data that isn't itself translatable, like a name the user typed into a form.
+   */
+  const t = (
+    key: string,
+    kind: FontKind = "body",
+    extraClassName?: string,
+    values?: Record<string, string | number>,
+  ): ReactNode => wrap(key, translate(key, values), kind, extraClassName);
 
   /** For a translated array (e.g. a list of paragraphs) — use each returned node as a single child, not spread as siblings. */
   const tArray = (key: string, kind: FontKind = "body"): ReactNode[] =>
