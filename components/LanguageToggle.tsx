@@ -20,7 +20,7 @@ const LanguageToggle = ({ scrolled = false, className }: Props) => {
       role="group"
       aria-label="Select language"
       className={cn(
-        "inline-flex items-center rounded-full border p-0.5",
+        "inline-flex items-center rounded-full border p-1 gap-0.5 min-w-[7.75rem]",
         scrolled ? "border-line" : "border-[rgba(243,237,226,0.28)]",
         className,
       )}
@@ -34,7 +34,7 @@ const LanguageToggle = ({ scrolled = false, className }: Props) => {
             aria-pressed={isSelected}
             onClick={() => setLanguage(lang)}
             className={cn(
-              "font-body text-[12px] font-semibold rounded-full py-1.25 px-3 cursor-pointer whitespace-nowrap border-0",
+              "font-body text-[12px] font-semibold rounded-full inline-flex items-center justify-center min-w-[3.5rem] py-1.5 px-3.5 cursor-pointer whitespace-nowrap border-0 leading-none",
               isSelected
                 ? "bg-gold text-navy-3"
                 : cn(
