@@ -30,6 +30,17 @@
       "enquireNow": "Enquire now",
       "close": "Close",
       "watchVideo": "Watch video"
+    },
+    "videoModal": {
+      "close": "Close",
+      "closeAriaLabel": "Close video",
+      "loadError": "This video could not be loaded.",
+      "versionsHeading": "Language",
+      "versionsAriaLabel": "Video language versions",
+      "languages": {
+        "en": "English",
+        "km": "Khmer"
+      }
     }
   },
   "footer": {

@@ -12,9 +12,14 @@
   animation: backdropIn 0.2s ease both;
 }
 
+.video-modal-shell {
+  position: relative;
+  width: min(1080px, calc(100vw - 32px));
+}
+
 .video-modal {
   position: relative;
-  width: min(960px, calc(100vw - 32px));
+  width: 100%;
   overflow: hidden;
   border-radius: 18px;
   background: var(--paper);
@@ -24,8 +29,8 @@
 
 .video-modal__close {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: -52px;
+  right: 0;
   z-index: 2;
   display: inline-flex;
   align-items: center;
@@ -59,10 +64,24 @@
   letter-spacing: 0.02em;
 }
 
+.video-modal__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+}
+
+.video-modal__main {
+  min-width: 0;
+}
+
 .video-modal__player {
   position: relative;
   aspect-ratio: 16 / 9;
   background: var(--navy-3);
+  transition: opacity 0.22s ease;
+}
+
+.video-modal__player--switching {
+  opacity: 0.72;
 }
 
 .video-modal__iframe {
@@ -83,6 +102,103 @@
   text-align: center;
   font-size: 0.95rem;
   color: var(--ink-soft);
+}
+
+.video-modal__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 14px;
+  border-left: 1px solid var(--line);
+  background: var(--ivory-2);
+}
+
+@media (min-width: 901px) {
+  .video-modal__sidebar {
+    transition: opacity 0.35s ease;
+  }
+
+  .video-modal__sidebar--dimmed {
+    opacity: 0.25;
+    pointer-events: none;
+  }
+}
+
+.video-modal__sidebar-heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.video-modal__versions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.video-modal__version {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--navy);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.video-modal__version:hover {
+  border-color: rgba(184, 150, 90, 0.45);
+  transform: translateY(-1px);
+}
+
+.video-modal__version--selected {
+  border-color: rgba(184, 150, 90, 0.75);
+  box-shadow: 0 10px 24px -18px rgba(14, 23, 41, 0.45);
+}
+
+.video-modal__version-thumb {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  background: var(--navy-3);
+}
+
+.video-modal__version-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-modal__version-thumb-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(14, 23, 41, 0.9), rgba(27, 36, 54, 0.75));
+}
+
+.video-modal__version-label {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.video-modal__version--selected .video-modal__version-label {
+  color: var(--gold-deep);
 }
 
 @keyframes backdropIn {
@@ -107,15 +223,38 @@
   }
 }
 
+@media (max-width: 900px) {
+  .video-modal__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .video-modal__sidebar {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 14px 16px 16px;
+  }
+
+  .video-modal__versions {
+    flex-direction: row;
+  }
+
+  .video-modal__version {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 720px) {
+  .video-modal-shell {
+    width: min(1080px, calc(100vw - 24px));
+  }
+
   .video-modal {
-    width: min(960px, calc(100vw - 24px));
     border-radius: 14px;
   }
 
   .video-modal__close {
-    top: 10px;
-    right: 10px;
+    top: -46px;
     min-height: 40px;
     padding: 0 12px 0 10px;
     font-size: 0.84rem;
@@ -123,5 +262,29 @@
 
   .video-modal__close-label {
     display: none;
+  }
+
+  .video-modal__sidebar {
+    padding: 12px 14px 14px;
+  }
+
+  .video-modal__versions {
+    gap: 8px;
+  }
+
+  .video-modal__version {
+    padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-modal-overlay {
+    align-items: flex-start;
+    padding-top: 56px;
+  }
+
+  .video-modal__close {
+    top: -44px;
+    right: 0;
   }
 }

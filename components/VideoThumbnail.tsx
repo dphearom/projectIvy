@@ -4,13 +4,14 @@ import { useState } from "react";
 import SmartImage from "@/components/SmartImage";
 import VideoModal from "@/components/VideoModal";
 import { useTranslation } from "@/components/useTranslation";
+import type { LocalizedVideo } from "@/lib/videos";
 import { cn } from "@/lib/utils";
 
 type Props = {
   name: string;
   alt: string;
   available: boolean;
-  videoUrl: string;
+  videos: LocalizedVideo;
   aspect?: string;
   className?: string;
   sizes?: string;
@@ -20,7 +21,7 @@ const VideoThumbnail = ({
   name,
   alt,
   available,
-  videoUrl,
+  videos,
   aspect = "4 / 3",
   className,
   sizes = "100vw",
@@ -70,7 +71,7 @@ const VideoThumbnail = ({
         </span>
       </button>
 
-      {open && <VideoModal videoUrl={videoUrl} title={alt} onClose={() => setOpen(false)} />}
+      {open && <VideoModal videos={videos} title={alt} onClose={() => setOpen(false)} />}
     </>
   );
 };
