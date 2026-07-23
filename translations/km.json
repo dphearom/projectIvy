@@ -30,6 +30,17 @@
       "enquireNow": "សាកសួរឥឡូវនេះ",
       "close": "បិទ",
       "watchVideo": "មើលវីដេអូ"
+    },
+    "videoModal": {
+      "close": "បិទ",
+      "closeAriaLabel": "បិទវីដេអូ",
+      "loadError": "មិនអាចផ្ទុកវីដេអូនេះបានទេ។",
+      "versionsHeading": "ភាសា",
+      "versionsAriaLabel": "កំណែវីដេអូតាមភាសា",
+      "languages": {
+        "en": "អង់គ្លេស",
+        "km": "ខ្មែរ"
+      }
     }
   },
   "footer": {

@@ -55,23 +55,58 @@ export type ProgramTier = {
   };
 };
 
+import { localizedVideo, type LocalizedVideo } from "@/lib/videos";
+
 /** YouTube video URLs keyed by `{programId}:{tierIndex}` (0-based). */
-export const TIER_VIDEO_URLS: Record<string, string> = {
-  "middle-school:0": "https://youtu.be/ffKhMqp-4j8",
-  "university-readiness:0": "https://youtu.be/HhHZ1cKpOyY",
-  "university-readiness:1": "https://youtu.be/2gne7H72qW4",
-  "university-readiness:2": "https://youtu.be/S7SbcYYy6w8",
-  "university-application:0": "https://youtu.be/N0H4t_3tZE8",
-  "university-application:1": "https://youtu.be/OfQTP1fkqjg",
-  "university-application:2": "https://youtu.be/ViG-bNcQAdk",
-  "graduate-school:0": "https://youtu.be/16kjRTmha34",
-  "graduate-school:1": "https://youtu.be/gPztz9dTo_M",
-  "graduate-school:2": "https://youtu.be/OfQTP1fkqjg",
-  "graduate-school:3": "https://youtu.be/irpkrUu5H08",
+export const TIER_VIDEOS: Record<string, LocalizedVideo> = {
+  "middle-school:0": localizedVideo(
+    "https://youtu.be/ffKhMqp-4j8",
+    "https://youtu.be/m_-FM5LQtig",
+  ),
+  "university-readiness:0": localizedVideo(
+    "https://youtu.be/HhHZ1cKpOyY",
+    "https://youtu.be/6Qd_13_1Lmk",
+  ),
+  "university-readiness:1": localizedVideo(
+    "https://youtu.be/2gne7H72qW4",
+    "https://youtu.be/yLsoPgspdd0",
+  ),
+  "university-readiness:2": localizedVideo(
+    "https://youtu.be/S7SbcYYy6w8",
+    "https://youtu.be/gUDrShRb-pM",
+  ),
+  "university-application:0": localizedVideo(
+    "https://youtu.be/N0H4t_3tZE8",
+    "https://youtu.be/B80q1z5TP3s",
+  ),
+  "university-application:1": localizedVideo(
+    "https://youtu.be/OfQTP1fkqjg",
+    "https://youtu.be/p-b4_En7GTo",
+  ),
+  "university-application:2": localizedVideo(
+    "https://youtu.be/ViG-bNcQAdk",
+    "https://youtu.be/coIdhcnMkO4",
+  ),
+  "graduate-school:0": localizedVideo(
+    "https://youtu.be/16kjRTmha34",
+    "https://youtu.be/U9viXeN6We0",
+  ),
+  "graduate-school:1": localizedVideo(
+    "https://youtu.be/gPztz9dTo_M",
+    "https://youtu.be/RqRN5GOS8fs",
+  ),
+  "graduate-school:2": localizedVideo(
+    "https://youtu.be/OfQTP1fkqjg",
+    "https://youtu.be/JxvjvSH3k3I",
+  ),
+  "graduate-school:3": localizedVideo(
+    "https://youtu.be/irpkrUu5H08",
+    "https://youtu.be/LEEVs5LKTo8",
+  ),
 };
 
-export const tierVideoUrl = (programId: string, tierIndex: number) =>
-  TIER_VIDEO_URLS[`${programId}:${tierIndex}`];
+export const tierVideos = (programId: string, tierIndex: number) =>
+  TIER_VIDEOS[`${programId}:${tierIndex}`];
 
 export type ProgramDetail = {
   id: string;

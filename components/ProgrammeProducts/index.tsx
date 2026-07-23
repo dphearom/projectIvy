@@ -10,7 +10,7 @@ import { CartIcon, ChevronDown } from "@/components/icons";
 import { PHOTO_READY, PLACEHOLDERS } from "@/lib/placeholders";
 import {
   ADVISING_PROGRAM_DETAILS,
-  tierVideoUrl,
+  tierVideos,
   type ProgramDetail,
   type ProgramTier,
 } from "@/lib/programs";
@@ -43,16 +43,16 @@ const TierThumbnail = ({
   aspect?: string;
   sizes?: string;
 }) => {
-  const videoUrl = tierVideoUrl(programId, tierIndex);
+  const videos = tierVideos(programId, tierIndex);
   const available = PHOTO_READY.has(tierPhotoName);
 
-  if (videoUrl) {
+  if (videos) {
     return (
       <VideoThumbnail
         name={tierPhotoName}
         alt={alt}
         available={available}
-        videoUrl={videoUrl}
+        videos={videos}
         aspect={aspect}
         sizes={sizes}
       />

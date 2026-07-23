@@ -60,12 +60,12 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
                 data-reveal-d={String((i % 3) + 1)}
               >
                 <div className="grid grid-cols-[280px_1fr] max-[980px]:grid-cols-1">
-                  {scholarship.videoUrl ? (
+                  {scholarship.videos ? (
                     <VideoThumbnail
                       name={scholarship.photo ?? scholarship.id}
                       alt={scholarship.title}
                       available={Boolean(scholarship.photo)}
-                      videoUrl={scholarship.videoUrl}
+                      videos={scholarship.videos}
                       aspect="4 / 3"
                       className="rounded-none h-full min-h-55"
                       sizes="(max-width: 980px) 100vw, 280px"

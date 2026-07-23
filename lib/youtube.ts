@@ -34,3 +34,9 @@ export function youtubeEmbedUrl(url: string, autoplay = true): string | null {
 
   return `https://www.youtube.com/embed/${id}?${params.toString()}`;
 }
+
+export function youtubeThumbnailUrl(url: string): string | null {
+  const id = youtubeVideoId(url);
+  if (!id) return null;
+  return `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
+}
