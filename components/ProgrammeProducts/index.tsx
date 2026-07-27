@@ -97,7 +97,7 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
       }
       footer={
         <>
-          <Button href="/contact" arrow>
+          <Button href={`/contact?inquiries=${data.program.id}`} arrow>
             {tButton("enquireNow")}
           </Button>
           <Button variant="ghost-dark" onClick={onClose}>

@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import { cn, EMAIL_RE } from "@/lib/utils";
 import Button from "@/components/Button";
+import TermsModal from "@/components/TermsModal";
 import { submitConsultation } from "@/app/actions/consultation";
 import { inquiryLabel } from "@/lib/inquiries";
 import { useTranslation } from "@/components/useTranslation";
@@ -13,8 +14,9 @@ type Props = {
 };
 
 const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
-  const { t, tPlain } = useTranslation("contact.form");
+  const { t, tRich, tPlain } = useTranslation("contact.form");
   const [role, setRole] = useState<"parent" | "student">("student");
+  const [termsOpen, setTermsOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -106,17 +108,21 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
 
       <fieldset className="border-none m-0 p-0">
         <legend className={cn(labelCls, "mb-2.5")}>{t("youAre")}</legend>
-        <div className="flex gap-2.5">
+        <div className="relative grid grid-cols-2 rounded-[12px] border border-line bg-ivory p-1">
+          {/* Sliding navy thumb — springs between the two options. */}
+          <span
+            aria-hidden
+            style={{ transform: `translateX(${role === "student" ? 100 : 0}%)` }}
+            className="pointer-events-none absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-[9px] bg-navy shadow-[0_8px_20px_-10px_rgba(14,23,41,0.5),inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-reduce:transition-none"
+          />
           {(["parent", "student"] as const).map((value) => {
             const active = role === value;
             return (
               <label
                 key={value}
                 className={cn(
-                  "flex-1 flex items-center justify-center gap-2 py-3.25 px-3.5 rounded-[10px] border-2 text-[0.93rem] font-semibold cursor-pointer transition-[border-color,background,color,box-shadow] duration-200",
-                  active
-                    ? "text-paper border-navy bg-navy shadow-[0_8px_20px_-10px_rgba(14,23,41,0.35)]"
-                    : "border-line bg-ivory text-ink-soft hover:border-[rgba(184,150,90,0.5)] hover:text-ink",
+                  "relative z-10 flex items-center justify-center gap-2 py-3.25 px-3.5 text-[0.93rem] font-semibold cursor-pointer transition-colors duration-300",
+                  active ? "text-paper" : "text-ink-soft hover:text-ink",
                 )}
               >
                 <input
@@ -229,8 +235,26 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
           onChange={(e) => setTerms(e.target.checked)}
           className="mt-0.75"
         />
-        {t("terms")}
+        <span>
+          {tRich("terms", {
+            terms: (chunks) => (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setTermsOpen(true);
+                }}
+                className="appearance-none border-0 bg-transparent p-0 cursor-pointer align-baseline text-gold-deep font-semibold underline underline-offset-2 decoration-gold-deep/40 outline-none transition-colors hover:text-gold hover:decoration-gold focus:text-gold focus:decoration-gold focus-visible:text-gold focus-visible:decoration-gold"
+              >
+                {chunks}
+              </button>
+            ),
+          })}
+        </span>
       </label>
+
+      <TermsModal open={termsOpen} onOpenChange={setTermsOpen} />
 
       {error && <p className="text-[0.88rem] text-[#c0392b]">{error}</p>}
 

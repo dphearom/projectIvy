@@ -44,21 +44,23 @@ function DialogContent({
         <DialogPrimitive.Content
           data-slot="dialog-content"
           className={cn(
-            "pointer-events-auto relative w-full max-w-lg max-h-[88vh] overflow-y-auto bg-paper rounded-[20px] p-8 shadow-[0_50px_120px_-24px_rgba(11,23,48,0.55)] animate-[modalIn_0.3s_cubic-bezier(.2,.7,.2,1)] outline-none [scrollbar-width:thin] [scrollbar-color:var(--line)_transparent] max-[720px]:max-h-[94vh] max-[720px]:rounded-b-none",
+            "pointer-events-auto relative flex flex-col w-full max-w-lg max-h-[88vh] overflow-hidden bg-paper rounded-[20px] shadow-[0_50px_120px_-24px_rgba(11,23,48,0.55)] animate-[modalIn_0.3s_cubic-bezier(.2,.7,.2,1)] outline-none max-[720px]:max-h-[94vh] max-[720px]:rounded-b-none",
             className
           )}
           {...props}
         >
-          {children}
           {showCloseButton && (
             <DialogPrimitive.Close
               data-slot="dialog-close"
-              className="absolute top-3.5 right-3.5 z-10 size-8.5 rounded-full bg-[rgba(255,255,255,0.85)] border border-line cursor-pointer flex items-center justify-center text-[15px] text-ink leading-none transition-colors duration-200 hover:bg-cream"
+              className="absolute top-3.5 right-3.5 z-20 size-8.5 rounded-full bg-[rgba(255,255,255,0.96)] border border-line shadow-[0_2px_8px_-2px_rgba(11,23,48,0.25)] cursor-pointer flex items-center justify-center text-[15px] text-ink leading-none transition-colors duration-200 hover:bg-cream"
               aria-label="Close"
             >
               ✕
             </DialogPrimitive.Close>
           )}
+          <div className="overflow-y-auto p-8 [scrollbar-width:thin] [scrollbar-color:var(--line)_transparent]">
+            {children}
+          </div>
         </DialogPrimitive.Content>
       </div>
     </DialogPortal>

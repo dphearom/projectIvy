@@ -3,7 +3,8 @@
 import Image from "next/image";
 import ConsultationForm from "@/components/ConsultationForm";
 import { useTranslation } from "@/components/useTranslation";
-import { FacebookIcon, TelegramIcon } from "@/components/icons";
+import { FacebookIcon, TelegramIcon, EmailIcon, GlobeIcon, MapPinIcon } from "@/components/icons";
+import { cn } from "@/lib/utils";
 
 type Props = {
   inquiries?: string[];
@@ -19,77 +20,101 @@ const ContactSection = ({ inquiries }: Props) => {
           <h2 className="text-[clamp(1.8rem,3vw,2.4rem)] text-navy mb-4.5">
             Project <span className="ivy-brand">IVY</span>
           </h2>
-          <p className="text-[1.02rem] leading-[1.65] text-ink-soft mb-5.5 max-w-[36ch]">
-            {t("office")}
-          </p>
-          <ul className="list-none m-0 p-0 flex flex-col gap-3.5 text-[0.98rem] text-ink-soft leading-[1.55]">
-            <li>
-              {t("telegramLabel")}: <strong>+855889493577</strong> · <strong>+855964025628</strong>
-            </li>
-            <li>
-              {t("emailLabel")}:{" "}
-              <a
-                href="mailto:projectivykh@gmail.com"
-                className="text-navy font-medium transition-colors duration-200 hover:text-gold-deep"
-              >
-                projectivykh@gmail.com
-              </a>
-            </li>
-            <li>
-              {t("webLabel")}:{" "}
-              <a
-                href="https://project-ivy.com"
-                className="text-navy font-medium transition-colors duration-200 hover:text-gold-deep"
-              >
-                https://project-ivy.com
-              </a>
-            </li>
+          <ul className="list-none m-0 p-0 mt-5 flex flex-col gap-3 text-[0.98rem] text-ink-soft leading-[1.5]">
+            {[
+              { icon: <MapPinIcon />, content: t("office") },
+              {
+                icon: <TelegramIcon />,
+                content: (
+                  <>
+                    {t("telegramLabel")}: <strong className="text-navy font-semibold">+855889493577</strong> ·{" "}
+                    <strong className="text-navy font-semibold">+855964025628</strong>
+                  </>
+                ),
+              },
+              {
+                icon: <EmailIcon />,
+                content: (
+                  <>
+                    {t("emailLabel")}:{" "}
+                    <a
+                      href="mailto:projectivykh@gmail.com"
+                      className="text-navy font-medium transition-colors duration-200 hover:text-gold-deep"
+                    >
+                      projectivykh@gmail.com
+                    </a>
+                  </>
+                ),
+              },
+              {
+                icon: <GlobeIcon />,
+                content: (
+                  <>
+                    {t("webLabel")}:{" "}
+                    <a
+                      href="https://project-ivy.com"
+                      className="text-navy font-medium transition-colors duration-200 hover:text-gold-deep"
+                    >
+                      https://project-ivy.com
+                    </a>
+                  </>
+                ),
+              },
+            ].map((row, i) => (
+              <li key={i} className="flex items-center gap-3">
+                <span className="flex-none size-9 rounded-full bg-[rgba(184,150,90,0.12)] text-gold-deep flex items-center justify-center">
+                  {row.icon}
+                </span>
+                <span>{row.content}</span>
+              </li>
+            ))}
           </ul>
 
-          <div className="flex flex-wrap gap-4 mt-6">
-            <a
-              href="https://www.facebook.com/people/Project-IVY/61565295581796/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-3 text-center bg-paper border border-line rounded-(--radius) p-4 shadow-[0_18px_40px_-26px_rgba(14,23,41,0.2)] transition-transform duration-200 hover:-translate-y-1"
-            >
-              <Image
-                src="/images/facebook-qr.png"
-                alt="QR code linking to Project IVY's Facebook page"
-                width={128}
-                height={128}
-                className="rounded-[10px]"
-              />
-              <span className="flex items-center gap-1.5 text-[0.85rem] font-medium text-navy">
-                <FacebookIcon />
-                Facebook
-              </span>
-              <span className="text-[0.78rem] text-ink-soft max-w-[18ch] leading-[1.4]">
-                {t("facebookQrLabel")}
-              </span>
-            </a>
-
-            <a
-              href="https://t.me/SomphorsT"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-3 text-center bg-paper border border-line rounded-(--radius) p-4 shadow-[0_18px_40px_-26px_rgba(14,23,41,0.2)] transition-transform duration-200 hover:-translate-y-1"
-            >
-              <Image
-                src="/images/telegram-qr.png"
-                alt="QR code linking to Somphors Tann's Telegram"
-                width={128}
-                height={128}
-                className="rounded-[10px]"
-              />
-              <span className="flex items-center gap-1.5 text-[0.85rem] font-medium text-navy">
-                <TelegramIcon />
-                Telegram
-              </span>
-              <span className="text-[0.78rem] text-ink-soft max-w-[18ch] leading-[1.4]">
-                {t("telegramQrLabel")}
-              </span>
-            </a>
+          <div className="grid grid-cols-2 gap-4 mt-7 max-[520px]:grid-cols-1">
+            {[
+              {
+                href: "https://www.facebook.com/people/Project-IVY/61565295581796/",
+                img: "/images/facebook-qr.png",
+                alt: "QR code linking to Project IVY's Facebook page",
+                icon: <FacebookIcon />,
+                name: "Facebook",
+                desc: t("facebookQrLabel"),
+                chip: "bg-[#1877F2]",
+              },
+              {
+                href: "https://t.me/SomphorsT",
+                img: "/images/telegram-qr.png",
+                alt: "QR code linking to Somphors Tann's Telegram",
+                icon: <TelegramIcon />,
+                name: "Telegram",
+                desc: t("telegramQrLabel"),
+                chip: "bg-[#229ED9]",
+              },
+            ].map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col items-center text-center bg-paper border border-line rounded-(--radius) p-5 shadow-[0_18px_40px_-26px_rgba(14,23,41,0.2)] transition-transform duration-200 hover:-translate-y-1"
+              >
+                <div className="w-full max-w-[190px] rounded-xl border border-line overflow-hidden">
+                  <Image src={s.img} alt={s.alt} width={190} height={190} className="block w-full h-auto" />
+                </div>
+                <span
+                  className={cn(
+                    "mt-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[0.8rem] font-semibold text-white",
+                    s.chip,
+                  )}
+                >
+                  {s.icon}
+                  {s.name}
+                </span>
+                <span className="mt-2 text-[0.78rem] text-ink-soft leading-[1.45] max-w-[22ch]">
+                  {s.desc}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
 

@@ -365,7 +365,7 @@
       "grade10": "Grade 10",
       "grade11": "Grade 11",
       "grade12": "Grade 12",
-      "terms": "I agree to the Terms & Conditions",
+      "terms": "I agree to the <terms>Terms & Conditions</terms>",
       "submit": "Sign Up for Advising",
       "submitting": "Submitting…",
       "selectedPrograms": "Selected programs",
