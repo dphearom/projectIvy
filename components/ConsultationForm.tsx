@@ -112,8 +112,8 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
           {/* Sliding navy thumb — springs between the two options. */}
           <span
             aria-hidden
-            style={{ transform: `translateX(${role === "student" ? 100 : 0}%)` }}
-            className="pointer-events-none absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-[9px] bg-navy shadow-[0_8px_20px_-10px_rgba(14,23,41,0.5),inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-reduce:transition-none"
+            style={{ transform: `translateX(${role === "student" ? 100 : 0}%) translateZ(0)` }}
+            className="pointer-events-none absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-[9px] bg-navy shadow-[0_8px_20px_-10px_rgba(14,23,41,0.5),inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-reduce:transition-none"
           />
           {(["parent", "student"] as const).map((value) => {
             const active = role === value;
@@ -245,7 +245,7 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
                   e.stopPropagation();
                   setTermsOpen(true);
                 }}
-                className="appearance-none border-0 bg-transparent p-0 cursor-pointer align-baseline text-gold-deep font-semibold underline underline-offset-2 decoration-gold-deep/40 outline-none transition-colors hover:text-gold hover:decoration-gold focus:text-gold focus:decoration-gold focus-visible:text-gold focus-visible:decoration-gold"
+                className="appearance-none border-0 bg-transparent p-0 [font-size:inherit] [font-family:inherit] cursor-pointer align-baseline text-gold-deep font-semibold underline underline-offset-2 decoration-gold-deep/40 outline-none transition-colors hover:text-gold hover:decoration-gold focus:text-gold focus:decoration-gold focus-visible:text-gold focus-visible:decoration-gold"
               >
                 {chunks}
               </button>

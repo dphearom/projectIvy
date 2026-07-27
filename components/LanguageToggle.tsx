@@ -22,7 +22,7 @@ const LanguageToggle = ({ scrolled = false, className }: Props) => {
       role="group"
       aria-label="Select language"
       className={cn(
-        "relative inline-grid grid-cols-2 items-center rounded-full border p-1 min-w-[7.75rem] backdrop-blur-sm",
+        "relative inline-grid grid-cols-2 items-center rounded-full border p-1 min-w-[7.75rem]",
         scrolled ? "border-line" : "border-[rgba(243,237,226,0.28)]",
         className,
       )}
@@ -30,13 +30,13 @@ const LanguageToggle = ({ scrolled = false, className }: Props) => {
       {/* Sliding "liquid glass" thumb — one grid column wide, springs between the two positions. */}
       <span
         aria-hidden
-        style={{ transform: `translateX(${activeIndex * 100}%)` }}
+        style={{ transform: `translateX(${activeIndex * 100}%) translateZ(0)` }}
         className={cn(
           "pointer-events-none absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-full",
           "bg-[linear-gradient(135deg,var(--gold-soft),var(--gold))]",
           "ring-1 ring-[rgba(255,255,255,0.22)]",
           "shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_2px_rgba(138,111,63,0.28),0_6px_16px_-6px_rgba(184,150,90,0.5)]",
-          "transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+          "transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
           "motion-reduce:transition-none",
         )}
       >
