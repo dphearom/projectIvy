@@ -1,6 +1,11 @@
-import en from "@/translations/en.json";
-import km from "@/translations/km.json";
+import enBase from "@/translations/en.json";
+import kmBase from "@/translations/km.json";
+import termsEn from "@/translations/terms.en.json";
+import termsKm from "@/translations/terms.km.json";
 import type { Language } from "./language";
+
+const en = { ...enBase, terms: termsEn };
+const km = { ...kmBase, terms: termsKm };
 
 type Messages = typeof en;
 

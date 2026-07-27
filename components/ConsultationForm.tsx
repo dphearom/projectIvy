@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import { cn, EMAIL_RE } from "@/lib/utils";
 import Button from "@/components/Button";
+import TermsModal from "@/components/TermsModal";
 import { submitConsultation } from "@/app/actions/consultation";
 import { inquiryLabel } from "@/lib/inquiries";
 import { useTranslation } from "@/components/useTranslation";
@@ -13,8 +14,9 @@ type Props = {
 };
 
 const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
-  const { t, tPlain } = useTranslation("contact.form");
+  const { t, tRich, tPlain } = useTranslation("contact.form");
   const [role, setRole] = useState<"parent" | "student">("student");
+  const [termsOpen, setTermsOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -229,8 +231,26 @@ const ConsultationForm = ({ inquiries = [], onSuccess }: Props) => {
           onChange={(e) => setTerms(e.target.checked)}
           className="mt-0.75"
         />
-        {t("terms")}
+        <span>
+          {tRich("terms", {
+            terms: (chunks) => (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setTermsOpen(true);
+                }}
+                className="appearance-none border-0 bg-transparent p-0 cursor-pointer align-baseline text-gold-deep font-semibold underline underline-offset-2 decoration-gold-deep/40 outline-none transition-colors hover:text-gold hover:decoration-gold focus:text-gold focus:decoration-gold focus-visible:text-gold focus-visible:decoration-gold"
+              >
+                {chunks}
+              </button>
+            ),
+          })}
+        </span>
       </label>
+
+      <TermsModal open={termsOpen} onOpenChange={setTermsOpen} />
 
       {error && <p className="text-[0.88rem] text-[#c0392b]">{error}</p>}
 
