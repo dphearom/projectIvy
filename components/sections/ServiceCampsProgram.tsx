@@ -32,7 +32,7 @@ const CampModal = ({ tier, onClose }: { tier: ProgramTier; onClose: () => void }
       onClose={onClose}
       footer={
         <>
-          <Button href="/contact" arrow>
+          <Button href={`/contact?inquiries=${SERVICE_CAMPS_DETAIL.id}`} arrow>
             Enquire about this camp
           </Button>
           <Button variant="ghost-dark" onClick={onClose}>
