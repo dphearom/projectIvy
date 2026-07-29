@@ -61,27 +61,27 @@ import { localizedVideo, type LocalizedVideo } from "@/lib/videos";
 export const TIER_VIDEOS: Record<string, LocalizedVideo> = {
   "middle-school:0": localizedVideo(
     "https://youtu.be/ffKhMqp-4j8",
-    "https://youtu.be/m_-FM5LQtig",
+    "https://youtu.be/puRPI1hfcnQ",
   ),
   "university-readiness:0": localizedVideo(
     "https://youtu.be/HhHZ1cKpOyY",
-    "https://youtu.be/6Qd_13_1Lmk",
+    "https://youtu.be/jY19CdsV9wQ",
   ),
   "university-readiness:1": localizedVideo(
     "https://youtu.be/2gne7H72qW4",
-    "https://youtu.be/yLsoPgspdd0",
+    "https://youtu.be/3dR0q_PV0C8",
   ),
   "university-readiness:2": localizedVideo(
     "https://youtu.be/S7SbcYYy6w8",
-    "https://youtu.be/gUDrShRb-pM",
+    "https://youtu.be/ko4v0UIZrE0",
   ),
   "university-application:0": localizedVideo(
     "https://youtu.be/N0H4t_3tZE8",
-    "https://youtu.be/B80q1z5TP3s",
+    "https://youtu.be/e6OI30VFWJ8",
   ),
   "university-application:1": localizedVideo(
     "https://youtu.be/OfQTP1fkqjg",
-    "https://youtu.be/p-b4_En7GTo",
+    "https://youtu.be/hpGjTf_0kEU",
   ),
   "university-application:2": localizedVideo(
     "https://youtu.be/ViG-bNcQAdk",
@@ -89,19 +89,19 @@ export const TIER_VIDEOS: Record<string, LocalizedVideo> = {
   ),
   "graduate-school:0": localizedVideo(
     "https://youtu.be/16kjRTmha34",
-    "https://youtu.be/U9viXeN6We0",
+    "https://youtu.be/A0RlHU8faWI",
   ),
   "graduate-school:1": localizedVideo(
     "https://youtu.be/gPztz9dTo_M",
-    "https://youtu.be/RqRN5GOS8fs",
+    "https://youtu.be/swvSVMTwOdM",
   ),
   "graduate-school:2": localizedVideo(
     "https://youtu.be/OfQTP1fkqjg",
-    "https://youtu.be/JxvjvSH3k3I",
+    "https://youtu.be/_iTZq93MoyM",
   ),
   "graduate-school:3": localizedVideo(
     "https://youtu.be/irpkrUu5H08",
-    "https://youtu.be/LEEVs5LKTo8",
+    "https://youtu.be/y7JtppbeHgs",
   ),
 };
 

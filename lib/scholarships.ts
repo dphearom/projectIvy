@@ -21,7 +21,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
     photo: "scholarships/university-application-scholarship",
     videos: localizedVideo(
       "https://youtu.be/JG71m85v0xE",
-      "https://youtu.be/PEscailitoQ",
+      "https://youtu.be/U_s0GUajhaE",
     ),
     overview:
       "Application guidance for students with ambition and financial need.",
@@ -50,7 +50,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
     photo: "scholarships/university-application-fee-scholarship",
     videos: localizedVideo(
       "https://youtu.be/fXmSIm8n0hY",
-      "https://youtu.be/kntF9WodC6c",
+      "https://youtu.be/nYQoAAjdlO0",
     ),
     overview:
       "Provides financial assistance to help students offset application-related costs.",
@@ -79,7 +79,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
     photo: "scholarships/ielts-fee-scholarship",
     videos: localizedVideo(
       "https://youtu.be/sFfvw7rhdT8",
-      "https://youtu.be/LYvEJMTdMrg",
+      "https://youtu.be/7sCn3e8ypIE",
     ),
     overview:
       "Provides financial assistance to help students offset IELTS testing fee.",
