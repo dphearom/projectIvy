@@ -85,7 +85,7 @@ export const TIER_VIDEOS: Record<string, LocalizedVideo> = {
   ),
   "university-application:2": localizedVideo(
     "https://youtu.be/ViG-bNcQAdk",
-    "https://youtu.be/coIdhcnMkO4",
+    "https://youtu.be/2Y4-D-oqCV8",
   ),
   "graduate-school:0": localizedVideo(
     "https://youtu.be/16kjRTmha34",
