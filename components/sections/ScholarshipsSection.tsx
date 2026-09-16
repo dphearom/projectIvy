@@ -87,16 +87,29 @@ const ScholarshipsSection = ({ showPageHeader = true }: Props) => {
                     <p className="mt-3 mb-5 text-[0.98rem] text-ink-soft leading-[1.55]">
                       {isTranslated ? t(`items.${scholarship.id}.overview`) : scholarship.overview}
                     </p>
-                    <Button
-                      onClick={() => toggleExpand(scholarship.id)}
-                      className="self-start"
-                      aria-expanded={isOpen}
-                    >
-                      {isOpen ? t("ui.showLess") : t("ui.learnMore")}
-                      <ChevronDown
-                        className={cn("transition-transform duration-300", isOpen && "rotate-180")}
-                      />
-                    </Button>
+                    <div className="flex flex-wrap items-center gap-3">
+                      {scholarship.applyUrl && (
+                        <Button
+                          href={scholarship.applyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          arrow
+                        >
+                          {t("ui.applyNow")}
+                        </Button>
+                      )}
+                      <Button
+                        onClick={() => toggleExpand(scholarship.id)}
+                        variant={scholarship.applyUrl ? "ghost-dark" : "gold"}
+                        className="self-start"
+                        aria-expanded={isOpen}
+                      >
+                        {isOpen ? t("ui.showLess") : t("ui.learnMore")}
+                        <ChevronDown
+                          className={cn("transition-transform duration-300", isOpen && "rotate-180")}
+                        />
+                      </Button>
+                    </div>
                   </div>
                 </div>
 
