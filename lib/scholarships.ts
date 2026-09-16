@@ -12,6 +12,8 @@ export type Scholarship = {
   eligibility: string[];
   selectionCriteria: string[];
   footnote?: string;
+  /** External application form URL (e.g. Google Form). */
+  applyUrl?: string;
 };
 
 export const SCHOLARSHIPS: Scholarship[] = [
@@ -74,29 +76,31 @@ export const SCHOLARSHIPS: Scholarship[] = [
       "Scholarships are limited and may be offered as partial support depending on each student's situation and available funding.",
   },
   {
-    id: "ielts-fee",
-    title: "IELTS Fee Scholarship",
+    id: "ivy-english-proficiency",
+    title: "IVY English Proficiency Scholarship",
     photo: "scholarships/ielts-fee-scholarship",
     videos: localizedVideo(
       "https://youtu.be/sFfvw7rhdT8",
       "https://youtu.be/7sCn3e8ypIE",
     ),
     overview:
-      "Provides financial assistance to help students offset IELTS testing fee.",
+      "Need-based support for IELTS, TOEFL, and Duolingo English Test fees — in collaboration with Aiglon College.",
     learnMore:
-      "Support for students preparing for IELTS as part of their university or scholarship journey. Selected students may receive partial scholarships to offset the IELTS fee.",
+      "In collaboration with the Student Philanthropy Committee at Aiglon College, Project IVY offers English Proficiency Testing Scholarships for IELTS, TOEFL, and the Duolingo English Test. Ten scholarships are available: 2 full (100%), 4 half (50%), and 4 partial (25%). English proficiency tests are often required for international study, and their cost can be a significant barrier for talented students from low-income backgrounds — financial circumstances should not prevent students from demonstrating their potential.",
     eligibility: [
-      "Are preparing for IELTS test",
-      "Demonstrate financial need",
-      "Show academic motivation and personal commitment",
-      "Can complete required tasks and meet deadlines",
+      "Are preparing to take IELTS, TOEFL, or the Duolingo English Test",
+      "Face financial barriers to covering the exam fee",
+      "Show strong motivation to improve and demonstrate English proficiency",
+      "Can clearly explain why this scholarship would make a meaningful impact",
     ],
     selectionCriteria: [
       "Financial need",
-      "Academic background",
-      "Motivation and personal goals",
-      "Readiness to take IELTS",
+      "High motivation",
+      "Clear impact — ability to articulate suitability for this scholarship",
       "Availability of scholarship funding",
     ],
+    footnote:
+      "Shortlisted candidates will be contacted for further interviews.",
+    applyUrl: "https://forms.gle/FJArtGuufGG6Jy418",
   },
 ];
