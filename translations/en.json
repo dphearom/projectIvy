@@ -345,7 +345,8 @@
       "emailLabel": "Email",
       "webLabel": "Web",
       "facebookQrLabel": "Scan to follow our Facebook page",
-      "telegramQrLabel": "Scan to message Somphors Tann on Telegram"
+      "telegramQrLabel": "Scan to message Project IVY on Telegram",
+      "tiktokQrLabel": "Scan to follow @project_ivy_kh on TikTok"
     },
     "form": {
       "youAre": "You are:",

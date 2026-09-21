@@ -1,40 +1,36 @@
-/* Leaflet control overrides — colocated with WorldMapInner since these
-   selectors target classes Leaflet generates itself (not Tailwind-reachable)
-   and are only ever rendered by this component. */
-.leaflet-control-zoom {
+/* MapLibre controls / popups for the Positron world map. */
+
+.world-map-gl .maplibregl-ctrl-group {
   border: none !important;
-  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.35) !important;
+  background: transparent !important;
+  overflow: hidden;
+  border-radius: 8px !important;
 }
 
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out {
+.world-map-gl .maplibregl-ctrl-group button {
   background: rgba(14, 23, 41, 0.88) !important;
-  color: rgba(243, 237, 226, 0.9) !important;
-  border: 1px solid rgba(243, 237, 226, 0.14) !important;
   width: 32px !important;
   height: 32px !important;
-  line-height: 30px !important;
-  font-size: 1.1rem !important;
+  border: 1px solid rgba(243, 237, 226, 0.14) !important;
   backdrop-filter: blur(8px) !important;
-  transition: background .2s ease, color .2s ease !important;
+  transition: background 0.2s ease !important;
 }
 
-.leaflet-control-zoom-in {
-  border-radius: 8px 8px 0 0 !important;
-  border-bottom: none !important;
+.world-map-gl .maplibregl-ctrl-group button + button {
+  border-top: none !important;
 }
 
-.leaflet-control-zoom-out {
-  border-radius: 0 0 8px 8px !important;
-}
-
-.leaflet-control-zoom-in:hover,
-.leaflet-control-zoom-out:hover {
+.world-map-gl .maplibregl-ctrl-group button:hover {
   background: rgba(184, 150, 90, 0.22) !important;
-  color: #b8965a !important;
 }
 
-.leaflet-control-attribution {
+.world-map-gl .maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  opacity: 0.9;
+  filter: invert(1) brightness(1.1);
+}
+
+.world-map-gl .maplibregl-ctrl-attrib {
   background: rgba(14, 23, 41, 0.72) !important;
   color: rgba(243, 237, 226, 0.45) !important;
   font-size: 0.62rem !important;
@@ -43,24 +39,23 @@
   padding: 3px 8px !important;
 }
 
-.leaflet-control-attribution a {
+.world-map-gl .maplibregl-ctrl-attrib a {
   color: rgba(184, 150, 90, 0.75) !important;
 }
 
-/* Popup */
-.leaflet-popup-content-wrapper {
+.world-map-gl .maplibregl-popup-content {
   background: rgba(14, 23, 41, 0.92) !important;
   border: 1px solid rgba(243, 237, 226, 0.14) !important;
   border-radius: 10px !important;
   box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.55) !important;
   backdrop-filter: blur(10px) !important;
   color: var(--cream) !important;
-  padding: 0 !important;
+  padding: 12px 16px !important;
 }
 
-.leaflet-popup-content {
-  margin: 0 !important;
-  padding: 12px 16px !important;
+.world-map-gl .maplibregl-popup-tip {
+  border-top-color: rgba(14, 23, 41, 0.92) !important;
+  border-bottom-color: rgba(14, 23, 41, 0.92) !important;
 }
 
 .map-popup strong {
@@ -81,12 +76,7 @@
   text-transform: uppercase;
 }
 
-.leaflet-popup-tip-container .leaflet-popup-tip {
-  background: rgba(14, 23, 41, 0.92) !important;
-  box-shadow: none !important;
-}
-
-.leaflet-popup-close-button {
+.world-map-gl .maplibregl-popup-close-button {
   position: absolute !important;
   top: -10px !important;
   right: -10px !important;
@@ -99,69 +89,77 @@
   border-radius: 50% !important;
   background: rgba(14, 23, 41, 0.95) !important;
   border: 1px solid rgba(243, 237, 226, 0.2) !important;
+  color: transparent !important;
   font-size: 0 !important;
   line-height: 0 !important;
-  transition: background .2s ease, border-color .2s ease !important;
 }
 
-.leaflet-popup-close-button span {
-  display: none !important;
-}
-
-.leaflet-popup-close-button::before,
-.leaflet-popup-close-button::after {
+.world-map-gl .maplibregl-popup-close-button::before,
+.world-map-gl .maplibregl-popup-close-button::after {
   content: "";
   position: absolute;
   width: 9px;
   height: 1.5px;
   border-radius: 1px;
   background: rgba(243, 237, 226, 0.75);
-  transition: background .2s ease;
 }
 
-.leaflet-popup-close-button::before {
+.world-map-gl .maplibregl-popup-close-button::before {
   transform: rotate(45deg);
 }
 
-.leaflet-popup-close-button::after {
+.world-map-gl .maplibregl-popup-close-button::after {
   transform: rotate(-45deg);
 }
 
-.leaflet-popup-close-button:hover {
+.world-map-gl .maplibregl-popup-close-button:hover {
   background: var(--gold) !important;
   border-color: var(--gold) !important;
 }
 
-.leaflet-popup-close-button:hover::before,
-.leaflet-popup-close-button:hover::after {
+.world-map-gl .maplibregl-popup-close-button:hover::before,
+.world-map-gl .maplibregl-popup-close-button:hover::after {
   background: #fff;
 }
 
-/* Marker pulse */
+.map-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(14, 23, 41, 0.35);
+}
+
+.map-dot--advisor {
+  width: 16px;
+  height: 16px;
+}
+
 .map-marker-circle {
   animation: marker-glow 2.8s ease-in-out infinite;
 }
 
 @keyframes marker-glow {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.65; }
-}
-
-.continent-label-marker {
-  background: transparent;
-  border: none;
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.65;
+  }
 }
 
 .continent-label {
   display: inline-block;
-  transform: translate(-50%, -50%);
   white-space: nowrap;
   font-family: var(--font-body);
   font-size: clamp(0.62rem, 1.1vw, 0.78rem);
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(243, 237, 226, 0.42);
+  color: rgba(14, 23, 41, 0.38);
   pointer-events: none;
   user-select: none;
 }
