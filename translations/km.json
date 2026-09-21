@@ -345,7 +345,8 @@
       "emailLabel": "អ៊ីមែល",
       "webLabel": "គេហទំព័រ",
       "facebookQrLabel": "ស្កេនដើម្បីតាមដានទំព័រ Facebook របស់យើង",
-      "telegramQrLabel": "ស្កេនដើម្បីជជែកជាមួយ Project IVY លើ Telegram"
+      "telegramQrLabel": "ស្កេនដើម្បីជជែកជាមួយ Project IVY លើ Telegram",
+      "tiktokQrLabel": "ស្កេនដើម្បីតាមដាន @project_ivy_kh លើ TikTok"
     },
     "form": {
       "youAre": "អ្នកជា៖",
