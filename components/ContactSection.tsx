@@ -27,8 +27,8 @@ const ContactSection = ({ inquiries }: Props) => {
                 icon: <TelegramIcon />,
                 content: (
                   <>
-                    {t("telegramLabel")}: <strong className="text-navy font-semibold">+855889493577</strong> ·{" "}
-                    <strong className="text-navy font-semibold">+855964025628</strong>
+                    {t("telegramLabel")}:{" "}
+                    <strong className="text-navy font-semibold">+1 740 358 9348</strong>
                   </>
                 ),
               },
@@ -82,9 +82,9 @@ const ContactSection = ({ inquiries }: Props) => {
                 chip: "bg-[#1877F2]",
               },
               {
-                href: "https://t.me/SomphorsT",
-                img: "/images/telegram-qr.png",
-                alt: "QR code linking to Somphors Tann's Telegram",
+                href: "tg://resolve?phone=17403589348",
+                img: "/images/telegram-qr-v2.png",
+                alt: "QR code linking to Project IVY's Telegram",
                 icon: <TelegramIcon />,
                 name: "Telegram",
                 desc: t("telegramQrLabel"),

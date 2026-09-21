@@ -62,10 +62,10 @@ await buildQr({
 });
 
 await buildQr({
-  text: "https://t.me/SomphorsT",
+  text: "tg://resolve?phone=17403589348",
   brandColor: "#229ED9",
   shape: "circle",
   iconPath: telegramPath,
   iconScale: 0.78,
-  outFile: "public/images/telegram-qr.png",
+  outFile: "public/images/telegram-qr-v2.png",
 });
