@@ -344,9 +344,12 @@
       "telegramLabel": "Telegram",
       "emailLabel": "Email",
       "webLabel": "Web",
+      "followUs": "Follow us",
+      "openProfile": "Open profile",
       "facebookQrLabel": "Scan to follow our Facebook page",
       "telegramQrLabel": "Scan to message Project IVY on Telegram",
-      "tiktokQrLabel": "Scan to follow @project_ivy_kh on TikTok"
+      "tiktokQrLabel": "Scan to follow @project_ivy_kh on TikTok",
+      "instagramQrLabel": "Scan to follow @project_ivy_kh on Instagram"
     },
     "form": {
       "youAre": "You are:",
