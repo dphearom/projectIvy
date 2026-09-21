@@ -5,7 +5,7 @@ import { useTranslation } from "@/components/useTranslation";
 
 const WorldMapInner = dynamic(() => import("@/components/sections/WorldMapInner"), {
   ssr: false,
-  loading: () => <div className="absolute inset-0 bg-navy-3" aria-label="Loading map" />,
+  loading: () => <div className="absolute inset-0 bg-[#d8e0e8]" aria-label="Loading map" />,
 });
 
 const WorldMapCaption = ({ className = "" }: { className?: string }) => {
