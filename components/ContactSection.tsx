@@ -32,7 +32,7 @@ type Social = {
   alt: string;
   icon: ReactNode;
   name: string;
-  desc: string;
+  desc: ReactNode;
 };
 
 const ContactSection = ({ inquiries }: Props) => {
