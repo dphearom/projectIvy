@@ -40,7 +40,7 @@ const PartnersHome = () => {
             />
           </a>
 
-          <p className="m-0 mt-7 max-w-[46ch] text-[0.98rem] leading-[1.55] text-ink-soft">
+          <p className="m-0 mt-7 max-w-[52ch] text-[0.98rem] leading-[1.55] text-ink-soft">
             {t("line")}
           </p>
           <a
