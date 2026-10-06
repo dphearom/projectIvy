@@ -6,6 +6,7 @@ import WorldMap from "@/components/sections/WorldMap";
 import ConsultingPrograms from "@/components/sections/ConsultingPrograms";
 import MeetOurTeamHome from "@/components/sections/MeetOurTeamHome";
 import AffiliationsPartners from "@/components/sections/AffiliationsPartners";
+import PartnersHome from "@/components/sections/PartnersHome";
 import FeaturedNews from "@/components/sections/FeaturedNews";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ const Page = () => (
     <WorldMap />
     <ConsultingPrograms />
     <AffiliationsPartners />
+    <PartnersHome />
     <MeetOurTeamHome />
     <FeaturedNews />
   </>

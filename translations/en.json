@@ -9,6 +9,7 @@
     "vision": "Vision",
     "whoWeAre": "Who We Are",
     "whyChooseUs": "Why Choose Us",
+    "partners": "Partners",
     "ourAdvisors": "Our Advisors",
     "programsOverview": "Programs overview",
     "toggleMenu": "Toggle menu",
@@ -532,6 +533,12 @@
       "heading": "Experienced advisors from leading institutions",
       "paragraph": "Project IVY mentors bring firsthand experience from world-class universities and schools — guiding students with insight earned on the journey."
     },
+    "partners": {
+      "eyebrow": "Partners",
+      "heading": "Working with partners who share our mission",
+      "line": "Project IVY is proud to partner with quicknews, a Cambodian short video app helping young people find information they can trust.",
+      "cta": "Visit quicknews"
+    },
     "team": {
       "eyebrow": "Our Team",
       "heading": "Meet Our Team",
@@ -586,6 +593,7 @@
       "vision": "Vision",
       "whoWeAre": "Who We Are",
       "whyChooseUs": "Why Choose Us",
+      "partners": "Partners",
       "team": "Our Advisors"
     },
     "mission": {
@@ -639,6 +647,13 @@
           "detail": "We work on the whole application: your story, your strategy, your essays, your activities, and your mindset. We help you understand what top admissions officers actually look for and how to present who you are in a way that is authentic and compelling."
         }
       }
+    },
+    "partners": {
+      "eyebrow": "Partners",
+      "heading": "Partners who share our mission",
+      "blurb": "quicknews is a short video app made in Cambodia. Local creators share what's happening in tech, wellness, education and the wider world, in Khmer and English. Every video shows the sources behind it, so viewers can see for themselves what holds up. People support the creators they like and chat with them directly.",
+      "cta": "Visit quicknews",
+      "telegramCta": "Message on Telegram"
     },
     "advisors": {
       "eyebrow": "Our Advisors",

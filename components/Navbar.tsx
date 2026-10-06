@@ -30,6 +30,7 @@ const NAV_ITEMS: NavItem[] = [
       { key: "vision", href: "/about#vision" },
       { key: "whoWeAre", href: "/about#who-we-are" },
       { key: "whyChooseUs", href: "/about#why-choose-us" },
+      { key: "partners", href: "/about#partners" },
       { key: "ourAdvisors", href: "/about#team" },
     ],
   },
