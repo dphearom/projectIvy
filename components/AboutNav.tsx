@@ -4,12 +4,13 @@ import { scrollToHashWhenReady } from "@/lib/scroll-to-hash";
 import { useTranslation } from "@/components/useTranslation";
 import { cn } from "@/lib/utils";
 
-const IDS = ["mission", "vision", "who-we-are", "why-choose-us", "team"] as const;
+const IDS = ["mission", "vision", "who-we-are", "why-choose-us", "partners", "team"] as const;
 const KEY_BY_ID: Record<(typeof IDS)[number], string> = {
   mission: "mission",
   vision: "vision",
   "who-we-are": "whoWeAre",
   "why-choose-us": "whyChooseUs",
+  partners: "partners",
   team: "team",
 };
 

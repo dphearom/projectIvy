@@ -6,6 +6,7 @@ import Mission from "@/components/sections/Mission";
 import VisionQuote from "@/components/sections/VisionQuote";
 import WhoWeAre from "@/components/sections/WhoWeAre";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import PartnersAbout from "@/components/sections/PartnersAbout";
 import OurTeam from "@/components/sections/OurTeam";
 import FinalCTA from "@/components/sections/FinalCTA";
 
@@ -24,6 +25,7 @@ const AboutPage = () => (
     <VisionQuote />
     <WhoWeAre />
     <WhyChooseUs />
+    <PartnersAbout />
     <OurTeam />
     <FinalCTA />
   </>
