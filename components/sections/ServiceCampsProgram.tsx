@@ -5,7 +5,7 @@ import PlaceholderImage from "@/components/PlaceholderImage";
 import Button from "@/components/Button";
 import TierModal from "@/components/TierModal";
 import Eyebrow from "@/components/Eyebrow";
-import { SERVICE_CAMPS_DETAIL, type ProgramTier } from "@/lib/programs";
+import { SERVICE_CAMPS_DETAIL, SHOW_PRICING, type ProgramTier } from "@/lib/programs";
 
 const CAMP_OUTCOMES: Record<string, string> = {
   "Impact Week":
@@ -27,7 +27,7 @@ const CampModal = ({ tier, onClose }: { tier: ProgramTier; onClose: () => void }
     <TierModal
       title={tier.name}
       ariaLabel={tier.name}
-      price={tier.price}
+      price={SHOW_PRICING ? tier.price : undefined}
       tagline={tier.tagline}
       onClose={onClose}
       footer={
@@ -99,9 +99,11 @@ const CampsProgram = () => {
               >
                 <PlaceholderImage name={`camps-${slug}`} aspect="4 / 3" className="rounded-none" />
                 <div className="pt-4.5 px-5 pb-5.5 flex flex-col flex-1">
-                  <span className="inline-block text-[0.72rem] font-bold tracking-[0.06em] uppercase text-navy-3 bg-gold py-1 px-2.5 rounded-full mb-2.5 self-start">
-                    Custom pricing
-                  </span>
+                  {SHOW_PRICING && (
+                    <span className="inline-block text-[0.72rem] font-bold tracking-[0.06em] uppercase text-navy-3 bg-gold py-1 px-2.5 rounded-full mb-2.5 self-start">
+                      Custom pricing
+                    </span>
+                  )}
                   <h3 className="text-[1.15rem] text-navy mb-1.5 leading-[1.15]">{tier.name}</h3>
                   <p className="text-[0.9rem] text-ink-soft leading-[1.5] flex-1">{tier.tagline}</p>
                   <div className="mt-4 pt-3.5 border-t border-line flex gap-2">

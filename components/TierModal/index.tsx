@@ -9,7 +9,7 @@ type Props = {
   ariaLabel: string;
   /** Plain-string label for the × close button's aria-label. */
   closeAriaLabel?: string;
-  price: string;
+  price?: string;
   tagline: ReactNode;
   /** Rendered above the padded body — e.g. a full-bleed cover image. */
   media?: ReactNode;
@@ -56,7 +56,7 @@ const TierModal = ({
           {media}
           <div className="tier-modal__body">
             <h3 className="tier-modal__name">{title}</h3>
-            <span className="tier-modal__price">{price}</span>
+            {price && <span className="tier-modal__price">{price}</span>}
             <p className="tier-modal__tagline">{tagline}</p>
             {children}
             <div className="tier-modal__footer">{footer}</div>
