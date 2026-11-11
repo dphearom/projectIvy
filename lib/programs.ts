@@ -1,3 +1,6 @@
+/** Flip to true to show tier prices and additional-fee sections again. */
+export const SHOW_PRICING = false;
+
 export type ProgramSummary = {
   id: string;
   title: string;

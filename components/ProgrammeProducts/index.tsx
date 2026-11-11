@@ -10,6 +10,7 @@ import { CartIcon, ChevronDown } from "@/components/icons";
 import { PHOTO_READY, PLACEHOLDERS } from "@/lib/placeholders";
 import {
   ADVISING_PROGRAM_DETAILS,
+  SHOW_PRICING,
   tierVideos,
   type ProgramDetail,
   type ProgramTier,
@@ -82,7 +83,7 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
       title={t(`${tierPath}.name`, "display")}
       ariaLabel={tPlain(`${tierPath}.name`)}
       closeAriaLabel={tButtonPlain("close")}
-      price={data.tier.price}
+      price={SHOW_PRICING ? data.tier.price : undefined}
       tagline={t(`${tierPath}.tagline`)}
       onClose={onClose}
       media={
@@ -124,7 +125,7 @@ const ProgramTierModal = ({ data, onClose }: { data: ModalData; onClose: () => v
           </ul>
         </div>
       )}
-      {data.tier.pricingSection && (
+      {SHOW_PRICING && data.tier.pricingSection && (
         <div className="tier-modal__features mt-5 pt-5 border-t border-line">
           <h5>{t(`${tierPath}.pricingSection.title`)}</h5>
           <ul>
@@ -298,10 +299,12 @@ const ProgrammeProducts = () => {
                             <p className="mt-1.5 text-[0.87rem] text-ink-soft leading-[1.45]">
                               {t(`details.${program.id}.tiers.${ti}.tagline`)}
                             </p>
-                            <span className="inline-block mt-3 text-[0.85rem] font-bold text-navy-3 bg-gold py-1 px-3 rounded-full self-start">
-                              {tier.price}
-                            </span>
-                            {tier.pricingSection && (
+                            {SHOW_PRICING && (
+                              <span className="inline-block mt-3 text-[0.85rem] font-bold text-navy-3 bg-gold py-1 px-3 rounded-full self-start">
+                                {tier.price}
+                              </span>
+                            )}
+                            {SHOW_PRICING && tier.pricingSection && (
                               <div className="mt-3.5 pt-3.5 border-t border-line">
                                 <p className="text-[0.82rem] font-semibold text-navy">
                                   {t(`details.${program.id}.tiers.${ti}.pricingSection.title`)}
