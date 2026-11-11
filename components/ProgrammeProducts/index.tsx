@@ -323,7 +323,7 @@ const ProgrammeProducts = () => {
                                 </ul>
                               </div>
                             )}
-                            <div className="mt-3.5">
+                            <div className="mt-auto pt-3.5">
                               <button
                                 type="button"
                                 className="font-body inline-flex items-center justify-center w-full text-[0.85rem] font-semibold text-navy bg-transparent border border-[rgba(27,36,54,0.2)] rounded-full py-2.25 px-3.5 cursor-pointer transition-[border-color,color] duration-200 hover:border-gold-deep hover:text-gold-deep"
